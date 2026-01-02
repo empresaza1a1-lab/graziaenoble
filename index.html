@@ -1,10 +1,125 @@
 <!DOCTYPE html>
-<html>
+<html lang="es" class="dark">
 <head>
-    <title>Grazia e Noble</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZakForeigner | Gestión Nativa de Comercio Exterior</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0F172A; }
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
+        .hero-gradient { background: radial-gradient(circle at top right, #1E40AF, transparent); }
+        .btn-primary { background: #3b82f6; transition: all 0.3s ease; }
+        .btn-primary:hover { background: #2563eb; transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.5); }
+    </style>
 </head>
-<body>
-    <h1>¡Próximamente Grazia e Noble!</h1>
-    <p>Sitio web en construcción.</p>
+<body class="text-slate-200 antialiased">
+
+    <header class="fixed w-full z-50 glass">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold tracking-tighter text-white">
+                Zak<span class="text-blue-500">Foreigner</span>
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#features" class="hover:text-blue-400 transition">Funcionalidades</a>
+                <a href="#aws" class="hover:text-blue-400 transition">Tecnología AWS</a>
+                <a href="#reportes" class="hover:text-blue-400 transition">Reportes</a>
+            </div>
+            <a href="#" class="btn-primary px-6 py-2 rounded-full text-sm font-semibold text-white">Agendar Demo</a>
+        </nav>
+    </header>
+
+    <section class="relative pt-32 pb-20 overflow-hidden hero-gradient">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight text-white">
+                Comercio Exterior a la <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 text-6xl">Velocidad de macOS</span>
+            </h1>
+            <p class="text-xl text-slate-400 max-w-2xl mx-auto mb-10">
+                La solución nativa definitiva para empresas bajo el régimen de Admisión Temporal y Perfeccionamiento Activo. Potenciada por Swift y AWS.
+            </p>
+            <div class="relative max-w-5xl mx-auto mt-12 group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                <div class="relative glass rounded-xl overflow-hidden shadow-2xl">
+                    <div class="bg-slate-800/50 p-2 flex items-center space-x-2 border-b border-white/10">
+                        <div class="flex space-x-1.5 pl-2">
+                            <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                        </div>
+                        <div class="text-xs text-slate-500 mx-auto font-mono">ZakForeigner — Editor de Contenedor (ISO 6346)</div>
+                    </div>
+                    <img src="https://via.placeholder.com/1200x675/1e293b/ffffff?text=Video+de+la+App+en+Xcode+Aqui" alt="App Interface" class="w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-24 bg-[#0F172A]">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="p-8 rounded-2xl glass hover:border-blue-500/50 transition">
+                    <i data-lucide="zap" class="text-blue-500 mb-6 h-10 w-10"></i>
+                    <h3 class="text-xl font-semibold mb-4 text-white">Rendimiento Nativo</h3>
+                    <p class="text-slate-400">Desarrollada en Swift para macOS, aprovechando al máximo el hardware de Apple para procesar miles de pedimentos en milisegundos.</p>
+                </div>
+                <div class="p-8 rounded-2xl glass hover:border-emerald-500/50 transition">
+                    <i data-lucide="shield-check" class="text-emerald-500 mb-6 h-10 w-10"></i>
+                    <h3 class="text-xl font-semibold mb-4 text-white">Validación de Datos</h3>
+                    <p class="text-slate-400">Algoritmos inteligentes que validan números de contenedor, Incoterms y plazos legales antes de cualquier envío.</p>
+                </div>
+                <div class="p-8 rounded-2xl glass hover:border-purple-500/50 transition">
+                    <i data-lucide="cloud" class="text-purple-500 mb-6 h-10 w-10"></i>
+                    <h3 class="text-xl font-semibold mb-4 text-white">Nube AWS</h3>
+                    <p class="text-slate-400">Reportes complejos generados en la nube para garantizar seguridad de datos y disponibilidad global inmediata.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="aws" class="py-20 border-t border-white/5">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
+            <div class="md:w-1/2">
+                <h2 class="text-4xl font-bold mb-6 text-white leading-tight">Reportes de Estado de Cuenta <br> <span class="text-blue-500">en Tiempo Real</span></h2>
+                <ul class="space-y-4">
+                    <li class="flex items-start space-x-3">
+                        <i data-lucide="check-circle-2" class="text-blue-500 h-6 w-6 shrink-0"></i>
+                        <span>Generación de DUA en segundos mediante AWS Lambda.</span>
+                    </li>
+                    <li class="flex items-start space-x-3">
+                        <i data-lucide="check-circle-2" class="text-blue-500 h-6 w-6 shrink-0"></i>
+                        <span>Cálculo automático de saldos, DAI e IVA.</span>
+                    </li>
+                    <li class="flex items-start space-x-3">
+                        <i data-lucide="check-circle-2" class="text-blue-500 h-6 w-6 shrink-0"></i>
+                        <span>Trazabilidad completa de materia prima bajo admisión temporal.</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="md:w-1/2 glass p-4 rounded-xl shadow-2xl">
+                <div class="bg-white rounded p-4 text-slate-800 shadow-inner">
+                    <div class="border-b-2 border-blue-600 pb-2 mb-4 flex justify-between">
+                        <span class="font-bold text-xs">HIALEAH, S.A.</span>
+                        <span class="text-xs">REPORTE DUA No. 25540000234</span>
+                    </div>
+                    <div class="h-40 bg-slate-100 flex items-center justify-center text-slate-400 italic text-sm">
+                        [Vista previa del reporte generado por AWS]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-white/5">
+        <div class="container mx-auto px-6 text-center text-slate-500 text-sm">
+            <p>© 2026 ZakForeigner. Todos los derechos reservados.</p>
+            <p class="mt-2">Diseñado para macOS. Potenciado por AWS.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
