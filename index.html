@@ -193,7 +193,19 @@
             font-size: 0.875rem;
             transition: all 0.3s;
         }
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: #3b82f6; /* Color azul acorde a tu diseño */
+            margin-left: 4px;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
 
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
         .tech-badge:hover {
             background: rgba(59, 130, 246, 0.2);
             border-color: rgba(59, 130, 246, 0.4);
@@ -377,9 +389,10 @@
                     </span>
                 </div>
                 
-                <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight text-white sf-pro leading-tight">
-                    <span data-i18n="hero.title1">Plataforma tecnológica para la gestión avanzada de</span><br>
-                    <span class="gradient-text" data-i18n="hero.title2">Comercio Exterior</span>
+                <h1 class="text-4xl md:text-7xl font-bold mb-8 tracking-tight leading-tight">
+                    Plataforma tecnológica para la gestión avanzada de <br>
+                    <span id="typewriter" class="text-blue-500"></span>
+                    <span class="cursor">|</span>
                 </h1>
                 
                 <p class="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto mb-4 leading-relaxed">
@@ -1433,7 +1446,24 @@
             el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
             observer.observe(el);
         });
+        const textToType = "Comercio Exterior";
+        const typingSpeed = 45; // Velocidad rápida pero legible
+        let charIndex = 0;
 
+        function startTypewriter() {
+            const container = document.getElementById("typewriter");
+            if (charIndex < textToType.length) {
+                container.textContent += textToType.charAt(charIndex);
+                charIndex++;
+                setTimeout(startTypewriter, typingSpeed);
+            }
+        }
+
+        // Se ejecuta cuando la página está lista
+        document.addEventListener('DOMContentLoaded', () => {
+            // Un pequeño retraso de 500ms antes de empezar para que el usuario se fije
+            setTimeout(startTypewriter, 500); 
+        });
         // Form submission (placeholder)
         document.querySelector('form')?.addEventListener('submit', (e) => {
             e.preventDefault();
