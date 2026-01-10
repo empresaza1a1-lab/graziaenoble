@@ -114,12 +114,6 @@
             100% { background-position: 1000px 0; }
         }
 
-        @keyframes gradient-shift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
         .animate-float {
             animation: float 6s ease-in-out infinite;
         }
@@ -193,19 +187,7 @@
             font-size: 0.875rem;
             transition: all 0.3s;
         }
-        .cursor {
-            display: inline-block;
-            width: 3px;
-            background-color: #3b82f6; /* Color azul acorde a tu diseño */
-            margin-left: 4px;
-            animation: blink 1s infinite;
-            vertical-align: middle;
-        }
 
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
         .tech-badge:hover {
             background: rgba(59, 130, 246, 0.2);
             border-color: rgba(59, 130, 246, 0.4);
@@ -383,16 +365,15 @@
         <div class="container mx-auto px-6 text-center relative z-10">
             <div class="animate-fade-in-up">
                 <div class="inline-block mb-6">
-                    <span class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-white/95 border border-white/15 bg-gradient-to-br from-white/12 via-white/8 to-white/5 backdrop-blur-2xl shadow-lg shadow-blue-500/5 hover:border-white/25 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300" style="font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif; letter-spacing: -0.01em;">
-                        <i data-lucide="sparkles" class="w-4 h-4 text-blue-400/90"></i>
-                        <span class="sf-pro" data-i18n="hero.badge" style="font-weight: 900; font-size: 0.9rem; background: linear-gradient(45deg, #60a5fa, #34d399, #3b82f6, #10b981); background-size: 300% 300%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -0.02em; text-transform: none; filter: brightness(1.2); animation: gradient-shift 3s ease infinite; position: relative; display: inline-block; text-shadow: 0 0 30px rgba(96, 165, 250, 0.5);">Aplicación Nativa macOS</span>
+                    <span class="px-5 py-2.5 glass rounded-full text-sm font-medium text-white/90 border border-white/20 hover:border-blue-400/40 transition-all duration-300 backdrop-blur-xl shadow-lg shadow-blue-500/10">
+                        <i data-lucide="code" class="inline-block w-4 h-4 mr-2.5 text-blue-400"></i>
+                        <span class="sf-pro tracking-tight" data-i18n="hero.badge">Desarrollado con Swift & SwiftUI</span>
                     </span>
                 </div>
                 
-                <h1 class="text-4xl md:text-7xl font-bold mb-8 tracking-tight leading-tight">
-                    Plataforma tecnológica para la gestión avanzada de <br>
-                    <span id="typewriter" class="text-blue-500"></span>
-                    <span class="cursor">|</span>
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight text-white sf-pro leading-tight">
+                    <span data-i18n="hero.title1">Plataforma tecnológica para la gestión avanzada de</span><br>
+                    <span class="gradient-text" data-i18n="hero.title2">Comercio Exterior</span>
                 </h1>
                 
                 <p class="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto mb-4 leading-relaxed">
@@ -1020,7 +1001,7 @@
                 'nav.demo': 'Agendar Demo',
                 
                 // Hero
-                'hero.badge': 'Aplicación Nativa macOS',
+                'hero.badge': 'Desarrollado con Swift & SwiftUI',
                 'hero.title1': 'Plataforma tecnológica para la gestión avanzada de',
                 'hero.title2': 'Comercio Exterior',
                 'hero.subtitle1': 'La solución nativa definitiva para empresas bajo el régimen de',
@@ -1169,7 +1150,7 @@
                 'nav.demo': '데모 예약',
                 
                 // Hero
-                'hero.badge': '네이티브 macOS 애플리케이션',
+                'hero.badge': 'Swift & SwiftUI로 개발',
                 'hero.title1': 'macOS 속도의',
                 'hero.title2': '무역 관리',
                 'hero.subtitle1': '일시 수입 및 능동 완화 체제 하의 기업을 위한 최종 네이티브 솔루션',
@@ -1446,24 +1427,7 @@
             el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
             observer.observe(el);
         });
-        const textToType = "Comercio Exterior";
-        const typingSpeed = 45; // Velocidad rápida pero legible
-        let charIndex = 0;
 
-        function startTypewriter() {
-            const container = document.getElementById("typewriter");
-            if (charIndex < textToType.length) {
-                container.textContent += textToType.charAt(charIndex);
-                charIndex++;
-                setTimeout(startTypewriter, typingSpeed);
-            }
-        }
-
-        // Se ejecuta cuando la página está lista
-        document.addEventListener('DOMContentLoaded', () => {
-            // Un pequeño retraso de 500ms antes de empezar para que el usuario se fije
-            setTimeout(startTypewriter, 500); 
-        });
         // Form submission (placeholder)
         document.querySelector('form')?.addEventListener('submit', (e) => {
             e.preventDefault();
