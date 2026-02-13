@@ -203,6 +203,7 @@
             height: 40px;
             border: 2px solid rgba(255,255,255,0.3);
             border-radius: 12px;
+            position: relative;
         }
 
         .scroll-indicator::before {
@@ -364,33 +365,36 @@
         <div class="container mx-auto px-6 text-center relative z-10">
             <div class="animate-fade-in-up">
                 <div class="inline-block mb-6">
-                    <span class="px-5 py-2.5 glass rounded-full text-sm font-medium text-white/90 border border-white/20 hover:border-blue-400/40 transition-all duration-300 backdrop-blur-xl shadow-lg shadow-blue-500/10">
-                        <i data-lucide="code" class="inline-block w-4 h-4 mr-2.5 text-blue-400"></i>
-                        <span class="sf-pro tracking-tight" data-i18n="hero.badge">Desarrollado con Swift & SwiftUI</span>
+                    <span class="px-4 py-2 glass rounded-full text-sm font-medium text-blue-400 border border-blue-500/30">
+                        <i data-lucide="sparkles" class="inline-block w-4 h-4 mr-2"></i>
+                        <span data-i18n="hero.badge">Aplicación Nativa macOS</span>
                     </span>
                 </div>
                 
                 <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight text-white sf-pro leading-tight">
-                    <span data-i18n="hero.title1">Plataforma tecnológica para la gestión avanzada de</span><br>
-                    <span class="gradient-text" data-i18n="hero.title2">Comercio Exterior</span>
+                    <span data-i18n="hero.title1">Comercio Exterior a la</span><br>
+                    <span class="gradient-text" data-i18n="hero.title2">Velocidad de macOS</span>
                 </h1>
                 
-               <p class="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto mb-4 leading-relaxed">
-                    <span data-i18n="hero.subtitle1">Software empresarial para el cumplimiento y optimización de operaciones bajo</span> 
+                <p class="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto mb-4 leading-relaxed">
+                    <span data-i18n="hero.subtitle1">La solución nativa definitiva para empresas bajo el régimen de</span> 
                     <span class="text-blue-400 font-semibold" data-i18n="hero.subtitle2">Admisión Temporal</span> 
                     <span data-i18n="hero.subtitle3">y</span> 
-               <span class="text-emerald-400 font-semibold" data-i18n="hero.subtitle4">Perfeccionamiento Activo</span>.
+                    <span class="text-emerald-400 font-semibold" data-i18n="hero.subtitle4">Perfeccionamiento Activo</span>.
                 </p>
                 
                 <p class="text-lg text-slate-500 max-w-2xl mx-auto mb-12">
-                    <span data-i18n="hero.powered">Arquitectura multi-cloud de alto rendimiento con</span> 
-                    <span class="text-blue-400">Swift nativo</span>.
+                    <span data-i18n="hero.powered">Potenciada por</span> 
+                    <span class="text-blue-400">Swift</span> 
+                    <span data-i18n="hero.and">y</span> 
+                    <span class="text-emerald-400">AWS</span> 
+                    <span data-i18n="hero.performance">para un rendimiento sin igual</span>.
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
                     <a href="#contacto" class="btn-primary px-8 py-4 rounded-full text-base font-semibold text-white flex items-center gap-2">
                         <i data-lucide="calendar" class="w-5 h-5"></i>
-                        <span data-i18n="hero.demoBtn">Agendar Demostración</span>
+                        <span data-i18n="hero.demoBtn">Agendar Demo Gratuita</span>
                     </a>
                     <a href="#features" class="px-8 py-4 rounded-full text-base font-semibold glass border border-white/10 hover:border-blue-500/50 transition flex items-center gap-2">
                         <i data-lucide="play-circle" class="w-5 h-5"></i>
@@ -398,7 +402,32 @@
                     </a>
                 </div>
             </div>
-    
+
+            <!-- macOS Window Preview -->
+            <div class="relative max-w-6xl mx-auto mt-16 group animate-fade-in-up" style="animation-delay: 0.2s;">
+                <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-500 rounded-2xl blur-2xl opacity-30 group-hover:opacity-50 transition duration-1000"></div>
+                <div class="relative glass-strong rounded-2xl overflow-hidden shadow-2xl macos-window">
+                    <div class="macos-titlebar">
+                        <div class="flex space-x-2">
+                            <div class="macos-button close"></div>
+                            <div class="macos-button minimize"></div>
+                            <div class="macos-button maximize"></div>
+                        </div>
+                        <div class="text-xs text-slate-400 mx-auto font-mono flex items-center gap-2">
+                            <i data-lucide="code" class="w-3 h-3"></i>
+                            <span data-i18n="hero.windowTitle">ZakForeigner — Editor de Contenedor (ISO 6346)</span>
+                        </div>
+                    </div>
+                    <div class="relative shimmer">
+                        <img src="https://via.placeholder.com/1400x800/1e293b/60a5fa?text=Interfaz+ZakForeigner+en+macOS" alt="App Interface" class="w-full h-auto">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scroll-indicator mt-16"></div>
+        </div>
+    </section>
     <!-- Stats Section -->
     <section class="py-20 border-t border-white/5 bg-slate-900/30">
         <div class="container mx-auto px-6">
@@ -483,9 +512,10 @@
                     <div class="w-14 h-14 rounded-xl bg-purple-500/20 flex items-center justify-center mb-6">
                         <i data-lucide="cloud" class="text-purple-500 h-8 w-8"></i>
                     </div>
-                    <h3 class="text-2xl font-semibold mb-4 text-white sf-pro" data-i18n="features.cloud.title">Infraestructura Serverless AWS</h3>
+                    <h3 class="text-2xl font-semibold mb-4 text-white sf-pro" data-i18n="features.cloud.title">Nube AWS Enterprise</h3>
                     <p class="text-slate-400 leading-relaxed mb-4" data-i18n="features.cloud.desc">
-                        Arquitectura serverless que libera completamente tu Mac del procesamiento pesado. Lambda y API Gateway orquestan el cruzamiento de datos entre DynamoDB y Firebase para generar reportes gubernamentales complejos en segundos, con disponibilidad 24/7 y escalabilidad automática.
+                        Reportes complejos generados en la nube AWS para garantizar seguridad de datos, 
+                        disponibilidad global inmediata y cumplimiento normativo.
                     </p>
                     <ul class="space-y-2 text-sm text-slate-500">
                         <li class="flex items-center gap-2">
@@ -503,18 +533,19 @@
                     <div class="w-14 h-14 rounded-xl bg-cyan-500/20 flex items-center justify-center mb-6">
                         <i data-lucide="database" class="text-cyan-500 h-8 w-8"></i>
                     </div>
-                    <h3 class="text-2xl font-semibold mb-4 text-white sf-pro" data-i18n="features.containers.title">Validación Integral de Operaciones</h3>
+                    <h3 class="text-2xl font-semibold mb-4 text-white sf-pro" data-i18n="features.containers.title">Gestión de Contenedores</h3>
                     <p class="text-slate-400 leading-relaxed mb-4" data-i18n="features.containers.desc">
-                        Verificación automática de reglas de negocio complejas: concordancia entre insumos y productos terminados, validación de coeficientes de transformación, control de saldos y trazabilidad completa de operaciones para evitar inconsistencias antes del envío a autoridades.
+                        Editor completo para números de contenedor ISO 6346 con validación automática, 
+                        historial completo y trazabilidad en tiempo real.
                     </p>
                     <ul class="space-y-2 text-sm text-slate-500">
                         <li class="flex items-center gap-2">
                             <i data-lucide="check" class="w-4 h-4 text-cyan-500"></i>
-                            <span data-i18n="features.containers.item1">Validación de reglas de negocio</span>
+                            <span data-i18n="features.containers.item1">Validación ISO 6346 automática</span>
                         </li>
                         <li class="flex items-center gap-2">
                             <i data-lucide="check" class="w-4 h-4 text-cyan-500"></i>
-                            <span data-i18n="features.containers.item2">Control de inconsistencias</span>
+                            <span data-i18n="features.containers.item2">Historial completo de operaciones</span>
                         </li>
                     </ul>
                 </div>
@@ -563,7 +594,6 @@
             </div>
         </div>
     </section>
-
     <!-- AWS Technology Section -->
     <section id="aws" class="py-32 border-t border-white/5 relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-br from-blue-900/10 to-emerald-900/10"></div>
@@ -688,7 +718,6 @@
             </div>
         </div>
     </section>
-
     <!-- Technology Stack Section -->
     <section id="tecnologia" class="py-32 bg-[#0F172A]">
         <div class="container mx-auto px-6">
@@ -817,7 +846,6 @@
             </div>
         </div>
     </section>
-
     <!-- Reports Section -->
     <section id="reportes" class="py-32 bg-[#0F172A]">
         <div class="container mx-auto px-6">
@@ -906,14 +934,14 @@
                         <div>
                             <label class="block text-sm font-medium text-slate-300 mb-2" data-i18n="contact.email">Email</label>
                             <input type="email" class="w-full px-4 py-3 rounded-lg glass border border-white/10 focus:border-blue-500 focus:outline-none transition text-white placeholder-slate-500" data-i18n-placeholder="contact.emailPlaceholder" placeholder="tu@email.com">
-                        </div>
+                            </div>
                         <div>
                             <label class="block text-sm font-medium text-slate-300 mb-2" data-i18n="contact.message">Mensaje</label>
                             <textarea rows="4" class="w-full px-4 py-3 rounded-lg glass border border-white/10 focus:border-blue-500 focus:outline-none transition text-white placeholder-slate-500" data-i18n-placeholder="contact.messagePlaceholder" placeholder="Cuéntanos sobre tu operación..."></textarea>
                         </div>
                         <button type="submit" class="btn-primary w-full px-8 py-4 rounded-full text-base font-semibold text-white flex items-center justify-center gap-2">
                             <i data-lucide="send" class="w-5 h-5"></i>
-                            <span data-i18n="contact.submit">Enviar Solicitud de Demostración</span>
+                            <span data-i18n="contact.submit">Enviar Solicitud de Demo</span>
                         </button>
                     </form>
                 </div>
@@ -959,13 +987,7 @@
                 </div>
             </div>
             <div class="section-divider my-8"></div>
-            <div class="text-center">
-                <p class="text-slate-400 text-sm" data-i18n="footer.copyright">© 2026 ZakForeigner. Todos los derechos reservados.</p>
-                <p class="text-slate-500 text-xs mt-2" data-i18n="footer.tagline">Diseñado para macOS. Potenciado por AWS.</p>
-            </div>
-        </div>
-    </footer>
-
+            <div>
     <script>
         // Translations object
         const translations = {
@@ -976,23 +998,22 @@
                 'nav.reports': 'Reportes',
                 'nav.technology': 'Tecnología',
                 'nav.benefits': 'Beneficios',
-                'nav.demo': 'Agendar Demostración',
+                'nav.demo': 'Agendar Demo',
                 
                 // Hero
-                'hero.badge': 'Desarrollado con Swift & SwiftUI',
-                'hero.title1': 'Plataforma tecnológica para la gestión avanzada de',
-                'hero.title2': 'Comercio Exterior',
-                'hero.subtitle1': 'Software empresarial para el cumplimiento y optimización de operaciones bajo',
+                'hero.badge': 'Aplicación Nativa macOS',
+                'hero.title1': 'Comercio Exterior a la',
+                'hero.title2': 'Velocidad de macOS',
+                'hero.subtitle1': 'La solución nativa definitiva para empresas bajo el régimen de',
                 'hero.subtitle2': 'Admisión Temporal',
                 'hero.subtitle3': 'y',
                 'hero.subtitle4': 'Perfeccionamiento Activo',
-                'hero.powered': 'Arquitectura multi-cloud de alto rendimiento con',
+                'hero.powered': 'Potenciada por',
                 'hero.and': 'y',
                 'hero.performance': 'para un rendimiento sin igual',
-                'hero.demoBtn': 'Agendar Demostración',
+                'hero.demoBtn': 'Agendar Demo Gratuita',
                 'hero.featuresBtn': 'Ver Funcionalidades',
-                'hero.windowTitle': 'ZakForeigner — Coeficiente de Transformación ABD-134',
-                'hero.reportDescription': 'Genera reportes de Coeficiente de Transformación según Decreto 29-89 en segundos',
+                'hero.windowTitle': 'ZakForeigner — Editor de Contenedor (ISO 6346)',
                 
                 // Stats
                 'stats.uptime': 'Uptime AWS',
@@ -1004,23 +1025,22 @@
                 'features.title': 'Funcionalidades',
                 'features.subtitle': 'Avanzadas',
                 'features.description': 'Diseñado para profesionales que exigen precisión y velocidad',
-                'features.performance.title': 'Experiencia Nativa macOS',
-                'features.performance.desc': 'Construida con Swift y SwiftUI exclusivamente para macOS. Transforma formularios gubernamentales complejos en interfaces intuitivas que se sienten naturales. Arquitectura optimizada que procesa miles de operaciones localmente mientras mantienes tu flujo de trabajo sin interrupciones.',
+                'features.performance.title': 'Rendimiento Nativo',
+                'features.performance.desc': 'Desarrollada en Swift para macOS, aprovechando al máximo el hardware de Apple. Procesa miles de pedimentos en milisegundos con eficiencia sin precedentes.',
                 'features.performance.item1': 'Procesamiento multithread optimizado',
                 'features.performance.item2': 'Utilización de Metal para aceleración GPU',
-                'features.validation.title': 'Validación Integral de Operaciones',
-                'features.validation.desc': 'Verificación automática de reglas de negocio complejas: concordancia entre insumos y productos terminados, validación de coeficientes de transformación, control de saldos y trazabilidad completa de operaciones para evitar inconsistencias antes del envío a autoridades.',
-                'features.validation.item1': 'Validación de reglas de negocio',
-                'features.validation.item2': 'Control de inconsistencias',
-                'features.validation.item3': 'Auditoría preventiva',
-                'features.cloud.title': 'Infraestructura Serverless AWS',
-                'features.cloud.desc': ' Genera reportes gubernamentales complejos mediante funciones Lambda que cruzan datos entre DynamoDB y Firebase. Tu Mac se mantiene fluida mientras AWS procesa cálculos pesados de coeficientes, Declaración Jurada y trazabilidad en tiempo real.',
+                'features.validation.title': 'Validación Inteligente',
+                'features.validation.desc': 'Algoritmos avanzados que validan números de contenedor ISO 6346, Incoterms, plazos legales y más, antes de cualquier envío o procesamiento.',
+                'features.validation.item1': 'Validación en tiempo real',
+                'features.validation.item2': 'Prevención de errores costosos',
+                'features.cloud.title': 'Nube AWS Enterprise',
+                'features.cloud.desc': 'Reportes complejos generados en la nube AWS para garantizar seguridad de datos, disponibilidad global inmediata y cumplimiento normativo.',
                 'features.cloud.item1': 'Infraestructura escalable',
                 'features.cloud.item2': 'Backup automático y redundancia',
-                'features.containers.title': 'Validación Integral de Operaciones',
-                'features.containers.desc': 'Verificación automática de reglas de negocio complejas: concordancia entre insumos y productos terminados, validación de coeficientes de transformación, control de saldos y trazabilidad completa de operaciones para evitar inconsistencias antes del envío a autoridades.',
-                'features.containers.item1': 'Alertas automáticas de vencimientos',
-                'features.containers.item2': 'Auditoría preventiva',
+                'features.containers.title': 'Gestión de Contenedores',
+                'features.containers.desc': 'Editor completo para números de contenedor ISO 6346 con validación automática, historial completo y trazabilidad en tiempo real.',
+                'features.containers.item1': 'Validación ISO 6346 automática',
+                'features.containers.item2': 'Historial completo de operaciones',
                 'features.dua.title': 'Generación de DUA',
                 'features.dua.desc': 'Generación automática de Documentos Únicos de Admisión (DUA) mediante AWS Lambda, con cálculos precisos de saldos, DAI e IVA.',
                 'features.dua.item1': 'Generación en segundos',
@@ -1101,7 +1121,7 @@
                 'contact.emailPlaceholder': 'tu@email.com',
                 'contact.message': 'Mensaje',
                 'contact.messagePlaceholder': 'Cuéntanos sobre tu operación...',
-                'contact.submit': 'Enviar Solicitud de Demostración',
+                'contact.submit': 'Enviar Solicitud de Demo',
                 
                 // Footer
                 'footer.description': 'La solución nativa definitiva para gestión de comercio exterior en macOS.',
@@ -1130,14 +1150,14 @@
                 'nav.demo': '데모 예약',
                 
                 // Hero
-                'hero.badge': 'Swift & SwiftUI로 개발',
+                'hero.badge': '네이티브 macOS 애플리케이션',
                 'hero.title1': 'macOS 속도의',
                 'hero.title2': '무역 관리',
                 'hero.subtitle1': '일시 수입 및 능동 완화 체제 하의 기업을 위한 최종 네이티브 솔루션',
                 'hero.subtitle2': '일시 수입',
                 'hero.subtitle3': '및',
                 'hero.subtitle4': '능동 완화',
-                'hero.powered': '네이티브 Swift와 함께하는 고성능 멀티 클라우드 아키텍처',
+                'hero.powered': 'Swift와',
                 'hero.and': 'AWS로 구동되어',
                 'hero.performance': '뛰어난 성능을 제공합니다',
                 'hero.demoBtn': '무료 데모 예약',
