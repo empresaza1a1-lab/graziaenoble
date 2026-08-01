@@ -1,1441 +1,1012 @@
 <!DOCTYPE html>
-<html lang="es" class="dark">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZakForeigner | Gestión Nativa de Comercio Exterior</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        :root {
-            --macos-blue: #007AFF;
-            --macos-gray: #1D1D1F;
-            --macos-glass: rgba(255, 255, 255, 0.05);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZakForeigner — Software Nativo de Comercio Exterior</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+:root{
+  --ink:#0A0E14;
+  --ink-2:#0E141D;
+  --steel:#141B26;
+  --steel-2:#1A2230;
+  --line:rgba(244,241,232,0.09);
+  --line-strong:rgba(244,241,232,0.16);
+  --paper:#F4F1E8;
+  --paper-2:#E9E3D2;
+  --rust:#C1502E;
+  --rust-2:#DE6A44;
+  --amber:#E3A23D;
+  --ledger:#5C93A8;
+  --text:#CDD3DB;
+  --text-dim:#818A98;
+  --text-faint:#565F6D;
+}
+*{box-sizing:border-box; scroll-behavior:smooth;}
+body{
+  font-family:'Inter',-apple-system,sans-serif;
+  background:var(--ink);
+  color:var(--text);
+  overflow-x:hidden;
+}
+body.korean, .korean{font-family:'Noto Sans KR','Inter',sans-serif;}
+.font-display{font-family:'Space Grotesk',-apple-system,sans-serif;}
+.font-mono{font-family:'JetBrains Mono',monospace;}
 
-        * {
-            scroll-behavior: smooth;
-        }
+/* texture */
+.grain::before{
+  content:'';
+  position:fixed; inset:0; pointer-events:none; z-index:1; opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 
-        body { 
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Noto Sans KR', sans-serif; 
-            background: linear-gradient(135deg, #0F172A 0%, #1e293b 50%, #0F172A 100%);
-            background-attachment: fixed;
-            overflow-x: hidden;
-        }
+.hairline{border-color:var(--line);}
+.panel{background:var(--steel); border:1px solid var(--line);}
+.panel-strong{background:var(--steel-2); border:1px solid var(--line-strong);}
 
-        .sf-pro { font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif; }
-        .korean { font-family: 'Noto Sans KR', sans-serif; }
+.container-stripe{
+  background-repeat:repeat-x;
+  background-size:28px 100%;
+  background-image:repeating-linear-gradient(90deg, rgba(244,241,232,0.06) 0px, rgba(244,241,232,0.06) 2px, transparent 2px, transparent 28px);
+}
 
-        .glass { 
-            background: rgba(30, 41, 59, 0.6); 
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border: 1px solid rgba(255,255,255,0.08); 
-        }
+.btn-rust{
+  background:linear-gradient(180deg,var(--rust-2),var(--rust));
+  box-shadow:0 1px 0 rgba(255,255,255,0.15) inset, 0 10px 24px -8px rgba(193,80,46,0.55);
+  transition:transform .25s ease, box-shadow .25s ease, filter .25s ease;
+}
+.btn-rust:hover{transform:translateY(-2px); filter:brightness(1.06); box-shadow:0 1px 0 rgba(255,255,255,0.2) inset, 0 16px 32px -8px rgba(193,80,46,0.6);}
+.btn-rust:active{transform:translateY(0);}
 
-        .glass-strong { 
-            background: rgba(30, 41, 59, 0.85); 
-            backdrop-filter: blur(30px) saturate(200%);
-            -webkit-backdrop-filter: blur(30px) saturate(200%);
-            border: 1px solid rgba(255,255,255,0.12); 
-        }
+.btn-ghost{
+  border:1px solid var(--line-strong);
+  transition:all .25s ease;
+}
+.btn-ghost:hover{border-color:var(--amber); background:rgba(227,162,61,0.08); color:var(--amber);}
 
-        .hero-gradient { 
-            background: radial-gradient(ellipse at top, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
-                        radial-gradient(ellipse at bottom right, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
-        }
+.eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  letter-spacing:.14em;
+  font-size:.72rem;
+  text-transform:uppercase;
+}
 
-        .btn-primary { 
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.3);
-        }
-        
-        .btn-primary:hover { 
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            transform: translateY(-2px); 
-            box-shadow: 0 10px 25px -3px rgba(59, 130, 246, 0.5);
-        }
+.nav-link{position:relative; transition:color .2s;}
+.nav-link::after{content:'';position:absolute;bottom:-6px;left:0;width:0;height:1px;background:var(--amber);transition:width .25s;}
+.nav-link:hover{color:var(--paper);}
+.nav-link:hover::after{width:100%;}
 
-        .btn-primary:active {
-            transform: translateY(0);
-        }
+/* Manifest hero card */
+.manifest-card{
+  background:linear-gradient(180deg, #161D28, #10151E);
+  border:1px solid var(--line-strong);
+  border-radius:14px;
+  box-shadow:0 30px 80px -20px rgba(0,0,0,0.6);
+}
+.manifest-head{
+  border-bottom:1px dashed var(--line-strong);
+}
+.container-code{
+  font-family:'JetBrains Mono',monospace;
+  font-weight:700;
+  letter-spacing:.06em;
+}
+.digit-box{
+  display:inline-flex; align-items:center; justify-content:center;
+  min-width:1.6ch;
+  border-bottom:2px solid var(--line-strong);
+  padding:0 .05em;
+}
+.check-digit{color:var(--amber); border-color:var(--amber);}
+.status-pill{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.72rem;
+  letter-spacing:.08em;
+}
+.blink{animation:blink 1s steps(2,start) infinite;}
+@keyframes blink{to{opacity:0;}}
+@keyframes rise{from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:translateY(0);}}
+.rise{animation:rise .7s cubic-bezier(.16,1,.3,1) both;}
+@keyframes floaty{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+.floaty{animation:floaty 7s ease-in-out infinite;}
 
-        .macos-window {
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
+/* bento */
+.bento{display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:minmax(150px,auto); gap:1.25rem;}
+.bento-lg{grid-column:span 2; grid-row:span 2;}
+.bento-md{grid-column:span 2; grid-row:span 1;}
+.bento-full{grid-column:span 4; grid-row:span 1;}
+@media(max-width:900px){
+  .bento{grid-template-columns:1fr;}
+  .bento-lg,.bento-md,.bento-full{grid-column:span 1; grid-row:auto;}
+}
 
-        .macos-titlebar {
-            background: linear-gradient(to bottom, #3a3a3a 0%, #2d2d2d 100%);
-            padding: 8px 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border-bottom: 1px solid rgba(0,0,0,0.2);
-        }
+.feature-card{
+  position:relative; overflow:hidden;
+  transition:transform .35s cubic-bezier(.16,1,.3,1), border-color .35s;
+}
+.feature-card:hover{transform:translateY(-4px); border-color:var(--line-strong);}
+.feature-card .corner{
+  position:absolute; top:0; right:0; width:70px; height:70px;
+  background:radial-gradient(circle at top right, rgba(227,162,61,0.14), transparent 70%);
+}
+.feature-card::after{
+  content:'';
+  position:absolute; top:-150%; left:-40%; width:35%; height:400%;
+  background:linear-gradient(180deg, transparent, rgba(227,162,61,0.16), transparent);
+  transform:rotate(20deg);
+  transition:transform 1.1s cubic-bezier(.16,1,.3,1);
+  pointer-events:none;
+}
+.feature-card:hover::after{ transform:rotate(20deg) translateX(420%); }
 
-        .macos-button {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            border: 0.5px solid rgba(0,0,0,0.2);
-        }
+/* stamp */
+.stamp{
+  border:2.5px solid var(--rust);
+  color:var(--rust);
+  border-radius:6px;
+  transform:rotate(-8deg);
+  font-family:'JetBrains Mono',monospace;
+  letter-spacing:.08em;
+  opacity:.85;
+}
 
-        .macos-button.close { background: #ff5f57; }
-        .macos-button.minimize { background: #ffbd2e; }
-        .macos-button.maximize { background: #28ca42; }
+/* bars */
+.bar-track{background:rgba(244,241,232,0.06); border-radius:3px; overflow:hidden; height:8px;}
+.bar-fill{height:100%; border-radius:3px;}
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
+/* lang */
+.lang-selector{position:relative;}
+.lang-button{
+  display:flex; align-items:center; gap:6px; padding:6px 12px;
+  background:rgba(227,162,61,0.08); border:1px solid rgba(227,162,61,0.3);
+  border-radius:6px; color:var(--amber); font-size:.8rem; cursor:pointer; transition:all .2s;
+  font-family:'JetBrains Mono',monospace;
+}
+.lang-button:hover{background:rgba(227,162,61,0.15);}
+.lang-dropdown{
+  position:absolute; top:110%; right:0; margin-top:6px;
+  background:var(--steel-2); border:1px solid var(--line-strong); border-radius:8px;
+  padding:4px; min-width:130px; display:none; z-index:1000;
+}
+.lang-dropdown.active{display:block;}
+.lang-option{padding:8px 10px; border-radius:6px; cursor:pointer; display:flex; align-items:center; gap:8px; font-size:.85rem; transition:background .2s;}
+.lang-option:hover{background:rgba(227,162,61,0.12);}
+.lang-option.active{color:var(--amber);}
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+/* form */
+.paper-input{
+  background:transparent;
+  border:none;
+  border-bottom:1px dashed var(--line-strong);
+  padding:10px 4px;
+  color:var(--paper);
+  transition:border-color .2s;
+}
+.paper-input::placeholder{color:var(--text-faint);}
+.paper-input:focus{outline:none; border-bottom-color:var(--amber);}
 
-        @keyframes shimmer {
-            0% { background-position: -1000px 0; }
-            100% { background-position: 1000px 0; }
-        }
+.section-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.7rem; letter-spacing:.15em; text-transform:uppercase; color:var(--text-faint);
+}
 
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .animate-fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        .shimmer {
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            background-size: 1000px 100%;
-            animation: shimmer 3s infinite;
-        }
-
-        .feature-card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
-            transition: left 0.5s;
-        }
-
-        .feature-card:hover::before {
-            left: 100%;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(59, 130, 246, 0.3);
-            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #60a5fa 0%, #34d399 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .section-divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-        }
-
-        .stats-number {
-            font-size: 3.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #60a5fa 0%, #34d399 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .tech-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            border-radius: 20px;
-            font-size: 0.875rem;
-            transition: all 0.3s;
-        }
-
-        .tech-badge:hover {
-            background: rgba(59, 130, 246, 0.2);
-            border-color: rgba(59, 130, 246, 0.4);
-            transform: scale(1.05);
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 24px;
-            height: 40px;
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 12px;
-            position: relative;
-        }
-
-        .scroll-indicator::before {
-            content: '';
-            position: absolute;
-            top: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 4px;
-            height: 8px;
-            background: rgba(255,255,255,0.5);
-            border-radius: 2px;
-            animation: scroll 2s infinite;
-        }
-
-        @keyframes scroll {
-            0% { opacity: 1; transform: translateX(-50%) translateY(0); }
-            100% { opacity: 0; transform: translateX(-50%) translateY(12px); }
-        }
-
-        .nav-link {
-            position: relative;
-            transition: color 0.3s;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #3b82f6, #10b981);
-            transition: width 0.3s;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .nav-link:hover {
-            color: #60a5fa;
-        }
-
-        .lang-selector {
-            position: relative;
-            display: inline-block;
-        }
-
-        .lang-button {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 12px;
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            border-radius: 8px;
-            color: #60a5fa;
-            font-size: 0.875rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .lang-button:hover {
-            background: rgba(59, 130, 246, 0.2);
-            border-color: rgba(59, 130, 246, 0.5);
-        }
-
-        .lang-dropdown {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            margin-top: 8px;
-            background: rgba(30, 41, 59, 0.95);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px;
-            padding: 4px;
-            min-width: 120px;
-            display: none;
-            z-index: 1000;
-        }
-
-        .lang-dropdown.active {
-            display: block;
-        }
-
-        .lang-option {
-            padding: 8px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .lang-option:hover {
-            background: rgba(59, 130, 246, 0.2);
-        }
-
-        .lang-option.active {
-            background: rgba(59, 130, 246, 0.3);
-            color: #60a5fa;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-    </style>
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important;}
+}
+</style>
 </head>
-<body class="text-slate-200 antialiased">
+<body class="grain antialiased">
 
-    <!-- Header -->
-    <header class="fixed w-full z-50 glass-strong transition-all duration-300" id="header">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold tracking-tighter text-white sf-pro">
-                <span class="bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">Zak</span><span class="text-blue-500">Foreigner</span>
-            </div>
-            <div class="hidden md:flex space-x-8 text-sm font-medium items-center">
-                <a href="#features" class="nav-link" data-i18n="nav.features">Funcionalidades</a>
-                <a href="#aws" class="nav-link" data-i18n="nav.aws">Tecnología AWS</a>
-                <a href="#reportes" class="nav-link" data-i18n="nav.reports">Reportes</a>
-                <a href="#tecnologia" class="nav-link" data-i18n="nav.technology">Tecnología</a>
-                <a href="#beneficios" class="nav-link" data-i18n="nav.benefits">Beneficios</a>
-                <div class="lang-selector">
-                    <button class="lang-button" id="langButton">
-                        <i data-lucide="globe" class="w-4 h-4"></i>
-                        <span id="currentLang">ES</span>
-                        <i data-lucide="chevron-down" class="w-4 h-4"></i>
-                    </button>
-                    <div class="lang-dropdown" id="langDropdown">
-                        <div class="lang-option active" data-lang="es">
-                            <span>🇪🇸</span>
-                            <span>Español</span>
-                        </div>
-                        <div class="lang-option" data-lang="ko">
-                            <span>🇰🇷</span>
-                            <span>한국어</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <a href="#contacto" class="btn-primary px-6 py-2 rounded-full text-sm font-semibold text-white" data-i18n="nav.demo">Agendar Demo</a>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="relative pt-32 pb-32 overflow-hidden hero-gradient min-h-screen flex items-center">
-        <div class="absolute inset-0 overflow-hidden">
-            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-float"></div>
-            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl animate-float" style="animation-delay: 2s;"></div>
+<!-- Header -->
+<header class="fixed w-full z-50 backdrop-blur-xl border-b hairline transition-all" style="background:rgba(10,14,20,0.75);" id="header">
+  <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <div class="font-mono text-lg tracking-tight text-[var(--paper)] flex items-center gap-2">
+      <span class="text-[var(--rust)]">▮</span>ZAK<span class="text-[var(--text-dim)]">/</span>FOREIGNER
+    </div>
+    <div class="hidden md:flex space-x-8 text-sm font-medium items-center text-[var(--text-dim)]">
+      <a href="#features" class="nav-link" data-i18n="nav.features">Funcionalidades</a>
+      <a href="#aws" class="nav-link" data-i18n="nav.aws">Motor AWS</a>
+      <a href="#reportes" class="nav-link" data-i18n="nav.reports">Reportes</a>
+      <a href="#tecnologia" class="nav-link" data-i18n="nav.technology">Tecnología</a>
+      <a href="#beneficios" class="nav-link" data-i18n="nav.benefits">Resultados</a>
+      <div class="lang-selector">
+        <button class="lang-button" id="langButton">
+          <i data-lucide="globe" class="w-3.5 h-3.5"></i>
+          <span id="currentLang">ES</span>
+          <i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+        </button>
+        <div class="lang-dropdown" id="langDropdown">
+          <div class="lang-option active" data-lang="es"><span>🇪🇸</span><span>Español</span></div>
+          <div class="lang-option" data-lang="ko"><span>🇰🇷</span><span>한국어</span></div>
         </div>
-        
-        <div class="container mx-auto px-6 text-center relative z-10">
-            <div class="animate-fade-in-up">
-                <div class="inline-block mb-6">
-                    <span class="px-4 py-2 glass rounded-full text-sm font-medium text-blue-400 border border-blue-500/30">
-                        <i data-lucide="sparkles" class="inline-block w-4 h-4 mr-2"></i>
-                        <span data-i18n="hero.badge">Aplicación Nativa macOS</span>
-                    </span>
-                </div>
-                
-                <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 tracking-tight text-white sf-pro leading-tight">
-                    <span data-i18n="hero.title1">Comercio Exterior a la</span><br>
-                    <span class="gradient-text" data-i18n="hero.title2">Velocidad de macOS</span>
-                </h1>
-                
-                <p class="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto mb-4 leading-relaxed">
-                    <span data-i18n="hero.subtitle1">La solución nativa definitiva para empresas bajo el régimen de</span> 
-                    <span class="text-blue-400 font-semibold" data-i18n="hero.subtitle2">Admisión Temporal</span> 
-                    <span data-i18n="hero.subtitle3">y</span> 
-                    <span class="text-emerald-400 font-semibold" data-i18n="hero.subtitle4">Perfeccionamiento Activo</span>.
-                </p>
-                
-                <p class="text-lg text-slate-500 max-w-2xl mx-auto mb-12">
-                    <span data-i18n="hero.powered">Potenciada por</span> 
-                    <span class="text-blue-400">Swift</span> 
-                    <span data-i18n="hero.and">y</span> 
-                    <span class="text-emerald-400">AWS</span> 
-                    <span data-i18n="hero.performance">para un rendimiento sin igual</span>.
-                </p>
-                
-                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-                    <a href="#contacto" class="btn-primary px-8 py-4 rounded-full text-base font-semibold text-white flex items-center gap-2">
-                        <i data-lucide="calendar" class="w-5 h-5"></i>
-                        <span data-i18n="hero.demoBtn">Agendar Demo Gratuita</span>
-                    </a>
-                    <a href="#features" class="px-8 py-4 rounded-full text-base font-semibold glass border border-white/10 hover:border-blue-500/50 transition flex items-center gap-2">
-                        <i data-lucide="play-circle" class="w-5 h-5"></i>
-                        <span data-i18n="hero.featuresBtn">Ver Funcionalidades</span>
-                    </a>
-                </div>
-            </div>
+      </div>
+    </div>
+    <a href="#contacto" class="btn-rust px-5 py-2 rounded-md text-sm font-semibold text-white" data-i18n="nav.demo">Agendar Demo</a>
+  </nav>
+</header>
 
-            <!-- macOS Window Preview -->
-            <div class="relative max-w-6xl mx-auto mt-16 group animate-fade-in-up" style="animation-delay: 0.2s;">
-                <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-500 rounded-2xl blur-2xl opacity-30 group-hover:opacity-50 transition duration-1000"></div>
-                <div class="relative glass-strong rounded-2xl overflow-hidden shadow-2xl macos-window">
-                    <div class="macos-titlebar">
-                        <div class="flex space-x-2">
-                            <div class="macos-button close"></div>
-                            <div class="macos-button minimize"></div>
-                            <div class="macos-button maximize"></div>
-                        </div>
-                        <div class="text-xs text-slate-400 mx-auto font-mono flex items-center gap-2">
-                            <i data-lucide="code" class="w-3 h-3"></i>
-                            <span data-i18n="hero.windowTitle">ZakForeigner — Editor de Contenedor (ISO 6346)</span>
-                        </div>
-                    </div>
-                    <div class="relative shimmer">
-                        <img src="https://via.placeholder.com/1400x800/1e293b/60a5fa?text=Interfaz+ZakForeigner+en+macOS" alt="App Interface" class="w-full h-auto">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div>
-                    </div>
-                </div>
-            </div>
+<!-- Hero -->
+<section class="relative pt-40 pb-28 min-h-screen flex items-center">
+  <div class="absolute inset-0 container-stripe opacity-40"></div>
+  <div class="absolute top-1/3 -left-40 w-[500px] h-[500px] bg-[var(--rust)]/10 rounded-full blur-[120px]"></div>
+  <div class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[var(--amber)]/10 rounded-full blur-[120px]"></div>
 
-            <div class="scroll-indicator mt-16"></div>
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <!-- Left: copy -->
+      <div class="rise">
+        <div class="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-md border border-[var(--rust)]/40 bg-[var(--rust)]/10">
+          <span class="w-1.5 h-1.5 rounded-full bg-[var(--amber)]"></span>
+          <span class="eyebrow text-[var(--amber)]" data-i18n="hero.badge">SOFTWARE NATIVO macOS · MOTOR AWS</span>
         </div>
-    </section>
-    <!-- Stats Section -->
-    <section class="py-20 border-t border-white/5 bg-slate-900/30">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="text-center">
-                    <div class="stats-number sf-pro">99.9%</div>
-                    <p class="text-slate-400 mt-2 text-sm" data-i18n="stats.uptime">Uptime AWS</p>
-                </div>
-                <div class="text-center">
-                    <div class="stats-number sf-pro">&lt;100ms</div>
-                    <p class="text-slate-400 mt-2 text-sm" data-i18n="stats.response">Tiempo de Respuesta</p>
-                </div>
-                <div class="text-center">
-                    <div class="stats-number sf-pro">∞</div>
-                    <p class="text-slate-400 mt-2 text-sm" data-i18n="stats.scalability">Escalabilidad</p>
-                </div>
-                <div class="text-center">
-                    <div class="stats-number sf-pro">100%</div>
-                    <p class="text-slate-400 mt-2 text-sm" data-i18n="stats.native">Nativo macOS</p>
-                </div>
-            </div>
+
+        <h1 class="font-display text-5xl md:text-6xl font-semibold text-[var(--paper)] leading-[1.05] mb-6 tracking-tight">
+          <span data-i18n="hero.title1">Comercio exterior,</span><br>
+          <span class="text-[var(--rust-2)]" data-i18n="hero.title2">verificado línea por línea.</span>
+        </h1>
+
+        <p class="text-lg text-[var(--text)] max-w-xl mb-4 leading-relaxed">
+          <span data-i18n="hero.subtitle1">La plataforma nativa para empresas que operan bajo</span>
+          <span class="text-[var(--paper)] font-medium" data-i18n="hero.subtitle2">Admisión Temporal</span>
+          <span data-i18n="hero.subtitle3">y</span>
+          <span class="text-[var(--paper)] font-medium" data-i18n="hero.subtitle4">Perfeccionamiento Activo</span>.
+        </p>
+        <p class="text-[var(--text-dim)] max-w-lg mb-10 leading-relaxed" data-i18n="hero.powered">
+          Construida en Swift para macOS, respaldada por infraestructura serverless de AWS.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 mb-14">
+          <a href="#contacto" class="btn-rust px-7 py-3.5 rounded-md text-sm font-semibold text-white flex items-center justify-center gap-2">
+            <i data-lucide="calendar" class="w-4 h-4"></i>
+            <span data-i18n="hero.demoBtn">Agendar demo gratuita</span>
+          </a>
+          <a href="#features" class="btn-ghost px-7 py-3.5 rounded-md text-sm font-semibold text-[var(--text)] flex items-center justify-center gap-2">
+            <i data-lucide="arrow-down" class="w-4 h-4"></i>
+            <span data-i18n="hero.featuresBtn">Ver funcionalidades</span>
+          </a>
         </div>
-    </section>
 
-    <!-- Features Section -->
-    <section id="features" class="py-32 bg-[#0F172A] relative">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-20">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white sf-pro">
-                    <span data-i18n="features.title">Funcionalidades</span> 
-                    <span class="gradient-text" data-i18n="features.subtitle">Avanzadas</span>
-                </h2>
-                <p class="text-xl text-slate-400 max-w-2xl mx-auto" data-i18n="features.description">
-                    Diseñado para profesionales que exigen precisión y velocidad
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="feature-card p-8 rounded-2xl glass border border-white/10">
-                    <div class="w-14 h-14 rounded-xl bg-blue-500/20 flex items-center justify-center mb-6">
-                        <i data-lucide="zap" class="text-blue-500 h-8 w-8"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-4 text-white sf-pro" data-i18n="features.performance.title">Rendimiento Nativo</h3>
-                    <p class="text-slate-400 leading-relaxed mb-4" data-i18n="features.performance.desc">
-                        Desarrollada en Swift para macOS, aprovechando al máximo el hardware de Apple. 
-                        Procesa miles de pedimentos en milisegundos con eficiencia sin precedentes.
-                    </p>
-                    <ul class="space-y-2 text-sm text-slate-500">
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-blue-500"></i>
-                            <span data-i18n="features.performance.item1">Procesamiento multithread optimizado</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-blue-500"></i>
-                            <span data-i18n="features.performance.item2">Utilización de Metal para aceleración GPU</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="feature-card p-8 rounded-2xl glass border border-white/10">
-                    <div class="w-14 h-14 rounded-xl bg-emerald-500/20 flex items-center justify-center mb-6">
-                        <i data-lucide="shield-check" class="text-emerald-500 h-8 w-8"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-4 text-white sf-pro" data-i18n="features.validation.title">Validación Inteligente</h3>
-                    <p class="text-slate-400 leading-relaxed mb-4" data-i18n="features.validation.desc">
-                        Algoritmos avanzados que validan números de contenedor ISO 6346, Incoterms, 
-                        plazos legales y más, antes de cualquier envío o procesamiento.
-                    </p>
-                    <ul class="space-y-2 text-sm text-slate-500">
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-emerald-500"></i>
-                            <span data-i18n="features.validation.item1">Validación en tiempo real</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-emerald-500"></i>
-                            <span data-i18n="features.validation.item2">Prevención de errores costosos</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="feature-card p-8 rounded-2xl glass border border-white/10">
-                    <div class="w-14 h-14 rounded-xl bg-purple-500/20 flex items-center justify-center mb-6">
-                        <i data-lucide="cloud" class="text-purple-500 h-8 w-8"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-4 text-white sf-pro" data-i18n="features.cloud.title">Nube AWS Enterprise</h3>
-                    <p class="text-slate-400 leading-relaxed mb-4" data-i18n="features.cloud.desc">
-                        Reportes complejos generados en la nube AWS para garantizar seguridad de datos, 
-                        disponibilidad global inmediata y cumplimiento normativo.
-                    </p>
-                    <ul class="space-y-2 text-sm text-slate-500">
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-purple-500"></i>
-                            <span data-i18n="features.cloud.item1">Infraestructura escalable</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-purple-500"></i>
-                            <span data-i18n="features.cloud.item2">Backup automático y redundancia</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="feature-card p-8 rounded-2xl glass border border-white/10">
-                    <div class="w-14 h-14 rounded-xl bg-cyan-500/20 flex items-center justify-center mb-6">
-                        <i data-lucide="database" class="text-cyan-500 h-8 w-8"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-4 text-white sf-pro" data-i18n="features.containers.title">Gestión de Contenedores</h3>
-                    <p class="text-slate-400 leading-relaxed mb-4" data-i18n="features.containers.desc">
-                        Editor completo para números de contenedor ISO 6346 con validación automática, 
-                        historial completo y trazabilidad en tiempo real.
-                    </p>
-                    <ul class="space-y-2 text-sm text-slate-500">
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-cyan-500"></i>
-                            <span data-i18n="features.containers.item1">Validación ISO 6346 automática</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-cyan-500"></i>
-                            <span data-i18n="features.containers.item2">Historial completo de operaciones</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="feature-card p-8 rounded-2xl glass border border-white/10">
-                    <div class="w-14 h-14 rounded-xl bg-orange-500/20 flex items-center justify-center mb-6">
-                        <i data-lucide="file-text" class="text-orange-500 h-8 w-8"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-4 text-white sf-pro" data-i18n="features.dua.title">Generación de DUA</h3>
-                    <p class="text-slate-400 leading-relaxed mb-4" data-i18n="features.dua.desc">
-                        Generación automática de Documentos Únicos de Admisión (DUA) mediante AWS Lambda, 
-                        con cálculos precisos de saldos, DAI e IVA.
-                    </p>
-                    <ul class="space-y-2 text-sm text-slate-500">
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-orange-500"></i>
-                            <span data-i18n="features.dua.item1">Generación en segundos</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-orange-500"></i>
-                            <span data-i18n="features.dua.item2">Cálculos automáticos precisos</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="feature-card p-8 rounded-2xl glass border border-white/10">
-                    <div class="w-14 h-14 rounded-xl bg-pink-500/20 flex items-center justify-center mb-6">
-                        <i data-lucide="trending-up" class="text-pink-500 h-8 w-8"></i>
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-4 text-white sf-pro" data-i18n="features.traceability.title">Trazabilidad Completa</h3>
-                    <p class="text-slate-400 leading-relaxed mb-4" data-i18n="features.traceability.desc">
-                        Seguimiento completo de materia prima bajo admisión temporal con reportes 
-                        detallados y auditoría completa de operaciones.
-                    </p>
-                    <ul class="space-y-2 text-sm text-slate-500">
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-pink-500"></i>
-                            <span data-i18n="features.traceability.item1">Trazabilidad en tiempo real</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-pink-500"></i>
-                            <span data-i18n="features.traceability.item2">Reportes de auditoría completos</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        <div class="grid grid-cols-4 gap-6 border-t hairline pt-6 max-w-lg" id="statGrid">
+          <div>
+            <div class="font-mono text-2xl text-[var(--paper)] font-semibold"><span id="statTime">0</span>%</div>
+            <div class="text-xs text-[var(--text-faint)] mt-1" data-i18n="stats.time">menos tiempo</div>
+          </div>
+          <div>
+            <div class="font-mono text-2xl text-[var(--paper)] font-semibold">&lt;<span id="statResponse">0</span>s</div>
+            <div class="text-xs text-[var(--text-faint)] mt-1" data-i18n="stats.response">gen. de DUA</div>
+          </div>
+          <div>
+            <div class="font-mono text-2xl text-[var(--paper)] font-semibold">24/7</div>
+            <div class="text-xs text-[var(--text-faint)] mt-1" data-i18n="stats.uptime">disponibilidad</div>
+          </div>
+          <div>
+            <div class="font-mono text-2xl text-[var(--paper)] font-semibold"><span id="statIso">0</span></div>
+            <div class="text-xs text-[var(--text-faint)] mt-1" data-i18n="stats.iso">ISO validado</div>
+          </div>
         </div>
-    </section>
-    <!-- AWS Technology Section -->
-    <section id="aws" class="py-32 border-t border-white/5 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-blue-900/10 to-emerald-900/10"></div>
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div>
-                    <div class="inline-block mb-6">
-                        <span class="px-4 py-2 glass rounded-full text-sm font-medium text-emerald-400 border border-emerald-500/30">
-                            <i data-lucide="cloud" class="inline-block w-4 h-4 mr-2"></i>
-                            <span data-i18n="aws.badge">Tecnología AWS</span>
-                        </span>
-                    </div>
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white sf-pro leading-tight">
-                        <span data-i18n="aws.title1">Reportes de Estado de Cuenta</span><br>
-                        <span class="gradient-text" data-i18n="aws.title2">en Tiempo Real</span>
-                    </h2>
-                    <p class="text-lg text-slate-400 mb-8 leading-relaxed" data-i18n="aws.description">
-                        Nuestra infraestructura en AWS garantiza generación instantánea de reportes complejos, 
-                        cálculos precisos y disponibilidad 24/7 para tu operación.
-                    </p>
-                    <ul class="space-y-5 mb-8">
-                        <li class="flex items-start space-x-4">
-                            <div class="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center shrink-0 mt-1">
-                                <i data-lucide="check-circle-2" class="text-blue-500 h-5 w-5"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-white mb-1" data-i18n="aws.item1.title">Generación de DUA en Segundos</h4>
-                                <p class="text-slate-400 text-sm" data-i18n="aws.item1.desc">Mediante AWS Lambda, procesamos y generamos Documentos Únicos de Admisión en tiempo récord.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start space-x-4">
-                            <div class="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center shrink-0 mt-1">
-                                <i data-lucide="check-circle-2" class="text-emerald-500 h-5 w-5"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-white mb-1" data-i18n="aws.item2.title">Cálculo Automático de Saldos</h4>
-                                <p class="text-slate-400 text-sm" data-i18n="aws.item2.desc">Saldos, DAI e IVA calculados automáticamente con precisión matemática garantizada.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start space-x-4">
-                            <div class="w-8 h-8 rounded-lg bg-purple-500/20 flex items-center justify-center shrink-0 mt-1">
-                                <i data-lucide="check-circle-2" class="text-purple-500 h-5 w-5"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-white mb-1" data-i18n="aws.item3.title">Trazabilidad Completa</h4>
-                                <p class="text-slate-400 text-sm" data-i18n="aws.item3.desc">Seguimiento completo de materia prima bajo admisión temporal con historial detallado.</p>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="tech-badge">
-                            <i data-lucide="zap" class="w-4 h-4 text-blue-400"></i>
-                            AWS Lambda
-                        </span>
-                        <span class="tech-badge">
-                            <i data-lucide="database" class="w-4 h-4 text-blue-400"></i>
-                            DynamoDB
-                        </span>
-                        <span class="tech-badge">
-                            <i data-lucide="file-text" class="w-4 h-4 text-blue-400"></i>
-                            S3
-                        </span>
-                        <span class="tech-badge">
-                            <i data-lucide="shield" class="w-4 h-4 text-blue-400"></i>
-                            IAM
-                        </span>
-                    </div>
-                </div>
-                <div class="relative">
-                    <div class="absolute -inset-4 bg-gradient-to-r from-blue-600 to-emerald-500 rounded-2xl blur-2xl opacity-20"></div>
-                    <div class="relative glass-strong p-6 rounded-2xl shadow-2xl macos-window">
-                        <div class="macos-titlebar">
-                            <div class="flex space-x-2">
-                                <div class="macos-button close"></div>
-                                <div class="macos-button minimize"></div>
-                                <div class="macos-button maximize"></div>
-                            </div>
-                            <div class="text-xs text-slate-400 mx-auto font-mono" data-i18n="aws.reportTitle">
-                                Reporte DUA — HIALEAH, S.A.
-                            </div>
-                        </div>
-                        <div class="bg-white rounded-lg p-6 text-slate-800 shadow-inner mt-4">
-                            <div class="border-b-2 border-blue-600 pb-3 mb-4 flex justify-between items-center">
-                                <div>
-                                    <span class="font-bold text-sm">HIALEAH, S.A. DE C.V.</span>
-                                    <p class="text-xs text-slate-600 mt-1" data-i18n="aws.regime">Régimen: Admisión Temporal</p>
-                                </div>
-                                <div class="text-right">
-                                    <span class="text-xs text-slate-600" data-i18n="aws.reportLabel">REPORTE DUA</span>
-                                    <p class="font-mono text-sm font-semibold">No. 25540000234</p>
-                                </div>
-                            </div>
-                            <div class="space-y-3">
-                                <div class="grid grid-cols-2 gap-4 text-sm">
-                                    <div>
-                                        <p class="text-slate-600 text-xs mb-1" data-i18n="aws.initialBalance">Saldo Inicial</p>
-                                        <p class="font-semibold">$1,245,890.50</p>
-                                    </div>
-                                    <div>
-                                        <p class="text-slate-600 text-xs mb-1" data-i18n="aws.dai">DAI Calculado</p>
-                                        <p class="font-semibold text-blue-600">$124,589.05</p>
-                                    </div>
-                                    <div>
-                                        <p class="text-slate-600 text-xs mb-1">IVA</p>
-                                        <p class="font-semibold text-emerald-600">$199,342.48</p>
-                                    </div>
-                                    <div>
-                                        <p class="text-slate-600 text-xs mb-1" data-i18n="aws.finalBalance">Saldo Final</p>
-                                        <p class="font-semibold">$1,570,822.03</p>
-                                    </div>
-                                </div>
-                                <div class="h-32 bg-gradient-to-br from-slate-100 to-slate-200 rounded flex items-center justify-center border-2 border-dashed border-slate-300">
-                                    <div class="text-center">
-                                        <i data-lucide="file-text" class="w-8 h-8 text-slate-400 mx-auto mb-2"></i>
-                                        <p class="text-xs text-slate-500 italic" data-i18n="aws.preview">Vista previa del reporte generado por AWS</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      </div>
+
+      <!-- Right: manifest card / signature element -->
+      <div class="rise floaty" style="animation-delay:.15s;">
+        <div class="manifest-card p-0 max-w-md mx-auto">
+          <div class="manifest-head flex items-center justify-between px-5 py-4">
+            <div class="flex items-center gap-2 text-[var(--text-faint)] font-mono text-xs">
+              <i data-lucide="container" class="w-3.5 h-3.5"></i>
+              <span data-i18n="hero.windowTitle">VALIDADOR ISO 6346 — EN VIVO</span>
             </div>
+            <span class="w-2 h-2 rounded-full bg-[var(--amber)] blink"></span>
+          </div>
+          <div class="p-7">
+            <div class="text-xs text-[var(--text-faint)] font-mono mb-2" data-i18n="hero.codeLabel">CÓDIGO DE CONTENEDOR</div>
+            <div id="containerCode" class="container-code text-3xl md:text-4xl text-[var(--paper)] mb-6 min-h-[2.5em] flex flex-wrap gap-x-1"></div>
+
+            <div class="flex items-center gap-3 mb-6">
+              <div id="statusPill" class="status-pill px-3 py-1.5 rounded-full border border-[var(--line-strong)] text-[var(--text-dim)] flex items-center gap-2">
+                <span id="statusDot" class="w-1.5 h-1.5 rounded-full bg-[var(--text-faint)]"></span>
+                <span id="statusText" data-i18n="hero.calculating">CALCULANDO DÍGITO VERIFICADOR…</span>
+              </div>
+            </div>
+
+            <div class="border-t hairline pt-5 space-y-3 font-mono text-xs text-[var(--text-dim)]">
+              <div class="flex justify-between"><span data-i18n="hero.owner">Código propietario</span><span id="ownerVal" class="text-[var(--paper)]">—</span></div>
+              <div class="flex justify-between"><span data-i18n="hero.category">Categoría</span><span id="catVal" class="text-[var(--paper)]">—</span></div>
+              <div class="flex justify-between"><span data-i18n="hero.serial">Número de serie</span><span id="serialVal" class="text-[var(--paper)]">—</span></div>
+              <div class="flex justify-between"><span data-i18n="hero.checksum">Suma ponderada</span><span id="sumVal" class="text-[var(--paper)]">—</span></div>
+            </div>
+          </div>
         </div>
-    </section>
-    <!-- Technology Stack Section -->
-    <section id="tecnologia" class="py-32 bg-[#0F172A]">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-20">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white sf-pro">
-                    <span data-i18n="tech.title1">Construido con</span> 
-                    <span class="gradient-text" data-i18n="tech.title2">Tecnología de Vanguardia</span>
-                </h2>
-                <p class="text-xl text-slate-400 max-w-2xl mx-auto" data-i18n="tech.description">
-                    Combinando lo mejor de Apple y AWS para crear la solución definitiva
-                </p>
-            </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-            <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-                <div class="glass p-8 rounded-2xl border border-white/10">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="w-16 h-16 rounded-xl bg-blue-500/20 flex items-center justify-center">
-                            <i data-lucide="code" class="w-8 h-8 text-blue-500"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-white sf-pro">Swift & SwiftUI</h3>
-                            <p class="text-slate-400 text-sm" data-i18n="tech.swift.subtitle">Lenguaje nativo de Apple</p>
-                        </div>
-                    </div>
-                    <p class="text-slate-300 leading-relaxed mb-4" data-i18n="tech.swift.desc">
-                        Desarrollada completamente en Swift, aprovechando SwiftUI para crear una interfaz 
-                        moderna, fluida y completamente nativa de macOS. Cada píxel está optimizado para 
-                        el hardware de Apple.
-                    </p>
-                    <ul class="space-y-2 text-sm text-slate-400">
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-blue-500"></i>
-                            <span data-i18n="tech.swift.item1">Rendimiento nativo sin igual</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-blue-500"></i>
-                            <span data-i18n="tech.swift.item2">Integración perfecta con macOS</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-blue-500"></i>
-                            <span data-i18n="tech.swift.item3">Actualizaciones automáticas via App Store</span>
-                        </li>
-                    </ul>
-                </div>
+<!-- Features -->
+<section id="features" class="py-28 border-t hairline">
+  <div class="container mx-auto px-6">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-14 gap-6">
+      <div>
+        <div class="section-label mb-3" data-i18n="features.label">MÓDULOS DEL SISTEMA</div>
+        <h2 class="font-display text-4xl md:text-5xl font-semibold text-[var(--paper)] tracking-tight">
+          <span data-i18n="features.title">Funcionalidades</span> <span class="text-[var(--rust-2)]" data-i18n="features.subtitle">construidas para aduanas</span>
+        </h2>
+      </div>
+      <p class="text-[var(--text-dim)] max-w-sm" data-i18n="features.description">Cada módulo resuelve un punto de fricción real en la operación diaria de comercio exterior.</p>
+    </div>
 
-                <div class="glass p-8 rounded-2xl border border-white/10">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="w-16 h-16 rounded-xl bg-orange-500/20 flex items-center justify-center">
-                            <i data-lucide="cloud" class="w-8 h-8 text-orange-500"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-white sf-pro">Amazon Web Services</h3>
-                            <p class="text-slate-400 text-sm" data-i18n="tech.aws.subtitle">Infraestructura empresarial</p>
-                        </div>
-                    </div>
-                    <p class="text-slate-300 leading-relaxed mb-4" data-i18n="tech.aws.desc">
-                        Backend completamente alojado en AWS, garantizando escalabilidad, seguridad y 
-                        disponibilidad global. Utilizamos servicios serverless para máximo rendimiento.
-                    </p>
-                    <ul class="space-y-2 text-sm text-slate-400">
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-orange-500"></i>
-                            <span data-i18n="tech.aws.item1">Escalabilidad automática</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-orange-500"></i>
-                            <span data-i18n="tech.aws.item2">Seguridad de nivel empresarial</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check" class="w-4 h-4 text-orange-500"></i>
-                            <span data-i18n="tech.aws.item3">99.99% de disponibilidad garantizada</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+    <div class="bento">
+      <div class="bento-lg feature-card panel rounded-2xl p-8 flex flex-col justify-between">
+        <div class="corner"></div>
+        <div>
+          <div class="w-11 h-11 rounded-lg bg-[var(--rust)]/15 flex items-center justify-center mb-6">
+            <i data-lucide="file-text" class="text-[var(--rust-2)] w-6 h-6"></i>
+          </div>
+          <div class="eyebrow text-[var(--rust-2)] mb-2" data-i18n="features.dua.eyebrow">MOTOR AWS LAMBDA</div>
+          <h3 class="font-display text-2xl font-semibold text-[var(--paper)] mb-3" data-i18n="features.dua.title">Generación de DUA</h3>
+          <p class="text-[var(--text-dim)] leading-relaxed mb-6" data-i18n="features.dua.desc">
+            Documentos Únicos de Admisión generados en segundos, con cálculo automático de saldos, DAI e IVA sobre infraestructura serverless.
+          </p>
         </div>
-    </section>
-
-    <!-- Benefits Section -->
-    <section id="beneficios" class="py-32 border-t border-white/5 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-purple-900/10 to-blue-900/10"></div>
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="text-center mb-20">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white sf-pro">
-                    <span data-i18n="benefits.title">Beneficios</span> 
-                    <span class="gradient-text" data-i18n="benefits.subtitle">Reales</span>
-                </h2>
-                <p class="text-xl text-slate-400 max-w-2xl mx-auto" data-i18n="benefits.description">
-                    Resultados medibles que transforman tu operación de comercio exterior
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <div class="glass p-8 rounded-2xl border border-white/10 text-center">
-                    <div class="w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mx-auto mb-6">
-                        <i data-lucide="clock" class="w-10 h-10 text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-4 sf-pro" data-i18n="benefits.time.title">Ahorro de Tiempo</h3>
-                    <p class="text-slate-400 leading-relaxed" data-i18n="benefits.time.desc">
-                        Reduce el tiempo de procesamiento de pedimentos en un 90%. 
-                        Lo que antes tomaba horas, ahora se hace en minutos.
-                    </p>
-                </div>
-
-                <div class="glass p-8 rounded-2xl border border-white/10 text-center">
-                    <div class="w-20 h-20 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center mx-auto mb-6">
-                        <i data-lucide="dollar-sign" class="w-10 h-10 text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-4 sf-pro" data-i18n="benefits.errors.title">Reducción de Errores</h3>
-                    <p class="text-slate-400 leading-relaxed" data-i18n="benefits.errors.desc">
-                        Validación automática previene errores costosos. 
-                        Ahorra miles de dólares en multas y correcciones.
-                    </p>
-                </div>
-
-                <div class="glass p-8 rounded-2xl border border-white/10 text-center">
-                    <div class="w-20 h-20 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mx-auto mb-6">
-                        <i data-lucide="trending-up" class="w-10 h-10 text-white"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-4 sf-pro" data-i18n="benefits.scale.title">Escalabilidad</h3>
-                    <p class="text-slate-400 leading-relaxed" data-i18n="benefits.scale.desc">
-                        Crece sin límites. Procesa desde 10 hasta 10,000 pedimentos 
-                        sin cambios en la infraestructura.
-                    </p>
-                </div>
-            </div>
+        <div class="font-mono text-xs text-[var(--text-faint)] flex items-center gap-4">
+          <span data-i18n="features.dua.item1">→ generación en &lt;2s</span>
+          <span data-i18n="features.dua.item2">→ cálculo sin intervención manual</span>
         </div>
-    </section>
-    <!-- Reports Section -->
-    <section id="reportes" class="py-32 bg-[#0F172A]">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-20">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white sf-pro">
-                    <span data-i18n="reports.title">Reportes</span> 
-                    <span class="gradient-text" data-i18n="reports.subtitle">Inteligentes</span>
-                </h2>
-                <p class="text-xl text-slate-400 max-w-2xl mx-auto" data-i18n="reports.description">
-                    Información detallada y accionable en tiempo real
-                </p>
-            </div>
+      </div>
 
-            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                <div class="glass p-8 rounded-2xl border border-white/10">
-                    <div class="flex items-center gap-4 mb-6">
-                        <i data-lucide="file-bar-chart" class="w-10 h-10 text-blue-500"></i>
-                        <h3 class="text-2xl font-bold text-white sf-pro" data-i18n="reports.account.title">Estado de Cuenta</h3>
-                    </div>
-                    <p class="text-slate-400 leading-relaxed mb-4" data-i18n="reports.account.desc">
-                        Reportes completos de estado de cuenta con cálculos automáticos de saldos, 
-                        DAI e IVA. Exporta a PDF, Excel o CSV.
-                    </p>
-                    <ul class="space-y-2 text-sm text-slate-500">
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check-circle" class="w-4 h-4 text-blue-500"></i>
-                            <span data-i18n="reports.account.item1">Cálculos automáticos precisos</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check-circle" class="w-4 h-4 text-blue-500"></i>
-                            <span data-i18n="reports.account.item2">Múltiples formatos de exportación</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="glass p-8 rounded-2xl border border-white/10">
-                    <div class="flex items-center gap-4 mb-6">
-                        <i data-lucide="activity" class="w-10 h-10 text-emerald-500"></i>
-                        <h3 class="text-2xl font-bold text-white sf-pro" data-i18n="reports.traceability.title">Trazabilidad</h3>
-                    </div>
-                    <p class="text-slate-400 leading-relaxed mb-4" data-i18n="reports.traceability.desc">
-                        Seguimiento completo de materia prima bajo admisión temporal con 
-                        historial detallado y auditoría completa.
-                    </p>
-                    <ul class="space-y-2 text-sm text-slate-500">
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
-                            <span data-i18n="reports.traceability.item1">Historial completo de operaciones</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
-                            <span data-i18n="reports.traceability.item2">Auditoría en tiempo real</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+      <div class="bento-md feature-card panel rounded-2xl p-7">
+        <div class="w-10 h-10 rounded-lg bg-[var(--ledger)]/15 flex items-center justify-center mb-5">
+          <i data-lucide="zap" class="text-[var(--ledger)] w-5 h-5"></i>
         </div>
-    </section>
+        <h3 class="font-display text-xl font-semibold text-[var(--paper)] mb-2" data-i18n="features.performance.title">Rendimiento nativo</h3>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="features.performance.desc">
+          Swift + SwiftUI aprovechando al máximo el hardware de Apple, incluida aceleración por Metal.
+        </p>
+      </div>
 
-    <!-- Contact Section -->
-    <section id="contacto" class="py-32 border-t border-white/5 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-emerald-900/20"></div>
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white sf-pro">
-                    <span data-i18n="contact.title1">¿Listo para</span> 
-                    <span class="gradient-text" data-i18n="contact.title2">Transformar</span> 
-                    <span data-i18n="contact.title3">tu Operación?</span>
-                </h2>
-                <p class="text-xl text-slate-400 mb-12 leading-relaxed" data-i18n="contact.description">
-                    Agenda una demostración gratuita y descubre cómo ZakForeigner puede optimizar 
-                    tu gestión de comercio exterior.
-                </p>
-                <div class="glass-strong p-12 rounded-2xl border border-white/10">
-                    <form class="space-y-6">
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-sm font-medium text-slate-300 mb-2" data-i18n="contact.name">Nombre</label>
-                                <input type="text" class="w-full px-4 py-3 rounded-lg glass border border-white/10 focus:border-blue-500 focus:outline-none transition text-white placeholder-slate-500" data-i18n-placeholder="contact.namePlaceholder" placeholder="Tu nombre">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-slate-300 mb-2" data-i18n="contact.company">Empresa</label>
-                                <input type="text" class="w-full px-4 py-3 rounded-lg glass border border-white/10 focus:border-blue-500 focus:outline-none transition text-white placeholder-slate-500" data-i18n-placeholder="contact.companyPlaceholder" placeholder="Nombre de tu empresa">
-                            </div>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-300 mb-2" data-i18n="contact.email">Email</label>
-                            <input type="email" class="w-full px-4 py-3 rounded-lg glass border border-white/10 focus:border-blue-500 focus:outline-none transition text-white placeholder-slate-500" data-i18n-placeholder="contact.emailPlaceholder" placeholder="tu@email.com">
-                            </div>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-300 mb-2" data-i18n="contact.message">Mensaje</label>
-                            <textarea rows="4" class="w-full px-4 py-3 rounded-lg glass border border-white/10 focus:border-blue-500 focus:outline-none transition text-white placeholder-slate-500" data-i18n-placeholder="contact.messagePlaceholder" placeholder="Cuéntanos sobre tu operación..."></textarea>
-                        </div>
-                        <button type="submit" class="btn-primary w-full px-8 py-4 rounded-full text-base font-semibold text-white flex items-center justify-center gap-2">
-                            <i data-lucide="send" class="w-5 h-5"></i>
-                            <span data-i18n="contact.submit">Enviar Solicitud de Demo</span>
-                        </button>
-                    </form>
-                </div>
-            </div>
+      <div class="bento-md feature-card panel rounded-2xl p-7">
+        <div class="w-10 h-10 rounded-lg bg-[var(--amber)]/15 flex items-center justify-center mb-5">
+          <i data-lucide="shield-check" class="text-[var(--amber)] w-5 h-5"></i>
         </div>
-    </section>
+        <h3 class="font-display text-xl font-semibold text-[var(--paper)] mb-2" data-i18n="features.validation.title">Validación inteligente</h3>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="features.validation.desc">
+          ISO 6346, Incoterms y plazos legales verificados antes de cualquier envío o procesamiento.
+        </p>
+      </div>
 
-    <!-- Footer -->
-    <footer class="py-16 border-t border-white/5 bg-slate-900/30">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-4 gap-12 mb-12">
-                <div>
-                    <div class="text-2xl font-bold mb-4 text-white sf-pro">
-                        Zak<span class="text-blue-500">Foreigner</span>
-                    </div>
-                    <p class="text-slate-400 text-sm leading-relaxed" data-i18n="footer.description">
-                        La solución nativa definitiva para gestión de comercio exterior en macOS.
-                    </p>
-                </div>
-                <div>
-                    <h4 class="font-semibold text-white mb-4" data-i18n="footer.product">Producto</h4>
-                    <ul class="space-y-2 text-sm text-slate-400">
-                        <li><a href="#features" class="hover:text-blue-400 transition" data-i18n="footer.features">Funcionalidades</a></li>
-                        <li><a href="#tecnologia" class="hover:text-blue-400 transition" data-i18n="footer.technology">Tecnología</a></li>
-                        <li><a href="#reportes" class="hover:text-blue-400 transition" data-i18n="footer.reports">Reportes</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-semibold text-white mb-4" data-i18n="footer.company">Empresa</h4>
-                    <ul class="space-y-2 text-sm text-slate-400">
-                        <li><a href="#contacto" class="hover:text-blue-400 transition" data-i18n="footer.contact">Contacto</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition" data-i18n="footer.support">Soporte</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition" data-i18n="footer.docs">Documentación</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-semibold text-white mb-4" data-i18n="footer.legal">Legal</h4>
-                    <ul class="space-y-2 text-sm text-slate-400">
-                        <li><a href="#" class="hover:text-blue-400 transition" data-i18n="footer.privacy">Privacidad</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition" data-i18n="footer.terms">Términos</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition" data-i18n="footer.cookies">Cookies</a></li>
-                    </ul>
-                </div>
+      <div class="bento-md feature-card panel rounded-2xl p-7">
+        <div class="w-10 h-10 rounded-lg bg-[var(--rust)]/15 flex items-center justify-center mb-5">
+          <i data-lucide="cloud" class="text-[var(--rust-2)] w-5 h-5"></i>
+        </div>
+        <h3 class="font-display text-xl font-semibold text-[var(--paper)] mb-2" data-i18n="features.cloud.title">Nube AWS Enterprise</h3>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="features.cloud.desc">
+          Reportes complejos generados en la nube con seguridad de datos y disponibilidad global.
+        </p>
+      </div>
+
+      <div class="bento-md feature-card panel rounded-2xl p-7">
+        <div class="w-10 h-10 rounded-lg bg-[var(--ledger)]/15 flex items-center justify-center mb-5">
+          <i data-lucide="database" class="text-[var(--ledger)] w-5 h-5"></i>
+        </div>
+        <h3 class="font-display text-xl font-semibold text-[var(--paper)] mb-2" data-i18n="features.containers.title">Gestión de contenedores</h3>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="features.containers.desc">
+          Editor completo para números ISO 6346 con historial y trazabilidad en tiempo real.
+        </p>
+      </div>
+
+      <div class="bento-full feature-card panel rounded-2xl p-8 flex flex-col md:flex-row md:items-center gap-6 justify-between">
+        <div class="flex items-start gap-5">
+          <div class="w-11 h-11 rounded-lg bg-[var(--amber)]/15 flex items-center justify-center shrink-0">
+            <i data-lucide="trending-up" class="text-[var(--amber)] w-6 h-6"></i>
+          </div>
+          <div>
+            <h3 class="font-display text-xl font-semibold text-[var(--paper)] mb-1" data-i18n="features.traceability.title">Trazabilidad completa</h3>
+            <p class="text-[var(--text-dim)] text-sm leading-relaxed max-w-xl" data-i18n="features.traceability.desc">
+              Seguimiento de materia prima bajo admisión temporal, con auditoría de cada operación desde su origen.
+            </p>
+          </div>
+        </div>
+        <div class="font-mono text-xs text-[var(--text-faint)] shrink-0" data-i18n="features.traceability.tag">MOD.06 / AUDITORÍA EN TIEMPO REAL</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWS -->
+<section id="aws" class="py-28 border-t hairline relative overflow-hidden">
+  <div class="container mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <div class="section-label mb-3" data-i18n="aws.label">INFRAESTRUCTURA</div>
+        <h2 class="font-display text-4xl md:text-5xl font-semibold text-[var(--paper)] tracking-tight mb-6 leading-tight">
+          <span data-i18n="aws.title1">Reportes de estado de cuenta,</span><br>
+          <span class="text-[var(--rust-2)]" data-i18n="aws.title2">generados en tiempo real</span>
+        </h2>
+        <p class="text-[var(--text-dim)] mb-9 leading-relaxed max-w-lg" data-i18n="aws.description">
+          La infraestructura AWS garantiza generación instantánea de reportes, cálculos precisos y disponibilidad continua para tu operación.
+        </p>
+        <ul class="space-y-6 mb-10">
+          <li class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-md bg-[var(--rust)]/15 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="check" class="text-[var(--rust-2)] w-4 h-4"></i></div>
+            <div><h4 class="font-semibold text-[var(--paper)] mb-1" data-i18n="aws.item1.title">Generación de DUA en segundos</h4><p class="text-[var(--text-dim)] text-sm" data-i18n="aws.item1.desc">AWS Lambda procesa y genera Documentos Únicos de Admisión en tiempo récord.</p></div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-md bg-[var(--amber)]/15 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="check" class="text-[var(--amber)] w-4 h-4"></i></div>
+            <div><h4 class="font-semibold text-[var(--paper)] mb-1" data-i18n="aws.item2.title">Cálculo automático de saldos</h4><p class="text-[var(--text-dim)] text-sm" data-i18n="aws.item2.desc">Saldos, DAI e IVA calculados con precisión matemática garantizada.</p></div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-md bg-[var(--ledger)]/15 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="check" class="text-[var(--ledger)] w-4 h-4"></i></div>
+            <div><h4 class="font-semibold text-[var(--paper)] mb-1" data-i18n="aws.item3.title">Trazabilidad completa</h4><p class="text-[var(--text-dim)] text-sm" data-i18n="aws.item3.desc">Historial detallado de materia prima bajo admisión temporal.</p></div>
+          </li>
+        </ul>
+        <div class="flex flex-wrap gap-2 font-mono text-xs mb-9">
+          <span class="px-3 py-1.5 rounded border border-[var(--line-strong)] text-[var(--text-dim)]">AWS Lambda</span>
+          <span class="px-3 py-1.5 rounded border border-[var(--line-strong)] text-[var(--text-dim)]">DynamoDB</span>
+          <span class="px-3 py-1.5 rounded border border-[var(--line-strong)] text-[var(--text-dim)]">S3</span>
+          <span class="px-3 py-1.5 rounded border border-[var(--line-strong)] text-[var(--text-dim)]">IAM</span>
+        </div>
+
+        <div class="panel rounded-xl overflow-hidden max-w-md">
+          <div class="flex items-center gap-2 px-4 py-2.5 border-b hairline">
+            <span class="w-2 h-2 rounded-full bg-[var(--rust)]/60"></span>
+            <span class="w-2 h-2 rounded-full bg-[var(--amber)]/60"></span>
+            <span class="w-2 h-2 rounded-full bg-[var(--ledger)]/60"></span>
+            <span class="font-mono text-[11px] text-[var(--text-faint)] ml-2" data-i18n="aws.terminalTitle">lambda-exec.log</span>
+          </div>
+          <div id="terminalLog" class="font-mono text-xs leading-relaxed p-4 h-[132px] text-[var(--text-dim)]"></div>
+        </div>
+      </div>
+
+      <!-- manifest paper report -->
+      <div class="relative">
+        <div class="absolute -inset-6 bg-[var(--rust)]/10 rounded-3xl blur-3xl"></div>
+        <div class="relative rounded-2xl overflow-hidden" style="background:var(--paper); box-shadow:0 30px 70px -20px rgba(0,0,0,0.5);">
+          <div class="px-7 py-5 border-b-2 border-dashed" style="border-color:#00000022;">
+            <div class="flex justify-between items-start">
+              <div>
+                <div class="font-mono text-[11px] tracking-widest text-[#8a8471]" data-i18n="aws.reportLabel">REPORTE DUA</div>
+                <div class="font-semibold text-[#1a1a1a] text-sm mt-1">HIALEAH, S.A. DE C.V.</div>
+                <div class="text-[11px] text-[#6b6552] mt-0.5" data-i18n="aws.regime">Régimen: Admisión Temporal</div>
+              </div>
+              <div class="stamp text-[10px] px-3 py-1.5 shrink-0" data-i18n="aws.stampValid">VALIDADO</div>
             </div>
-            <div class="section-divider my-8"></div>
+          </div>
+          <div class="px-7 py-6">
+            <div class="font-mono text-xs text-[#6b6552] mb-4">No. 25540000234</div>
+            <div class="grid grid-cols-2 gap-5 mb-6">
+              <div><p class="text-[11px] text-[#8a8471] mb-1" data-i18n="aws.initialBalance">Saldo inicial</p><p class="font-mono font-semibold text-[#1a1a1a]">$1,245,890.50</p></div>
+              <div><p class="text-[11px] text-[#8a8471] mb-1" data-i18n="aws.dai">DAI calculado</p><p class="font-mono font-semibold text-[var(--rust)]">$124,589.05</p></div>
+              <div><p class="text-[11px] text-[#8a8471] mb-1">IVA</p><p class="font-mono font-semibold" style="color:#3d6d5c;">$199,342.48</p></div>
+              <div><p class="text-[11px] text-[#8a8471] mb-1" data-i18n="aws.finalBalance">Saldo final</p><p class="font-mono font-semibold text-[#1a1a1a]">$1,570,822.03</p></div>
+            </div>
+            <div class="border-t border-dashed pt-4" style="border-color:#00000022;">
+              <div class="flex justify-between text-[11px] text-[#8a8471] font-mono">
+                <span data-i18n="aws.generatedBy">Generado vía AWS Lambda</span>
+                <span id="reportTimestamp">—</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Technology -->
+<section id="tecnologia" class="py-28 border-t hairline">
+  <div class="container mx-auto px-6">
+    <div class="mb-16">
+      <div class="section-label mb-3" data-i18n="tech.label">ARQUITECTURA</div>
+      <h2 class="font-display text-4xl md:text-5xl font-semibold text-[var(--paper)] tracking-tight max-w-2xl">
+        <span data-i18n="tech.title1">Construida con</span> <span class="text-[var(--rust-2)]" data-i18n="tech.title2">tecnología de vanguardia</span>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="panel rounded-2xl p-9">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-14 h-14 rounded-xl bg-[var(--rust)]/15 flex items-center justify-center"><i data-lucide="code" class="w-7 h-7 text-[var(--rust-2)]"></i></div>
+          <div>
+            <h3 class="font-display text-xl font-semibold text-[var(--paper)]">Swift &amp; SwiftUI</h3>
+            <p class="text-[var(--text-faint)] text-sm" data-i18n="tech.swift.subtitle">Lenguaje nativo de Apple</p>
+          </div>
+        </div>
+        <p class="text-[var(--text-dim)] leading-relaxed mb-5" data-i18n="tech.swift.desc">
+          Desarrollada completamente en Swift, con una interfaz moderna y fluida, nativa de macOS en cada detalle.
+        </p>
+        <ul class="space-y-2 text-sm text-[var(--text-dim)] font-mono">
+          <li data-i18n="tech.swift.item1">→ rendimiento nativo sin capas intermedias</li>
+          <li data-i18n="tech.swift.item2">→ integración perfecta con macOS</li>
+          <li data-i18n="tech.swift.item3">→ actualizaciones vía App Store</li>
+        </ul>
+      </div>
+
+      <div class="panel rounded-2xl p-9">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-14 h-14 rounded-xl bg-[var(--amber)]/15 flex items-center justify-center"><i data-lucide="cloud" class="w-7 h-7 text-[var(--amber)]"></i></div>
+          <div>
+            <h3 class="font-display text-xl font-semibold text-[var(--paper)]">Amazon Web Services</h3>
+            <p class="text-[var(--text-faint)] text-sm" data-i18n="tech.aws.subtitle">Infraestructura empresarial</p>
+          </div>
+        </div>
+        <p class="text-[var(--text-dim)] leading-relaxed mb-5" data-i18n="tech.aws.desc">
+          Backend alojado en AWS, con servicios serverless para escalabilidad, seguridad y disponibilidad global.
+        </p>
+        <ul class="space-y-2 text-sm text-[var(--text-dim)] font-mono">
+          <li data-i18n="tech.aws.item1">→ escalabilidad automática</li>
+          <li data-i18n="tech.aws.item2">→ seguridad de nivel empresarial</li>
+          <li data-i18n="tech.aws.item3">→ 99.99% de disponibilidad</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Benefits -->
+<section id="beneficios" class="py-28 border-t hairline">
+  <div class="container mx-auto px-6">
+    <div class="mb-16">
+      <div class="section-label mb-3" data-i18n="benefits.label">ANTES / DESPUÉS</div>
+      <h2 class="font-display text-4xl md:text-5xl font-semibold text-[var(--paper)] tracking-tight max-w-2xl">
+        <span data-i18n="benefits.title">Resultados</span> <span class="text-[var(--rust-2)]" data-i18n="benefits.subtitle">medibles, no promesas</span>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="panel rounded-2xl p-8">
+        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-6" data-i18n="benefits.time.title">Tiempo de procesamiento</h3>
+        <div class="space-y-4">
+          <div>
+            <div class="flex justify-between text-xs font-mono text-[var(--text-faint)] mb-1.5"><span data-i18n="benefits.before">ANTES</span><span>4h</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:100%; background:var(--text-faint);"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-xs font-mono text-[var(--rust-2)] mb-1.5"><span data-i18n="benefits.after">AHORA</span><span>12min</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:5%; background:var(--rust-2);"></div></div>
+          </div>
+        </div>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed mt-6" data-i18n="benefits.time.desc">Reducción del 90% en el procesamiento de pedimentos.</p>
+      </div>
+
+      <div class="panel rounded-2xl p-8">
+        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-6" data-i18n="benefits.errors.title">Incidencias mensuales</h3>
+        <div class="space-y-4">
+          <div>
+            <div class="flex justify-between text-xs font-mono text-[var(--text-faint)] mb-1.5"><span data-i18n="benefits.before">ANTES</span><span>12</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:100%; background:var(--text-faint);"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-xs font-mono text-[var(--amber)] mb-1.5"><span data-i18n="benefits.after">AHORA</span><span>&lt;1</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:6%; background:var(--amber);"></div></div>
+          </div>
+        </div>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed mt-6" data-i18n="benefits.errors.desc">Validación automática antes de cualquier envío.</p>
+      </div>
+
+      <div class="panel rounded-2xl p-8">
+        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-6" data-i18n="benefits.scale.title">Capacidad de operación</h3>
+        <div class="space-y-4">
+          <div>
+            <div class="flex justify-between text-xs font-mono text-[var(--text-faint)] mb-1.5"><span data-i18n="benefits.min">MÍNIMO</span><span>10</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:15%; background:var(--ledger);"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-xs font-mono text-[var(--ledger)] mb-1.5"><span data-i18n="benefits.max">SIN LÍMITE</span><span>10,000+</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:100%; background:var(--ledger);"></div></div>
+          </div>
+        </div>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed mt-6" data-i18n="benefits.scale.desc">Sin cambios de infraestructura al crecer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Reports -->
+<section id="reportes" class="py-28 border-t hairline">
+  <div class="container mx-auto px-6">
+    <div class="mb-16">
+      <div class="section-label mb-3" data-i18n="reports.label">SALIDA DE DATOS</div>
+      <h2 class="font-display text-4xl md:text-5xl font-semibold text-[var(--paper)] tracking-tight max-w-2xl">
+        <span data-i18n="reports.title">Reportes</span> <span class="text-[var(--rust-2)]" data-i18n="reports.subtitle">inteligentes</span>
+      </h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="panel rounded-2xl p-8">
+        <i data-lucide="file-bar-chart" class="w-8 h-8 text-[var(--rust-2)] mb-5"></i>
+        <h3 class="font-display text-xl font-semibold text-[var(--paper)] mb-3" data-i18n="reports.account.title">Estado de cuenta</h3>
+        <p class="text-[var(--text-dim)] leading-relaxed mb-4" data-i18n="reports.account.desc">Cálculos automáticos de saldos, DAI e IVA. Exporta a PDF, Excel o CSV.</p>
+        <div class="flex gap-2 font-mono text-xs text-[var(--text-faint)]"><span class="px-2.5 py-1 rounded border border-[var(--line-strong)]">PDF</span><span class="px-2.5 py-1 rounded border border-[var(--line-strong)]">XLSX</span><span class="px-2.5 py-1 rounded border border-[var(--line-strong)]">CSV</span></div>
+      </div>
+      <div class="panel rounded-2xl p-8">
+        <i data-lucide="activity" class="w-8 h-8 text-[var(--amber)] mb-5"></i>
+        <h3 class="font-display text-xl font-semibold text-[var(--paper)] mb-3" data-i18n="reports.traceability.title">Trazabilidad</h3>
+        <p class="text-[var(--text-dim)] leading-relaxed mb-4" data-i18n="reports.traceability.desc">Historial detallado y auditoría completa de materia prima bajo admisión temporal.</p>
+        <div class="flex gap-2 font-mono text-xs text-[var(--text-faint)]"><span class="px-2.5 py-1 rounded border border-[var(--line-strong)]" data-i18n="reports.traceability.tag1">TIEMPO REAL</span><span class="px-2.5 py-1 rounded border border-[var(--line-strong)]" data-i18n="reports.traceability.tag2">AUDITABLE</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contacto" class="py-28 border-t hairline relative">
+  <div class="container mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-16 items-start max-w-5xl mx-auto">
+      <div class="lg:pt-8">
+        <div class="section-label mb-3" data-i18n="contact.label">SIGUIENTE PASO</div>
+        <h2 class="font-display text-4xl font-semibold text-[var(--paper)] tracking-tight mb-6 leading-tight">
+          <span data-i18n="contact.title1">¿Listo para</span> <span class="text-[var(--rust-2)]" data-i18n="contact.title2">transformar</span> <span data-i18n="contact.title3">tu operación?</span>
+        </h2>
+        <p class="text-[var(--text-dim)] leading-relaxed mb-8" data-i18n="contact.description">
+          Agenda una demostración gratuita y descubre cómo ZakForeigner optimiza tu gestión de comercio exterior.
+        </p>
+        <div class="stamp inline-block text-xs px-4 py-2" data-i18n="contact.stamp">RESPUESTA EN 24H</div>
+      </div>
+
+      <div class="panel-strong rounded-2xl p-9">
+        <form class="space-y-6">
+          <div class="grid md:grid-cols-2 gap-6">
             <div>
-    <script>
-        // Translations object
-        const translations = {
-            es: {
-                // Navigation
-                'nav.features': 'Funcionalidades',
-                'nav.aws': 'Tecnología AWS',
-                'nav.reports': 'Reportes',
-                'nav.technology': 'Tecnología',
-                'nav.benefits': 'Beneficios',
-                'nav.demo': 'Agendar Demo',
-                
-                // Hero
-                'hero.badge': 'Aplicación Nativa macOS',
-                'hero.title1': 'Comercio Exterior a la',
-                'hero.title2': 'Velocidad de macOS',
-                'hero.subtitle1': 'La solución nativa definitiva para empresas bajo el régimen de',
-                'hero.subtitle2': 'Admisión Temporal',
-                'hero.subtitle3': 'y',
-                'hero.subtitle4': 'Perfeccionamiento Activo',
-                'hero.powered': 'Potenciada por',
-                'hero.and': 'y',
-                'hero.performance': 'para un rendimiento sin igual',
-                'hero.demoBtn': 'Agendar Demo Gratuita',
-                'hero.featuresBtn': 'Ver Funcionalidades',
-                'hero.windowTitle': 'ZakForeigner — Editor de Contenedor (ISO 6346)',
-                
-                // Stats
-                'stats.uptime': 'Uptime AWS',
-                'stats.response': 'Tiempo de Respuesta',
-                'stats.scalability': 'Escalabilidad',
-                'stats.native': 'Nativo macOS',
-                
-                // Features
-                'features.title': 'Funcionalidades',
-                'features.subtitle': 'Avanzadas',
-                'features.description': 'Diseñado para profesionales que exigen precisión y velocidad',
-                'features.performance.title': 'Rendimiento Nativo',
-                'features.performance.desc': 'Desarrollada en Swift para macOS, aprovechando al máximo el hardware de Apple. Procesa miles de pedimentos en milisegundos con eficiencia sin precedentes.',
-                'features.performance.item1': 'Procesamiento multithread optimizado',
-                'features.performance.item2': 'Utilización de Metal para aceleración GPU',
-                'features.validation.title': 'Validación Inteligente',
-                'features.validation.desc': 'Algoritmos avanzados que validan números de contenedor ISO 6346, Incoterms, plazos legales y más, antes de cualquier envío o procesamiento.',
-                'features.validation.item1': 'Validación en tiempo real',
-                'features.validation.item2': 'Prevención de errores costosos',
-                'features.cloud.title': 'Nube AWS Enterprise',
-                'features.cloud.desc': 'Reportes complejos generados en la nube AWS para garantizar seguridad de datos, disponibilidad global inmediata y cumplimiento normativo.',
-                'features.cloud.item1': 'Infraestructura escalable',
-                'features.cloud.item2': 'Backup automático y redundancia',
-                'features.containers.title': 'Gestión de Contenedores',
-                'features.containers.desc': 'Editor completo para números de contenedor ISO 6346 con validación automática, historial completo y trazabilidad en tiempo real.',
-                'features.containers.item1': 'Validación ISO 6346 automática',
-                'features.containers.item2': 'Historial completo de operaciones',
-                'features.dua.title': 'Generación de DUA',
-                'features.dua.desc': 'Generación automática de Documentos Únicos de Admisión (DUA) mediante AWS Lambda, con cálculos precisos de saldos, DAI e IVA.',
-                'features.dua.item1': 'Generación en segundos',
-                'features.dua.item2': 'Cálculos automáticos precisos',
-                'features.traceability.title': 'Trazabilidad Completa',
-                'features.traceability.desc': 'Seguimiento completo de materia prima bajo admisión temporal con reportes detallados y auditoría completa de operaciones.',
-                'features.traceability.item1': 'Trazabilidad en tiempo real',
-                'features.traceability.item2': 'Reportes de auditoría completos',
-                
-                // AWS
-                'aws.badge': 'Tecnología AWS',
-                'aws.title1': 'Reportes de Estado de Cuenta',
-                'aws.title2': 'en Tiempo Real',
-                'aws.description': 'Nuestra infraestructura en AWS garantiza generación instantánea de reportes complejos, cálculos precisos y disponibilidad 24/7 para tu operación.',
-                'aws.item1.title': 'Generación de DUA en Segundos',
-                'aws.item1.desc': 'Mediante AWS Lambda, procesamos y generamos Documentos Únicos de Admisión en tiempo récord.',
-                'aws.item2.title': 'Cálculo Automático de Saldos',
-                'aws.item2.desc': 'Saldos, DAI e IVA calculados automáticamente con precisión matemática garantizada.',
-                'aws.item3.title': 'Trazabilidad Completa',
-                'aws.item3.desc': 'Seguimiento completo de materia prima bajo admisión temporal con historial detallado.',
-                'aws.reportTitle': 'Reporte DUA — HIALEAH, S.A.',
-                'aws.regime': 'Régimen: Admisión Temporal',
-                'aws.reportLabel': 'REPORTE DUA',
-                'aws.initialBalance': 'Saldo Inicial',
-                'aws.dai': 'DAI Calculado',
-                'aws.finalBalance': 'Saldo Final',
-                'aws.preview': 'Vista previa del reporte generado por AWS',
-                
-                // Technology
-                'tech.title1': 'Construido con',
-                'tech.title2': 'Tecnología de Vanguardia',
-                'tech.description': 'Combinando lo mejor de Apple y AWS para crear la solución definitiva',
-                'tech.swift.subtitle': 'Lenguaje nativo de Apple',
-                'tech.swift.desc': 'Desarrollada completamente en Swift, aprovechando SwiftUI para crear una interfaz moderna, fluida y completamente nativa de macOS. Cada píxel está optimizado para el hardware de Apple.',
-                'tech.swift.item1': 'Rendimiento nativo sin igual',
-                'tech.swift.item2': 'Integración perfecta con macOS',
-                'tech.swift.item3': 'Actualizaciones automáticas via App Store',
-                'tech.aws.subtitle': 'Infraestructura empresarial',
-                'tech.aws.desc': 'Backend completamente alojado en AWS, garantizando escalabilidad, seguridad y disponibilidad global. Utilizamos servicios serverless para máximo rendimiento.',
-                'tech.aws.item1': 'Escalabilidad automática',
-                'tech.aws.item2': 'Seguridad de nivel empresarial',
-                'tech.aws.item3': '99.99% de disponibilidad garantizada',
-                
-                // Benefits
-                'benefits.title': 'Beneficios',
-                'benefits.subtitle': 'Reales',
-                'benefits.description': 'Resultados medibles que transforman tu operación de comercio exterior',
-                'benefits.time.title': 'Ahorro de Tiempo',
-                'benefits.time.desc': 'Reduce el tiempo de procesamiento de pedimentos en un 90%. Lo que antes tomaba horas, ahora se hace en minutos.',
-                'benefits.errors.title': 'Reducción de Errores',
-                'benefits.errors.desc': 'Validación automática previene errores costosos. Ahorra miles de dólares en multas y correcciones.',
-                'benefits.scale.title': 'Escalabilidad',
-                'benefits.scale.desc': 'Crece sin límites. Procesa desde 10 hasta 10,000 pedimentos sin cambios en la infraestructura.',
-                
-                // Reports
-                'reports.title': 'Reportes',
-                'reports.subtitle': 'Inteligentes',
-                'reports.description': 'Información detallada y accionable en tiempo real',
-                'reports.account.title': 'Estado de Cuenta',
-                'reports.account.desc': 'Reportes completos de estado de cuenta con cálculos automáticos de saldos, DAI e IVA. Exporta a PDF, Excel o CSV.',
-                'reports.account.item1': 'Cálculos automáticos precisos',
-                'reports.account.item2': 'Múltiples formatos de exportación',
-                'reports.traceability.title': 'Trazabilidad',
-                'reports.traceability.desc': 'Seguimiento completo de materia prima bajo admisión temporal con historial detallado y auditoría completa.',
-                'reports.traceability.item1': 'Historial completo de operaciones',
-                'reports.traceability.item2': 'Auditoría en tiempo real',
-                
-                // Contact
-                'contact.title1': '¿Listo para',
-                'contact.title2': 'Transformar',
-                'contact.title3': 'tu Operación?',
-                'contact.description': 'Agenda una demostración gratuita y descubre cómo ZakForeigner puede optimizar tu gestión de comercio exterior.',
-                'contact.name': 'Nombre',
-                'contact.namePlaceholder': 'Tu nombre',
-                'contact.company': 'Empresa',
-                'contact.companyPlaceholder': 'Nombre de tu empresa',
-                'contact.email': 'Email',
-                'contact.emailPlaceholder': 'tu@email.com',
-                'contact.message': 'Mensaje',
-                'contact.messagePlaceholder': 'Cuéntanos sobre tu operación...',
-                'contact.submit': 'Enviar Solicitud de Demo',
-                
-                // Footer
-                'footer.description': 'La solución nativa definitiva para gestión de comercio exterior en macOS.',
-                'footer.product': 'Producto',
-                'footer.features': 'Funcionalidades',
-                'footer.technology': 'Tecnología',
-                'footer.reports': 'Reportes',
-                'footer.company': 'Empresa',
-                'footer.contact': 'Contacto',
-                'footer.support': 'Soporte',
-                'footer.docs': 'Documentación',
-                'footer.legal': 'Legal',
-                'footer.privacy': 'Privacidad',
-                'footer.terms': 'Términos',
-                'footer.cookies': 'Cookies',
-                'footer.copyright': '© 2026 ZakForeigner. Todos los derechos reservados.',
-                'footer.tagline': 'Diseñado para macOS. Potenciado por AWS.'
-            },
-            ko: {
-                // Navigation
-                'nav.features': '기능',
-                'nav.aws': 'AWS 기술',
-                'nav.reports': '보고서',
-                'nav.technology': '기술',
-                'nav.benefits': '혜택',
-                'nav.demo': '데모 예약',
-                
-                // Hero
-                'hero.badge': '네이티브 macOS 애플리케이션',
-                'hero.title1': 'macOS 속도의',
-                'hero.title2': '무역 관리',
-                'hero.subtitle1': '일시 수입 및 능동 완화 체제 하의 기업을 위한 최종 네이티브 솔루션',
-                'hero.subtitle2': '일시 수입',
-                'hero.subtitle3': '및',
-                'hero.subtitle4': '능동 완화',
-                'hero.powered': 'Swift와',
-                'hero.and': 'AWS로 구동되어',
-                'hero.performance': '뛰어난 성능을 제공합니다',
-                'hero.demoBtn': '무료 데모 예약',
-                'hero.featuresBtn': '기능 보기',
-                'hero.windowTitle': 'ZakForeigner — 컨테이너 편집기 (ISO 6346)',
-                
-                // Stats
-                'stats.uptime': 'AWS 가동 시간',
-                'stats.response': '응답 시간',
-                'stats.scalability': '확장성',
-                'stats.native': '네이티브 macOS',
-                
-                // Features
-                'features.title': '고급',
-                'features.subtitle': '기능',
-                'features.description': '정확성과 속도를 요구하는 전문가를 위해 설계되었습니다',
-                'features.performance.title': '네이티브 성능',
-                'features.performance.desc': 'macOS용 Swift로 개발되어 Apple 하드웨어를 최대한 활용합니다. 전례 없는 효율성으로 수천 개의 통관 신고서를 밀리초 단위로 처리합니다.',
-                'features.performance.item1': '최적화된 멀티스레드 처리',
-                'features.performance.item2': 'GPU 가속을 위한 Metal 활용',
-                'features.validation.title': '지능형 검증',
-                'features.validation.desc': 'ISO 6346 컨테이너 번호, 인코텀즈, 법적 기한 등을 검증하는 고급 알고리즘으로 모든 전송 또는 처리 전에 검증합니다.',
-                'features.validation.item1': '실시간 검증',
-                'features.validation.item2': '비용이 많이 드는 오류 방지',
-                'features.cloud.title': 'AWS 엔터프라이즈 클라우드',
-                'features.cloud.desc': '데이터 보안, 즉시 전역 가용성 및 규정 준수를 보장하기 위해 AWS 클라우드에서 생성된 복잡한 보고서.',
-                'features.cloud.item1': '확장 가능한 인프라',
-                'features.cloud.item2': '자동 백업 및 중복',
-                'features.containers.title': '컨테이너 관리',
-                'features.containers.desc': '자동 검증, 전체 기록 및 실시간 추적성을 갖춘 ISO 6346 컨테이너 번호용 완전한 편집기.',
-                'features.containers.item1': '자동 ISO 6346 검증',
-                'features.containers.item2': '전체 운영 기록',
-                'features.dua.title': 'DUA 생성',
-                'features.dua.desc': 'AWS Lambda를 통한 자동 입국 단일 문서(DUA) 생성으로 잔액, DAI 및 부가세를 정확하게 계산합니다.',
-                'features.dua.item1': '초 단위 생성',
-                'features.dua.item2': '정확한 자동 계산',
-                'features.traceability.title': '완전한 추적성',
-                'features.traceability.desc': '일시 수입 하의 원자재에 대한 완전한 추적으로 상세한 보고서 및 완전한 운영 감사를 제공합니다.',
-                'features.traceability.item1': '실시간 추적성',
-                'features.traceability.item2': '완전한 감사 보고서',
-                
-                // AWS
-                'aws.badge': 'AWS 기술',
-                'aws.title1': '실시간',
-                'aws.title2': '계정 상태 보고서',
-                'aws.description': '우리의 AWS 인프라는 복잡한 보고서의 즉시 생성, 정확한 계산 및 운영을 위한 24/7 가용성을 보장합니다.',
-                'aws.item1.title': '초 단위 DUA 생성',
-                'aws.item1.desc': 'AWS Lambda를 통해 기록적인 시간에 입국 단일 문서를 처리하고 생성합니다.',
-                'aws.item2.title': '자동 잔액 계산',
-                'aws.item2.desc': '수학적 정확도가 보장된 자동 계산 잔액, DAI 및 부가세.',
-                'aws.item3.title': '완전한 추적성',
-                'aws.item3.desc': '상세한 기록과 함께 일시 수입 하의 원자재에 대한 완전한 추적.',
-                'aws.reportTitle': 'DUA 보고서 — HIALEAH, S.A.',
-                'aws.regime': '체제: 일시 수입',
-                'aws.reportLabel': 'DUA 보고서',
-                'aws.initialBalance': '초기 잔액',
-                'aws.dai': '계산된 DAI',
-                'aws.finalBalance': '최종 잔액',
-                'aws.preview': 'AWS에서 생성된 보고서 미리보기',
-                
-                // Technology
-                'tech.title1': '최첨단',
-                'tech.title2': '기술로 구축',
-                'tech.description': 'Apple과 AWS의 최고를 결합하여 최종 솔루션을 만듭니다',
-                'tech.swift.subtitle': 'Apple의 네이티브 언어',
-                'tech.swift.desc': '완전히 Swift로 개발되어 SwiftUI를 활용하여 macOS용 현대적이고 유동적이며 완전히 네이티브한 인터페이스를 만듭니다. 모든 픽셀이 Apple 하드웨어에 최적화되어 있습니다.',
-                'tech.swift.item1': '비교할 수 없는 네이티브 성능',
-                'tech.swift.item2': 'macOS와의 완벽한 통합',
-                'tech.swift.item3': 'App Store를 통한 자동 업데이트',
-                'tech.aws.subtitle': '엔터프라이즈 인프라',
-                'tech.aws.desc': '확장성, 보안 및 전역 가용성을 보장하는 AWS에 완전히 호스팅된 백엔드. 최대 성능을 위해 서버리스 서비스를 사용합니다.',
-                'tech.aws.item1': '자동 확장',
-                'tech.aws.item2': '엔터프라이즈 수준의 보안',
-                'tech.aws.item3': '99.99% 가용성 보장',
-                
-                // Benefits
-                'benefits.title': '실제',
-                'benefits.subtitle': '혜택',
-                'benefits.description': '무역 운영을 변화시키는 측정 가능한 결과',
-                'benefits.time.title': '시간 절약',
-                'benefits.time.desc': '통관 신고서 처리 시간을 90% 단축합니다. 이전에는 몇 시간이 걸렸던 작업이 이제 몇 분 만에 완료됩니다.',
-                'benefits.errors.title': '오류 감소',
-                'benefits.errors.desc': '자동 검증으로 비용이 많이 드는 오류를 방지합니다. 벌금 및 수정 사항에서 수천 달러를 절약합니다.',
-                'benefits.scale.title': '확장성',
-                'benefits.scale.desc': '제한 없이 성장합니다. 인프라 변경 없이 10개에서 10,000개의 통관 신고서를 처리합니다.',
-                
-                // Reports
-                'reports.title': '지능형',
-                'reports.subtitle': '보고서',
-                'reports.description': '실시간으로 상세하고 실행 가능한 정보',
-                'reports.account.title': '계정 상태',
-                'reports.account.desc': '잔액, DAI 및 부가세의 자동 계산이 포함된 완전한 계정 상태 보고서. PDF, Excel 또는 CSV로 내보냅니다.',
-                'reports.account.item1': '정확한 자동 계산',
-                'reports.account.item2': '다양한 내보내기 형식',
-                'reports.traceability.title': '추적성',
-                'reports.traceability.desc': '상세한 기록 및 완전한 감사와 함께 일시 수입 하의 원자재에 대한 완전한 추적.',
-                'reports.traceability.item1': '전체 운영 기록',
-                'reports.traceability.item2': '실시간 감사',
-                
-                // Contact
-                'contact.title1': '운영을',
-                'contact.title2': '변환할',
-                'contact.title3': '준비가 되셨나요?',
-                'contact.description': '무료 데모를 예약하고 ZakForeigner가 무역 관리를 어떻게 최적화할 수 있는지 알아보세요.',
-                'contact.name': '이름',
-                'contact.namePlaceholder': '귀하의 이름',
-                'contact.company': '회사',
-                'contact.companyPlaceholder': '회사명',
-                'contact.email': '이메일',
-                'contact.emailPlaceholder': 'your@email.com',
-                'contact.message': '메시지',
-                'contact.messagePlaceholder': '운영에 대해 알려주세요...',
-                'contact.submit': '데모 요청 보내기',
-                
-                // Footer
-                'footer.description': 'macOS용 무역 관리의 최종 네이티브 솔루션.',
-                'footer.product': '제품',
-                'footer.features': '기능',
-                'footer.technology': '기술',
-                'footer.reports': '보고서',
-                'footer.company': '회사',
-                'footer.contact': '연락처',
-                'footer.support': '지원',
-                'footer.docs': '문서',
-                'footer.legal': '법적',
-                'footer.privacy': '개인정보 보호',
-                'footer.terms': '약관',
-                'footer.cookies': '쿠키',
-                'footer.copyright': '© 2026 ZakForeigner. 모든 권리 보유.',
-                'footer.tagline': 'macOS용으로 설계. AWS로 구동.'
-            }
-        };
+              <label class="block eyebrow text-[var(--text-faint)] mb-2" data-i18n="contact.name">NOMBRE</label>
+              <input type="text" class="w-full paper-input" data-i18n-placeholder="contact.namePlaceholder" placeholder="Tu nombre">
+            </div>
+            <div>
+              <label class="block eyebrow text-[var(--text-faint)] mb-2" data-i18n="contact.company">EMPRESA</label>
+              <input type="text" class="w-full paper-input" data-i18n-placeholder="contact.companyPlaceholder" placeholder="Nombre de tu empresa">
+            </div>
+          </div>
+          <div>
+            <label class="block eyebrow text-[var(--text-faint)] mb-2" data-i18n="contact.email">EMAIL</label>
+            <input type="email" class="w-full paper-input" data-i18n-placeholder="contact.emailPlaceholder" placeholder="tu@email.com">
+          </div>
+          <div>
+            <label class="block eyebrow text-[var(--text-faint)] mb-2" data-i18n="contact.message">MENSAJE</label>
+            <textarea rows="4" class="w-full paper-input" data-i18n-placeholder="contact.messagePlaceholder" placeholder="Cuéntanos sobre tu operación..."></textarea>
+          </div>
+          <button type="submit" class="btn-rust w-full px-8 py-3.5 rounded-md text-sm font-semibold text-white flex items-center justify-center gap-2">
+            <i data-lucide="send" class="w-4 h-4"></i>
+            <span data-i18n="contact.submit">Enviar solicitud de demo</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Current language
-        let currentLang = localStorage.getItem('language') || 'es';
+<!-- Footer -->
+<footer class="py-14 border-t hairline">
+  <div class="container mx-auto px-6">
+    <div class="grid md:grid-cols-4 gap-12 mb-10">
+      <div>
+        <div class="font-mono text-lg text-[var(--paper)] mb-4"><span class="text-[var(--rust)]">▮</span> ZAK/FOREIGNER</div>
+        <p class="text-[var(--text-faint)] text-sm leading-relaxed" data-i18n="footer.description">La solución nativa definitiva para comercio exterior en macOS.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold text-[var(--paper)] mb-4 text-sm" data-i18n="footer.product">Producto</h4>
+        <ul class="space-y-2 text-sm text-[var(--text-faint)]">
+          <li><a href="#features" class="hover:text-[var(--amber)] transition" data-i18n="footer.features">Funcionalidades</a></li>
+          <li><a href="#tecnologia" class="hover:text-[var(--amber)] transition" data-i18n="footer.technology">Tecnología</a></li>
+          <li><a href="#reportes" class="hover:text-[var(--amber)] transition" data-i18n="footer.reports">Reportes</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-[var(--paper)] mb-4 text-sm" data-i18n="footer.company">Empresa</h4>
+        <ul class="space-y-2 text-sm text-[var(--text-faint)]">
+          <li><a href="#contacto" class="hover:text-[var(--amber)] transition" data-i18n="footer.contact">Contacto</a></li>
+          <li><a href="#" class="hover:text-[var(--amber)] transition" data-i18n="footer.support">Soporte</a></li>
+          <li><a href="#" class="hover:text-[var(--amber)] transition" data-i18n="footer.docs">Documentación</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-[var(--paper)] mb-4 text-sm" data-i18n="footer.legal">Legal</h4>
+        <ul class="space-y-2 text-sm text-[var(--text-faint)]">
+          <li><a href="#" class="hover:text-[var(--amber)] transition" data-i18n="footer.privacy">Privacidad</a></li>
+          <li><a href="#" class="hover:text-[var(--amber)] transition" data-i18n="footer.terms">Términos</a></li>
+          <li><a href="#" class="hover:text-[var(--amber)] transition" data-i18n="footer.cookies">Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t hairline pt-6 flex flex-col md:flex-row justify-between text-xs text-[var(--text-faint)] font-mono gap-2">
+      <span data-i18n="footer.copyright">© 2026 ZakForeigner. Todos los derechos reservados.</span>
+      <span data-i18n="footer.tagline">DISEÑADO PARA macOS · POTENCIADO POR AWS</span>
+    </div>
+  </div>
+</footer>
 
-        // Initialize Lucide icons
-        lucide.createIcons();
+<script>
+lucide.createIcons();
 
-        // Translation function
-        function translate(key) {
-            return translations[currentLang][key] || key;
-        }
+/* ---------- ISO 6346 live validator (hero signature element) ---------- */
+const LETTER_VALUES = {A:10,B:12,C:13,D:14,E:15,F:16,G:17,H:18,I:19,J:20,K:21,L:23,M:24,N:25,O:26,P:27,Q:28,R:29,S:30,T:31,U:32,V:34,W:35,X:36,Y:37,Z:38};
+function charValue(ch){ return /[0-9]/.test(ch) ? parseInt(ch,10) : LETTER_VALUES[ch]; }
+function checkDigit(code10){
+  let sum = 0;
+  for(let i=0;i<10;i++){ sum += charValue(code10[i]) * Math.pow(2,i); }
+  let d = sum % 11;
+  if(d === 10) d = 0;
+  return {digit:d, sum};
+}
+const DEMO_CODES = [
+  {owner:'ZKF', cat:'U', serial:'305442'},
+  {owner:'ZKF', cat:'U', serial:'118820'},
+  {owner:'ZKF', cat:'U', serial:'972014'},
+];
+let demoIndex = 0;
 
-        // Update all text content
-        function updateLanguage(lang) {
-            currentLang = lang;
-            localStorage.setItem('language', lang);
-            
-            // Update HTML lang attribute
-            document.documentElement.lang = lang;
-            
-            // Add/remove korean class for font
-            if (lang === 'ko') {
-                document.body.classList.add('korean');
-            } else {
-                document.body.classList.remove('korean');
-            }
-            
-            // Update all elements with data-i18n attribute
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                const translation = translate(key);
-                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                    if (el.hasAttribute('data-i18n-placeholder')) {
-                        el.placeholder = translate(el.getAttribute('data-i18n-placeholder'));
-                    }
-                } else {
-                    el.textContent = translation;
-                }
-            });
-            
-            // Update current language indicator
-            document.getElementById('currentLang').textContent = lang.toUpperCase();
-            
-            // Update active language option
-            document.querySelectorAll('.lang-option').forEach(opt => {
-                if (opt.getAttribute('data-lang') === lang) {
-                    opt.classList.add('active');
-                } else {
-                    opt.classList.remove('active');
-                }
-            });
-            
-            // Reinitialize icons
-            lucide.createIcons();
-        }
+function renderCode(codeObj, digit, revealed){
+  const el = document.getElementById('containerCode');
+  const full = codeObj.owner + codeObj.cat + codeObj.serial;
+  let html = '';
+  for(const ch of full){ html += `<span class="digit-box">${ch}</span>`; }
+  html += `<span class="digit-box check-digit">${revealed ? digit : '·'}</span>`;
+  el.innerHTML = html;
+}
 
-        // Language selector
-        const langButton = document.getElementById('langButton');
-        const langDropdown = document.getElementById('langDropdown');
-        
-        langButton.addEventListener('click', (e) => {
-            e.stopPropagation();
-            langDropdown.classList.toggle('active');
-        });
-        
-        document.querySelectorAll('.lang-option').forEach(option => {
-            option.addEventListener('click', () => {
-                const lang = option.getAttribute('data-lang');
-                updateLanguage(lang);
-                langDropdown.classList.remove('active');
-            });
-        });
-        
-        // Close dropdown when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!langButton.contains(e.target) && !langDropdown.contains(e.target)) {
-                langDropdown.classList.remove('active');
-            }
-        });
+async function runValidatorLoop(){
+  while(true){
+    const c = DEMO_CODES[demoIndex % DEMO_CODES.length];
+    demoIndex++;
+    renderCode(c, '', false);
+    document.getElementById('ownerVal').textContent = c.owner;
+    document.getElementById('catVal').textContent = c.cat;
+    document.getElementById('serialVal').textContent = c.serial;
+    document.getElementById('sumVal').textContent = '—';
+    document.getElementById('statusText').textContent = translate('hero.calculating');
+    document.getElementById('statusDot').style.background = 'var(--text-faint)';
+    await sleep(900);
 
-        // Initialize language on load
-        updateLanguage(currentLang);
+    const {digit, sum} = checkDigit(c.owner + c.cat + c.serial);
+    document.getElementById('sumVal').textContent = sum.toLocaleString();
+    renderCode(c, digit, true);
+    document.getElementById('statusText').textContent = translate('hero.valid');
+    document.getElementById('statusDot').style.background = 'var(--amber)';
+    await sleep(3200);
+  }
+}
+function sleep(ms){ return new Promise(r=>setTimeout(r,ms)); }
 
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+/* ---------- animated stat counters ---------- */
+function animateCounter(el, target, duration){
+  const start = performance.now();
+  function tick(now){
+    const p = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.round(eased * target).toLocaleString();
+    if(p < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+let statsPlayed = false;
+const statObserver = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting && !statsPlayed){
+      statsPlayed = true;
+      animateCounter(document.getElementById('statTime'), 90, 1200);
+      animateCounter(document.getElementById('statResponse'), 2, 900);
+      animateCounter(document.getElementById('statIso'), 6346, 1600);
+    }
+  });
+}, {threshold:.4});
+const statGridEl = document.getElementById('statGrid');
+if(statGridEl) statObserver.observe(statGridEl);
 
-        // Header scroll effect
-        let lastScroll = 0;
-        const header = document.getElementById('header');
-        
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
-                header.classList.add('glass-strong');
-                header.classList.remove('glass');
-            } else {
-                header.classList.add('glass');
-                header.classList.remove('glass-strong');
-            }
-            
-            lastScroll = currentScroll;
-        });
+/* ---------- terminal log (AWS section) ---------- */
+const LOG_LINES = [
+  '$ pedimento --recibido No. 25540000234',
+  '→ validando ISO 6346 ................ OK',
+  '→ validando Incoterms ................ OK',
+  '→ calculando DAI ................ $124,589.05',
+  '→ calculando IVA ................ $199,342.48',
+  '→ generando DUA ................ 1.8s',
+  '✓ documento listo — lambda-exec #4471'
+];
+async function runTerminal(){
+  const el = document.getElementById('terminalLog');
+  if(!el) return;
+  while(true){
+    el.innerHTML = '';
+    for(const line of LOG_LINES){
+      const div = document.createElement('div');
+      div.className = line.startsWith('✓') ? 'text-[var(--amber)]' : (line.startsWith('$') ? 'text-[var(--paper)]' : '');
+      el.appendChild(div);
+      for(const ch of line){
+        div.textContent += ch;
+        await sleep(14);
+      }
+      el.scrollTop = el.scrollHeight;
+      await sleep(220);
+    }
+    await sleep(2600);
+  }
+}
+runTerminal();
 
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+/* report timestamp */
+function updateTimestamp(){
+  const now = new Date();
+  document.getElementById('reportTimestamp').textContent = now.toISOString().slice(0,16).replace('T',' ') + ' UTC';
+}
+updateTimestamp();
+setInterval(updateTimestamp, 30000);
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
+/* ---------- i18n ---------- */
+const translations = {
+  es: {
+    'nav.features':'Funcionalidades','nav.aws':'Motor AWS','nav.reports':'Reportes','nav.technology':'Tecnología','nav.benefits':'Resultados','nav.demo':'Agendar Demo',
+    'hero.badge':'SOFTWARE NATIVO macOS · MOTOR AWS','hero.title1':'Comercio exterior,','hero.title2':'verificado línea por línea.',
+    'hero.subtitle1':'La plataforma nativa para empresas que operan bajo','hero.subtitle2':'Admisión Temporal','hero.subtitle3':'y','hero.subtitle4':'Perfeccionamiento Activo',
+    'hero.powered':'Construida en Swift para macOS, respaldada por infraestructura serverless de AWS.',
+    'hero.demoBtn':'Agendar demo gratuita','hero.featuresBtn':'Ver funcionalidades',
+    'hero.windowTitle':'VALIDADOR ISO 6346 — EN VIVO','hero.codeLabel':'CÓDIGO DE CONTENEDOR',
+    'hero.calculating':'CALCULANDO DÍGITO VERIFICADOR…','hero.valid':'CÓDIGO VÁLIDO ✓',
+    'hero.owner':'Código propietario','hero.category':'Categoría','hero.serial':'Número de serie','hero.checksum':'Suma ponderada',
+    'stats.time':'menos tiempo','stats.response':'gen. de DUA','stats.uptime':'disponibilidad','stats.iso':'ISO validado',
+    'features.label':'MÓDULOS DEL SISTEMA','features.title':'Funcionalidades','features.subtitle':'construidas para aduanas',
+    'features.description':'Cada módulo resuelve un punto de fricción real en la operación diaria de comercio exterior.',
+    'features.dua.eyebrow':'MOTOR AWS LAMBDA','features.dua.title':'Generación de DUA',
+    'features.dua.desc':'Documentos Únicos de Admisión generados en segundos, con cálculo automático de saldos, DAI e IVA sobre infraestructura serverless.',
+    'features.dua.item1':'→ generación en <2s','features.dua.item2':'→ cálculo sin intervención manual',
+    'features.performance.title':'Rendimiento nativo','features.performance.desc':'Swift + SwiftUI aprovechando al máximo el hardware de Apple, incluida aceleración por Metal.',
+    'features.validation.title':'Validación inteligente','features.validation.desc':'ISO 6346, Incoterms y plazos legales verificados antes de cualquier envío o procesamiento.',
+    'features.cloud.title':'Nube AWS Enterprise','features.cloud.desc':'Reportes complejos generados en la nube con seguridad de datos y disponibilidad global.',
+    'features.containers.title':'Gestión de contenedores','features.containers.desc':'Editor completo para números ISO 6346 con historial y trazabilidad en tiempo real.',
+    'features.traceability.title':'Trazabilidad completa','features.traceability.desc':'Seguimiento de materia prima bajo admisión temporal, con auditoría de cada operación desde su origen.',
+    'features.traceability.tag':'MOD.06 / AUDITORÍA EN TIEMPO REAL',
+    'aws.label':'INFRAESTRUCTURA','aws.title1':'Reportes de estado de cuenta,','aws.title2':'generados en tiempo real',
+    'aws.description':'La infraestructura AWS garantiza generación instantánea de reportes, cálculos precisos y disponibilidad continua para tu operación.',
+    'aws.item1.title':'Generación de DUA en segundos','aws.item1.desc':'AWS Lambda procesa y genera Documentos Únicos de Admisión en tiempo récord.',
+    'aws.item2.title':'Cálculo automático de saldos','aws.item2.desc':'Saldos, DAI e IVA calculados con precisión matemática garantizada.',
+    'aws.item3.title':'Trazabilidad completa','aws.item3.desc':'Historial detallado de materia prima bajo admisión temporal.',
+    'aws.reportLabel':'REPORTE DUA','aws.regime':'Régimen: Admisión Temporal','aws.stampValid':'VALIDADO',
+    'aws.initialBalance':'Saldo inicial','aws.dai':'DAI calculado','aws.finalBalance':'Saldo final','aws.generatedBy':'Generado vía AWS Lambda',
+    'aws.terminalTitle':'lambda-exec.log',
+    'tech.label':'ARQUITECTURA','tech.title1':'Construida con','tech.title2':'tecnología de vanguardia',
+    'tech.swift.subtitle':'Lenguaje nativo de Apple','tech.swift.desc':'Desarrollada completamente en Swift, con una interfaz moderna y fluida, nativa de macOS en cada detalle.',
+    'tech.swift.item1':'→ rendimiento nativo sin capas intermedias','tech.swift.item2':'→ integración perfecta con macOS','tech.swift.item3':'→ actualizaciones vía App Store',
+    'tech.aws.subtitle':'Infraestructura empresarial','tech.aws.desc':'Backend alojado en AWS, con servicios serverless para escalabilidad, seguridad y disponibilidad global.',
+    'tech.aws.item1':'→ escalabilidad automática','tech.aws.item2':'→ seguridad de nivel empresarial','tech.aws.item3':'→ 99.99% de disponibilidad',
+    'benefits.label':'ANTES / DESPUÉS','benefits.title':'Resultados','benefits.subtitle':'medibles, no promesas',
+    'benefits.time.title':'Tiempo de procesamiento','benefits.time.desc':'Reducción del 90% en el procesamiento de pedimentos.',
+    'benefits.errors.title':'Incidencias mensuales','benefits.errors.desc':'Validación automática antes de cualquier envío.',
+    'benefits.scale.title':'Capacidad de operación','benefits.scale.desc':'Sin cambios de infraestructura al crecer.',
+    'benefits.before':'ANTES','benefits.after':'AHORA','benefits.min':'MÍNIMO','benefits.max':'SIN LÍMITE',
+    'reports.label':'SALIDA DE DATOS','reports.title':'Reportes','reports.subtitle':'inteligentes',
+    'reports.account.title':'Estado de cuenta','reports.account.desc':'Cálculos automáticos de saldos, DAI e IVA. Exporta a PDF, Excel o CSV.',
+    'reports.traceability.title':'Trazabilidad','reports.traceability.desc':'Historial detallado y auditoría completa de materia prima bajo admisión temporal.',
+    'reports.traceability.tag1':'TIEMPO REAL','reports.traceability.tag2':'AUDITABLE',
+    'contact.label':'SIGUIENTE PASO','contact.title1':'¿Listo para','contact.title2':'transformar','contact.title3':'tu operación?',
+    'contact.description':'Agenda una demostración gratuita y descubre cómo ZakForeigner optimiza tu gestión de comercio exterior.',
+    'contact.stamp':'RESPUESTA EN 24H','contact.name':'NOMBRE','contact.namePlaceholder':'Tu nombre',
+    'contact.company':'EMPRESA','contact.companyPlaceholder':'Nombre de tu empresa','contact.email':'EMAIL','contact.emailPlaceholder':'tu@email.com',
+    'contact.message':'MENSAJE','contact.messagePlaceholder':'Cuéntanos sobre tu operación...','contact.submit':'Enviar solicitud de demo',
+    'footer.description':'La solución nativa definitiva para comercio exterior en macOS.','footer.product':'Producto','footer.features':'Funcionalidades',
+    'footer.technology':'Tecnología','footer.reports':'Reportes','footer.company':'Empresa','footer.contact':'Contacto','footer.support':'Soporte','footer.docs':'Documentación',
+    'footer.legal':'Legal','footer.privacy':'Privacidad','footer.terms':'Términos','footer.cookies':'Cookies',
+    'footer.copyright':'© 2026 ZakForeigner. Todos los derechos reservados.','footer.tagline':'DISEÑADO PARA macOS · POTENCIADO POR AWS'
+  },
+  ko: {
+    'nav.features':'기능','nav.aws':'AWS 엔진','nav.reports':'보고서','nav.technology':'기술','nav.benefits':'성과','nav.demo':'데모 예약',
+    'hero.badge':'네이티브 macOS 소프트웨어 · AWS 엔진','hero.title1':'무역 관리,','hero.title2':'한 줄 한 줄 검증됩니다.',
+    'hero.subtitle1':'일시 수입 및','hero.subtitle2':'능동 완화','hero.subtitle3':'체제 하에 운영되는 기업을 위한','hero.subtitle4':'네이티브 플랫폼',
+    'hero.powered':'macOS용 Swift로 제작되었으며 AWS 서버리스 인프라로 뒷받침됩니다.',
+    'hero.demoBtn':'무료 데모 예약','hero.featuresBtn':'기능 보기',
+    'hero.windowTitle':'ISO 6346 검증기 — 실시간','hero.codeLabel':'컨테이너 코드',
+    'hero.calculating':'체크 디지트 계산 중…','hero.valid':'유효한 코드 ✓',
+    'hero.owner':'소유자 코드','hero.category':'카테고리','hero.serial':'일련번호','hero.checksum':'가중 합계',
+    'stats.time':'시간 절감','stats.response':'DUA 생성','stats.uptime':'가용성','stats.iso':'ISO 검증',
+    'features.label':'시스템 모듈','features.title':'세관을 위한','features.subtitle':'전문 기능',
+    'features.description':'각 모듈은 무역 운영에서 실제로 겪는 문제를 해결합니다.',
+    'features.dua.eyebrow':'AWS LAMBDA 엔진','features.dua.title':'DUA 생성',
+    'features.dua.desc':'서버리스 인프라 위에서 잔액, DAI, 부가세를 자동 계산하여 몇 초 만에 입국 단일 문서를 생성합니다.',
+    'features.dua.item1':'→ 2초 이내 생성','features.dua.item2':'→ 수동 개입 없는 계산',
+    'features.performance.title':'네이티브 성능','features.performance.desc':'Swift + SwiftUI로 Apple 하드웨어와 Metal 가속을 최대한 활용합니다.',
+    'features.validation.title':'지능형 검증','features.validation.desc':'전송 또는 처리 전에 ISO 6346, 인코텀즈, 법적 기한을 검증합니다.',
+    'features.cloud.title':'AWS 엔터프라이즈 클라우드','features.cloud.desc':'데이터 보안과 글로벌 가용성을 갖춘 클라우드 기반 보고서.',
+    'features.containers.title':'컨테이너 관리','features.containers.desc':'실시간 기록과 추적성을 갖춘 ISO 6346 번호 편집기.',
+    'features.traceability.title':'완전한 추적성','features.traceability.desc':'일시 수입 원자재를 원점부터 감사하여 추적합니다.',
+    'features.traceability.tag':'MOD.06 / 실시간 감사',
+    'aws.label':'인프라','aws.title1':'실시간으로 생성되는','aws.title2':'계정 상태 보고서',
+    'aws.description':'AWS 인프라는 복잡한 보고서의 즉시 생성과 정확한 계산, 지속적인 가용성을 보장합니다.',
+    'aws.item1.title':'초 단위 DUA 생성','aws.item1.desc':'AWS Lambda가 기록적인 시간 내에 입국 단일 문서를 처리·생성합니다.',
+    'aws.item2.title':'자동 잔액 계산','aws.item2.desc':'수학적으로 정확한 잔액, DAI, 부가세 계산.',
+    'aws.item3.title':'완전한 추적성','aws.item3.desc':'일시 수입 원자재의 상세 기록.',
+    'aws.reportLabel':'DUA 보고서','aws.regime':'체제: 일시 수입','aws.stampValid':'검증됨',
+    'aws.initialBalance':'초기 잔액','aws.dai':'계산된 DAI','aws.finalBalance':'최종 잔액','aws.generatedBy':'AWS Lambda로 생성됨',
+    'aws.terminalTitle':'lambda-exec.log',
+    'tech.label':'아키텍처','tech.title1':'최첨단 기술로','tech.title2':'구축되었습니다',
+    'tech.swift.subtitle':'Apple의 네이티브 언어','tech.swift.desc':'완전히 Swift로 개발되어 세부까지 macOS 네이티브인 현대적이고 유동적인 인터페이스.',
+    'tech.swift.item1':'→ 중간 계층 없는 네이티브 성능','tech.swift.item2':'→ macOS와의 완벽한 통합','tech.swift.item3':'→ App Store를 통한 업데이트',
+    'tech.aws.subtitle':'엔터프라이즈 인프라','tech.aws.desc':'확장성, 보안, 글로벌 가용성을 위한 서버리스 서비스 기반 AWS 백엔드.',
+    'tech.aws.item1':'→ 자동 확장','tech.aws.item2':'→ 엔터프라이즈급 보안','tech.aws.item3':'→ 99.99% 가용성',
+    'benefits.label':'이전 / 이후','benefits.title':'측정 가능한','benefits.subtitle':'성과',
+    'benefits.time.title':'처리 시간','benefits.time.desc':'통관 신고서 처리 시간 90% 단축.',
+    'benefits.errors.title':'월간 오류 건수','benefits.errors.desc':'전송 전 자동 검증.',
+    'benefits.scale.title':'운영 처리 능력','benefits.scale.desc':'인프라 변경 없이 확장.',
+    'benefits.before':'이전','benefits.after':'현재','benefits.min':'최소','benefits.max':'무제한',
+    'reports.label':'데이터 출력','reports.title':'지능형','reports.subtitle':'보고서',
+    'reports.account.title':'계정 상태','reports.account.desc':'잔액, DAI, 부가세 자동 계산. PDF, Excel, CSV로 내보내기.',
+    'reports.traceability.title':'추적성','reports.traceability.desc':'일시 수입 원자재의 상세 기록과 완전한 감사.',
+    'reports.traceability.tag1':'실시간','reports.traceability.tag2':'감사 가능',
+    'contact.label':'다음 단계','contact.title1':'운영을','contact.title2':'변화시킬','contact.title3':'준비가 되셨나요?',
+    'contact.description':'무료 데모를 예약하고 ZakForeigner가 무역 관리를 어떻게 최적화하는지 확인하세요.',
+    'contact.stamp':'24시간 내 응답','contact.name':'이름','contact.namePlaceholder':'귀하의 이름',
+    'contact.company':'회사','contact.companyPlaceholder':'회사명','contact.email':'이메일','contact.emailPlaceholder':'your@email.com',
+    'contact.message':'메시지','contact.messagePlaceholder':'운영에 대해 알려주세요...','contact.submit':'데모 요청 보내기',
+    'footer.description':'macOS용 무역 관리의 최종 네이티브 솔루션.','footer.product':'제품','footer.features':'기능',
+    'footer.technology':'기술','footer.reports':'보고서','footer.company':'회사','footer.contact':'연락처','footer.support':'지원','footer.docs':'문서',
+    'footer.legal':'법적','footer.privacy':'개인정보 보호','footer.terms':'약관','footer.cookies':'쿠키',
+    'footer.copyright':'© 2026 ZakForeigner. 모든 권리 보유.','footer.tagline':'macOS용으로 설계 · AWS로 구동'
+  }
+};
 
-        // Observe all feature cards and sections
-        document.querySelectorAll('.feature-card, section > div').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-            observer.observe(el);
-        });
+let currentLang = 'es';
+function translate(key){ return translations[currentLang][key] || key; }
 
-        // Form submission (placeholder)
-        document.querySelector('form')?.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const message = currentLang === 'ko' 
-                ? '관심을 가져주셔서 감사합니다! 곧 연락드리겠습니다.' 
-                : '¡Gracias por tu interés! Te contactaremos pronto.';
-            alert(message);
-        });
-    </script>
+function updateLanguage(lang){
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.body.classList.toggle('korean', lang === 'ko');
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    el.textContent = translate(key);
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+    el.placeholder = translate(el.getAttribute('data-i18n-placeholder'));
+  });
+  document.getElementById('currentLang').textContent = lang.toUpperCase();
+  document.querySelectorAll('.lang-option').forEach(opt=>{
+    opt.classList.toggle('active', opt.getAttribute('data-lang') === lang);
+  });
+}
+
+const langButton = document.getElementById('langButton');
+const langDropdown = document.getElementById('langDropdown');
+langButton.addEventListener('click', e=>{ e.stopPropagation(); langDropdown.classList.toggle('active'); });
+document.querySelectorAll('.lang-option').forEach(option=>{
+  option.addEventListener('click', ()=>{ updateLanguage(option.getAttribute('data-lang')); langDropdown.classList.remove('active'); });
+});
+document.addEventListener('click', e=>{
+  if(!langButton.contains(e.target) && !langDropdown.contains(e.target)) langDropdown.classList.remove('active');
+});
+
+/* smooth scroll */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', function(e){
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+
+/* header on scroll */
+window.addEventListener('scroll', ()=>{
+  const header = document.getElementById('header');
+  header.style.background = window.pageYOffset > 80 ? 'rgba(10,14,20,0.92)' : 'rgba(10,14,20,0.75)';
+});
+
+/* reveal on scroll */
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){ entry.target.style.opacity='1'; entry.target.style.transform='translateY(0)'; }
+  });
+}, {threshold:.1, rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.feature-card, .panel, .panel-strong').forEach((el, i)=>{
+  el.style.opacity='0'; el.style.transform='translateY(24px)';
+  const delay = el.classList.contains('feature-card') ? (i % 6) * 90 : 0;
+  el.style.transition=`opacity .6s ease-out ${delay}ms, transform .6s ease-out ${delay}ms`;
+  observer.observe(el);
+});
+
+/* form submit */
+document.querySelector('form')?.addEventListener('submit', e=>{
+  e.preventDefault();
+  alert(currentLang === 'ko' ? '관심을 가져주셔서 감사합니다! 곧 연락드리겠습니다.' : '¡Gracias por tu interés! Te contactaremos pronto.');
+});
+
+updateLanguage('es');
+runValidatorLoop();
+</script>
 </body>
 </html>
