@@ -291,32 +291,35 @@ body.korean, .korean{font-family:'Noto Sans KR','Inter',sans-serif;}
         </div>
       </div>
 
-      <!-- Right: manifest card / signature element -->
+      <!-- Right: document intake card / signature element -->
       <div class="rise floaty" style="animation-delay:.15s;">
         <div class="manifest-card p-0 max-w-md mx-auto">
           <div class="manifest-head flex items-center justify-between px-5 py-4">
             <div class="flex items-center gap-2 text-[var(--text-faint)] font-mono text-xs">
-              <i data-lucide="container" class="w-3.5 h-3.5"></i>
-              <span data-i18n="hero.windowTitle">VALIDADOR ISO 6346 — EN VIVO</span>
+              <i data-lucide="shield" class="w-3.5 h-3.5"></i>
+              <span data-i18n="hero.windowTitle">INGESTA DE DOCUMENTOS — EN VIVO</span>
             </div>
             <span class="w-2 h-2 rounded-full bg-[var(--amber)] blink"></span>
           </div>
           <div class="p-7">
-            <div class="text-xs text-[var(--text-faint)] font-mono mb-2" data-i18n="hero.codeLabel">CÓDIGO DE CONTENEDOR</div>
-            <div id="containerCode" class="container-code text-3xl md:text-4xl text-[var(--paper)] mb-6 min-h-[2.5em] flex flex-wrap gap-x-1"></div>
+            <div class="flex items-center justify-between mb-2">
+              <div class="text-xs text-[var(--text-faint)] font-mono" data-i18n="hero.codeLabel">DOCUMENTO ENTRANTE</div>
+              <div id="docTypeTag" class="font-mono text-[10px] px-2 py-1 rounded border border-[var(--line-strong)] text-[var(--amber)]">BL</div>
+            </div>
+            <div id="containerCode" class="container-code text-2xl md:text-3xl text-[var(--paper)] mb-6 min-h-[2.5em] flex flex-wrap gap-x-1 items-center"></div>
 
             <div class="flex items-center gap-3 mb-6">
               <div id="statusPill" class="status-pill px-3 py-1.5 rounded-full border border-[var(--line-strong)] text-[var(--text-dim)] flex items-center gap-2">
                 <span id="statusDot" class="w-1.5 h-1.5 rounded-full bg-[var(--text-faint)]"></span>
-                <span id="statusText" data-i18n="hero.calculating">CALCULANDO DÍGITO VERIFICADOR…</span>
+                <span id="statusText" data-i18n="hero.calculating">VALIDANDO FORMATO…</span>
               </div>
             </div>
 
             <div class="border-t hairline pt-5 space-y-3 font-mono text-xs text-[var(--text-dim)]">
-              <div class="flex justify-between"><span data-i18n="hero.owner">Código propietario</span><span id="ownerVal" class="text-[var(--paper)]">—</span></div>
-              <div class="flex justify-between"><span data-i18n="hero.category">Categoría</span><span id="catVal" class="text-[var(--paper)]">—</span></div>
-              <div class="flex justify-between"><span data-i18n="hero.serial">Número de serie</span><span id="serialVal" class="text-[var(--paper)]">—</span></div>
-              <div class="flex justify-between"><span data-i18n="hero.checksum">Suma ponderada</span><span id="sumVal" class="text-[var(--paper)]">—</span></div>
+              <div class="flex justify-between"><span data-i18n="hero.owner">Tipo de documento</span><span id="ownerVal" class="text-[var(--paper)]">—</span></div>
+              <div class="flex justify-between"><span data-i18n="hero.category">Cifrado</span><span id="catVal" class="text-[var(--paper)]">—</span></div>
+              <div class="flex justify-between"><span data-i18n="hero.serial">Firma digital</span><span id="serialVal" class="text-[var(--paper)]">—</span></div>
+              <div class="flex justify-between"><span data-i18n="hero.checksum">Bloqueo de registro</span><span id="sumVal" class="text-[var(--paper)]">—</span></div>
             </div>
           </div>
         </div>
@@ -343,23 +346,35 @@ body.korean, .korean{font-family:'Noto Sans KR','Inter',sans-serif;}
         <div class="corner"></div>
         <div>
           <div class="w-11 h-11 rounded-lg bg-[var(--rust)]/15 flex items-center justify-center mb-6">
-            <i data-lucide="file-text" class="text-[var(--rust-2)] w-6 h-6"></i>
+            <i data-lucide="shield-check" class="text-[var(--rust-2)] w-6 h-6"></i>
           </div>
-          <div class="eyebrow text-[var(--rust-2)] mb-2" data-i18n="features.dua.eyebrow">MOTOR AWS LAMBDA</div>
-          <h3 class="font-display text-2xl font-semibold text-[var(--paper)] mb-3" data-i18n="features.dua.title">Generación de DUA</h3>
-          <p class="text-[var(--text-dim)] leading-relaxed mb-6" data-i18n="features.dua.desc">
-            Documentos Únicos de Admisión generados en segundos, con cálculo automático de saldos, DAI e IVA sobre infraestructura serverless.
+          <div class="eyebrow text-[var(--rust-2)] mb-2" data-i18n="features.intake.eyebrow">SEGURIDAD DOCUMENTAL</div>
+          <h3 class="font-display text-2xl font-semibold text-[var(--paper)] mb-3" data-i18n="features.intake.title">Ingreso de documentos de embarque</h3>
+          <p class="text-[var(--text-dim)] leading-relaxed mb-6" data-i18n="features.intake.desc">
+            Carga BL, AWB y CRM con validación de formato, cifrado AES-256, firma digital y bloqueo de registros para que nadie edite un documento ya certificado.
           </p>
         </div>
-        <div class="font-mono text-xs text-[var(--text-faint)] flex items-center gap-4">
-          <span data-i18n="features.dua.item1">→ generación en &lt;2s</span>
-          <span data-i18n="features.dua.item2">→ cálculo sin intervención manual</span>
+        <div class="font-mono text-xs text-[var(--text-faint)] flex flex-wrap items-center gap-4">
+          <span data-i18n="features.intake.item1">→ BL · AWB · CRM</span>
+          <span data-i18n="features.intake.item2">→ firma digital + bloqueo de registro</span>
+          <span data-i18n="features.intake.item3">→ impresión de informe con un clic</span>
         </div>
       </div>
 
       <div class="bento-md feature-card panel rounded-2xl p-7">
         <div class="w-10 h-10 rounded-lg bg-[var(--ledger)]/15 flex items-center justify-center mb-5">
-          <i data-lucide="zap" class="text-[var(--ledger)] w-5 h-5"></i>
+          <i data-lucide="file-text" class="text-[var(--ledger)] w-5 h-5"></i>
+        </div>
+        <div class="eyebrow text-[var(--ledger)] mb-2" data-i18n="features.dua.eyebrow">MOTOR AWS LAMBDA</div>
+        <h3 class="font-display text-xl font-semibold text-[var(--paper)] mb-2" data-i18n="features.dua.title">Generación de DUA</h3>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="features.dua.desc">
+          Documentos Únicos de Admisión generados en segundos, con cálculo automático de saldos, DAI e IVA.
+        </p>
+      </div>
+
+      <div class="bento-md feature-card panel rounded-2xl p-7">
+        <div class="w-10 h-10 rounded-lg bg-[var(--amber)]/15 flex items-center justify-center mb-5">
+          <i data-lucide="zap" class="text-[var(--amber)] w-5 h-5"></i>
         </div>
         <h3 class="font-display text-xl font-semibold text-[var(--paper)] mb-2" data-i18n="features.performance.title">Rendimiento nativo</h3>
         <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="features.performance.desc">
@@ -392,9 +407,13 @@ body.korean, .korean{font-family:'Noto Sans KR','Inter',sans-serif;}
           <i data-lucide="database" class="text-[var(--ledger)] w-5 h-5"></i>
         </div>
         <h3 class="font-display text-xl font-semibold text-[var(--paper)] mb-2" data-i18n="features.containers.title">Gestión de contenedores</h3>
-        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="features.containers.desc">
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed mb-4" data-i18n="features.containers.desc">
           Editor completo para números ISO 6346 con historial y trazabilidad en tiempo real.
         </p>
+        <div class="border-t hairline pt-4 flex items-center justify-between">
+          <div id="miniContainerCode" class="container-code text-sm text-[var(--paper)] flex flex-wrap gap-x-0.5"></div>
+          <div id="miniStatusDot" class="w-1.5 h-1.5 rounded-full bg-[var(--text-faint)] shrink-0"></div>
+        </div>
       </div>
 
       <div class="bento-full feature-card panel rounded-2xl p-8 flex flex-col md:flex-row md:items-center gap-6 justify-between">
@@ -718,7 +737,62 @@ body.korean, .korean{font-family:'Noto Sans KR','Inter',sans-serif;}
 <script>
 lucide.createIcons();
 
-/* ---------- ISO 6346 live validator (hero signature element) ---------- */
+/* ---------- Document intake pipeline (hero signature element) ---------- */
+const DEMO_DOCS = [
+  {type:'BL',  number:'MSCU-BL-774102', hash:'a91f7c…3c2e'},
+  {type:'AWB', number:'160-88214477',   hash:'d02b41…f9a1'},
+  {type:'CRM', number:'CRM-2026-05531', hash:'4e6f9a…107d'},
+];
+let docIndex = 0;
+
+function renderDoc(doc, revealed){
+  const el = document.getElementById('containerCode');
+  const tag = document.getElementById('docTypeTag');
+  tag.textContent = doc.type;
+  let html = '';
+  for(const ch of doc.number){ html += `<span class="digit-box" style="font-size:.85em;">${ch === '-' ? '–' : ch}</span>`; }
+  html += `<span class="digit-box check-digit" style="font-size:.7em; letter-spacing:0;">${revealed ? doc.hash : '········'}</span>`;
+  el.innerHTML = html;
+}
+
+async function runValidatorLoop(){
+  while(true){
+    const d = DEMO_DOCS[docIndex % DEMO_DOCS.length];
+    docIndex++;
+
+    renderDoc(d, false);
+    document.getElementById('ownerVal').textContent = d.type;
+    document.getElementById('catVal').textContent = '—';
+    document.getElementById('serialVal').textContent = '—';
+    document.getElementById('sumVal').textContent = '—';
+    document.getElementById('statusText').textContent = translate('hero.calculating');
+    document.getElementById('statusDot').style.background = 'var(--text-faint)';
+    await sleep(750);
+
+    document.getElementById('catVal').textContent = translate('hero.encrypting');
+    document.getElementById('statusText').textContent = translate('hero.encryptingStatus');
+    await sleep(750);
+
+    document.getElementById('catVal').textContent = 'AES-256 ✓';
+    document.getElementById('serialVal').textContent = translate('hero.signing');
+    document.getElementById('statusText').textContent = translate('hero.signingStatus');
+    await sleep(750);
+
+    renderDoc(d, true);
+    document.getElementById('serialVal').textContent = d.hash + ' ✓';
+    document.getElementById('sumVal').textContent = translate('hero.locking');
+    document.getElementById('statusText').textContent = translate('hero.lockingStatus');
+    await sleep(750);
+
+    document.getElementById('sumVal').textContent = translate('hero.locked');
+    document.getElementById('statusText').textContent = translate('hero.valid');
+    document.getElementById('statusDot').style.background = 'var(--amber)';
+    await sleep(2800);
+  }
+}
+function sleep(ms){ return new Promise(r=>setTimeout(r,ms)); }
+
+/* ---------- ISO 6346 mini validator (Gestión de contenedores feature card) ---------- */
 const LETTER_VALUES = {A:10,B:12,C:13,D:14,E:15,F:16,G:17,H:18,I:19,J:20,K:21,L:23,M:24,N:25,O:26,P:27,Q:28,R:29,S:30,T:31,U:32,V:34,W:35,X:36,Y:37,Z:38};
 function charValue(ch){ return /[0-9]/.test(ch) ? parseInt(ch,10) : LETTER_VALUES[ch]; }
 function checkDigit(code10){
@@ -733,39 +807,34 @@ const DEMO_CODES = [
   {owner:'ZKF', cat:'U', serial:'118820'},
   {owner:'ZKF', cat:'U', serial:'972014'},
 ];
-let demoIndex = 0;
+let miniIndex = 0;
 
-function renderCode(codeObj, digit, revealed){
-  const el = document.getElementById('containerCode');
+function renderMiniCode(codeObj, digit, revealed){
+  const el = document.getElementById('miniContainerCode');
+  if(!el) return;
   const full = codeObj.owner + codeObj.cat + codeObj.serial;
   let html = '';
-  for(const ch of full){ html += `<span class="digit-box">${ch}</span>`; }
-  html += `<span class="digit-box check-digit">${revealed ? digit : '·'}</span>`;
+  for(const ch of full){ html += `<span class="digit-box" style="border-bottom-width:1px;">${ch}</span>`; }
+  html += `<span class="digit-box check-digit" style="border-bottom-width:1px;">${revealed ? digit : '·'}</span>`;
   el.innerHTML = html;
 }
 
-async function runValidatorLoop(){
+async function runMiniValidatorLoop(){
+  const el = document.getElementById('miniContainerCode');
+  if(!el) return;
   while(true){
-    const c = DEMO_CODES[demoIndex % DEMO_CODES.length];
-    demoIndex++;
-    renderCode(c, '', false);
-    document.getElementById('ownerVal').textContent = c.owner;
-    document.getElementById('catVal').textContent = c.cat;
-    document.getElementById('serialVal').textContent = c.serial;
-    document.getElementById('sumVal').textContent = '—';
-    document.getElementById('statusText').textContent = translate('hero.calculating');
-    document.getElementById('statusDot').style.background = 'var(--text-faint)';
+    const c = DEMO_CODES[miniIndex % DEMO_CODES.length];
+    miniIndex++;
+    renderMiniCode(c, '', false);
+    const dot = document.getElementById('miniStatusDot');
+    if(dot) dot.style.background = 'var(--text-faint)';
     await sleep(900);
-
-    const {digit, sum} = checkDigit(c.owner + c.cat + c.serial);
-    document.getElementById('sumVal').textContent = sum.toLocaleString();
-    renderCode(c, digit, true);
-    document.getElementById('statusText').textContent = translate('hero.valid');
-    document.getElementById('statusDot').style.background = 'var(--amber)';
+    const {digit} = checkDigit(c.owner + c.cat + c.serial);
+    renderMiniCode(c, digit, true);
+    if(dot) dot.style.background = 'var(--amber)';
     await sleep(3200);
   }
 }
-function sleep(ms){ return new Promise(r=>setTimeout(r,ms)); }
 
 /* ---------- animated stat counters ---------- */
 function animateCounter(el, target, duration){
@@ -785,7 +854,7 @@ const statObserver = new IntersectionObserver(entries=>{
       statsPlayed = true;
       animateCounter(document.getElementById('statTime'), 90, 1200);
       animateCounter(document.getElementById('statResponse'), 2, 900);
-      animateCounter(document.getElementById('statIso'), 6346, 1600);
+      animateCounter(document.getElementById('statIso'), 256, 1600);
     }
   });
 }, {threshold:.4});
@@ -839,12 +908,18 @@ const translations = {
     'hero.subtitle1':'La plataforma nativa para empresas que operan bajo','hero.subtitle2':'Admisión Temporal','hero.subtitle3':'y','hero.subtitle4':'Perfeccionamiento Activo',
     'hero.powered':'Construida en Swift para macOS, respaldada por infraestructura serverless de AWS.',
     'hero.demoBtn':'Agendar demo gratuita','hero.featuresBtn':'Ver funcionalidades',
-    'hero.windowTitle':'VALIDADOR ISO 6346 — EN VIVO','hero.codeLabel':'CÓDIGO DE CONTENEDOR',
-    'hero.calculating':'CALCULANDO DÍGITO VERIFICADOR…','hero.valid':'CÓDIGO VÁLIDO ✓',
-    'hero.owner':'Código propietario','hero.category':'Categoría','hero.serial':'Número de serie','hero.checksum':'Suma ponderada',
-    'stats.time':'menos tiempo','stats.response':'gen. de DUA','stats.uptime':'disponibilidad','stats.iso':'ISO validado',
+    'hero.windowTitle':'INGESTA DE DOCUMENTOS — EN VIVO','hero.codeLabel':'DOCUMENTO ENTRANTE',
+    'hero.calculating':'VALIDANDO FORMATO…','hero.valid':'DOCUMENTO ASEGURADO ✓',
+    'hero.encrypting':'Cifrando…','hero.encryptingStatus':'CIFRANDO CON AES-256…',
+    'hero.signing':'Firmando…','hero.signingStatus':'APLICANDO FIRMA DIGITAL…',
+    'hero.locking':'Bloqueando…','hero.lockingStatus':'BLOQUEANDO REGISTRO…','hero.locked':'Bloqueado 🔒',
+    'hero.owner':'Tipo de documento','hero.category':'Cifrado','hero.serial':'Firma digital','hero.checksum':'Bloqueo de registro',
+    'stats.time':'menos tiempo','stats.response':'gen. de DUA','stats.uptime':'disponibilidad','stats.iso':'bits cifrado AES',
     'features.label':'MÓDULOS DEL SISTEMA','features.title':'Funcionalidades','features.subtitle':'construidas para aduanas',
     'features.description':'Cada módulo resuelve un punto de fricción real en la operación diaria de comercio exterior.',
+    'features.intake.eyebrow':'SEGURIDAD DOCUMENTAL','features.intake.title':'Ingreso de documentos de embarque',
+    'features.intake.desc':'Carga BL, AWB y CRM con validación de formato, cifrado AES-256, firma digital y bloqueo de registros para que nadie edite un documento ya certificado.',
+    'features.intake.item1':'→ BL · AWB · CRM','features.intake.item2':'→ firma digital + bloqueo de registro','features.intake.item3':'→ impresión de informe con un clic',
     'features.dua.eyebrow':'MOTOR AWS LAMBDA','features.dua.title':'Generación de DUA',
     'features.dua.desc':'Documentos Únicos de Admisión generados en segundos, con cálculo automático de saldos, DAI e IVA sobre infraestructura serverless.',
     'features.dua.item1':'→ generación en <2s','features.dua.item2':'→ cálculo sin intervención manual',
@@ -892,12 +967,18 @@ const translations = {
     'hero.subtitle1':'일시 수입 및','hero.subtitle2':'능동 완화','hero.subtitle3':'체제 하에 운영되는 기업을 위한','hero.subtitle4':'네이티브 플랫폼',
     'hero.powered':'macOS용 Swift로 제작되었으며 AWS 서버리스 인프라로 뒷받침됩니다.',
     'hero.demoBtn':'무료 데모 예약','hero.featuresBtn':'기능 보기',
-    'hero.windowTitle':'ISO 6346 검증기 — 실시간','hero.codeLabel':'컨테이너 코드',
-    'hero.calculating':'체크 디지트 계산 중…','hero.valid':'유효한 코드 ✓',
-    'hero.owner':'소유자 코드','hero.category':'카테고리','hero.serial':'일련번호','hero.checksum':'가중 합계',
-    'stats.time':'시간 절감','stats.response':'DUA 생성','stats.uptime':'가용성','stats.iso':'ISO 검증',
+    'hero.windowTitle':'문서 수신 — 실시간','hero.codeLabel':'수신 문서',
+    'hero.calculating':'형식 검증 중…','hero.valid':'문서 보호 완료 ✓',
+    'hero.encrypting':'암호화 중…','hero.encryptingStatus':'AES-256로 암호화 중…',
+    'hero.signing':'서명 중…','hero.signingStatus':'전자 서명 적용 중…',
+    'hero.locking':'잠그는 중…','hero.lockingStatus':'레코드 잠금 중…','hero.locked':'잠김 🔒',
+    'hero.owner':'문서 유형','hero.category':'암호화','hero.serial':'전자 서명','hero.checksum':'레코드 잠금',
+    'stats.time':'시간 절감','stats.response':'DUA 생성','stats.uptime':'가용성','stats.iso':'AES 암호화 비트',
     'features.label':'시스템 모듈','features.title':'세관을 위한','features.subtitle':'전문 기능',
     'features.description':'각 모듈은 무역 운영에서 실제로 겪는 문제를 해결합니다.',
+    'features.intake.eyebrow':'문서 보안','features.intake.title':'선적 문서 수신',
+    'features.intake.desc':'BL, AWB, CRM 문서를 형식 검증, AES-256 암호화, 전자 서명, 레코드 잠금과 함께 업로드하여 이미 인증된 문서는 아무도 수정할 수 없습니다.',
+    'features.intake.item1':'→ BL · AWB · CRM','features.intake.item2':'→ 전자 서명 + 레코드 잠금','features.intake.item3':'→ 클릭 한 번으로 보고서 인쇄',
     'features.dua.eyebrow':'AWS LAMBDA 엔진','features.dua.title':'DUA 생성',
     'features.dua.desc':'서버리스 인프라 위에서 잔액, DAI, 부가세를 자동 계산하여 몇 초 만에 입국 단일 문서를 생성합니다.',
     'features.dua.item1':'→ 2초 이내 생성','features.dua.item2':'→ 수동 개입 없는 계산',
@@ -1007,6 +1088,7 @@ document.querySelector('form')?.addEventListener('submit', e=>{
 
 updateLanguage('es');
 runValidatorLoop();
+runMiniValidatorLoop();
 </script>
 </body>
 </html>
