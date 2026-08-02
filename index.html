@@ -210,6 +210,7 @@ body.korean, .korean{font-family:'Noto Sans KR','Inter',sans-serif;}
     </div>
     <div class="hidden md:flex space-x-8 text-sm font-medium items-center text-[var(--text-dim)]">
       <a href="#features" class="nav-link" data-i18n="nav.features">Funcionalidades</a>
+      <a href="#bom" class="nav-link" data-i18n="nav.bom">BOM</a>
       <a href="#aws" class="nav-link" data-i18n="nav.aws">Motor AWS</a>
       <a href="#reportes" class="nav-link" data-i18n="nav.reports">Reportes</a>
       <a href="#tecnologia" class="nav-link" data-i18n="nav.technology">Tecnología</a>
@@ -320,6 +321,119 @@ body.korean, .korean{font-family:'Noto Sans KR','Inter',sans-serif;}
               <div class="flex justify-between"><span data-i18n="hero.category">Cifrado</span><span id="catVal" class="text-[var(--paper)]">—</span></div>
               <div class="flex justify-between"><span data-i18n="hero.serial">Firma digital</span><span id="serialVal" class="text-[var(--paper)]">—</span></div>
               <div class="flex justify-between"><span data-i18n="hero.checksum">Bloqueo de registro</span><span id="sumVal" class="text-[var(--paper)]">—</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOM — flagship feature -->
+<section id="bom" class="py-28 border-t hairline relative overflow-hidden">
+  <div class="absolute top-10 -right-32 w-[420px] h-[420px] bg-[var(--ledger)]/10 rounded-full blur-[120px]"></div>
+  <div class="container mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded-md border border-[var(--ledger)]/40 bg-[var(--ledger)]/10">
+          <span class="w-1.5 h-1.5 rounded-full bg-[var(--ledger)]"></span>
+          <span class="eyebrow text-[var(--ledger)]" data-i18n="bom.label">COMMERCIAL INVOICE · MÓDULO BOM</span>
+        </div>
+        <h2 class="font-display text-4xl md:text-5xl font-semibold text-[var(--paper)] tracking-tight mb-6 leading-tight">
+          <span data-i18n="bom.title1">Capturas unidades.</span><br>
+          <span class="text-[var(--rust-2)]" data-i18n="bom.title2">El descargo se calcula solo.</span>
+        </h2>
+        <p class="text-[var(--text-dim)] mb-9 leading-relaxed max-w-lg" data-i18n="bom.description">
+          El BOM traduce el consumo real de materia prima a descargos automáticos contra las DUA o DUCA con saldo disponible, dejando el estado de cuenta al día en tiempo real y sincronizado con tus reportes internos y gubernamentales.
+        </p>
+        <ul class="space-y-6 mb-10">
+          <li class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-md bg-[var(--ledger)]/15 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="package" class="text-[var(--ledger)] w-4 h-4"></i></div>
+            <div><h4 class="font-semibold text-[var(--paper)] mb-1" data-i18n="bom.item1.title">Solo capturas unidades consumidas</h4><p class="text-[var(--text-dim)] text-sm" data-i18n="bom.item1.desc">Sin captura manual de montos: el BOM convierte unidades en valor FOB, CIF e impuestos al instante.</p></div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-md bg-[var(--amber)]/15 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="search-check" class="text-[var(--amber)] w-4 h-4"></i></div>
+            <div><h4 class="font-semibold text-[var(--paper)] mb-1" data-i18n="bom.item2.title">Localiza la DUA con saldo disponible</h4><p class="text-[var(--text-dim)] text-sm" data-i18n="bom.item2.desc">El sistema identifica automáticamente cuál DUA o DUCA tiene saldo suficiente y aplica el descargo ahí.</p></div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-md bg-[var(--rust)]/15 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="refresh-cw" class="text-[var(--rust-2)] w-4 h-4"></i></div>
+            <div><h4 class="font-semibold text-[var(--paper)] mb-1" data-i18n="bom.item3.title">Estado de cuenta siempre al día</h4><p class="text-[var(--text-dim)] text-sm" data-i18n="bom.item3.desc">Cada descargo se refleja de inmediato en reportes internos y en los reportes gubernamentales correspondientes.</p></div>
+          </li>
+        </ul>
+        <div class="flex flex-wrap gap-2 font-mono text-xs mb-9">
+          <span class="px-3 py-1.5 rounded border border-[var(--line-strong)] text-[var(--text-dim)]">BOM</span>
+          <span class="px-3 py-1.5 rounded border border-[var(--line-strong)] text-[var(--text-dim)]">Commercial Invoice</span>
+          <span class="px-3 py-1.5 rounded border border-[var(--line-strong)] text-[var(--text-dim)]">DUA / DUCA</span>
+          <span class="px-3 py-1.5 rounded border border-[var(--line-strong)] text-[var(--text-dim)]">FOB · CIF · Impuestos</span>
+        </div>
+
+        <div class="panel rounded-xl overflow-hidden max-w-md">
+          <div class="flex items-center gap-2 px-4 py-2.5 border-b hairline">
+            <span class="w-2 h-2 rounded-full bg-[var(--rust)]/60"></span>
+            <span class="w-2 h-2 rounded-full bg-[var(--amber)]/60"></span>
+            <span class="w-2 h-2 rounded-full bg-[var(--ledger)]/60"></span>
+            <span class="font-mono text-[11px] text-[var(--text-faint)] ml-2" data-i18n="bom.terminalTitle">bom-descargo.log</span>
+          </div>
+          <div id="bomLog" class="font-mono text-xs leading-relaxed p-4 h-[132px] text-[var(--text-dim)]"></div>
+        </div>
+      </div>
+
+      <!-- live discharge ledger -->
+      <div class="relative">
+        <div class="absolute -inset-6 bg-[var(--ledger)]/10 rounded-3xl blur-3xl"></div>
+        <div class="manifest-card p-0 max-w-md mx-auto relative">
+          <div class="manifest-head flex items-center justify-between px-5 py-4">
+            <div class="flex items-center gap-2 text-[var(--text-faint)] font-mono text-xs">
+              <i data-lucide="scale" class="w-3.5 h-3.5"></i>
+              <span data-i18n="bom.card.title">DESCARGO DE CONSUMO — EN VIVO</span>
+            </div>
+            <span id="bomDot" class="w-2 h-2 rounded-full bg-[var(--amber)] blink"></span>
+          </div>
+          <div class="p-7">
+            <div class="flex justify-between items-start mb-1">
+              <div>
+                <div class="text-xs text-[var(--text-faint)] font-mono mb-1" data-i18n="bom.card.material">MATERIAL</div>
+                <div id="bomMaterialVal" class="text-[var(--paper)] font-semibold">—</div>
+              </div>
+              <div class="text-right">
+                <div class="text-xs text-[var(--text-faint)] font-mono mb-1" data-i18n="bom.card.dua">DUA / DUCA</div>
+                <div id="bomDuaVal" class="font-mono text-[var(--amber)] text-sm">—</div>
+              </div>
+            </div>
+
+            <div class="flex items-end gap-2 my-6">
+              <div id="bomUnitsVal" class="container-code text-4xl text-[var(--paper)]">0</div>
+              <div class="text-xs text-[var(--text-faint)] font-mono mb-1.5" data-i18n="bom.card.units">unidades consumidas</div>
+            </div>
+
+            <div class="space-y-3 font-mono text-xs mb-6">
+              <div class="flex justify-between items-center">
+                <span class="text-[var(--text-dim)]" data-i18n="bom.card.fob">Descargo FOB</span>
+                <span id="bomFobVal" class="text-[var(--paper)] font-semibold">—</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-[var(--text-dim)]" data-i18n="bom.card.cif">Descargo CIF</span>
+                <span id="bomCifVal" class="text-[var(--paper)] font-semibold">—</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-[var(--text-dim)]" data-i18n="bom.card.tax">DAI + IVA</span>
+                <span id="bomTaxVal" class="text-[var(--rust-2)] font-semibold">—</span>
+              </div>
+            </div>
+
+            <div class="border-t hairline pt-5">
+              <div class="flex justify-between text-xs font-mono text-[var(--text-faint)] mb-1.5">
+                <span data-i18n="bom.card.saldo">SALDO DE LA DUA</span>
+                <span id="bomSaldoVal">—</span>
+              </div>
+              <div class="bar-track"><div id="bomSaldoBar" class="bar-fill" style="width:100%; background:var(--ledger);"></div></div>
+            </div>
+
+            <div class="flex items-center gap-3 mt-6">
+              <div id="bomStatusPill" class="status-pill px-3 py-1.5 rounded-full border border-[var(--line-strong)] text-[var(--text-dim)] flex items-center gap-2">
+                <span id="bomStatusDot" class="w-1.5 h-1.5 rounded-full bg-[var(--text-faint)]"></span>
+                <span id="bomStatusText" data-i18n="bom.status.searching">BUSCANDO DUA CON SALDO…</span>
+              </div>
             </div>
           </div>
         </div>
@@ -836,7 +950,87 @@ async function runMiniValidatorLoop(){
   }
 }
 
-/* ---------- animated stat counters ---------- */
+/* ---------- BOM automatic discharge (flagship feature) ---------- */
+const DEMO_BOM = [
+  {dua:'25540000234', material:'Bobina de acero laminado', units:480, unitCost:12.40, freightPct:0.08, insurancePct:0.02, daiRate:0.10, ivaRate:0.16, saldoDisponible:1245890.50},
+  {dua:'25540000198', material:'Resina de polipropileno',  units:1200, unitCost:3.85, freightPct:0.07, insurancePct:0.015, daiRate:0.10, ivaRate:0.16, saldoDisponible:812340.00},
+  {dua:'25540000305', material:'Placa de aluminio anodizado', units:260, unitCost:22.10, freightPct:0.09, insurancePct:0.02, daiRate:0.10, ivaRate:0.16, saldoDisponible:634120.75},
+];
+let bomIndex = 0;
+const money = n => '$' + n.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+
+function computeBom(e){
+  const fob = e.units * e.unitCost;
+  const freight = fob * e.freightPct;
+  const insurance = fob * e.insurancePct;
+  const cif = fob + freight + insurance;
+  const dai = cif * e.daiRate;
+  const iva = (cif + dai) * e.ivaRate;
+  return { fob, cif, tax: dai + iva, saldoDespues: e.saldoDisponible - fob, pctUsed: fob / e.saldoDisponible };
+}
+
+async function typeLine(el, text, cls){
+  const div = document.createElement('div');
+  if(cls) div.className = cls;
+  el.appendChild(div);
+  for(const ch of text){ div.textContent += ch; await sleep(12); }
+  el.scrollTop = el.scrollHeight;
+  await sleep(200);
+}
+
+async function runBomLoop(){
+  while(true){
+    const e = DEMO_BOM[bomIndex % DEMO_BOM.length];
+    bomIndex++;
+    const r = computeBom(e);
+    const log = document.getElementById('bomLog');
+    log.innerHTML = '';
+
+    // reset card
+    document.getElementById('bomMaterialVal').textContent = e.material;
+    document.getElementById('bomDuaVal').textContent = '—';
+    document.getElementById('bomUnitsVal').textContent = '0';
+    document.getElementById('bomFobVal').textContent = '—';
+    document.getElementById('bomCifVal').textContent = '—';
+    document.getElementById('bomTaxVal').textContent = '—';
+    document.getElementById('bomSaldoVal').textContent = money(e.saldoDisponible);
+    document.getElementById('bomSaldoBar').style.width = '100%';
+    document.getElementById('bomStatusDot').style.background = 'var(--text-faint)';
+    document.getElementById('bomStatusText').textContent = translate('bom.status.searching');
+    document.getElementById('bomDot').style.background = 'var(--text-faint)';
+
+    await typeLine(log, `$ commercial-invoice --consumo ${e.units} uds`, 'text-[var(--paper)]');
+    animateCounter(document.getElementById('bomUnitsVal'), e.units, 700);
+    await sleep(750);
+
+    await typeLine(log, `→ localizando DUA con saldo disponible ... DUA #${e.dua}`);
+    document.getElementById('bomDuaVal').textContent = '#' + e.dua;
+    document.getElementById('bomStatusText').textContent = translate('bom.status.located');
+    await sleep(500);
+
+    await typeLine(log, `→ descargo FOB ... ${money(r.fob)}`);
+    document.getElementById('bomFobVal').textContent = money(r.fob);
+    document.getElementById('bomSaldoBar').style.width = Math.max(4, (1 - r.pctUsed) * 100) + '%';
+    document.getElementById('bomStatusText').textContent = translate('bom.status.discharging');
+    await sleep(500);
+
+    await typeLine(log, `→ + flete y seguro (CIF) ... ${money(r.cif)}`);
+    document.getElementById('bomCifVal').textContent = money(r.cif);
+    await sleep(500);
+
+    await typeLine(log, `→ + DAI e IVA (impuestos) ... ${money(r.tax)}`);
+    document.getElementById('bomTaxVal').textContent = money(r.tax);
+    await sleep(500);
+
+    await typeLine(log, `✓ descargo aplicado — saldo actualizado en tiempo real`, 'text-[var(--amber)]');
+    document.getElementById('bomSaldoVal').textContent = money(r.saldoDespues);
+    document.getElementById('bomStatusText').textContent = translate('bom.status.synced');
+    document.getElementById('bomStatusDot').style.background = 'var(--amber)';
+    document.getElementById('bomDot').style.background = 'var(--amber)';
+    await sleep(2800);
+  }
+}
+
 function animateCounter(el, target, duration){
   const start = performance.now();
   function tick(now){
@@ -903,7 +1097,7 @@ setInterval(updateTimestamp, 30000);
 /* ---------- i18n ---------- */
 const translations = {
   es: {
-    'nav.features':'Funcionalidades','nav.aws':'Motor AWS','nav.reports':'Reportes','nav.technology':'Tecnología','nav.benefits':'Resultados','nav.demo':'Agendar Demo',
+    'nav.features':'Funcionalidades','nav.bom':'BOM','nav.aws':'Motor AWS','nav.reports':'Reportes','nav.technology':'Tecnología','nav.benefits':'Resultados','nav.demo':'Agendar Demo',
     'hero.badge':'SOFTWARE NATIVO macOS · MOTOR AWS','hero.title1':'Comercio exterior,','hero.title2':'verificado línea por línea.',
     'hero.subtitle1':'La plataforma nativa para empresas que operan bajo','hero.subtitle2':'Admisión Temporal','hero.subtitle3':'y','hero.subtitle4':'Perfeccionamiento Activo',
     'hero.powered':'Construida en Swift para macOS, respaldada por infraestructura serverless de AWS.',
@@ -915,6 +1109,15 @@ const translations = {
     'hero.locking':'Bloqueando…','hero.lockingStatus':'BLOQUEANDO REGISTRO…','hero.locked':'Bloqueado 🔒',
     'hero.owner':'Tipo de documento','hero.category':'Cifrado','hero.serial':'Firma digital','hero.checksum':'Bloqueo de registro',
     'stats.time':'menos tiempo','stats.response':'gen. de DUA','stats.uptime':'disponibilidad','stats.iso':'bits cifrado AES',
+    'bom.label':'COMMERCIAL INVOICE · MÓDULO BOM','bom.title1':'Capturas unidades.','bom.title2':'El descargo se calcula solo.',
+    'bom.description':'El BOM traduce el consumo real de materia prima a descargos automáticos contra las DUA o DUCA con saldo disponible, dejando el estado de cuenta al día en tiempo real y sincronizado con tus reportes internos y gubernamentales.',
+    'bom.item1.title':'Solo capturas unidades consumidas','bom.item1.desc':'Sin captura manual de montos: el BOM convierte unidades en valor FOB, CIF e impuestos al instante.',
+    'bom.item2.title':'Localiza la DUA con saldo disponible','bom.item2.desc':'El sistema identifica automáticamente cuál DUA o DUCA tiene saldo suficiente y aplica el descargo ahí.',
+    'bom.item3.title':'Estado de cuenta siempre al día','bom.item3.desc':'Cada descargo se refleja de inmediato en reportes internos y en los reportes gubernamentales correspondientes.',
+    'bom.terminalTitle':'bom-descargo.log','bom.card.title':'DESCARGO DE CONSUMO — EN VIVO',
+    'bom.card.material':'MATERIAL','bom.card.dua':'DUA / DUCA','bom.card.units':'unidades consumidas',
+    'bom.card.fob':'Descargo FOB','bom.card.cif':'Descargo CIF','bom.card.tax':'DAI + IVA','bom.card.saldo':'SALDO DE LA DUA',
+    'bom.status.searching':'BUSCANDO DUA CON SALDO…','bom.status.located':'DUA LOCALIZADA ✓','bom.status.discharging':'APLICANDO DESCARGO…','bom.status.synced':'SINCRONIZADO ✓ TIEMPO REAL',
     'features.label':'MÓDULOS DEL SISTEMA','features.title':'Funcionalidades','features.subtitle':'construidas para aduanas',
     'features.description':'Cada módulo resuelve un punto de fricción real en la operación diaria de comercio exterior.',
     'features.intake.eyebrow':'SEGURIDAD DOCUMENTAL','features.intake.title':'Ingreso de documentos de embarque',
@@ -962,7 +1165,7 @@ const translations = {
     'footer.copyright':'© 2026 ZakForeigner. Todos los derechos reservados.','footer.tagline':'DISEÑADO PARA macOS · POTENCIADO POR AWS'
   },
   ko: {
-    'nav.features':'기능','nav.aws':'AWS 엔진','nav.reports':'보고서','nav.technology':'기술','nav.benefits':'성과','nav.demo':'데모 예약',
+    'nav.features':'기능','nav.bom':'BOM','nav.aws':'AWS 엔진','nav.reports':'보고서','nav.technology':'기술','nav.benefits':'성과','nav.demo':'데모 예약',
     'hero.badge':'네이티브 macOS 소프트웨어 · AWS 엔진','hero.title1':'무역 관리,','hero.title2':'한 줄 한 줄 검증됩니다.',
     'hero.subtitle1':'일시 수입 및','hero.subtitle2':'능동 완화','hero.subtitle3':'체제 하에 운영되는 기업을 위한','hero.subtitle4':'네이티브 플랫폼',
     'hero.powered':'macOS용 Swift로 제작되었으며 AWS 서버리스 인프라로 뒷받침됩니다.',
@@ -974,6 +1177,15 @@ const translations = {
     'hero.locking':'잠그는 중…','hero.lockingStatus':'레코드 잠금 중…','hero.locked':'잠김 🔒',
     'hero.owner':'문서 유형','hero.category':'암호화','hero.serial':'전자 서명','hero.checksum':'레코드 잠금',
     'stats.time':'시간 절감','stats.response':'DUA 생성','stats.uptime':'가용성','stats.iso':'AES 암호화 비트',
+    'bom.label':'상업 송장 · BOM 모듈','bom.title1':'수량만 입력하세요.','bom.title2':'차감은 자동으로 계산됩니다.',
+    'bom.description':'BOM은 실제 원자재 소비량을 잔액이 있는 DUA 또는 DUCA에 대한 자동 차감으로 변환하여, 계정 상태를 실시간으로 최신 상태로 유지하고 내부 및 정부 보고서와 동기화합니다.',
+    'bom.item1.title':'소비 수량만 입력하면 됩니다','bom.item1.desc':'금액을 수동으로 입력할 필요 없이 BOM이 수량을 FOB, CIF, 세금 가치로 즉시 변환합니다.',
+    'bom.item2.title':'잔액이 있는 DUA를 자동으로 찾습니다','bom.item2.desc':'시스템이 충분한 잔액이 있는 DUA 또는 DUCA를 자동으로 식별하여 그곳에 차감을 적용합니다.',
+    'bom.item3.title':'계정 상태 항상 최신 유지','bom.item3.desc':'각 차감은 내부 보고서와 해당 정부 보고서에 즉시 반영됩니다.',
+    'bom.terminalTitle':'bom-descargo.log','bom.card.title':'소비 차감 — 실시간',
+    'bom.card.material':'자재','bom.card.dua':'DUA / DUCA','bom.card.units':'소비 수량',
+    'bom.card.fob':'FOB 차감','bom.card.cif':'CIF 차감','bom.card.tax':'DAI + 부가세','bom.card.saldo':'DUA 잔액',
+    'bom.status.searching':'잔액 있는 DUA 검색 중…','bom.status.located':'DUA 확인됨 ✓','bom.status.discharging':'차감 적용 중…','bom.status.synced':'동기화 완료 ✓ 실시간',
     'features.label':'시스템 모듈','features.title':'세관을 위한','features.subtitle':'전문 기능',
     'features.description':'각 모듈은 무역 운영에서 실제로 겪는 문제를 해결합니다.',
     'features.intake.eyebrow':'문서 보안','features.intake.title':'선적 문서 수신',
@@ -1089,6 +1301,7 @@ document.querySelector('form')?.addEventListener('submit', e=>{
 updateLanguage('es');
 runValidatorLoop();
 runMiniValidatorLoop();
+runBomLoop();
 </script>
 </body>
 </html>
