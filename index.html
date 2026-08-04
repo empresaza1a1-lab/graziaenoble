@@ -329,6 +329,68 @@ body.korean, .korean{font-family:'Noto Sans KR','Inter',sans-serif;}
   </div>
 </section>
 
+<!-- Origin & standards -->
+<section id="origen" class="py-16 border-t hairline relative overflow-hidden">
+  <div class="container mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="stamp inline-block text-xs px-4 py-2 mb-5">CERTIFICADO DE ORIGEM · BRASIL</div>
+        <h2 class="font-display text-3xl md:text-4xl font-semibold text-[var(--paper)] tracking-tight mb-4 leading-tight">
+          <span data-i18n="origin.title1">Hecho en Brasil.</span> <span class="text-[var(--rust-2)]" data-i18n="origin.title2">Probado contra uno de los sistemas fiscales más exigentes del mundo.</span>
+        </h2>
+        <p class="text-[var(--text-dim)] leading-relaxed max-w-lg" data-i18n="origin.desc">
+          SPED, NF-e y capas fiscales federales, estatales y municipales: la complejidad tributaria brasileña exige una precisión que pocos mercados demandan. Esa misma ingeniería sostiene hoy tu operación de comercio exterior.
+        </p>
+      </div>
+      <div class="panel rounded-2xl p-7">
+        <div class="section-label mb-2" data-i18n="origin.ecosystem">ECOSISTEMA ZAK — SUITE EMPRESARIAL</div>
+
+        <div class="py-3">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-[var(--rust-2)] shrink-0"></span>
+            <span class="font-mono text-sm font-semibold text-[var(--paper)]">Zak Foreigner</span>
+          </div>
+          <p class="text-xs text-[var(--text-dim)] pl-3.5 leading-relaxed" data-i18n="origin.product.foreigner">Comercio exterior — DUA, BL/AWB/CRM, BOM</p>
+        </div>
+
+        <div class="py-3 border-t hairline">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-[var(--text-faint)] shrink-0"></span>
+            <span class="font-mono text-sm text-[var(--text)]">Zak People</span>
+          </div>
+          <p class="text-xs text-[var(--text-dim)] pl-3.5 leading-relaxed" data-i18n="origin.product.people">Gestión de nóminas</p>
+        </div>
+
+        <div class="py-3 border-t hairline">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-[var(--text-faint)] shrink-0"></span>
+            <span class="font-mono text-sm text-[var(--text)]">Zak Genesis</span>
+          </div>
+          <p class="text-xs text-[var(--text-dim)] pl-3.5 leading-relaxed" data-i18n="origin.product.genesis">Cifrado de datos y seguridad documental, incluida la nube</p>
+        </div>
+
+        <div class="py-3 border-t hairline">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-[var(--text-faint)] shrink-0"></span>
+            <span class="font-mono text-sm text-[var(--text)]">Zak Primigenia</span>
+          </div>
+          <p class="text-xs text-[var(--text-dim)] pl-3.5 leading-relaxed" data-i18n="origin.product.primigenia">Auditoría de información y registros de Zak Foreigner</p>
+        </div>
+
+        <div class="py-3 border-t hairline">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-[var(--text-faint)] shrink-0"></span>
+            <span class="font-mono text-sm text-[var(--text)]">Zak Mitzva</span>
+          </div>
+          <p class="text-xs text-[var(--text-dim)] pl-3.5 leading-relaxed" data-i18n="origin.product.mitzva">Integra y sincroniza las 5 aplicaciones entre sí</p>
+        </div>
+
+        <p class="text-[var(--text-faint)] text-xs font-mono mt-2 pt-4 border-t hairline" data-i18n="origin.tagline">Cinco productos. Un mismo estándar de calidad brasileño.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- BOM — flagship feature -->
 <section id="bom" class="py-28 border-t hairline relative overflow-hidden">
   <div class="absolute top-10 -right-32 w-[420px] h-[420px] bg-[var(--ledger)]/10 rounded-full blur-[120px]"></div>
@@ -779,29 +841,30 @@ body.korean, .korean{font-family:'Noto Sans KR','Inter',sans-serif;}
       </div>
 
       <div class="panel-strong rounded-2xl p-9">
-        <form class="space-y-6">
+        <form id="contactForm" class="space-y-6">
           <div class="grid md:grid-cols-2 gap-6">
             <div>
               <label class="block eyebrow text-[var(--text-faint)] mb-2" data-i18n="contact.name">NOMBRE</label>
-              <input type="text" class="w-full paper-input" data-i18n-placeholder="contact.namePlaceholder" placeholder="Tu nombre">
+              <input type="text" name="name" required class="w-full paper-input" data-i18n-placeholder="contact.namePlaceholder" placeholder="Tu nombre">
             </div>
             <div>
               <label class="block eyebrow text-[var(--text-faint)] mb-2" data-i18n="contact.company">EMPRESA</label>
-              <input type="text" class="w-full paper-input" data-i18n-placeholder="contact.companyPlaceholder" placeholder="Nombre de tu empresa">
+              <input type="text" name="company" class="w-full paper-input" data-i18n-placeholder="contact.companyPlaceholder" placeholder="Nombre de tu empresa">
             </div>
           </div>
           <div>
             <label class="block eyebrow text-[var(--text-faint)] mb-2" data-i18n="contact.email">EMAIL</label>
-            <input type="email" class="w-full paper-input" data-i18n-placeholder="contact.emailPlaceholder" placeholder="tu@email.com">
+            <input type="email" name="email" required class="w-full paper-input" data-i18n-placeholder="contact.emailPlaceholder" placeholder="tu@email.com">
           </div>
           <div>
             <label class="block eyebrow text-[var(--text-faint)] mb-2" data-i18n="contact.message">MENSAJE</label>
-            <textarea rows="4" class="w-full paper-input" data-i18n-placeholder="contact.messagePlaceholder" placeholder="Cuéntanos sobre tu operación..."></textarea>
+            <textarea rows="4" name="message" required class="w-full paper-input" data-i18n-placeholder="contact.messagePlaceholder" placeholder="Cuéntanos sobre tu operación..."></textarea>
           </div>
           <button type="submit" class="btn-rust w-full px-8 py-3.5 rounded-md text-sm font-semibold text-white flex items-center justify-center gap-2">
             <i data-lucide="send" class="w-4 h-4"></i>
             <span data-i18n="contact.submit">Enviar solicitud de demo</span>
           </button>
+          <p id="formStatus" class="text-xs font-mono text-center min-h-[1em]"></p>
         </form>
       </div>
     </div>
@@ -814,7 +877,7 @@ body.korean, .korean{font-family:'Noto Sans KR','Inter',sans-serif;}
     <div class="grid md:grid-cols-4 gap-12 mb-10">
       <div>
         <div class="font-mono text-lg text-[var(--paper)] mb-4"><span class="text-[var(--rust)]">▮</span> ZAK/FOREIGNER</div>
-        <p class="text-[var(--text-faint)] text-sm leading-relaxed" data-i18n="footer.description">La solución nativa definitiva para comercio exterior en macOS.</p>
+        <p class="text-[var(--text-faint)] text-sm leading-relaxed" data-i18n="footer.description">La solución nativa definitiva para comercio exterior en macOS. Desarrollada en Brasil.</p>
       </div>
       <div>
         <h4 class="font-semibold text-[var(--paper)] mb-4 text-sm" data-i18n="footer.product">Producto</h4>
@@ -1109,6 +1172,14 @@ const translations = {
     'hero.locking':'Bloqueando…','hero.lockingStatus':'BLOQUEANDO REGISTRO…','hero.locked':'Bloqueado 🔒',
     'hero.owner':'Tipo de documento','hero.category':'Cifrado','hero.serial':'Firma digital','hero.checksum':'Bloqueo de registro',
     'stats.time':'menos tiempo','stats.response':'gen. de DUA','stats.uptime':'disponibilidad','stats.iso':'bits cifrado AES',
+    'origin.title1':'Hecho en Brasil.','origin.title2':'Probado contra uno de los sistemas fiscales más exigentes del mundo.',
+    'origin.desc':'SPED, NF-e y capas fiscales federales, estatales y municipales: la complejidad tributaria brasileña exige una precisión que pocos mercados demandan. Esa misma ingeniería sostiene hoy tu operación de comercio exterior.',
+    'origin.ecosystem':'ECOSISTEMA ZAK — SUITE EMPRESARIAL','origin.tagline':'Cinco productos. Un mismo estándar de calidad brasileño.',
+    'origin.product.foreigner':'Comercio exterior — DUA, BL/AWB/CRM, BOM',
+    'origin.product.people':'Gestión de nóminas',
+    'origin.product.genesis':'Cifrado de datos y seguridad documental, incluida la nube',
+    'origin.product.primigenia':'Auditoría de información y registros de Zak Foreigner',
+    'origin.product.mitzva':'Integra y sincroniza las 5 aplicaciones entre sí',
     'bom.label':'COMMERCIAL INVOICE · MÓDULO BOM','bom.title1':'Capturas unidades.','bom.title2':'El descargo se calcula solo.',
     'bom.description':'El BOM traduce el consumo real de materia prima a descargos automáticos contra las DUA o DUCA con saldo disponible, dejando el estado de cuenta al día en tiempo real y sincronizado con tus reportes internos y gubernamentales.',
     'bom.item1.title':'Solo capturas unidades consumidas','bom.item1.desc':'Sin captura manual de montos: el BOM convierte unidades en valor FOB, CIF e impuestos al instante.',
@@ -1159,7 +1230,7 @@ const translations = {
     'contact.stamp':'RESPUESTA EN 24H','contact.name':'NOMBRE','contact.namePlaceholder':'Tu nombre',
     'contact.company':'EMPRESA','contact.companyPlaceholder':'Nombre de tu empresa','contact.email':'EMAIL','contact.emailPlaceholder':'tu@email.com',
     'contact.message':'MENSAJE','contact.messagePlaceholder':'Cuéntanos sobre tu operación...','contact.submit':'Enviar solicitud de demo',
-    'footer.description':'La solución nativa definitiva para comercio exterior en macOS.','footer.product':'Producto','footer.features':'Funcionalidades',
+    'footer.description':'La solución nativa definitiva para comercio exterior en macOS. Desarrollada en Brasil.','footer.product':'Producto','footer.features':'Funcionalidades',
     'footer.technology':'Tecnología','footer.reports':'Reportes','footer.company':'Empresa','footer.contact':'Contacto','footer.support':'Soporte','footer.docs':'Documentación',
     'footer.legal':'Legal','footer.privacy':'Privacidad','footer.terms':'Términos','footer.cookies':'Cookies',
     'footer.copyright':'© 2026 ZakForeigner. Todos los derechos reservados.','footer.tagline':'DISEÑADO PARA macOS · POTENCIADO POR AWS'
@@ -1177,6 +1248,14 @@ const translations = {
     'hero.locking':'잠그는 중…','hero.lockingStatus':'레코드 잠금 중…','hero.locked':'잠김 🔒',
     'hero.owner':'문서 유형','hero.category':'암호화','hero.serial':'전자 서명','hero.checksum':'레코드 잠금',
     'stats.time':'시간 절감','stats.response':'DUA 생성','stats.uptime':'가용성','stats.iso':'AES 암호화 비트',
+    'origin.title1':'브라질에서 만들었습니다.','origin.title2':'세계에서 가장 까다로운 조세 시스템으로 검증되었습니다.',
+    'origin.desc':'SPED, NF-e, 그리고 연방·주·시 단위로 겹겹이 쌓인 세금 체계 — 브라질의 조세 복잡성은 웬만한 시장이 요구하지 않는 수준의 정밀함을 요구합니다. 바로 그 엔지니어링이 지금 당신의 무역 운영을 지탱합니다.',
+    'origin.ecosystem':'ZAK 생태계 — 기업용 스위트','origin.tagline':'다섯 개의 제품. 하나의 브라질 품질 기준.',
+    'origin.product.foreigner':'무역 관리 — DUA, BL/AWB/CRM, BOM',
+    'origin.product.people':'급여 관리',
+    'origin.product.genesis':'데이터 암호화 및 문서 보안, 클라우드 포함',
+    'origin.product.primigenia':'Zak Foreigner의 정보 및 기록 감사',
+    'origin.product.mitzva':'5개 애플리케이션 간 통합 및 동기화',
     'bom.label':'상업 송장 · BOM 모듈','bom.title1':'수량만 입력하세요.','bom.title2':'차감은 자동으로 계산됩니다.',
     'bom.description':'BOM은 실제 원자재 소비량을 잔액이 있는 DUA 또는 DUCA에 대한 자동 차감으로 변환하여, 계정 상태를 실시간으로 최신 상태로 유지하고 내부 및 정부 보고서와 동기화합니다.',
     'bom.item1.title':'소비 수량만 입력하면 됩니다','bom.item1.desc':'금액을 수동으로 입력할 필요 없이 BOM이 수량을 FOB, CIF, 세금 가치로 즉시 변환합니다.',
@@ -1227,7 +1306,7 @@ const translations = {
     'contact.stamp':'24시간 내 응답','contact.name':'이름','contact.namePlaceholder':'귀하의 이름',
     'contact.company':'회사','contact.companyPlaceholder':'회사명','contact.email':'이메일','contact.emailPlaceholder':'your@email.com',
     'contact.message':'메시지','contact.messagePlaceholder':'운영에 대해 알려주세요...','contact.submit':'데모 요청 보내기',
-    'footer.description':'macOS용 무역 관리의 최종 네이티브 솔루션.','footer.product':'제품','footer.features':'기능',
+    'footer.description':'macOS용 무역 관리의 최종 네이티브 솔루션. 브라질에서 개발되었습니다.','footer.product':'제품','footer.features':'기능',
     'footer.technology':'기술','footer.reports':'보고서','footer.company':'회사','footer.contact':'연락처','footer.support':'지원','footer.docs':'문서',
     'footer.legal':'법적','footer.privacy':'개인정보 보호','footer.terms':'약관','footer.cookies':'쿠키',
     'footer.copyright':'© 2026 ZakForeigner. 모든 권리 보유.','footer.tagline':'macOS용으로 설계 · AWS로 구동'
@@ -1292,10 +1371,51 @@ document.querySelectorAll('.feature-card, .panel, .panel-strong').forEach((el, i
   observer.observe(el);
 });
 
-/* form submit */
-document.querySelector('form')?.addEventListener('submit', e=>{
+/* form submit — sends to API Gateway -> Lambda -> SES */
+// Reemplaza esta URL por la que imprime deploy.sh al terminar (paso "Endpoint:").
+const CONTACT_ENDPOINT = 'https://nfu0ijwp2f.execute-api.us-east-2.amazonaws.com/contact';
+
+const contactForm = document.getElementById('contactForm');
+contactForm?.addEventListener('submit', async e=>{
   e.preventDefault();
-  alert(currentLang === 'ko' ? '관심을 가져주셔서 감사합니다! 곧 연락드리겠습니다.' : '¡Gracias por tu interés! Te contactaremos pronto.');
+  const btn = contactForm.querySelector('button[type="submit"]');
+  const btnLabel = btn.querySelector('span');
+  const status = document.getElementById('formStatus');
+  const originalLabel = btnLabel.textContent;
+
+  if(CONTACT_ENDPOINT.includes('REEMPLAZA')){
+    status.style.color = 'var(--rust-2)';
+    status.textContent = currentLang === 'ko'
+      ? '설정 필요: 코드의 CONTACT_ENDPOINT를 채워주세요.'
+      : 'Falta configurar CONTACT_ENDPOINT en el código (ver deploy.sh).';
+    return;
+  }
+
+  btn.disabled = true;
+  status.textContent = '';
+  btnLabel.textContent = currentLang === 'ko' ? '전송 중…' : 'Enviando…';
+
+  const data = Object.fromEntries(new FormData(contactForm).entries());
+
+  try{
+    const res = await fetch(CONTACT_ENDPOINT, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data),
+    });
+    const json = await res.json().catch(()=>({}));
+    if(!res.ok || !json.ok) throw new Error(json.error || 'send_failed');
+
+    status.style.color = 'var(--amber)';
+    status.textContent = currentLang === 'ko' ? '전송 완료 — 곧 연락드리겠습니다 ✓' : 'Enviado — te contactaremos pronto ✓';
+    contactForm.reset();
+  }catch(err){
+    status.style.color = 'var(--rust-2)';
+    status.textContent = currentLang === 'ko' ? '전송 오류. 다시 시도해주세요.' : 'No se pudo enviar. Intenta de nuevo.';
+  }finally{
+    btn.disabled = false;
+    btnLabel.textContent = originalLabel;
+  }
 });
 
 updateLanguage('es');
