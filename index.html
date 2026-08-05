@@ -1373,7 +1373,7 @@ document.querySelectorAll('.feature-card, .panel, .panel-strong').forEach((el, i
 
 /* form submit — sends to API Gateway -> Lambda -> SES */
 // Reemplaza esta URL por la que imprime deploy.sh al terminar (paso "Endpoint:").
-const CONTACT_ENDPOINT = https://nfu0ijwp2f.execute-api.us-east-2.amazonaws.com/contact;
+const CONTACT_ENDPOINT = 'https://nfu0ijwp2f.execute-api.us-east-2.amazonaws.com/contact'
 
 const contactForm = document.getElementById('contactForm');
 contactForm?.addEventListener('submit', async e=>{
