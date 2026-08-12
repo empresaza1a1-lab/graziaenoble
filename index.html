@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZakForeigner | ERP de Cumplimiento Aduanero — Admisión Temporal y Perfeccionamiento Activo</title>
-<meta name="description" content="ZakForeigner es el ERP para macOS que gestiona el cumplimiento normativo de empresas bajo Admisión Temporal y Perfeccionamiento Activo: DUA, BOM, descargo automático, alertas de vencimiento y reportes ante la autoridad aduanera.">
-<meta name="keywords" content="ERP comercio exterior, admisión temporal, perfeccionamiento activo, DUA, DUCA, BOM aduanero, descargo de mercadería, cumplimiento aduanero, software para macOS, ERP aduanas">
+<title>ZakForeigner | ERP Especializado en Comercio Exterior — Admisión Temporal y Perfeccionamiento Activo</title>
+<meta name="description" content="ZakForeigner es un ERP especializado en la gestión y control de operaciones de comercio exterior para empresas bajo Admisión Temporal y Perfeccionamiento Activo: declaraciones aduaneras, documentación comercial, motor de descargos BOM, trazabilidad, estados de cuenta y reportes gubernamentales.">
+<meta name="keywords" content="ERP comercio exterior, admisión temporal, perfeccionamiento activo, DUA, DUCA, BOM aduanero, motor de descargos, trazabilidad transaccional, estados de cuenta, inventario perpetuo, software para macOS, ERP aduanas">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://zakforeigner.com/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="ZakForeigner | ERP de Cumplimiento Aduanero para Admisión Temporal y Perfeccionamiento Activo">
-<meta property="og:description" content="Gestiona DUA, BOM, descargos y reportes gubernamentales con un ERP exclusivo para macOS diseñado para el cumplimiento normativo de tu operación de comercio exterior.">
+<meta property="og:title" content="ZakForeigner | ERP Especializado en Comercio Exterior">
+<meta property="og:description" content="Gestión de declaraciones, documentación, motor de descargos BOM, trazabilidad y reportes gubernamentales en una única plataforma para Admisión Temporal y Perfeccionamiento Activo.">
 <meta property="og:locale" content="es_ES">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="ZakForeigner | ERP de Cumplimiento Aduanero">
-<meta name="twitter:description" content="El ERP exclusivo para macOS que resuelve el cumplimiento normativo bajo Admisión Temporal y Perfeccionamiento Activo.">
+<meta name="twitter:title" content="ZakForeigner | ERP Especializado en Comercio Exterior">
+<meta name="twitter:description" content="Plataforma especializada para empresas bajo Admisión Temporal y Perfeccionamiento Activo.">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -236,6 +236,39 @@ select.paper-input option{background:var(--steel-2); color:var(--paper);}
   font-size:.7rem; letter-spacing:.15em; text-transform:uppercase; color:var(--text-faint);
 }
 
+/* ---- new: relational flow chain (used for trazabilidad / control humano / integración) ---- */
+.flow-chain{display:flex; flex-wrap:wrap; align-items:center; gap:.55rem;}
+.flow-node{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.76rem;
+  padding:.55rem 1rem;
+  border:1px solid var(--line-strong);
+  border-radius:8px;
+  background:var(--steel-2);
+  color:var(--paper);
+  white-space:nowrap;
+}
+.flow-arrow{color:var(--amber); font-size:1.05rem; flex-shrink:0; line-height:1;}
+
+/* ---- new: callout for emphasized single-sentence statements ---- */
+.callout{
+  border-left:2px solid var(--amber);
+  padding:.15rem 0 .15rem 1.15rem;
+  color:var(--paper);
+  font-weight:500;
+  line-height:1.65;
+}
+
+/* ---- new: ledger table (estados de cuenta) ---- */
+.ledger-table{width:100%; border-collapse:collapse; font-family:'JetBrains Mono',monospace; font-size:.76rem;}
+.ledger-table th{text-align:left; padding:.6rem .5rem; color:var(--text-faint); font-weight:500; border-bottom:1px solid var(--line-strong); font-size:.65rem; letter-spacing:.08em; text-transform:uppercase; white-space:nowrap;}
+.ledger-table td{padding:.7rem .5rem; border-bottom:1px solid var(--line); color:var(--text-dim); white-space:nowrap;}
+.ledger-table tr:last-child td{border-bottom:none;}
+
+/* ---- new: compact capability card (used across new sections) ---- */
+.cap-card{background:var(--steel); border:1px solid var(--line); border-radius:12px; padding:1.5rem; transition:border-color .3s, transform .3s;}
+.cap-card:hover{border-color:var(--line-strong); transform:translateY(-2px);}
+
 @media (prefers-reduced-motion: reduce){
   *{animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important;}
 }
@@ -249,13 +282,13 @@ select.paper-input option{background:var(--steel-2); color:var(--paper);}
     <div class="font-mono text-lg tracking-tight text-[var(--paper)] flex items-center gap-2">
       <span class="text-[var(--rust)]">▮</span>ZAK<span class="text-[var(--text-dim)]">/</span>FOREIGNER
     </div>
-    <div class="hidden md:flex space-x-8 text-sm font-medium items-center text-[var(--text-dim)]">
-      <a href="#features" class="nav-link" data-i18n="nav.features">Funcionalidades</a>
-      <a href="#bom" class="nav-link" data-i18n="nav.bom">BOM</a>
+    <div class="hidden md:flex space-x-7 text-sm font-medium items-center text-[var(--text-dim)]">
+      <a href="#posicionamiento" class="nav-link" data-i18n="nav.platform">Plataforma</a>
+      <a href="#declaraciones" class="nav-link" data-i18n="nav.declarations">Declaraciones</a>
+      <a href="#bom" class="nav-link" data-i18n="nav.bom">Motor BOM</a>
       <a href="#alertas" class="nav-link" data-i18n="nav.alerts">Alertas</a>
       <a href="#reportes" class="nav-link" data-i18n="nav.reports">Reportes</a>
-      <a href="#tecnologia" class="nav-link" data-i18n="nav.technology">Tecnología</a>
-      <a href="#beneficios" class="nav-link" data-i18n="nav.benefits">Resultados</a>
+      <a href="#resultado" class="nav-link" data-i18n="nav.results">Resultados</a>
       <div class="lang-selector">
         <button class="lang-button" id="langButton">
           <i data-lucide="globe" class="w-3.5 h-3.5"></i>
@@ -268,7 +301,7 @@ select.paper-input option{background:var(--steel-2); color:var(--paper);}
         </div>
       </div>
     </div>
-    <a href="#contacto" class="btn-rust px-5 py-2 rounded-md text-sm font-semibold text-white" data-i18n="nav.demo">Agendar Demo</a>
+    <a href="#contacto" class="btn-rust px-5 py-2 rounded-md text-sm font-semibold text-white" data-i18n="nav.demo">Solicitar demo</a>
   </nav>
 </header>
 
@@ -284,32 +317,35 @@ select.paper-input option{background:var(--steel-2); color:var(--paper);}
       <div class="rise">
         <div class="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-md border border-[var(--rust)]/40 bg-[var(--rust)]/10">
           <span class="w-1.5 h-1.5 rounded-full bg-[var(--amber)]"></span>
-          <span class="eyebrow text-[var(--amber)]" data-i18n="hero.badge">EXCLUSIVO PARA macOS · CUMPLIMIENTO ADUANERO</span>
+          <span class="eyebrow text-[var(--amber)]" data-i18n="hero.badge">ERP ESPECIALIZADO · COMERCIO EXTERIOR · MACOS</span>
         </div>
 
         <h1 class="font-display text-5xl md:text-6xl font-semibold text-[var(--paper)] leading-[1.05] mb-6 tracking-tight">
-          <span data-i18n="hero.title1">Admisión Temporal,</span><br>
-          <span class="text-[var(--rust-2)]" data-i18n="hero.title2">bajo control absoluto.</span>
+          <span data-i18n="hero.title1">Perfeccionamiento Activo,</span><br>
+          <span class="text-[var(--rust-2)]" data-i18n="hero.title2">controlado desde una única plataforma.</span>
         </h1>
 
-        <p class="text-lg text-[var(--text)] max-w-xl mb-4 leading-relaxed">
-          <span data-i18n="hero.subtitle1">El ERP de comercio exterior para empresas que operan bajo</span>
-          <span class="text-[var(--paper)] font-medium" data-i18n="hero.subtitle2">Admisión Temporal</span>
-          <span data-i18n="hero.subtitle3">y</span>
-          <span class="text-[var(--paper)] font-medium" data-i18n="hero.subtitle4">Perfeccionamiento Activo</span>.
+        <p class="text-lg text-[var(--text)] max-w-xl mb-6 leading-relaxed" data-i18n="hero.subtitle">
+          ZakForeigner es un ERP especializado en la gestión y control de operaciones de comercio exterior para empresas que operan bajo regímenes de Admisión Temporal y Perfeccionamiento Activo.
         </p>
-        <p class="text-[var(--text-dim)] max-w-lg mb-10 leading-relaxed" data-i18n="hero.powered">
-          Documentos de embarque firmados digitalmente, descargo automático de DUA por BOM y alertas de vencimiento antes de que se conviertan en un incumplimiento. Software exclusivo para macOS, diseñado para sostener el cumplimiento normativo de tu operación aduanera.
+        <p class="text-[var(--text-dim)] max-w-lg mb-4 leading-relaxed" data-i18n="hero.desc1">
+          La plataforma integra en un mismo entorno la gestión de declaraciones aduaneras, documentación comercial, mercancías, estructuras de transformación, descargos, saldos, trazabilidad y generación de reportes operativos y gubernamentales.
         </p>
+        <p class="text-[var(--text-dim)] max-w-lg mb-6 leading-relaxed" data-i18n="hero.desc2">
+          Su arquitectura está orientada a mantener la correspondencia entre la información documental, los movimientos de mercancías y las operaciones de exportación, proporcionando una base de datos coherente para el seguimiento de las obligaciones derivadas del régimen.
+        </p>
+        <div class="callout max-w-lg mb-10" data-i18n="hero.descHighlight">
+          El sistema automatiza cálculos, validaciones, relaciones y procesamiento de información; las operaciones que requieren intervención o aprobación permanecen bajo control del usuario responsable.
+        </div>
 
         <div class="flex flex-col sm:flex-row gap-4 mb-14">
           <a href="#contacto" class="btn-rust px-7 py-3.5 rounded-md text-sm font-semibold text-white flex items-center justify-center gap-2">
             <i data-lucide="calendar" class="w-4 h-4"></i>
-            <span data-i18n="hero.demoBtn">Agendar demo gratuita</span>
+            <span data-i18n="hero.demoBtn">Solicitar una demostración</span>
           </a>
-          <a href="#features" class="btn-ghost px-7 py-3.5 rounded-md text-sm font-semibold text-[var(--text)] flex items-center justify-center gap-2">
+          <a href="#posicionamiento" class="btn-ghost px-7 py-3.5 rounded-md text-sm font-semibold text-[var(--text)] flex items-center justify-center gap-2">
             <i data-lucide="arrow-down" class="w-4 h-4"></i>
-            <span data-i18n="hero.featuresBtn">Ver funcionalidades</span>
+            <span data-i18n="hero.featuresBtn">Explorar la plataforma</span>
           </a>
         </div>
 
@@ -333,7 +369,7 @@ select.paper-input option{background:var(--steel-2); color:var(--paper);}
         </div>
       </div>
 
-      <!-- Right: document intake card / signature element -->
+      <!-- Right: document intake card -->
       <div class="rise floaty" style="animation-delay:.15s;">
         <div class="manifest-card p-0 max-w-md mx-auto">
           <div class="manifest-head flex items-center justify-between px-5 py-4">
@@ -370,7 +406,40 @@ select.paper-input option{background:var(--steel-2); color:var(--paper);}
   </div>
 </section>
 
-<!-- Origin & standards -->
+<!-- Posicionamiento -->
+<section id="posicionamiento" class="py-28 border-t hairline relative overflow-hidden">
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[var(--ledger)]/8 rounded-full blur-[130px]"></div>
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="max-w-3xl mx-auto text-center mb-14">
+      <div class="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded-md border border-[var(--ledger)]/40 bg-[var(--ledger)]/10">
+        <span class="w-1.5 h-1.5 rounded-full bg-[var(--ledger)]"></span>
+        <span class="eyebrow text-[var(--ledger)]" data-i18n="posicionamiento.label">UNA PLATAFORMA ESPECIALIZADA</span>
+      </div>
+      <h2 class="font-display text-3xl md:text-4xl font-semibold text-[var(--paper)] tracking-tight mb-6 leading-tight" data-i18n="posicionamiento.title">
+        No es un ERP genérico adaptado a comercio exterior.
+      </h2>
+      <p class="text-[var(--text-dim)] leading-relaxed mb-3" data-i18n="posicionamiento.p1">ZakForeigner fue concebido específicamente para organizaciones cuya operación depende del control preciso de mercancías ingresadas bajo regímenes de perfeccionamiento activo.</p>
+      <p class="text-[var(--text-dim)] leading-relaxed mb-3" data-i18n="posicionamiento.p2">La plataforma centraliza información que tradicionalmente se encuentra distribuida entre hojas de cálculo, documentos comerciales, declaraciones aduaneras, registros internos y diferentes sistemas operativos.</p>
+      <p class="text-[var(--text-dim)] leading-relaxed" data-i18n="posicionamiento.p3">Su objetivo es establecer una relación consistente entre estos elementos para que cada movimiento pueda ser consultado, conciliado y trazado desde su origen hasta su aplicación y posterior descargo.</p>
+    </div>
+
+    <div class="panel rounded-2xl p-8 max-w-4xl mx-auto text-center">
+      <div class="flex flex-wrap justify-center gap-2 font-mono text-xs mb-5" id="posicionamientoChain">
+        <span class="px-3 py-1.5 rounded border border-[var(--line-strong)] text-[var(--text-dim)]" data-i18n="posicionamiento.chain1">Declaraciones</span>
+        <span class="px-3 py-1.5 rounded border border-[var(--line-strong)] text-[var(--text-dim)]" data-i18n="posicionamiento.chain2">Mercancías</span>
+        <span class="px-3 py-1.5 rounded border border-[var(--line-strong)] text-[var(--text-dim)]" data-i18n="posicionamiento.chain3">Documentos</span>
+        <span class="px-3 py-1.5 rounded border border-[var(--line-strong)] text-[var(--text-dim)]" data-i18n="posicionamiento.chain4">Exportaciones</span>
+        <span class="px-3 py-1.5 rounded border border-[var(--line-strong)] text-[var(--text-dim)]" data-i18n="posicionamiento.chain5">Consumos</span>
+        <span class="px-3 py-1.5 rounded border border-[var(--line-strong)] text-[var(--text-dim)]" data-i18n="posicionamiento.chain6">Descargos</span>
+        <span class="px-3 py-1.5 rounded border border-[var(--line-strong)] text-[var(--text-dim)]" data-i18n="posicionamiento.chain7">Saldos</span>
+        <span class="px-3 py-1.5 rounded border border-[var(--line-strong)] text-[var(--text-dim)]" data-i18n="posicionamiento.chain8">Reportes</span>
+      </div>
+      <p class="font-display text-lg text-[var(--paper)]" data-i18n="posicionamiento.closing">Una misma estructura de información.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Origin & ecosystem (retenido — no cubierto por el nuevo documento de contenido) -->
 <section id="origen" class="py-16 border-t hairline relative overflow-hidden">
   <div class="container mx-auto px-6">
     <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -391,7 +460,7 @@ select.paper-input option{background:var(--steel-2); color:var(--paper);}
             <span class="w-1.5 h-1.5 rounded-full bg-[var(--rust-2)] shrink-0"></span>
             <span class="font-mono text-sm font-semibold text-[var(--paper)]">Zak Foreigner</span>
           </div>
-          <p class="text-xs text-[var(--text-dim)] pl-3.5 leading-relaxed" data-i18n="origin.product.foreigner">ERP de comercio exterior — DUA, BL/AWB/CRM, BOM y reportes gubernamentales</p>
+          <p class="text-xs text-[var(--text-dim)] pl-3.5 leading-relaxed" data-i18n="origin.product.foreigner">ERP de comercio exterior — DUA, BL/AWB/CMR, BOM y reportes gubernamentales</p>
         </div>
 
         <div class="py-3 border-t hairline">
@@ -431,43 +500,44 @@ select.paper-input option{background:var(--steel-2); color:var(--paper);}
     </div>
   </div>
 </section>
-
-<!-- BOM — flagship feature -->
-<section id="bom" class="py-28 border-t hairline relative overflow-hidden">
-  <div class="absolute top-10 -right-32 w-[420px] h-[420px] bg-[var(--ledger)]/10 rounded-full blur-[120px]"></div>
+<!-- Gestión de Declaraciones Aduaneras -->
+<section id="declaraciones" class="py-28 border-t hairline relative overflow-hidden">
+  <div class="absolute top-10 -left-32 w-[420px] h-[420px] bg-[var(--ledger)]/10 rounded-full blur-[120px]"></div>
   <div class="container mx-auto px-6">
     <div class="grid lg:grid-cols-2 gap-16 items-center">
       <div>
         <div class="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded-md border border-[var(--ledger)]/40 bg-[var(--ledger)]/10">
           <span class="w-1.5 h-1.5 rounded-full bg-[var(--ledger)]"></span>
-          <span class="eyebrow text-[var(--ledger)]" data-i18n="bom.label">FACTURA DE EXPORTACIÓN · MÓDULO BOM</span>
+          <span class="eyebrow text-[var(--ledger)]" data-i18n="declaraciones.label">GESTIÓN ADUANERA</span>
         </div>
-        <h2 class="font-display text-4xl md:text-5xl font-semibold text-[var(--paper)] tracking-tight mb-6 leading-tight">
-          <span data-i18n="bom.title1">Capturas unidades.</span><br>
-          <span class="text-[var(--rust-2)]" data-i18n="bom.title2">El descargo se calcula solo.</span>
+        <h2 class="font-display text-4xl md:text-5xl font-semibold text-[var(--paper)] tracking-tight mb-6 leading-tight" data-i18n="declaraciones.title">
+          Declaraciones bajo control estructurado.
         </h2>
-        <p class="text-[var(--text-dim)] mb-9 leading-relaxed max-w-lg" data-i18n="bom.description">
-          Al emitir una factura de exportación, selecciona la o las declaraciones de importación asociadas y el BOM descarga las unidades consumidas contra ellas. El sistema calcula automáticamente el valor FOB, CIF y los tributos correspondientes, manteniendo el estado de cuenta de la mercadería exacto y al día.
-        </p>
-        <ul class="space-y-6 mb-10">
-          <li class="flex items-start gap-4">
-            <div class="w-8 h-8 rounded-md bg-[var(--ledger)]/15 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="package" class="text-[var(--ledger)] w-4 h-4"></i></div>
-            <div><h4 class="font-semibold text-[var(--paper)] mb-1" data-i18n="bom.item1.title">Solo capturas unidades consumidas</h4><p class="text-[var(--text-dim)] text-sm" data-i18n="bom.item1.desc">Sin captura manual de montos: el BOM convierte unidades en valor FOB, CIF e impuestos al instante.</p></div>
-          </li>
-          <li class="flex items-start gap-4">
-            <div class="w-8 h-8 rounded-md bg-[var(--amber)]/15 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="search-check" class="text-[var(--amber)] w-4 h-4"></i></div>
-            <div><h4 class="font-semibold text-[var(--paper)] mb-1" data-i18n="bom.item2.title">Selecciona la DUA que vas a descargar</h4><p class="text-[var(--text-dim)] text-sm" data-i18n="bom.item2.desc">Elige una o varias declaraciones de importación con saldo disponible y aplica el descargo directamente desde la factura.</p></div>
-          </li>
-          <li class="flex items-start gap-4">
-            <div class="w-8 h-8 rounded-md bg-[var(--rust)]/15 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="refresh-cw" class="text-[var(--rust-2)] w-4 h-4"></i></div>
-            <div><h4 class="font-semibold text-[var(--paper)] mb-1" data-i18n="bom.item3.title">Estado de cuenta siempre al día</h4><p class="text-[var(--text-dim)] text-sm" data-i18n="bom.item3.desc">Cada descargo se refleja de inmediato en el estado de cuenta por DUA, en tus controles internos y en los reportes gubernamentales correspondientes.</p></div>
-          </li>
-        </ul>
-        <div class="flex flex-wrap gap-2 font-mono text-xs mb-9">
-          <span class="px-3 py-1.5 rounded border border-[var(--line-strong)] text-[var(--text-dim)]">BOM</span>
-          <span class="px-3 py-1.5 rounded border border-[var(--line-strong)] text-[var(--text-dim)]">Factura de exportación</span>
-          <span class="px-3 py-1.5 rounded border border-[var(--line-strong)] text-[var(--text-dim)]">DUA / DUCA</span>
-          <span class="px-3 py-1.5 rounded border border-[var(--line-strong)] text-[var(--text-dim)]">FOB · CIF · Tributos</span>
+        <p class="text-[var(--text-dim)] mb-3 leading-relaxed max-w-lg" data-i18n="declaraciones.p1">ZakForeigner permite registrar, administrar y consultar las declaraciones aduaneras asociadas a las operaciones de importación y exportación de la empresa.</p>
+        <p class="text-[var(--text-dim)] mb-3 leading-relaxed max-w-lg" data-i18n="declaraciones.p2">La información se organiza a nivel de declaración y línea de mercancía, permitiendo mantener el vínculo entre cantidades, valores, tributos, documentos y movimientos posteriores.</p>
+        <p class="text-[var(--text-dim)] mb-9 leading-relaxed max-w-lg" data-i18n="declaraciones.p3">El sistema utiliza esta información como base para el control de saldos, descargos, trazabilidad y generación de reportes.</p>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-9">
+          <div class="cap-card">
+            <i data-lucide="file-text" class="text-[var(--ledger)] w-5 h-5 mb-3"></i>
+            <h4 class="font-semibold text-[var(--paper)] mb-1 text-sm" data-i18n="declaraciones.cap1.title">Gestión de declaraciones</h4>
+            <p class="text-[var(--text-dim)] text-xs leading-relaxed" data-i18n="declaraciones.cap1.desc">Registro y administración estructurada de las declaraciones y sus diferentes componentes.</p>
+          </div>
+          <div class="cap-card">
+            <i data-lucide="list-checks" class="text-[var(--amber)] w-5 h-5 mb-3"></i>
+            <h4 class="font-semibold text-[var(--paper)] mb-1 text-sm" data-i18n="declaraciones.cap2.title">Control por línea de mercancía</h4>
+            <p class="text-[var(--text-dim)] text-xs leading-relaxed" data-i18n="declaraciones.cap2.desc">Seguimiento individualizado de las mercancías declaradas, sus cantidades, valores y movimientos asociados.</p>
+          </div>
+          <div class="cap-card">
+            <i data-lucide="scale" class="text-[var(--rust-2)] w-5 h-5 mb-3"></i>
+            <h4 class="font-semibold text-[var(--paper)] mb-1 text-sm" data-i18n="declaraciones.cap3.title">Saldos derivados de operaciones</h4>
+            <p class="text-[var(--text-dim)] text-xs leading-relaxed" data-i18n="declaraciones.cap3.desc">Actualización de los saldos correspondientes conforme se registran las operaciones que afectan cada declaración.</p>
+          </div>
+          <div class="cap-card">
+            <i data-lucide="link-2" class="text-[var(--ledger)] w-5 h-5 mb-3"></i>
+            <h4 class="font-semibold text-[var(--paper)] mb-1 text-sm" data-i18n="declaraciones.cap4.title">Relación documental</h4>
+            <p class="text-[var(--text-dim)] text-xs leading-relaxed" data-i18n="declaraciones.cap4.desc">Vinculación entre declaraciones, documentos comerciales, expedientes y operaciones relacionadas.</p>
+          </div>
         </div>
 
         <div class="panel rounded-xl overflow-hidden max-w-md">
@@ -475,7 +545,186 @@ select.paper-input option{background:var(--steel-2); color:var(--paper);}
             <span class="w-2 h-2 rounded-full bg-[var(--rust)]/60"></span>
             <span class="w-2 h-2 rounded-full bg-[var(--amber)]/60"></span>
             <span class="w-2 h-2 rounded-full bg-[var(--ledger)]/60"></span>
-            <span class="font-mono text-[11px] text-[var(--text-faint)] ml-2" data-i18n="bom.terminalTitle">bom-descargo.log</span>
+            <span class="font-mono text-[11px] text-[var(--text-faint)] ml-2" data-i18n="declaraciones.terminalTitle">declaracion.log</span>
+          </div>
+          <div id="terminalLog" class="font-mono text-xs leading-relaxed p-4 h-[132px] text-[var(--text-dim)]"></div>
+        </div>
+      </div>
+
+      <!-- manifest paper report -->
+      <div class="relative">
+        <div class="absolute -inset-6 bg-[var(--rust)]/10 rounded-3xl blur-3xl"></div>
+        <div class="relative rounded-2xl overflow-hidden" style="background:var(--paper); box-shadow:0 30px 70px -20px rgba(0,0,0,0.5);">
+          <div class="px-7 py-5 border-b-2 border-dashed" style="border-color:#00000022;">
+            <div class="flex justify-between items-start">
+              <div>
+                <div class="font-mono text-[11px] tracking-widest text-[#8a8471]" data-i18n="declaraciones.reportLabel">REPORTE DE DECLARACIÓN</div>
+                <div class="font-semibold text-[#1a1a1a] text-sm mt-1">HIALEAH, S.A. DE C.V.</div>
+                <div class="text-[11px] text-[#6b6552] mt-0.5" data-i18n="declaraciones.regime">Régimen: Admisión Temporal</div>
+              </div>
+              <div class="stamp text-[10px] px-3 py-1.5 shrink-0" data-i18n="declaraciones.stampValid">VALIDADO</div>
+            </div>
+          </div>
+          <div class="px-7 py-6">
+            <div class="font-mono text-xs text-[#6b6552] mb-4">No. 25540000234</div>
+            <div class="grid grid-cols-2 gap-5 mb-6">
+              <div><p class="text-[11px] text-[#8a8471] mb-1" data-i18n="declaraciones.initialBalance">Saldo inicial</p><p class="font-mono font-semibold text-[#1a1a1a]">$1,245,890.50</p></div>
+              <div><p class="text-[11px] text-[#8a8471] mb-1" data-i18n="declaraciones.dai">DAI calculado</p><p class="font-mono font-semibold text-[var(--rust)]">$124,589.05</p></div>
+              <div><p class="text-[11px] text-[#8a8471] mb-1">IVA</p><p class="font-mono font-semibold" style="color:#3d6d5c;">$199,342.48</p></div>
+              <div><p class="text-[11px] text-[#8a8471] mb-1" data-i18n="declaraciones.finalBalance">Saldo final</p><p class="font-mono font-semibold text-[#1a1a1a]">$1,570,822.03</p></div>
+            </div>
+            <div class="border-t border-dashed pt-4" style="border-color:#00000022;">
+              <div class="flex justify-between text-[11px] text-[#8a8471] font-mono">
+                <span data-i18n="declaraciones.generatedBy">Generado automáticamente</span>
+                <span id="reportTimestamp">—</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Documentación de Comercio Exterior -->
+<section id="documentacion" class="py-28 border-t hairline">
+  <div class="container mx-auto px-6">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-14 gap-6">
+      <div>
+        <div class="section-label mb-3" data-i18n="documentacion.label">DOCUMENTACIÓN COMERCIAL Y DE EMBARQUE</div>
+        <h2 class="font-display text-4xl md:text-5xl font-semibold text-[var(--paper)] tracking-tight max-w-2xl leading-tight" data-i18n="documentacion.title">
+          La documentación forma parte del expediente operativo.
+        </h2>
+      </div>
+      <p class="text-[var(--text-dim)] max-w-sm leading-relaxed">
+        <span data-i18n="documentacion.p1">ZakForeigner incorpora la gestión de los documentos que sustentan las operaciones de comercio exterior, evitando que la información documental permanezca aislada del contexto aduanero de la operación.</span>
+      </p>
+    </div>
+    <p class="text-[var(--text-dim)] max-w-2xl mb-12 leading-relaxed -mt-8" data-i18n="documentacion.p2">La plataforma permite registrar y organizar documentos de embarque y documentación comercial, manteniendo su relación con las operaciones correspondientes.</p>
+
+    <div class="grid md:grid-cols-3 lg:grid-cols-5 gap-5">
+      <div class="feature-card panel rounded-2xl p-6">
+        <div class="corner"></div>
+        <div class="w-10 h-10 rounded-lg bg-[var(--rust)]/15 flex items-center justify-center mb-4"><i data-lucide="ship" class="text-[var(--rust-2)] w-5 h-5"></i></div>
+        <h3 class="font-display text-base font-semibold text-[var(--paper)] mb-2" data-i18n="documentacion.doc1.title">Bill of Lading (BL)</h3>
+        <p class="text-[var(--text-dim)] text-xs leading-relaxed" data-i18n="documentacion.doc1.desc">Gestión de información asociada al transporte marítimo.</p>
+      </div>
+      <div class="feature-card panel rounded-2xl p-6">
+        <div class="corner"></div>
+        <div class="w-10 h-10 rounded-lg bg-[var(--ledger)]/15 flex items-center justify-center mb-4"><i data-lucide="plane" class="text-[var(--ledger)] w-5 h-5"></i></div>
+        <h3 class="font-display text-base font-semibold text-[var(--paper)] mb-2" data-i18n="documentacion.doc2.title">Air Waybill (AWB)</h3>
+        <p class="text-[var(--text-dim)] text-xs leading-relaxed" data-i18n="documentacion.doc2.desc">Registro y control de documentación correspondiente al transporte aéreo.</p>
+      </div>
+      <div class="feature-card panel rounded-2xl p-6">
+        <div class="corner"></div>
+        <div class="w-10 h-10 rounded-lg bg-[var(--amber)]/15 flex items-center justify-center mb-4"><i data-lucide="truck" class="text-[var(--amber)] w-5 h-5"></i></div>
+        <h3 class="font-display text-base font-semibold text-[var(--paper)] mb-2" data-i18n="documentacion.doc3.title">CMR</h3>
+        <p class="text-[var(--text-dim)] text-xs leading-relaxed" data-i18n="documentacion.doc3.desc">Gestión documental para operaciones de transporte terrestre.</p>
+      </div>
+      <div class="feature-card panel rounded-2xl p-6">
+        <div class="corner"></div>
+        <div class="w-10 h-10 rounded-lg bg-[var(--rust)]/15 flex items-center justify-center mb-4"><i data-lucide="receipt" class="text-[var(--rust-2)] w-5 h-5"></i></div>
+        <h3 class="font-display text-base font-semibold text-[var(--paper)] mb-2" data-i18n="documentacion.doc4.title">Commercial Invoice</h3>
+        <p class="text-[var(--text-dim)] text-xs leading-relaxed" data-i18n="documentacion.doc4.desc">Creación y gestión estructurada de facturas comerciales y sus líneas de operación.</p>
+      </div>
+      <div class="feature-card panel rounded-2xl p-6">
+        <div class="corner"></div>
+        <div class="w-10 h-10 rounded-lg bg-[var(--ledger)]/15 flex items-center justify-center mb-4"><i data-lucide="folder-check" class="text-[var(--ledger)] w-5 h-5"></i></div>
+        <h3 class="font-display text-base font-semibold text-[var(--paper)] mb-2" data-i18n="documentacion.doc5.title">Expedientes</h3>
+        <p class="text-[var(--text-dim)] text-xs leading-relaxed" data-i18n="documentacion.doc5.desc">Consolidación de documentos, declaraciones y registros relacionados con una misma operación.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Commercial Invoice -->
+<section id="invoice" class="py-28 border-t hairline relative overflow-hidden">
+  <div class="absolute bottom-0 -right-32 w-[420px] h-[420px] bg-[var(--amber)]/10 rounded-full blur-[120px]"></div>
+  <div class="container mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-16 items-start">
+      <div>
+        <div class="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded-md border border-[var(--amber)]/40 bg-[var(--amber)]/10">
+          <span class="w-1.5 h-1.5 rounded-full bg-[var(--amber)]"></span>
+          <span class="eyebrow text-[var(--amber)]" data-i18n="invoice.label">COMMERCIAL INVOICE</span>
+        </div>
+        <h2 class="font-display text-4xl md:text-5xl font-semibold text-[var(--paper)] tracking-tight mb-6 leading-tight" data-i18n="invoice.title">
+          De la factura comercial al control aduanero.
+        </h2>
+        <p class="text-[var(--paper)] font-medium mb-4 leading-relaxed" data-i18n="invoice.p1">La Commercial Invoice no se trata como un documento aislado.</p>
+        <p class="text-[var(--text-dim)] mb-4 leading-relaxed max-w-lg" data-i18n="invoice.p2">ZakForeigner estructura sus líneas comerciales para que la información registrada pueda relacionarse con productos, cantidades, operaciones de exportación, estructuras de transformación y procesos de descargo.</p>
+        <p class="text-[var(--text-dim)] leading-relaxed max-w-lg" data-i18n="invoice.p3">Esta integración permite utilizar la información de la factura como parte del flujo operativo que conecta la exportación con las mercancías ingresadas bajo régimen.</p>
+      </div>
+
+      <div class="panel rounded-2xl p-8">
+        <div class="section-label mb-5" data-i18n="invoice.capLabel">CAPACIDADES</div>
+        <ul class="space-y-3.5 font-mono text-sm">
+          <li class="flex items-start gap-3"><i data-lucide="check" class="text-[var(--amber)] w-4 h-4 mt-0.5 shrink-0"></i><span class="text-[var(--text)]" data-i18n="invoice.cap1">Gestión de múltiples líneas de factura.</span></li>
+          <li class="flex items-start gap-3"><i data-lucide="check" class="text-[var(--amber)] w-4 h-4 mt-0.5 shrink-0"></i><span class="text-[var(--text)]" data-i18n="invoice.cap2">Productos y cantidades.</span></li>
+          <li class="flex items-start gap-3"><i data-lucide="check" class="text-[var(--amber)] w-4 h-4 mt-0.5 shrink-0"></i><span class="text-[var(--text)]" data-i18n="invoice.cap3">Valores comerciales.</span></li>
+          <li class="flex items-start gap-3"><i data-lucide="check" class="text-[var(--amber)] w-4 h-4 mt-0.5 shrink-0"></i><span class="text-[var(--text)]" data-i18n="invoice.cap4">Información de comprador y vendedor.</span></li>
+          <li class="flex items-start gap-3"><i data-lucide="check" class="text-[var(--amber)] w-4 h-4 mt-0.5 shrink-0"></i><span class="text-[var(--text)]" data-i18n="invoice.cap5">Relación con operaciones de exportación.</span></li>
+          <li class="flex items-start gap-3"><i data-lucide="check" class="text-[var(--amber)] w-4 h-4 mt-0.5 shrink-0"></i><span class="text-[var(--text)]" data-i18n="invoice.cap6">Asociación con declaraciones de importación.</span></li>
+          <li class="flex items-start gap-3"><i data-lucide="check" class="text-[var(--amber)] w-4 h-4 mt-0.5 shrink-0"></i><span class="text-[var(--text)]" data-i18n="invoice.cap7">Integración con el motor de descargos.</span></li>
+          <li class="flex items-start gap-3"><i data-lucide="check" class="text-[var(--amber)] w-4 h-4 mt-0.5 shrink-0"></i><span class="text-[var(--text)]" data-i18n="invoice.cap8">Generación documental.</span></li>
+          <li class="flex items-start gap-3"><i data-lucide="check" class="text-[var(--amber)] w-4 h-4 mt-0.5 shrink-0"></i><span class="text-[var(--text)]" data-i18n="invoice.cap9">Trazabilidad de la información utilizada posteriormente en los procesos de control.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Motor de Descargos · BOM -->
+<section id="bom" class="py-28 border-t hairline relative overflow-hidden">
+  <div class="absolute top-10 -right-32 w-[420px] h-[420px] bg-[var(--ledger)]/10 rounded-full blur-[120px]"></div>
+  <div class="container mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded-md border border-[var(--ledger)]/40 bg-[var(--ledger)]/10">
+          <span class="w-1.5 h-1.5 rounded-full bg-[var(--ledger)]"></span>
+          <span class="eyebrow text-[var(--ledger)]" data-i18n="bom.label">MOTOR DE DESCARGOS · BOM</span>
+        </div>
+        <h2 class="font-display text-4xl md:text-5xl font-semibold text-[var(--paper)] tracking-tight mb-6 leading-tight">
+          <span data-i18n="bom.title1">El descargo no es una operación aislada.</span><br>
+          <span class="text-[var(--rust-2)]" data-i18n="bom.title2">Es el resultado de una relación de datos.</span>
+        </h2>
+        <p class="text-[var(--text-dim)] mb-3 leading-relaxed max-w-lg" data-i18n="bom.p1">El motor de descargos de ZakForeigner relaciona la información de las mercancías ingresadas bajo régimen con su utilización en los productos destinados a exportación.</p>
+        <p class="text-[var(--text-dim)] mb-3 leading-relaxed max-w-lg" data-i18n="bom.p2">La determinación del descargo depende de la información registrada en las operaciones de exportación y de la estructura de materiales definida para cada producto.</p>
+        <p class="text-[var(--text-dim)] mb-6 leading-relaxed max-w-lg" data-i18n="bom.p3">El BOM establece la composición y relación entre el producto y las materias primas utilizadas. A partir de esta información, el sistema procesa las cantidades correspondientes, determina los valores asociados y aplica el resultado sobre las declaraciones seleccionadas con saldo disponible.</p>
+        <div class="callout max-w-lg mb-9" data-i18n="bom.userControl">El usuario conserva el control sobre la operación y las declaraciones que serán utilizadas. El sistema procesa y calcula la información derivada de esa decisión.</div>
+
+        <ul class="space-y-5 mb-9">
+          <li class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-md bg-[var(--ledger)]/15 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="layers" class="text-[var(--ledger)] w-4 h-4"></i></div>
+            <div><h4 class="font-semibold text-[var(--paper)] mb-1 text-sm" data-i18n="bom.item1.title">Estructuras de materiales (BOM)</h4><p class="text-[var(--text-dim)] text-sm" data-i18n="bom.item1.desc">Definición de la composición de los productos y de las materias primas asociadas.</p></div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-md bg-[var(--amber)]/15 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="link-2" class="text-[var(--amber)] w-4 h-4"></i></div>
+            <div><h4 class="font-semibold text-[var(--paper)] mb-1 text-sm" data-i18n="bom.item2.title">Relación producto–materia prima</h4><p class="text-[var(--text-dim)] text-sm" data-i18n="bom.item2.desc">Correspondencia entre las unidades exportadas y los insumos necesarios para determinar su aplicación.</p></div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-md bg-[var(--rust)]/15 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="search-check" class="text-[var(--rust-2)] w-4 h-4"></i></div>
+            <div><h4 class="font-semibold text-[var(--paper)] mb-1 text-sm" data-i18n="bom.item3.title">Selección de declaraciones</h4><p class="text-[var(--text-dim)] text-sm" data-i18n="bom.item3.desc">Identificación de las declaraciones con saldo disponible que serán utilizadas en el proceso.</p></div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-md bg-[var(--ledger)]/15 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="package" class="text-[var(--ledger)] w-4 h-4"></i></div>
+            <div><h4 class="font-semibold text-[var(--paper)] mb-1 text-sm" data-i18n="bom.item4.title">Determinación de consumos</h4><p class="text-[var(--text-dim)] text-sm" data-i18n="bom.item4.desc">Procesamiento de las cantidades correspondientes conforme a la información registrada y a la estructura de transformación.</p></div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-md bg-[var(--amber)]/15 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="calculator" class="text-[var(--amber)] w-4 h-4"></i></div>
+            <div><h4 class="font-semibold text-[var(--paper)] mb-1 text-sm" data-i18n="bom.item5.title">Cálculo de valores</h4><p class="text-[var(--text-dim)] text-sm" data-i18n="bom.item5.desc">Determinación de valores FOB, CIF y tributos asociados según la información disponible en la operación.</p></div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-md bg-[var(--rust)]/15 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="refresh-cw" class="text-[var(--rust-2)] w-4 h-4"></i></div>
+            <div><h4 class="font-semibold text-[var(--paper)] mb-1 text-sm" data-i18n="bom.item6.title">Actualización de saldos</h4><p class="text-[var(--text-dim)] text-sm" data-i18n="bom.item6.desc">Los movimientos resultantes se incorporan al estado de cuenta correspondiente y quedan relacionados con la operación que los originó.</p></div>
+          </li>
+        </ul>
+
+        <div class="panel rounded-xl overflow-hidden max-w-md">
+          <div class="flex items-center gap-2 px-4 py-2.5 border-b hairline">
+            <span class="w-2 h-2 rounded-full bg-[var(--rust)]/60"></span>
+            <span class="w-2 h-2 rounded-full bg-[var(--amber)]/60"></span>
+            <span class="w-2 h-2 rounded-full bg-[var(--ledger)]/60"></span>
+            <span class="font-mono text-[11px] text-[var(--text-faint)] ml-2" data-i18n="bom.terminalTitle">motor-descargo.log</span>
           </div>
           <div id="bomLog" class="font-mono text-xs leading-relaxed p-4 h-[132px] text-[var(--text-dim)]"></div>
         </div>
@@ -544,151 +793,197 @@ select.paper-input option{background:var(--steel-2); color:var(--paper);}
     </div>
   </div>
 </section>
-
-<!-- Features -->
-<section id="features" class="py-28 border-t hairline">
+<!-- Trazabilidad -->
+<section id="trazabilidad" class="py-28 border-t hairline relative overflow-hidden">
+  <div class="absolute top-0 left-0 w-[420px] h-[420px] bg-[var(--amber)]/8 rounded-full blur-[120px]"></div>
   <div class="container mx-auto px-6">
-    <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-14 gap-6">
-      <div>
-        <div class="section-label mb-3" data-i18n="features.label">MÓDULOS DEL SISTEMA</div>
-        <h2 class="font-display text-4xl md:text-5xl font-semibold text-[var(--paper)] tracking-tight">
-          <span data-i18n="features.title">Funcionalidades</span> <span class="text-[var(--rust-2)]" data-i18n="features.subtitle">construidas para aduanas</span>
-        </h2>
+    <div class="max-w-3xl mb-10">
+      <div class="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded-md border border-[var(--amber)]/40 bg-[var(--amber)]/10">
+        <span class="w-1.5 h-1.5 rounded-full bg-[var(--amber)]"></span>
+        <span class="eyebrow text-[var(--amber)]" data-i18n="trazabilidad.label">TRAZABILIDAD TRANSACCIONAL</span>
       </div>
-      <p class="text-[var(--text-dim)] max-w-sm" data-i18n="features.description">Cada módulo resuelve un punto de fricción real en la operación diaria bajo regímenes de admisión temporal y perfeccionamiento activo.</p>
+      <h2 class="font-display text-4xl md:text-5xl font-semibold text-[var(--paper)] tracking-tight mb-6 leading-tight" data-i18n="trazabilidad.title">
+        Cada saldo debe poder explicarse.
+      </h2>
+      <p class="text-[var(--text-dim)] mb-3 leading-relaxed max-w-2xl" data-i18n="trazabilidad.p1">ZakForeigner está diseñado para que la información no termine en una cifra aislada.</p>
+      <p class="text-[var(--text-dim)] mb-3 leading-relaxed max-w-2xl" data-i18n="trazabilidad.p2">Un saldo debe poder relacionarse con sus movimientos; un movimiento debe poder relacionarse con una operación; y una operación debe poder remontarse hasta la documentación y declaración que le dieron origen.</p>
+      <p class="text-[var(--text-dim)] leading-relaxed max-w-2xl" data-i18n="trazabilidad.p3">Esta estructura permite consultar el recorrido de las mercancías desde su ingreso bajo régimen hasta su utilización, descargo y saldo remanente.</p>
     </div>
 
-    <div class="bento">
-      <div class="bento-lg feature-card panel rounded-2xl p-8 flex flex-col justify-between">
-        <div class="corner"></div>
-        <div>
-          <div class="w-11 h-11 rounded-lg bg-[var(--rust)]/15 flex items-center justify-center mb-6">
-            <i data-lucide="shield-check" class="text-[var(--rust-2)] w-6 h-6"></i>
-          </div>
-          <div class="eyebrow text-[var(--rust-2)] mb-2" data-i18n="features.intake.eyebrow">SEGURIDAD DOCUMENTAL</div>
-          <h3 class="font-display text-2xl font-semibold text-[var(--paper)] mb-3" data-i18n="features.intake.title">Documentos de embarque con firma digital</h3>
-          <p class="text-[var(--text-dim)] leading-relaxed mb-6" data-i18n="features.intake.desc">
-            Registra BL, AWB y CRM para gestionar de forma ordenada tus operaciones de importación y exportación. Cada documento queda firmado digitalmente y bloqueado contra modificaciones no autorizadas, dando validez y trazabilidad al registro para reportes y controles internos.
-          </p>
-        </div>
-        <div class="font-mono text-xs text-[var(--text-faint)] flex flex-wrap items-center gap-4">
-          <span data-i18n="features.intake.item1">→ BL · AWB · CRM</span>
-          <span data-i18n="features.intake.item2">→ firma digital + bloqueo de registro</span>
-          <span data-i18n="features.intake.item3">→ impresión de informe con un clic</span>
+    <div class="panel rounded-2xl p-8">
+      <div class="flow-chain mb-5">
+        <span class="flow-node" data-i18n="trazabilidad.node1">Origen</span><span class="flow-arrow">→</span>
+        <span class="flow-node" data-i18n="trazabilidad.node2">Declaración</span><span class="flow-arrow">→</span>
+        <span class="flow-node" data-i18n="trazabilidad.node3">Mercancía</span><span class="flow-arrow">→</span>
+        <span class="flow-node" data-i18n="trazabilidad.node4">Operación</span><span class="flow-arrow">→</span>
+        <span class="flow-node" data-i18n="trazabilidad.node5">Consumo</span><span class="flow-arrow">→</span>
+        <span class="flow-node" data-i18n="trazabilidad.node6">Descargo</span><span class="flow-arrow">→</span>
+        <span class="flow-node" data-i18n="trazabilidad.node7">Saldo</span>
+      </div>
+      <p class="text-[var(--text-faint)] text-sm font-mono" data-i18n="trazabilidad.closing">Una cadena de información continua y consultable.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Estados de Cuenta -->
+<section id="estados-cuenta" class="py-28 border-t hairline relative overflow-hidden">
+  <div class="absolute bottom-0 -left-32 w-[420px] h-[420px] bg-[var(--rust)]/8 rounded-full blur-[120px]"></div>
+  <div class="container mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <div class="section-label mb-3" data-i18n="estados.label">CONTROL DE MERCANCÍAS</div>
+        <h2 class="font-display text-4xl md:text-5xl font-semibold text-[var(--paper)] tracking-tight mb-6 leading-tight" data-i18n="estados.title">
+          Estados de cuenta construidos a partir de la operación.
+        </h2>
+        <p class="text-[var(--text-dim)] mb-3 leading-relaxed max-w-lg" data-i18n="estados.p1">ZakForeigner proporciona estados de cuenta asociados a las declaraciones y mercancías registradas, permitiendo consultar movimientos, cantidades, valores y saldos derivados de las operaciones procesadas por el sistema.</p>
+        <p class="text-[var(--text-dim)] mb-9 leading-relaxed max-w-lg" data-i18n="estados.p2">Los estados de cuenta constituyen una herramienta de control interno para analizar la situación de las mercancías bajo régimen y sirven como una de las fuentes para la elaboración de reportes y procesos de conciliación.</p>
+
+        <div class="section-label mb-3" data-i18n="estados.includesLabel">INCLUYE</div>
+        <div class="grid sm:grid-cols-2 gap-x-6 gap-y-2 font-mono text-sm text-[var(--text-dim)]">
+          <div class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-[var(--rust-2)] shrink-0"></span><span data-i18n="estados.inc1">Estado de cuenta por declaración</span></div>
+          <div class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-[var(--rust-2)] shrink-0"></span><span data-i18n="estados.inc2">Movimientos de mercancías</span></div>
+          <div class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-[var(--rust-2)] shrink-0"></span><span data-i18n="estados.inc3">Saldos disponibles</span></div>
+          <div class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-[var(--rust-2)] shrink-0"></span><span data-i18n="estados.inc4">Saldos utilizados</span></div>
+          <div class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-[var(--rust-2)] shrink-0"></span><span data-i18n="estados.inc5">Descargos asociados</span></div>
+          <div class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-[var(--rust-2)] shrink-0"></span><span data-i18n="estados.inc6">Valores FOB y CIF</span></div>
+          <div class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-[var(--rust-2)] shrink-0"></span><span data-i18n="estados.inc7">DAI e IVA cuando corresponda</span></div>
+          <div class="flex items-center gap-2"><span class="w-1 h-1 rounded-full bg-[var(--rust-2)] shrink-0"></span><span data-i18n="estados.inc8">Movimientos históricos</span></div>
+          <div class="flex items-center gap-2 sm:col-span-2"><span class="w-1 h-1 rounded-full bg-[var(--rust-2)] shrink-0"></span><span data-i18n="estados.inc9">Exportación de información para análisis interno</span></div>
         </div>
       </div>
 
-      <div class="bento-md feature-card panel rounded-2xl p-7">
-        <div class="w-10 h-10 rounded-lg bg-[var(--ledger)]/15 flex items-center justify-center mb-5">
-          <i data-lucide="file-text" class="text-[var(--ledger)] w-5 h-5"></i>
+      <div class="panel rounded-2xl overflow-hidden">
+        <div class="flex items-center justify-between px-6 py-4 border-b hairline">
+          <span class="section-label" data-i18n="estados.ledgerTitle">MOVIMIENTOS — DUA #25540000234</span>
+          <i data-lucide="file-bar-chart" class="w-4 h-4 text-[var(--text-faint)]"></i>
         </div>
-        <div class="eyebrow text-[var(--ledger)] mb-2" data-i18n="features.dua.eyebrow">CÁLCULO AUTOMATIZADO</div>
-        <h3 class="font-display text-xl font-semibold text-[var(--paper)] mb-2" data-i18n="features.dua.title">Declaraciones aduaneras (DUA)</h3>
-        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="features.dua.desc">
-          Ingreso y gestión de declaraciones de importación y exportación, con cálculo automático de saldos, DAI e IVA.
-        </p>
-      </div>
-
-      <div class="bento-md feature-card panel rounded-2xl p-7">
-        <div class="w-10 h-10 rounded-lg bg-[var(--amber)]/15 flex items-center justify-center mb-5">
-          <i data-lucide="bell-ring" class="text-[var(--amber)] w-5 h-5"></i>
+        <div class="px-2 py-2 overflow-x-auto">
+          <table class="ledger-table">
+            <thead><tr>
+              <th data-i18n="estados.col.date">Fecha</th>
+              <th data-i18n="estados.col.movement">Movimiento</th>
+              <th data-i18n="estados.col.doc">Documento</th>
+              <th data-i18n="estados.col.value">Valor</th>
+              <th data-i18n="estados.col.balance">Saldo</th>
+            </tr></thead>
+            <tbody>
+              <tr><td>02/06</td><td class="text-[var(--ledger)]" data-i18n="estados.row1.type">Ingreso</td><td>DUA #234</td><td class="text-[var(--ledger)]">+$1,245,890.50</td><td>$1,245,890.50</td></tr>
+              <tr><td>05/06</td><td class="text-[var(--rust-2)]" data-i18n="estados.row2.type">Descargo FOB</td><td>Inv. #EXP-0891</td><td class="text-[var(--rust-2)]">-$18,750.00</td><td>$1,227,140.50</td></tr>
+              <tr><td>11/06</td><td class="text-[var(--rust-2)]" data-i18n="estados.row2.type">Descargo FOB</td><td>Inv. #EXP-0904</td><td class="text-[var(--rust-2)]">-$4,620.00</td><td>$1,222,520.50</td></tr>
+              <tr><td>19/06</td><td class="text-[var(--rust-2)]" data-i18n="estados.row2.type">Descargo FOB</td><td>Inv. #EXP-0917</td><td class="text-[var(--rust-2)]">-$11,340.00</td><td>$1,211,180.50</td></tr>
+              <tr><td>27/06</td><td class="text-[var(--rust-2)]" data-i18n="estados.row2.type">Descargo FOB</td><td>Inv. #EXP-0930</td><td class="text-[var(--rust-2)]">-$7,865.00</td><td class="text-[var(--paper)] font-semibold">$1,203,315.50</td></tr>
+            </tbody>
+          </table>
         </div>
-        <h3 class="font-display text-xl font-semibold text-[var(--paper)] mb-2" data-i18n="features.alerts.title">Alertas de vencimiento</h3>
-        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="features.alerts.desc">
-          Avisos automáticos de DUA por vencer, saldos bajos y validación de regímenes afectos a perfeccionamiento activo.
-        </p>
-      </div>
-
-      <div class="bento-md feature-card panel rounded-2xl p-7">
-        <div class="w-10 h-10 rounded-lg bg-[var(--amber)]/15 flex items-center justify-center mb-5">
-          <i data-lucide="shield-check" class="text-[var(--amber)] w-5 h-5"></i>
-        </div>
-        <h3 class="font-display text-xl font-semibold text-[var(--paper)] mb-2" data-i18n="features.validation.title">Validación inteligente</h3>
-        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="features.validation.desc">
-          ISO 6346, Incoterms y plazos legales verificados antes de cualquier envío o procesamiento.
-        </p>
-      </div>
-
-      <div class="bento-md feature-card panel rounded-2xl p-7">
-        <div class="w-10 h-10 rounded-lg bg-[var(--rust)]/15 flex items-center justify-center mb-5">
-          <i data-lucide="landmark" class="text-[var(--rust-2)] w-5 h-5"></i>
-        </div>
-        <h3 class="font-display text-xl font-semibold text-[var(--paper)] mb-2" data-i18n="features.cloud.title">Cumplimiento normativo integral</h3>
-        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="features.cloud.desc">
-          Control centralizado de las obligaciones ante la autoridad aduanera y demás entidades reguladoras, con historial listo para auditoría.
-        </p>
-      </div>
-
-      <div class="bento-md feature-card panel rounded-2xl p-7">
-        <div class="w-10 h-10 rounded-lg bg-[var(--ledger)]/15 flex items-center justify-center mb-5">
-          <i data-lucide="database" class="text-[var(--ledger)] w-5 h-5"></i>
-        </div>
-        <h3 class="font-display text-xl font-semibold text-[var(--paper)] mb-2" data-i18n="features.containers.title">Gestión de contenedores</h3>
-        <p class="text-[var(--text-dim)] text-sm leading-relaxed mb-4" data-i18n="features.containers.desc">
-          Editor completo para números ISO 6346 con historial y trazabilidad en tiempo real.
-        </p>
-        <div class="border-t hairline pt-4 flex items-center justify-between">
-          <div id="miniContainerCode" class="container-code text-sm text-[var(--paper)] flex flex-wrap gap-x-0.5"></div>
-          <div id="miniStatusDot" class="w-1.5 h-1.5 rounded-full bg-[var(--text-faint)] shrink-0"></div>
-        </div>
-      </div>
-
-      <div class="bento-full feature-card panel rounded-2xl p-8 flex flex-col md:flex-row md:items-center gap-6 justify-between">
-        <div class="flex items-start gap-5">
-          <div class="w-11 h-11 rounded-lg bg-[var(--amber)]/15 flex items-center justify-center shrink-0">
-            <i data-lucide="trending-up" class="text-[var(--amber)] w-6 h-6"></i>
-          </div>
-          <div>
-            <h3 class="font-display text-xl font-semibold text-[var(--paper)] mb-1" data-i18n="features.traceability.title">Trazabilidad completa</h3>
-            <p class="text-[var(--text-dim)] text-sm leading-relaxed max-w-xl" data-i18n="features.traceability.desc">
-              Seguimiento de materia prima bajo admisión temporal, con auditoría de cada operación desde su origen hasta el descargo final.
-            </p>
-          </div>
-        </div>
-        <div class="font-mono text-xs text-[var(--text-faint)] shrink-0" data-i18n="features.traceability.tag">MOD.06 / AUDITORÍA EN TIEMPO REAL</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Alerts — expiring DUA / balances / regime compliance -->
+<!-- Inventario Perpetuo -->
+<section id="inventario" class="py-28 border-t hairline">
+  <div class="container mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <div class="section-label mb-3" data-i18n="inventario.label">CONTROL PERMANENTE</div>
+        <h2 class="font-display text-4xl md:text-5xl font-semibold text-[var(--paper)] tracking-tight mb-6 leading-tight" data-i18n="inventario.title">
+          Inventario perpetuo para una operación que no puede depender de fotografías estáticas.
+        </h2>
+        <p class="text-[var(--text-dim)] mb-3 leading-relaxed max-w-lg" data-i18n="inventario.p1">El control de mercancías bajo régimen requiere conocer no solamente cuánto ingresó, sino también cuánto se ha utilizado, descargado y permanece disponible.</p>
+        <p class="text-[var(--text-dim)] mb-3 leading-relaxed max-w-lg" data-i18n="inventario.p2">ZakForeigner mantiene los movimientos registrados dentro de una estructura de información que permite consultar la evolución de las existencias y relacionarlas con las operaciones que las modificaron.</p>
+        <p class="text-[var(--text-dim)] leading-relaxed max-w-lg" data-i18n="inventario.p3">El inventario perpetuo se convierte así en una herramienta de seguimiento operacional y conciliación, complementaria al control aduanero de declaraciones y saldos.</p>
+      </div>
+
+      <div class="panel rounded-2xl p-8">
+        <div class="section-label mb-5" data-i18n="inventario.cardTitle">EXISTENCIAS POR MATERIAL</div>
+        <div class="space-y-6">
+          <div>
+            <div class="flex justify-between items-center mb-2 text-sm">
+              <span class="text-[var(--paper)] font-medium">Bobina de acero laminado</span>
+              <span class="font-mono text-xs text-[var(--text-faint)]">64%</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" style="width:64%; background:var(--ledger);"></div></div>
+            <div class="flex justify-between font-mono text-[11px] text-[var(--text-faint)] mt-1.5">
+              <span data-i18n="inventario.entered">Ingresado: 5,000</span>
+              <span data-i18n="inventario.available">Disponible: 1,800</span>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between items-center mb-2 text-sm">
+              <span class="text-[var(--paper)] font-medium">Resina de polipropileno</span>
+              <span class="font-mono text-xs text-[var(--text-faint)]">28%</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" style="width:28%; background:var(--amber);"></div></div>
+            <div class="flex justify-between font-mono text-[11px] text-[var(--text-faint)] mt-1.5">
+              <span data-i18n="inventario.entered2">Ingresado: 12,000</span>
+              <span data-i18n="inventario.available2">Disponible: 3,360</span>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between items-center mb-2 text-sm">
+              <span class="text-[var(--paper)] font-medium">Placa de aluminio anodizado</span>
+              <span class="font-mono text-xs text-[var(--text-faint)]">89%</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" style="width:89%; background:var(--rust-2);"></div></div>
+            <div class="flex justify-between font-mono text-[11px] text-[var(--text-faint)] mt-1.5">
+              <span data-i18n="inventario.entered3">Ingresado: 2,600</span>
+              <span data-i18n="inventario.available3">Disponible: 2,314</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Alertas y Control de Vencimientos -->
 <section id="alertas" class="py-28 border-t hairline relative overflow-hidden">
   <div class="absolute top-0 -left-32 w-[420px] h-[420px] bg-[var(--amber)]/10 rounded-full blur-[120px]"></div>
   <div class="container mx-auto px-6">
     <div class="grid lg:grid-cols-2 gap-16 items-center">
       <div class="order-2 lg:order-1">
         <div class="panel rounded-2xl p-7">
-          <div class="section-label mb-5" data-i18n="alerts.panel.title">CENTRO DE ALERTAS</div>
+          <div class="section-label mb-5" data-i18n="alertas.panel.title">CENTRO DE ALERTAS</div>
           <div class="space-y-3">
             <div class="flex items-center justify-between rounded-lg border border-[var(--rust)]/30 bg-[var(--rust)]/8 px-4 py-3">
               <div class="flex items-center gap-3">
                 <i data-lucide="alarm-clock" class="w-4 h-4 text-[var(--rust-2)] shrink-0"></i>
                 <div>
-                  <div class="text-sm text-[var(--paper)] font-medium" data-i18n="alerts.item1.title">DUA #25540000234 vence en 5 días</div>
-                  <div class="text-xs text-[var(--text-faint)] font-mono" data-i18n="alerts.item1.desc">Régimen: Admisión Temporal — saldo pendiente por descargar</div>
+                  <div class="text-sm text-[var(--paper)] font-medium" data-i18n="alertas.item1.title">DUA #25540000234 vence en 5 días</div>
+                  <div class="text-xs text-[var(--text-faint)] font-mono" data-i18n="alertas.item1.desc">Régimen: Admisión Temporal — saldo pendiente por descargar</div>
                 </div>
               </div>
-              <span class="font-mono text-[10px] px-2 py-1 rounded border border-[var(--rust)]/40 text-[var(--rust-2)] shrink-0" data-i18n="alerts.tag.urgent">URGENTE</span>
+              <span class="font-mono text-[10px] px-2 py-1 rounded border border-[var(--rust)]/40 text-[var(--rust-2)] shrink-0" data-i18n="alertas.tag.urgent">URGENTE</span>
             </div>
             <div class="flex items-center justify-between rounded-lg border border-[var(--amber)]/30 bg-[var(--amber)]/8 px-4 py-3">
               <div class="flex items-center gap-3">
                 <i data-lucide="wallet" class="w-4 h-4 text-[var(--amber)] shrink-0"></i>
                 <div>
-                  <div class="text-sm text-[var(--paper)] font-medium" data-i18n="alerts.item2.title">Saldo de DUA #25540000198 bajo el 10%</div>
-                  <div class="text-xs text-[var(--text-faint)] font-mono" data-i18n="alerts.item2.desc">Recomendado: gestionar nueva declaración de importación</div>
+                  <div class="text-sm text-[var(--paper)] font-medium" data-i18n="alertas.item2.title">Saldo de DUA #25540000198 bajo el 10%</div>
+                  <div class="text-xs text-[var(--text-faint)] font-mono" data-i18n="alertas.item2.desc">Recomendado: gestionar nueva declaración de importación</div>
                 </div>
               </div>
-              <span class="font-mono text-[10px] px-2 py-1 rounded border border-[var(--amber)]/40 text-[var(--amber)] shrink-0" data-i18n="alerts.tag.warning">ATENCIÓN</span>
+              <span class="font-mono text-[10px] px-2 py-1 rounded border border-[var(--amber)]/40 text-[var(--amber)] shrink-0" data-i18n="alertas.tag.warning">ATENCIÓN</span>
+            </div>
+            <div class="flex items-center justify-between rounded-lg border border-[var(--text-faint)]/30 bg-[rgba(244,241,232,0.03)] px-4 py-3">
+              <div class="flex items-center gap-3">
+                <i data-lucide="clock" class="w-4 h-4 text-[var(--text-dim)] shrink-0"></i>
+                <div>
+                  <div class="text-sm text-[var(--paper)] font-medium" data-i18n="alertas.item4.title">Expediente EXP-2026-0089 pendiente de documentación</div>
+                  <div class="text-xs text-[var(--text-faint)] font-mono" data-i18n="alertas.item4.desc">Requiere seguimiento del responsable de la operación</div>
+                </div>
+              </div>
+              <span class="font-mono text-[10px] px-2 py-1 rounded border border-[var(--text-faint)]/40 text-[var(--text-dim)] shrink-0" data-i18n="alertas.tag.pending">PENDIENTE</span>
             </div>
             <div class="flex items-center justify-between rounded-lg border border-[var(--ledger)]/30 bg-[var(--ledger)]/8 px-4 py-3">
               <div class="flex items-center gap-3">
                 <i data-lucide="badge-check" class="w-4 h-4 text-[var(--ledger)] shrink-0"></i>
                 <div>
-                  <div class="text-sm text-[var(--paper)] font-medium" data-i18n="alerts.item3.title">Coeficiente de transformación validado</div>
-                  <div class="text-xs text-[var(--text-faint)] font-mono" data-i18n="alerts.item3.desc">Régimen de perfeccionamiento activo conforme</div>
+                  <div class="text-sm text-[var(--paper)] font-medium" data-i18n="alertas.item3.title">Coeficiente de transformación validado</div>
+                  <div class="text-xs text-[var(--text-faint)] font-mono" data-i18n="alertas.item3.desc">Régimen de perfeccionamiento activo conforme</div>
                 </div>
               </div>
-              <span class="font-mono text-[10px] px-2 py-1 rounded border border-[var(--ledger)]/40 text-[var(--ledger)] shrink-0" data-i18n="alerts.tag.ok">CONFORME</span>
+              <span class="font-mono text-[10px] px-2 py-1 rounded border border-[var(--ledger)]/40 text-[var(--ledger)] shrink-0" data-i18n="alertas.tag.ok">CONFORME</span>
             </div>
           </div>
         </div>
@@ -696,115 +991,163 @@ select.paper-input option{background:var(--steel-2); color:var(--paper);}
       <div class="order-1 lg:order-2">
         <div class="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded-md border border-[var(--amber)]/40 bg-[var(--amber)]/10">
           <span class="w-1.5 h-1.5 rounded-full bg-[var(--amber)]"></span>
-          <span class="eyebrow text-[var(--amber)]" data-i18n="alerts.label">CUMPLIMIENTO PROACTIVO</span>
+          <span class="eyebrow text-[var(--amber)]" data-i18n="alertas.label">CONTROL PROACTIVO</span>
         </div>
-        <h2 class="font-display text-4xl md:text-5xl font-semibold text-[var(--paper)] tracking-tight mb-6 leading-tight">
-          <span data-i18n="alerts.title1">Vencimientos que se anticipan,</span><br>
-          <span class="text-[var(--rust-2)]" data-i18n="alerts.title2">no que se descubren.</span>
+        <h2 class="font-display text-4xl md:text-5xl font-semibold text-[var(--paper)] tracking-tight mb-6 leading-tight" data-i18n="alertas.title">
+          Los vencimientos deben identificarse antes de convertirse en una contingencia.
         </h2>
-        <p class="text-[var(--text-dim)] mb-9 leading-relaxed max-w-lg" data-i18n="alerts.description">
-          Diseñado específicamente para empresas bajo admisión temporal, el sistema vigila automáticamente cada declaración: notifica el vencimiento de DUA, controla saldos disponibles y valida que los regímenes afectos a perfeccionamiento activo se mantengan conformes con la normativa vigente.
-        </p>
+        <p class="text-[var(--text-dim)] mb-3 leading-relaxed max-w-lg" data-i18n="alertas.p1">ZakForeigner supervisa información crítica relacionada con las declaraciones y sus plazos, permitiendo identificar operaciones próximas a vencimiento y situaciones que requieren atención del usuario.</p>
+        <p class="text-[var(--text-dim)] mb-9 leading-relaxed max-w-lg" data-i18n="alertas.p2">Las alertas no sustituyen la responsabilidad del operador ni determinan por sí mismas la regularización de una operación. Su función es proporcionar información oportuna para que el responsable pueda tomar decisiones.</p>
         <ul class="space-y-6">
           <li class="flex items-start gap-4">
             <div class="w-8 h-8 rounded-md bg-[var(--rust)]/15 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="calendar-clock" class="text-[var(--rust-2)] w-4 h-4"></i></div>
-            <div><h4 class="font-semibold text-[var(--paper)] mb-1" data-i18n="alerts.feat1.title">Vencimiento de DUA</h4><p class="text-[var(--text-dim)] text-sm" data-i18n="alerts.feat1.desc">Notificaciones anticipadas antes de que se cumpla el plazo legal de cada declaración.</p></div>
+            <div><h4 class="font-semibold text-[var(--paper)] mb-1" data-i18n="alertas.feat1.title">Vencimientos</h4><p class="text-[var(--text-dim)] text-sm" data-i18n="alertas.feat1.desc">Identificación de declaraciones próximas a cumplir sus plazos.</p></div>
           </li>
           <li class="flex items-start gap-4">
             <div class="w-8 h-8 rounded-md bg-[var(--amber)]/15 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="wallet" class="text-[var(--amber)] w-4 h-4"></i></div>
-            <div><h4 class="font-semibold text-[var(--paper)] mb-1" data-i18n="alerts.feat2.title">Saldos disponibles</h4><p class="text-[var(--text-dim)] text-sm" data-i18n="alerts.feat2.desc">Aviso automático cuando el saldo de una DUA se agota o queda por debajo del umbral definido.</p></div>
+            <div><h4 class="font-semibold text-[var(--paper)] mb-1" data-i18n="alertas.feat2.title">Saldos bajos</h4><p class="text-[var(--text-dim)] text-sm" data-i18n="alertas.feat2.desc">Detección de declaraciones cuyo saldo disponible se aproxima a niveles definidos de atención.</p></div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-md bg-[var(--text-faint)]/15 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="clock" class="text-[var(--text-dim)] w-4 h-4"></i></div>
+            <div><h4 class="font-semibold text-[var(--paper)] mb-1" data-i18n="alertas.feat3.title">Situaciones pendientes</h4><p class="text-[var(--text-dim)] text-sm" data-i18n="alertas.feat3.desc">Identificación de operaciones que requieren seguimiento.</p></div>
           </li>
           <li class="flex items-start gap-4">
             <div class="w-8 h-8 rounded-md bg-[var(--ledger)]/15 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="badge-check" class="text-[var(--ledger)] w-4 h-4"></i></div>
-            <div><h4 class="font-semibold text-[var(--paper)] mb-1" data-i18n="alerts.feat3.title">Validación de régimen</h4><p class="text-[var(--text-dim)] text-sm" data-i18n="alerts.feat3.desc">Verificación continua de los regímenes afectos a perfeccionamiento activo conforme a la normativa aduanera.</p></div>
+            <div><h4 class="font-semibold text-[var(--paper)] mb-1" data-i18n="alertas.feat4.title">Control de régimen</h4><p class="text-[var(--text-dim)] text-sm" data-i18n="alertas.feat4.desc">Información consolidada para facilitar la supervisión de operaciones sujetas al régimen correspondiente.</p></div>
           </li>
         </ul>
       </div>
     </div>
   </div>
 </section>
+<!-- Reportes Gubernamentales -->
+<section id="reportes" class="py-28 border-t hairline">
+  <div class="container mx-auto px-6">
+    <div class="mb-16 max-w-2xl">
+      <div class="section-label mb-3" data-i18n="reportes.label">SALIDA DE INFORMACIÓN</div>
+      <h2 class="font-display text-4xl md:text-5xl font-semibold text-[var(--paper)] tracking-tight mb-5" data-i18n="reportes.title">
+        De la operación registrada al reporte.
+      </h2>
+      <p class="text-[var(--text-dim)] leading-relaxed mb-3" data-i18n="reportes.p1">Los reportes de ZakForeigner se alimentan de la información transaccional almacenada en la plataforma.</p>
+      <p class="text-[var(--text-dim)] leading-relaxed" data-i18n="reportes.p2">En lugar de reconstruir manualmente cada informe a partir de diferentes fuentes, el sistema utiliza las declaraciones, mercancías, movimientos, descargos y demás registros disponibles para estructurar la información necesaria para cada reporte.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="panel rounded-2xl p-7">
+        <i data-lucide="scale" class="w-7 h-7 text-[var(--rust-2)] mb-4"></i>
+        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-2" data-i18n="reportes.item1.title">Coeficiente de Transformación</h3>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="reportes.item1.desc">Información estructurada para el análisis y elaboración del reporte correspondiente al proceso de transformación.</p>
+      </div>
+      <div class="panel rounded-2xl p-7">
+        <i data-lucide="file-signature" class="w-7 h-7 text-[var(--amber)] mb-4"></i>
+        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-2" data-i18n="reportes.item2.title">Declaración Jurada</h3>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="reportes.item2.desc">Consolidación de la información registrada en el sistema para facilitar la preparación de la declaración correspondiente.</p>
+      </div>
+      <div class="panel rounded-2xl p-7">
+        <i data-lucide="calendar-check-2" class="w-7 h-7 text-[var(--ledger)] mb-4"></i>
+        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-2" data-i18n="reportes.item3.title">Boleta de Actualización</h3>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="reportes.item3.desc">Organización de información necesaria para el proceso de actualización correspondiente.</p>
+      </div>
+      <div class="panel rounded-2xl p-7">
+        <i data-lucide="file-bar-chart" class="w-7 h-7 text-[var(--rust-2)] mb-4"></i>
+        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-2" data-i18n="reportes.item4.title">Estados de cuenta</h3>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="reportes.item4.desc">Consulta detallada de movimientos y saldos por declaración y mercancía.</p>
+      </div>
+      <div class="panel rounded-2xl p-7">
+        <i data-lucide="boxes" class="w-7 h-7 text-[var(--amber)] mb-4"></i>
+        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-2" data-i18n="reportes.item5.title">Inventario Perpetuo</h3>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="reportes.item5.desc">Información consolidada para el seguimiento permanente de las existencias y movimientos.</p>
+      </div>
+      <div class="panel rounded-2xl p-7">
+        <i data-lucide="layers" class="w-7 h-7 text-[var(--ledger)] mb-4"></i>
+        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-2" data-i18n="reportes.item6.title">Saldos de DUCA / declaraciones</h3>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="reportes.item6.desc">Consulta de saldos y movimientos asociados.</p>
+      </div>
+      <div class="panel rounded-2xl p-7 md:col-span-3 lg:col-span-1">
+        <i data-lucide="hourglass" class="w-7 h-7 text-[var(--rust-2)] mb-4"></i>
+        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-2" data-i18n="reportes.item7.title">Saldos vencidos</h3>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="reportes.item7.desc">Identificación y seguimiento de operaciones cuyo plazo requiere atención.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- Cumplimiento y reportes -->
-<section id="cumplimiento" class="py-28 border-t hairline relative overflow-hidden">
+<!-- Reportes y Análisis de Información -->
+<section id="analisis" class="py-24 border-t hairline">
+  <div class="container mx-auto px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded-md border border-[var(--rust)]/40 bg-[var(--rust)]/10">
+        <span class="w-1.5 h-1.5 rounded-full bg-[var(--rust-2)]"></span>
+        <span class="eyebrow text-[var(--rust-2)]" data-i18n="analisis.label">ANÁLISIS OPERACIONAL</span>
+      </div>
+      <h2 class="font-display text-3xl md:text-4xl font-semibold text-[var(--paper)] tracking-tight mb-6 leading-tight" data-i18n="analisis.title">
+        Los datos de comercio exterior también son información empresarial.
+      </h2>
+      <p class="text-[var(--text-dim)] leading-relaxed mb-3" data-i18n="analisis.p1">ZakForeigner no se limita a producir documentación.</p>
+      <p class="text-[var(--text-dim)] leading-relaxed mb-3" data-i18n="analisis.p2">La acumulación estructurada de declaraciones, facturas, mercancías, valores, cantidades y movimientos permite generar información útil para analizar el comportamiento histórico y operacional de la empresa.</p>
+      <p class="text-[var(--text-dim)] leading-relaxed mb-3" data-i18n="analisis.p3">La plataforma contempla reportes orientados a la identificación y análisis de registros de alto perfil, incluyendo información asociada a facturas y declaraciones que requieren un nivel superior de revisión.</p>
+      <p class="text-[var(--text-dim)] leading-relaxed" data-i18n="analisis.p4">Esto permite transformar grandes volúmenes de registros operativos en información consultable para análisis, control y toma de decisiones.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Control Humano y Responsabilidad Operativa -->
+<section id="control-humano" class="py-28 border-t hairline relative overflow-hidden">
+  <div class="absolute top-0 right-0 w-[420px] h-[420px] bg-[var(--amber)]/8 rounded-full blur-[120px]"></div>
+  <div class="container mx-auto px-6">
+    <div class="max-w-3xl mb-10">
+      <div class="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded-md border border-[var(--amber)]/40 bg-[var(--amber)]/10">
+        <span class="w-1.5 h-1.5 rounded-full bg-[var(--amber)]"></span>
+        <span class="eyebrow text-[var(--amber)]" data-i18n="controlhumano.label">AUTOMATIZACIÓN CONTROLADA</span>
+      </div>
+      <h2 class="font-display text-4xl md:text-5xl font-semibold text-[var(--paper)] tracking-tight mb-6 leading-tight" data-i18n="controlhumano.title">
+        La tecnología procesa. El responsable decide.
+      </h2>
+      <p class="text-[var(--text-dim)] mb-3 leading-relaxed" data-i18n="controlhumano.p1">ZakForeigner no utiliza inteligencia artificial para decidir qué información debe presentar una empresa ante la autoridad aduanera.</p>
+      <p class="text-[var(--text-dim)] mb-3 leading-relaxed" data-i18n="controlhumano.p2">En un entorno donde una declaración, un descargo o un saldo puede tener consecuencias fiscales y regulatorias, la responsabilidad sobre la información de origen debe permanecer claramente identificada.</p>
+      <p class="text-[var(--text-dim)] leading-relaxed" data-i18n="controlhumano.p3">El sistema automatiza cálculos, validaciones, relaciones, actualización de información y generación de resultados derivados. El usuario responsable mantiene el control sobre la incorporación, revisión y aprobación de los datos que sustentan las operaciones.</p>
+    </div>
+
+    <div class="panel rounded-2xl p-8">
+      <div class="section-label mb-5" data-i18n="controlhumano.principleLabel">PRINCIPIO DE DISEÑO</div>
+      <div class="flow-chain mb-6">
+        <span class="flow-node" data-i18n="controlhumano.node1">Datos ingresados</span><span class="flow-arrow">→</span>
+        <span class="flow-node" data-i18n="controlhumano.node2">Validación</span><span class="flow-arrow">→</span>
+        <span class="flow-node" data-i18n="controlhumano.node3">Procesamiento</span><span class="flow-arrow">→</span>
+        <span class="flow-node" data-i18n="controlhumano.node4">Resultado</span><span class="flow-arrow">→</span>
+        <span class="flow-node" style="border-color:var(--amber); color:var(--amber);" data-i18n="controlhumano.node5">Revisión humana</span><span class="flow-arrow">→</span>
+        <span class="flow-node" style="border-color:var(--amber); color:var(--amber);" data-i18n="controlhumano.node6">Aprobación</span><span class="flow-arrow">→</span>
+        <span class="flow-node" data-i18n="controlhumano.node7">Registro</span>
+      </div>
+      <div class="border-t hairline pt-5 space-y-1">
+        <p class="text-[var(--paper)] font-medium" data-i18n="controlhumano.closing1">La automatización reduce trabajo operativo.</p>
+        <p class="text-[var(--text-dim)]" data-i18n="controlhumano.closing2">La responsabilidad permanece en manos de la persona autorizada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Auditoría y Control de Cambios -->
+<section id="auditoria" class="py-24 border-t hairline">
   <div class="container mx-auto px-6">
     <div class="grid lg:grid-cols-2 gap-16 items-center">
       <div>
-        <div class="section-label mb-3" data-i18n="aws.label">CUMPLIMIENTO EN TIEMPO REAL</div>
-        <h2 class="font-display text-4xl md:text-5xl font-semibold text-[var(--paper)] tracking-tight mb-6 leading-tight">
-          <span data-i18n="aws.title1">Reportes de estado de cuenta,</span><br>
-          <span class="text-[var(--rust-2)]" data-i18n="aws.title2">listos ante la autoridad aduanera</span>
+        <div class="section-label mb-3" data-i18n="auditoria.label">AUDITABILIDAD</div>
+        <h2 class="font-display text-3xl md:text-4xl font-semibold text-[var(--paper)] tracking-tight leading-tight" data-i18n="auditoria.title">
+          Una operación crítica no debería desaparecer dentro de un historial.
         </h2>
-        <p class="text-[var(--text-dim)] mb-9 leading-relaxed max-w-lg" data-i18n="aws.description">
-          Cada declaración, saldo y tributo se calcula y actualiza al instante, para que tu empresa esté siempre en condiciones de responder ante cualquier requerimiento gubernamental o auditoría.
-        </p>
-        <ul class="space-y-6 mb-10">
-          <li class="flex items-start gap-4">
-            <div class="w-8 h-8 rounded-md bg-[var(--rust)]/15 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="check" class="text-[var(--rust-2)] w-4 h-4"></i></div>
-            <div><h4 class="font-semibold text-[var(--paper)] mb-1" data-i18n="aws.item1.title">Generación de DUA en segundos</h4><p class="text-[var(--text-dim)] text-sm" data-i18n="aws.item1.desc">El sistema procesa y genera Documentos Únicos de Admisión en tiempo récord, listos para presentar.</p></div>
-          </li>
-          <li class="flex items-start gap-4">
-            <div class="w-8 h-8 rounded-md bg-[var(--amber)]/15 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="check" class="text-[var(--amber)] w-4 h-4"></i></div>
-            <div><h4 class="font-semibold text-[var(--paper)] mb-1" data-i18n="aws.item2.title">Cálculo automático de saldos</h4><p class="text-[var(--text-dim)] text-sm" data-i18n="aws.item2.desc">Saldos, DAI e IVA calculados con precisión matemática garantizada, conforme a la normativa vigente.</p></div>
-          </li>
-          <li class="flex items-start gap-4">
-            <div class="w-8 h-8 rounded-md bg-[var(--ledger)]/15 flex items-center justify-center shrink-0 mt-0.5"><i data-lucide="check" class="text-[var(--ledger)] w-4 h-4"></i></div>
-            <div><h4 class="font-semibold text-[var(--paper)] mb-1" data-i18n="aws.item3.title">Trazabilidad completa</h4><p class="text-[var(--text-dim)] text-sm" data-i18n="aws.item3.desc">Historial detallado de materia prima bajo admisión temporal, auditable en cualquier momento.</p></div>
-          </li>
-        </ul>
-        <div class="flex flex-wrap gap-2 font-mono text-xs mb-9">
-          <span class="px-3 py-1.5 rounded border border-[var(--line-strong)] text-[var(--text-dim)]">DAI</span>
-          <span class="px-3 py-1.5 rounded border border-[var(--line-strong)] text-[var(--text-dim)]">IVA</span>
-          <span class="px-3 py-1.5 rounded border border-[var(--line-strong)] text-[var(--text-dim)]">Normativa Aduanera</span>
-          <span class="px-3 py-1.5 rounded border border-[var(--line-strong)] text-[var(--text-dim)]">Auditoría</span>
-        </div>
-
-        <div class="panel rounded-xl overflow-hidden max-w-md">
-          <div class="flex items-center gap-2 px-4 py-2.5 border-b hairline">
-            <span class="w-2 h-2 rounded-full bg-[var(--rust)]/60"></span>
-            <span class="w-2 h-2 rounded-full bg-[var(--amber)]/60"></span>
-            <span class="w-2 h-2 rounded-full bg-[var(--ledger)]/60"></span>
-            <span class="font-mono text-[11px] text-[var(--text-faint)] ml-2" data-i18n="aws.terminalTitle">cumplimiento.log</span>
-          </div>
-          <div id="terminalLog" class="font-mono text-xs leading-relaxed p-4 h-[132px] text-[var(--text-dim)]"></div>
-        </div>
       </div>
-
-      <!-- manifest paper report -->
-      <div class="relative">
-        <div class="absolute -inset-6 bg-[var(--rust)]/10 rounded-3xl blur-3xl"></div>
-        <div class="relative rounded-2xl overflow-hidden" style="background:var(--paper); box-shadow:0 30px 70px -20px rgba(0,0,0,0.5);">
-          <div class="px-7 py-5 border-b-2 border-dashed" style="border-color:#00000022;">
-            <div class="flex justify-between items-start">
-              <div>
-                <div class="font-mono text-[11px] tracking-widest text-[#8a8471]" data-i18n="aws.reportLabel">REPORTE DUA</div>
-                <div class="font-semibold text-[#1a1a1a] text-sm mt-1">HIALEAH, S.A. DE C.V.</div>
-                <div class="text-[11px] text-[#6b6552] mt-0.5" data-i18n="aws.regime">Régimen: Admisión Temporal</div>
-              </div>
-              <div class="stamp text-[10px] px-3 py-1.5 shrink-0" data-i18n="aws.stampValid">VALIDADO</div>
-            </div>
-          </div>
-          <div class="px-7 py-6">
-            <div class="font-mono text-xs text-[#6b6552] mb-4">No. 25540000234</div>
-            <div class="grid grid-cols-2 gap-5 mb-6">
-              <div><p class="text-[11px] text-[#8a8471] mb-1" data-i18n="aws.initialBalance">Saldo inicial</p><p class="font-mono font-semibold text-[#1a1a1a]">$1,245,890.50</p></div>
-              <div><p class="text-[11px] text-[#8a8471] mb-1" data-i18n="aws.dai">DAI calculado</p><p class="font-mono font-semibold text-[var(--rust)]">$124,589.05</p></div>
-              <div><p class="text-[11px] text-[#8a8471] mb-1">IVA</p><p class="font-mono font-semibold" style="color:#3d6d5c;">$199,342.48</p></div>
-              <div><p class="text-[11px] text-[#8a8471] mb-1" data-i18n="aws.finalBalance">Saldo final</p><p class="font-mono font-semibold text-[#1a1a1a]">$1,570,822.03</p></div>
-            </div>
-            <div class="border-t border-dashed pt-4" style="border-color:#00000022;">
-              <div class="flex justify-between text-[11px] text-[#8a8471] font-mono">
-                <span data-i18n="aws.generatedBy">Generado automáticamente</span>
-                <span id="reportTimestamp">—</span>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div>
+        <p class="text-[var(--text-dim)] mb-3 leading-relaxed" data-i18n="auditoria.p1">ZakForeigner mantiene información relacionada con las operaciones registradas y sus relaciones internas, permitiendo reconstruir el contexto en el que se produjo un movimiento o resultado.</p>
+        <p class="text-[var(--text-dim)] mb-3 leading-relaxed" data-i18n="auditoria.p2">La trazabilidad facilita la revisión de declaraciones, documentos, mercancías, descargos y movimientos relacionados.</p>
+        <p class="text-[var(--text-dim)] leading-relaxed">
+          <span data-i18n="auditoria.p3a">El objetivo no es únicamente conservar datos históricos, sino proporcionar una estructura que permita comprender</span>
+          <span class="text-[var(--paper)] font-medium" data-i18n="auditoria.p3b">qué ocurrió, sobre qué información se realizó una operación y qué elementos fueron afectados</span>.
+        </p>
       </div>
     </div>
   </div>
 </section>
-
-<!-- Exclusividad macOS y seguridad -->
+<!-- Tecnología: macOS nativo · Infraestructura Cloud · Seguridad -->
 <section id="tecnologia" class="py-28 border-t hairline">
   <div class="container mx-auto px-6">
     <div class="mb-16">
@@ -814,148 +1157,97 @@ select.paper-input option{background:var(--steel-2); color:var(--paper);}
       </h2>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-8">
-      <div class="panel rounded-2xl p-9">
-        <div class="flex items-center gap-4 mb-6">
-          <div class="w-14 h-14 rounded-xl bg-[var(--rust)]/15 flex items-center justify-center"><i data-lucide="monitor" class="w-7 h-7 text-[var(--rust-2)]"></i></div>
-          <div>
-            <h3 class="font-display text-xl font-semibold text-[var(--paper)]" data-i18n="tech.swift.title">Aplicación nativa de macOS</h3>
-            <p class="text-[var(--text-faint)] text-sm" data-i18n="tech.swift.subtitle">Sin versiones web ni emuladores</p>
-          </div>
-        </div>
-        <p class="text-[var(--text-dim)] leading-relaxed mb-5" data-i18n="tech.swift.desc">
-          Software de escritorio desarrollado exclusivamente para macOS, con una interfaz moderna, fluida y coherente con el ecosistema Apple en cada detalle.
-        </p>
-        <ul class="space-y-2 text-sm text-[var(--text-dim)] font-mono">
-          <li data-i18n="tech.swift.item1">→ rendimiento nativo sin capas intermedias</li>
-          <li data-i18n="tech.swift.item2">→ integración perfecta con macOS</li>
-          <li data-i18n="tech.swift.item3">→ actualizaciones vía App Store</li>
+    <div class="grid lg:grid-cols-3 gap-6 mb-6">
+      <div class="panel rounded-2xl p-8">
+        <div class="w-12 h-12 rounded-xl bg-[var(--rust)]/15 flex items-center justify-center mb-5"><i data-lucide="monitor" class="w-6 h-6 text-[var(--rust-2)]"></i></div>
+        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-1" data-i18n="tech.macos.title">Una aplicación empresarial diseñada específicamente para macOS</h3>
+        <div class="section-label mb-4" data-i18n="tech.macos.eyebrow">PLATAFORMA</div>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed mb-3" data-i18n="tech.macos.p1">ZakForeigner es una aplicación de escritorio desarrollada exclusivamente para macOS.</p>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed mb-3" data-i18n="tech.macos.p2">La plataforma utiliza tecnologías nativas del ecosistema Apple para proporcionar una experiencia de operación coherente con el sistema operativo, aprovechando sus capacidades de interfaz, almacenamiento seguro, gestión de credenciales y procesamiento local.</p>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed mb-3" data-i18n="tech.macos.p3">No es una interfaz web encapsulada ni una aplicación multiplataforma adaptada posteriormente a macOS.</p>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed mb-5" data-i18n="tech.macos.p4">Es software diseñado desde su arquitectura para el entorno Apple.</p>
+        <ul class="space-y-2 text-xs text-[var(--text-dim)] font-mono border-t hairline pt-4">
+          <li><span class="text-[var(--paper)]" data-i18n="tech.macos.item1t">Arquitectura nativa —</span> <span data-i18n="tech.macos.item1d">interfaz y componentes desarrollados específicamente para macOS.</span></li>
+          <li><span class="text-[var(--paper)]" data-i18n="tech.macos.item2t">Experiencia de escritorio —</span> <span data-i18n="tech.macos.item2d">operación orientada a usuarios que trabajan con grandes volúmenes de información documental y transaccional.</span></li>
+          <li><span class="text-[var(--paper)]" data-i18n="tech.macos.item3t">Integración con el ecosistema Apple —</span> <span data-i18n="tech.macos.item3d">uso de capacidades propias del sistema operativo cuando forman parte de los procesos de la plataforma.</span></li>
         </ul>
       </div>
 
-      <div class="panel rounded-2xl p-9">
-        <div class="flex items-center gap-4 mb-6">
-          <div class="w-14 h-14 rounded-xl bg-[var(--amber)]/15 flex items-center justify-center"><i data-lucide="shield-check" class="w-7 h-7 text-[var(--amber)]"></i></div>
-          <div>
-            <h3 class="font-display text-xl font-semibold text-[var(--paper)]" data-i18n="tech.aws.title">Seguridad y respaldo empresarial</h3>
-            <p class="text-[var(--text-faint)] text-sm" data-i18n="tech.aws.subtitle">Infraestructura de nivel corporativo</p>
-          </div>
+      <div class="panel rounded-2xl p-8">
+        <div class="w-12 h-12 rounded-xl bg-[var(--ledger)]/15 flex items-center justify-center mb-5"><i data-lucide="cloud" class="w-6 h-6 text-[var(--ledger)]"></i></div>
+        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-1" data-i18n="tech.cloud.title">Procesamiento empresarial respaldado por infraestructura cloud</h3>
+        <div class="section-label mb-4" data-i18n="tech.cloud.eyebrow">INFRAESTRUCTURA Y DATOS</div>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed mb-3" data-i18n="tech.cloud.p1">ZakForeigner utiliza infraestructura cloud para proporcionar servicios de almacenamiento, procesamiento, persistencia y seguridad de información empresarial.</p>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed mb-3" data-i18n="tech.cloud.p2">La arquitectura distribuida permite separar responsabilidades entre la aplicación de escritorio y los servicios de backend, manteniendo una infraestructura preparada para procesar operaciones y datos que requieren disponibilidad, control de acceso y mecanismos de protección.</p>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="tech.cloud.p3">La información se almacena mediante servicios especializados y mecanismos de seguridad apropiados para el entorno de operación.</p>
+      </div>
+
+      <div class="panel rounded-2xl p-8">
+        <div class="w-12 h-12 rounded-xl bg-[var(--amber)]/15 flex items-center justify-center mb-5"><i data-lucide="shield-check" class="w-6 h-6 text-[var(--amber)]"></i></div>
+        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-1" data-i18n="tech.seguridad.title">La información aduanera requiere controles, no únicamente almacenamiento</h3>
+        <div class="section-label mb-4" data-i18n="tech.seguridad.eyebrow">SEGURIDAD DE LA INFORMACIÓN</div>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed mb-3" data-i18n="tech.seguridad.p1">La arquitectura de ZakForeigner contempla mecanismos de protección para la información almacenada y procesada por la plataforma, incluyendo controles de acceso, protección de credenciales, almacenamiento cloud y mecanismos de seguridad destinados a preservar la confidencialidad e integridad de los datos.</p>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="tech.seguridad.p2">La seguridad se aborda como una propiedad transversal de la plataforma y no como una función independiente.</p>
+      </div>
+    </div>
+
+    <div class="panel rounded-2xl p-7 flex flex-col md:flex-row md:items-center gap-5 justify-between">
+      <div class="flex flex-wrap gap-2 font-mono text-xs">
+        <span class="px-3 py-1.5 rounded border border-[var(--line-strong)] text-[var(--text-dim)]" data-i18n="tech.destacado.tag1">Aplicación nativa</span>
+        <span class="px-3 py-1.5 rounded border border-[var(--line-strong)] text-[var(--text-dim)]" data-i18n="tech.destacado.tag2">Servicios cloud</span>
+        <span class="px-3 py-1.5 rounded border border-[var(--line-strong)] text-[var(--text-dim)]" data-i18n="tech.destacado.tag3">Almacenamiento estructurado</span>
+        <span class="px-3 py-1.5 rounded border border-[var(--line-strong)] text-[var(--text-dim)]" data-i18n="tech.destacado.tag4">Controles de seguridad</span>
+      </div>
+      <p class="text-[var(--paper)] text-sm font-medium max-w-sm" data-i18n="tech.destacado.closing">Una arquitectura diseñada para una operación empresarial y no para un simple archivo local.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Integración entre información comercial y aduanera -->
+<section id="integracion" class="py-28 border-t hairline relative overflow-hidden">
+  <div class="absolute top-10 -right-32 w-[420px] h-[420px] bg-[var(--rust)]/8 rounded-full blur-[120px]"></div>
+  <div class="container mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded-md border border-[var(--rust)]/40 bg-[var(--rust)]/10">
+          <span class="w-1.5 h-1.5 rounded-full bg-[var(--amber)]"></span>
+          <span class="eyebrow text-[var(--rust-2)]" data-i18n="integracion.label">INTEGRACIÓN OPERACIONAL</span>
         </div>
-        <p class="text-[var(--text-dim)] leading-relaxed mb-5" data-i18n="tech.aws.desc">
-          Datos cifrados, respaldados y disponibles en todo momento, con controles de acceso y continuidad operativa pensados para auditorías y requerimientos regulatorios.
-        </p>
-        <ul class="space-y-2 text-sm text-[var(--text-dim)] font-mono">
-          <li data-i18n="tech.aws.item1">→ cifrado de extremo a extremo</li>
-          <li data-i18n="tech.aws.item2">→ seguridad de nivel empresarial</li>
-          <li data-i18n="tech.aws.item3">→ 99.99% de disponibilidad</li>
-        </ul>
+        <h2 class="font-display text-4xl md:text-5xl font-semibold text-[var(--paper)] tracking-tight mb-6 leading-tight" data-i18n="integracion.title">
+          Comercio exterior y control de mercancías dentro del mismo flujo de información.
+        </h2>
+        <p class="text-[var(--text-dim)] mb-3 leading-relaxed max-w-lg" data-i18n="integracion.p1">Una de las características fundamentales de ZakForeigner es la relación entre información comercial y aduanera.</p>
+        <p class="text-[var(--text-dim)] mb-6 leading-relaxed max-w-lg" data-i18n="integracion.p3">La plataforma está diseñada para mantener estas relaciones dentro de una misma estructura de información.</p>
+        <div class="callout max-w-lg" data-i18n="integracion.bold">No se trata solamente de almacenar documentos. Se trata de relacionarlos.</div>
+      </div>
+
+      <div class="panel rounded-2xl p-8">
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed mb-6" data-i18n="integracion.p2">Una factura de exportación puede estar relacionada con productos; los productos pueden estar asociados a una estructura de materiales; la estructura determina las materias primas involucradas; esas materias primas pueden provenir de determinadas declaraciones; y las operaciones resultantes afectan los saldos correspondientes.</p>
+        <div class="flow-chain">
+          <span class="flow-node" data-i18n="integracion.node1">Factura</span><span class="flow-arrow">→</span>
+          <span class="flow-node" data-i18n="integracion.node2">Producto</span><span class="flow-arrow">→</span>
+          <span class="flow-node" data-i18n="integracion.node3">BOM</span><span class="flow-arrow">→</span>
+          <span class="flow-node" data-i18n="integracion.node4">Materia prima</span><span class="flow-arrow">→</span>
+          <span class="flow-node" data-i18n="integracion.node5">Declaración</span><span class="flow-arrow">→</span>
+          <span class="flow-node" data-i18n="integracion.node6">Saldo</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Benefits -->
-<section id="beneficios" class="py-28 border-t hairline">
+<!-- Resultado Operacional -->
+<section id="resultado" class="py-28 border-t hairline">
   <div class="container mx-auto px-6">
-    <div class="mb-16">
-      <div class="section-label mb-3" data-i18n="benefits.label">ANTES / DESPUÉS</div>
-      <h2 class="font-display text-4xl md:text-5xl font-semibold text-[var(--paper)] tracking-tight max-w-2xl">
-        <span data-i18n="benefits.title">Resultados</span> <span class="text-[var(--rust-2)]" data-i18n="benefits.subtitle">medibles, no promesas</span>
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="section-label mb-3" data-i18n="resultado.label">CONTROL Y VISIBILIDAD</div>
+      <h2 class="font-display text-3xl md:text-4xl font-semibold text-[var(--paper)] tracking-tight mb-7 leading-tight" data-i18n="resultado.title">
+        Menos reconstrucción manual. Más control sobre la operación.
       </h2>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="panel rounded-2xl p-8">
-        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-6" data-i18n="benefits.time.title">Tiempo de procesamiento</h3>
-        <div class="space-y-4">
-          <div>
-            <div class="flex justify-between text-xs font-mono text-[var(--text-faint)] mb-1.5"><span data-i18n="benefits.before">ANTES</span><span>4h</span></div>
-            <div class="bar-track"><div class="bar-fill" style="width:100%; background:var(--text-faint);"></div></div>
-          </div>
-          <div>
-            <div class="flex justify-between text-xs font-mono text-[var(--rust-2)] mb-1.5"><span data-i18n="benefits.after">AHORA</span><span>12min</span></div>
-            <div class="bar-track"><div class="bar-fill" style="width:5%; background:var(--rust-2);"></div></div>
-          </div>
-        </div>
-        <p class="text-[var(--text-dim)] text-sm leading-relaxed mt-6" data-i18n="benefits.time.desc">Reducción del 90% en el procesamiento de pedimentos.</p>
-      </div>
-
-      <div class="panel rounded-2xl p-8">
-        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-6" data-i18n="benefits.errors.title">Incidencias mensuales</h3>
-        <div class="space-y-4">
-          <div>
-            <div class="flex justify-between text-xs font-mono text-[var(--text-faint)] mb-1.5"><span data-i18n="benefits.before">ANTES</span><span>12</span></div>
-            <div class="bar-track"><div class="bar-fill" style="width:100%; background:var(--text-faint);"></div></div>
-          </div>
-          <div>
-            <div class="flex justify-between text-xs font-mono text-[var(--amber)] mb-1.5"><span data-i18n="benefits.after">AHORA</span><span>&lt;1</span></div>
-            <div class="bar-track"><div class="bar-fill" style="width:6%; background:var(--amber);"></div></div>
-          </div>
-        </div>
-        <p class="text-[var(--text-dim)] text-sm leading-relaxed mt-6" data-i18n="benefits.errors.desc">Validación automática antes de cualquier envío.</p>
-      </div>
-
-      <div class="panel rounded-2xl p-8">
-        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-6" data-i18n="benefits.scale.title">Capacidad de operación</h3>
-        <div class="space-y-4">
-          <div>
-            <div class="flex justify-between text-xs font-mono text-[var(--text-faint)] mb-1.5"><span data-i18n="benefits.min">MÍNIMO</span><span>10</span></div>
-            <div class="bar-track"><div class="bar-fill" style="width:15%; background:var(--ledger);"></div></div>
-          </div>
-          <div>
-            <div class="flex justify-between text-xs font-mono text-[var(--ledger)] mb-1.5"><span data-i18n="benefits.max">SIN LÍMITE</span><span>10,000+</span></div>
-            <div class="bar-track"><div class="bar-fill" style="width:100%; background:var(--ledger);"></div></div>
-          </div>
-        </div>
-        <p class="text-[var(--text-dim)] text-sm leading-relaxed mt-6" data-i18n="benefits.scale.desc">Sin cambios de infraestructura al crecer.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Reports -->
-<section id="reportes" class="py-28 border-t hairline">
-  <div class="container mx-auto px-6">
-    <div class="mb-16">
-      <div class="section-label mb-3" data-i18n="reports.label">SALIDA DE DATOS</div>
-      <h2 class="font-display text-4xl md:text-5xl font-semibold text-[var(--paper)] tracking-tight max-w-2xl">
-        <span data-i18n="reports.title">Reportes</span> <span class="text-[var(--rust-2)]" data-i18n="reports.subtitle">gubernamentales e internos</span>
-      </h2>
-      <p class="text-[var(--text-dim)] max-w-xl mt-4" data-i18n="reports.intro">Genera con un clic los reportes que exige la autoridad aduanera junto con los que necesitas para el control diario de tu operación.</p>
-    </div>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="panel rounded-2xl p-7">
-        <i data-lucide="scale" class="w-7 h-7 text-[var(--rust-2)] mb-4"></i>
-        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-2" data-i18n="reports.coef.title">Coeficiente de transformación</h3>
-        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="reports.coef.desc">Cálculo conforme a los requerimientos legales del régimen de perfeccionamiento activo.</p>
-      </div>
-      <div class="panel rounded-2xl p-7">
-        <i data-lucide="file-signature" class="w-7 h-7 text-[var(--amber)] mb-4"></i>
-        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-2" data-i18n="reports.djm.title">Declaración jurada mensual</h3>
-        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="reports.djm.desc">Generación automática lista para presentar ante la autoridad competente.</p>
-      </div>
-      <div class="panel rounded-2xl p-7">
-        <i data-lucide="calendar-check-2" class="w-7 h-7 text-[var(--ledger)] mb-4"></i>
-        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-2" data-i18n="reports.boleta.title">Boleta de actualización anual</h3>
-        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="reports.boleta.desc">Datos organizados y listos para su ingreso en el sitio web oficial correspondiente.</p>
-      </div>
-      <div class="panel rounded-2xl p-7">
-        <i data-lucide="file-bar-chart" class="w-7 h-7 text-[var(--rust-2)] mb-4"></i>
-        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-2" data-i18n="reports.account.title">Estado de cuenta por DUA</h3>
-        <p class="text-[var(--text-dim)] text-sm leading-relaxed mb-4" data-i18n="reports.account.desc">Saldos, DAI e IVA por declaración de importación. Exporta a PDF, Excel o CSV.</p>
-        <div class="flex gap-2 font-mono text-xs text-[var(--text-faint)]"><span class="px-2.5 py-1 rounded border border-[var(--line-strong)]">PDF</span><span class="px-2.5 py-1 rounded border border-[var(--line-strong)]">XLSX</span><span class="px-2.5 py-1 rounded border border-[var(--line-strong)]">CSV</span></div>
-      </div>
-      <div class="panel rounded-2xl p-7">
-        <i data-lucide="receipt" class="w-7 h-7 text-[var(--amber)] mb-4"></i>
-        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-2" data-i18n="reports.invoices.title">Facturas emitidas</h3>
-        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="reports.invoices.desc">Historial completo de facturas de exportación y sus descargos asociados.</p>
-      </div>
-      <div class="panel rounded-2xl p-7">
-        <i data-lucide="activity" class="w-7 h-7 text-[var(--ledger)] mb-4"></i>
-        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-2" data-i18n="reports.traceability.title">DUA por vencer y registros</h3>
-        <p class="text-[var(--text-dim)] text-sm leading-relaxed mb-4" data-i18n="reports.traceability.desc">DUA, DUCA y registros almacenados, con auditoría completa de materia prima bajo admisión temporal.</p>
-        <div class="flex gap-2 font-mono text-xs text-[var(--text-faint)]"><span class="px-2.5 py-1 rounded border border-[var(--line-strong)]" data-i18n="reports.traceability.tag1">TIEMPO REAL</span><span class="px-2.5 py-1 rounded border border-[var(--line-strong)]" data-i18n="reports.traceability.tag2">AUDITABLE</span></div>
-      </div>
+      <p class="text-[var(--text-dim)] leading-relaxed mb-3" data-i18n="resultado.p1">ZakForeigner concentra en una única plataforma información que normalmente requiere múltiples archivos, registros y procesos manuales.</p>
+      <p class="text-[var(--text-dim)] leading-relaxed mb-3" data-i18n="resultado.p2">El resultado es una operación donde el usuario puede consultar declaraciones, mercancías, documentos, exportaciones, descargos, movimientos y saldos desde un mismo entorno.</p>
+      <p class="text-[var(--text-dim)] leading-relaxed mb-8" data-i18n="resultado.p3">La plataforma no elimina la necesidad de criterio profesional ni sustituye las obligaciones del responsable de comercio exterior.</p>
+      <div class="callout max-w-xl mx-auto text-left" data-i18n="resultado.bold">Reduce la fragmentación de información y proporciona herramientas para que el responsable pueda trabajar con mayor control, consistencia y trazabilidad.</div>
     </div>
   </div>
 </section>
@@ -965,12 +1257,15 @@ select.paper-input option{background:var(--steel-2); color:var(--paper);}
   <div class="container mx-auto px-6">
     <div class="grid lg:grid-cols-2 gap-16 items-start max-w-5xl mx-auto">
       <div class="lg:pt-8">
-        <div class="section-label mb-3" data-i18n="contact.label">SIGUIENTE PASO</div>
-        <h2 class="font-display text-4xl font-semibold text-[var(--paper)] tracking-tight mb-6 leading-tight">
-          <span data-i18n="contact.title1">¿Listo para</span> <span class="text-[var(--rust-2)]" data-i18n="contact.title2">transformar</span> <span data-i18n="contact.title3">tu operación?</span>
+        <div class="section-label mb-3" data-i18n="contact.label">CONOZCA LA PLATAFORMA</div>
+        <h2 class="font-display text-4xl font-semibold text-[var(--paper)] tracking-tight mb-6 leading-tight" data-i18n="contact.title1">
+          Su operación tiene demasiadas variables para administrarse como una hoja de cálculo.
         </h2>
-        <p class="text-[var(--text-dim)] leading-relaxed mb-8" data-i18n="contact.description">
-          Agenda una demostración gratuita y descubre cómo ZakForeigner optimiza tu gestión de comercio exterior bajo admisión temporal y perfeccionamiento activo.
+        <p class="text-[var(--text-dim)] leading-relaxed mb-3" data-i18n="contact.description">
+          Conozca cómo ZakForeigner estructura la información de su operación de comercio exterior, relaciona declaraciones, mercancías, documentos y exportaciones, procesa descargos y proporciona herramientas para el control de saldos, inventario y reportes.
+        </p>
+        <p class="text-[var(--text-dim)] leading-relaxed mb-8" data-i18n="contact.description2">
+          La demostración se adapta a las características de su operación y permite analizar qué componentes de la plataforma corresponden a sus procesos actuales.
         </p>
         <div class="stamp inline-block text-xs px-4 py-2" data-i18n="contact.stamp">RESPUESTA EN 24H</div>
 
@@ -1045,7 +1340,7 @@ select.paper-input option{background:var(--steel-2); color:var(--paper);}
           </div>
           <button type="submit" class="btn-rust w-full px-8 py-3.5 rounded-md text-sm font-semibold text-white flex items-center justify-center gap-2">
             <i data-lucide="send" class="w-4 h-4"></i>
-            <span data-i18n="contact.submit">Enviar solicitud de demo</span>
+            <span data-i18n="contact.submit">Solicitar una demostración</span>
           </button>
           <p id="formStatus" class="text-xs font-mono text-center min-h-[1em]"></p>
         </form>
@@ -1060,12 +1355,12 @@ select.paper-input option{background:var(--steel-2); color:var(--paper);}
     <div class="grid md:grid-cols-4 gap-12 mb-10">
       <div>
         <div class="font-mono text-lg text-[var(--paper)] mb-4"><span class="text-[var(--rust)]">▮</span> ZAK/FOREIGNER</div>
-        <p class="text-[var(--text-faint)] text-sm leading-relaxed" data-i18n="footer.description">ERP nativo de comercio exterior para empresas bajo admisión temporal y perfeccionamiento activo. Desarrollado en Brasil.</p>
+        <p class="text-[var(--text-faint)] text-sm leading-relaxed" data-i18n="footer.description">ERP especializado en comercio exterior para empresas que operan bajo Admisión Temporal y Perfeccionamiento Activo. Gestión de declaraciones, documentación comercial, mercancías, descargos, saldos, trazabilidad y reportes operativos y gubernamentales. Desarrollado en Brasil.</p>
       </div>
       <div>
         <h4 class="font-semibold text-[var(--paper)] mb-4 text-sm" data-i18n="footer.product">Producto</h4>
         <ul class="space-y-2 text-sm text-[var(--text-faint)]">
-          <li><a href="#features" class="hover:text-[var(--amber)] transition" data-i18n="footer.features">Funcionalidades</a></li>
+          <li><a href="#posicionamiento" class="hover:text-[var(--amber)] transition" data-i18n="footer.features">Plataforma</a></li>
           <li><a href="#tecnologia" class="hover:text-[var(--amber)] transition" data-i18n="footer.technology">Tecnología</a></li>
           <li><a href="#reportes" class="hover:text-[var(--amber)] transition" data-i18n="footer.reports">Reportes</a></li>
         </ul>
@@ -1089,11 +1384,10 @@ select.paper-input option{background:var(--steel-2); color:var(--paper);}
     </div>
     <div class="border-t hairline pt-6 flex flex-col md:flex-row justify-between text-xs text-[var(--text-faint)] font-mono gap-2">
       <span data-i18n="footer.copyright">© 2026 ZakForeigner. Todos los derechos reservados.</span>
-      <span data-i18n="footer.tagline">DISEÑADO EXCLUSIVAMENTE PARA macOS</span>
+      <span data-i18n="footer.tagline">ZAK/FOREIGNER — SOFTWARE EMPRESARIAL NATIVO PARA macOS</span>
     </div>
   </div>
 </footer>
-
 <script>
 lucide.createIcons();
 
@@ -1101,7 +1395,7 @@ lucide.createIcons();
 const DEMO_DOCS = [
   {type:'BL',  number:'MSCU-BL-774102', hash:'a91f7c…3c2e'},
   {type:'AWB', number:'160-88214477',   hash:'d02b41…f9a1'},
-  {type:'CRM', number:'CRM-2026-05531', hash:'4e6f9a…107d'},
+  {type:'CMR', number:'CMR-2026-05531', hash:'4e6f9a…107d'},
 ];
 let docIndex = 0;
 
@@ -1152,51 +1446,7 @@ async function runValidatorLoop(){
 }
 function sleep(ms){ return new Promise(r=>setTimeout(r,ms)); }
 
-/* ---------- ISO 6346 mini validator (Gestión de contenedores feature card) ---------- */
-const LETTER_VALUES = {A:10,B:12,C:13,D:14,E:15,F:16,G:17,H:18,I:19,J:20,K:21,L:23,M:24,N:25,O:26,P:27,Q:28,R:29,S:30,T:31,U:32,V:34,W:35,X:36,Y:37,Z:38};
-function charValue(ch){ return /[0-9]/.test(ch) ? parseInt(ch,10) : LETTER_VALUES[ch]; }
-function checkDigit(code10){
-  let sum = 0;
-  for(let i=0;i<10;i++){ sum += charValue(code10[i]) * Math.pow(2,i); }
-  let d = sum % 11;
-  if(d === 10) d = 0;
-  return {digit:d, sum};
-}
-const DEMO_CODES = [
-  {owner:'ZKF', cat:'U', serial:'305442'},
-  {owner:'ZKF', cat:'U', serial:'118820'},
-  {owner:'ZKF', cat:'U', serial:'972014'},
-];
-let miniIndex = 0;
-
-function renderMiniCode(codeObj, digit, revealed){
-  const el = document.getElementById('miniContainerCode');
-  if(!el) return;
-  const full = codeObj.owner + codeObj.cat + codeObj.serial;
-  let html = '';
-  for(const ch of full){ html += `<span class="digit-box" style="border-bottom-width:1px;">${ch}</span>`; }
-  html += `<span class="digit-box check-digit" style="border-bottom-width:1px;">${revealed ? digit : '·'}</span>`;
-  el.innerHTML = html;
-}
-
-async function runMiniValidatorLoop(){
-  const el = document.getElementById('miniContainerCode');
-  if(!el) return;
-  while(true){
-    const c = DEMO_CODES[miniIndex % DEMO_CODES.length];
-    miniIndex++;
-    renderMiniCode(c, '', false);
-    const dot = document.getElementById('miniStatusDot');
-    if(dot) dot.style.background = 'var(--text-faint)';
-    await sleep(900);
-    const {digit} = checkDigit(c.owner + c.cat + c.serial);
-    renderMiniCode(c, digit, true);
-    if(dot) dot.style.background = 'var(--amber)';
-    await sleep(3200);
-  }
-}
-
-/* ---------- BOM automatic discharge (flagship feature) ---------- */
+/* ---------- BOM automatic discharge (Motor de Descargos) ---------- */
 const DEMO_BOM = [
   {dua:'25540000234', material:'Bobina de acero laminado', units:480, unitCost:12.40, freightPct:0.08, insurancePct:0.02, daiRate:0.10, ivaRate:0.16, saldoDisponible:1245890.50},
   {dua:'25540000198', material:'Resina de polipropileno',  units:1200, unitCost:3.85, freightPct:0.07, insurancePct:0.015, daiRate:0.10, ivaRate:0.16, saldoDisponible:812340.00},
@@ -1232,7 +1482,6 @@ async function runBomLoop(){
     const log = document.getElementById('bomLog');
     log.innerHTML = '';
 
-    // reset card
     document.getElementById('bomMaterialVal').textContent = e.material;
     document.getElementById('bomDuaVal').textContent = '—';
     document.getElementById('bomUnitsVal').textContent = '0';
@@ -1249,9 +1498,12 @@ async function runBomLoop(){
     animateCounter(document.getElementById('bomUnitsVal'), e.units, 700);
     await sleep(750);
 
+    await typeLine(log, `→ BOM aplica coeficiente de consumo ... OK`);
+    document.getElementById('bomStatusText').textContent = translate('bom.status.located');
+    await sleep(500);
+
     await typeLine(log, `→ DUA seleccionada por el usuario ... DUA #${e.dua}`);
     document.getElementById('bomDuaVal').textContent = '#' + e.dua;
-    document.getElementById('bomStatusText').textContent = translate('bom.status.located');
     await sleep(500);
 
     await typeLine(log, `→ descargo FOB ... ${money(r.fob)}`);
@@ -1268,7 +1520,7 @@ async function runBomLoop(){
     document.getElementById('bomTaxVal').textContent = money(r.tax);
     await sleep(500);
 
-    await typeLine(log, `✓ descargo aplicado — estado de cuenta actualizado en tiempo real`, 'text-[var(--amber)]');
+    await typeLine(log, `✓ descargo aplicado — estado de cuenta actualizado`, 'text-[var(--amber)]');
     document.getElementById('bomSaldoVal').textContent = money(r.saldoDespues);
     document.getElementById('bomStatusText').textContent = translate('bom.status.synced');
     document.getElementById('bomStatusDot').style.background = 'var(--amber)';
@@ -1301,15 +1553,15 @@ const statObserver = new IntersectionObserver(entries=>{
 const statGridEl = document.getElementById('statGrid');
 if(statGridEl) statObserver.observe(statGridEl);
 
-/* ---------- terminal log (compliance section) ---------- */
+/* ---------- terminal log (Gestión de Declaraciones Aduaneras) ---------- */
 const LOG_LINES = [
-  '$ pedimento --recibido No. 25540000234',
-  '→ validando ISO 6346 ................ OK',
-  '→ validando Incoterms ................ OK',
-  '→ calculando DAI ................ $124,589.05',
-  '→ calculando IVA ................ $199,342.48',
-  '→ generando DUA ................ 1.8s',
-  '✓ documento listo — proceso #4471'
+  '$ declaración --recibida No. 25540000234',
+  '→ validando información documental ...... OK',
+  '→ validando plazos y régimen ...... OK',
+  '→ calculando DAI ...... $124,589.05',
+  '→ calculando IVA ...... $199,342.48',
+  '→ actualizando saldo ...... 1.8s',
+  '✓ declaración registrada — expediente #4471'
 ];
 async function runTerminal(){
   const el = document.getElementById('terminalLog');
@@ -1332,10 +1584,11 @@ async function runTerminal(){
 }
 runTerminal();
 
-/* report timestamp */
+/* report timestamp (Estado de cuenta / reporte de declaración) */
 function updateTimestamp(){
   const now = new Date();
-  document.getElementById('reportTimestamp').textContent = now.toISOString().slice(0,16).replace('T',' ') + ' UTC';
+  const el = document.getElementById('reportTimestamp');
+  if(el) el.textContent = now.toISOString().slice(0,16).replace('T',' ') + ' UTC';
 }
 updateTimestamp();
 setInterval(updateTimestamp, 30000);
@@ -1343,11 +1596,15 @@ setInterval(updateTimestamp, 30000);
 /* ---------- i18n ---------- */
 const translations = {
   es: {
-    'nav.features':'Funcionalidades','nav.bom':'BOM','nav.alerts':'Alertas','nav.aws':'Cumplimiento','nav.reports':'Reportes','nav.technology':'Tecnología','nav.benefits':'Resultados','nav.demo':'Agendar Demo',
-    'hero.badge':'EXCLUSIVO PARA macOS · CUMPLIMIENTO ADUANERO','hero.title1':'Admisión Temporal,','hero.title2':'bajo control absoluto.',
-    'hero.subtitle1':'El ERP de comercio exterior para empresas que operan bajo','hero.subtitle2':'Admisión Temporal','hero.subtitle3':'y','hero.subtitle4':'Perfeccionamiento Activo',
-    'hero.powered':'Documentos de embarque firmados digitalmente, descargo automático de DUA por BOM y alertas de vencimiento antes de que se conviertan en un incumplimiento. Software exclusivo para macOS, diseñado para sostener el cumplimiento normativo de tu operación aduanera.',
-    'hero.demoBtn':'Agendar demo gratuita','hero.featuresBtn':'Ver funcionalidades',
+    'nav.platform':'Plataforma','nav.declarations':'Declaraciones','nav.bom':'Motor BOM','nav.alerts':'Alertas','nav.reports':'Reportes','nav.results':'Resultados','nav.demo':'Solicitar demo',
+
+    'hero.badge':'ERP ESPECIALIZADO · COMERCIO EXTERIOR · MACOS',
+    'hero.title1':'Perfeccionamiento Activo,','hero.title2':'controlado desde una única plataforma.',
+    'hero.subtitle':'ZakForeigner es un ERP especializado en la gestión y control de operaciones de comercio exterior para empresas que operan bajo regímenes de Admisión Temporal y Perfeccionamiento Activo.',
+    'hero.desc1':'La plataforma integra en un mismo entorno la gestión de declaraciones aduaneras, documentación comercial, mercancías, estructuras de transformación, descargos, saldos, trazabilidad y generación de reportes operativos y gubernamentales.',
+    'hero.desc2':'Su arquitectura está orientada a mantener la correspondencia entre la información documental, los movimientos de mercancías y las operaciones de exportación, proporcionando una base de datos coherente para el seguimiento de las obligaciones derivadas del régimen.',
+    'hero.descHighlight':'El sistema automatiza cálculos, validaciones, relaciones y procesamiento de información; las operaciones que requieren intervención o aprobación permanecen bajo control del usuario responsable.',
+    'hero.demoBtn':'Solicitar una demostración','hero.featuresBtn':'Explorar la plataforma',
     'hero.windowTitle':'INGESTA DE DOCUMENTOS — EN VIVO','hero.codeLabel':'DOCUMENTO ENTRANTE',
     'hero.calculating':'VALIDANDO FORMATO…','hero.valid':'DOCUMENTO ASEGURADO ✓',
     'hero.encrypting':'Cifrando…','hero.encryptingStatus':'CIFRANDO CON AES-256…',
@@ -1355,76 +1612,180 @@ const translations = {
     'hero.locking':'Bloqueando…','hero.lockingStatus':'BLOQUEANDO REGISTRO…','hero.locked':'Bloqueado 🔒',
     'hero.owner':'Tipo de documento','hero.category':'Cifrado','hero.serial':'Firma digital','hero.checksum':'Bloqueo de registro',
     'stats.time':'menos tiempo','stats.response':'gen. de DUA','stats.uptime':'disponibilidad','stats.iso':'bits cifrado AES',
+
+    'posicionamiento.label':'UNA PLATAFORMA ESPECIALIZADA',
+    'posicionamiento.title':'No es un ERP genérico adaptado a comercio exterior.',
+    'posicionamiento.p1':'ZakForeigner fue concebido específicamente para organizaciones cuya operación depende del control preciso de mercancías ingresadas bajo regímenes de perfeccionamiento activo.',
+    'posicionamiento.p2':'La plataforma centraliza información que tradicionalmente se encuentra distribuida entre hojas de cálculo, documentos comerciales, declaraciones aduaneras, registros internos y diferentes sistemas operativos.',
+    'posicionamiento.p3':'Su objetivo es establecer una relación consistente entre estos elementos para que cada movimiento pueda ser consultado, conciliado y trazado desde su origen hasta su aplicación y posterior descargo.',
+    'posicionamiento.chain1':'Declaraciones','posicionamiento.chain2':'Mercancías','posicionamiento.chain3':'Documentos','posicionamiento.chain4':'Exportaciones',
+    'posicionamiento.chain5':'Consumos','posicionamiento.chain6':'Descargos','posicionamiento.chain7':'Saldos','posicionamiento.chain8':'Reportes',
+    'posicionamiento.closing':'Una misma estructura de información.',
+
     'origin.title1':'Hecho en Brasil.','origin.title2':'Probado contra uno de los sistemas fiscales más exigentes del mundo.',
     'origin.desc':'SPED, NF-e y capas fiscales federales, estatales y municipales: la complejidad tributaria brasileña exige una precisión que pocos mercados demandan. Esa misma disciplina de ingeniería sostiene hoy la operación de comercio exterior de tu empresa.',
     'origin.ecosystem':'ECOSISTEMA ZAK — SUITE EMPRESARIAL','origin.tagline':'Cinco productos. Un mismo estándar de calidad brasileño.',
-    'origin.product.foreigner':'ERP de comercio exterior — DUA, BL/AWB/CRM, BOM y reportes gubernamentales',
+    'origin.product.foreigner':'ERP de comercio exterior — DUA, BL/AWB/CMR, BOM y reportes gubernamentales',
     'origin.product.people':'Gestión de nóminas',
     'origin.product.genesis':'Cifrado de datos y seguridad documental, incluida la nube',
     'origin.product.primigenia':'Auditoría de información y registros de Zak Foreigner',
     'origin.product.mitzva':'Integra y sincroniza las 5 aplicaciones entre sí',
-    'bom.label':'FACTURA DE EXPORTACIÓN · MÓDULO BOM','bom.title1':'Capturas unidades.','bom.title2':'El descargo se calcula solo.',
-    'bom.description':'Al emitir una factura de exportación, selecciona la o las declaraciones de importación asociadas y el BOM descarga las unidades consumidas contra ellas. El sistema calcula automáticamente el valor FOB, CIF y los tributos correspondientes, manteniendo el estado de cuenta de la mercadería exacto y al día.',
-    'bom.item1.title':'Solo capturas unidades consumidas','bom.item1.desc':'Sin captura manual de montos: el BOM convierte unidades en valor FOB, CIF e impuestos al instante.',
-    'bom.item2.title':'Selecciona la DUA que vas a descargar','bom.item2.desc':'Elige una o varias declaraciones de importación con saldo disponible y aplica el descargo directamente desde la factura.',
-    'bom.item3.title':'Estado de cuenta siempre al día','bom.item3.desc':'Cada descargo se refleja de inmediato en el estado de cuenta por DUA, en tus controles internos y en los reportes gubernamentales correspondientes.',
-    'bom.terminalTitle':'bom-descargo.log','bom.card.title':'DESCARGO DE MERCADERÍA — EN VIVO',
+
+    'declaraciones.label':'GESTIÓN ADUANERA','declaraciones.title':'Declaraciones bajo control estructurado.',
+    'declaraciones.p1':'ZakForeigner permite registrar, administrar y consultar las declaraciones aduaneras asociadas a las operaciones de importación y exportación de la empresa.',
+    'declaraciones.p2':'La información se organiza a nivel de declaración y línea de mercancía, permitiendo mantener el vínculo entre cantidades, valores, tributos, documentos y movimientos posteriores.',
+    'declaraciones.p3':'El sistema utiliza esta información como base para el control de saldos, descargos, trazabilidad y generación de reportes.',
+    'declaraciones.cap1.title':'Gestión de declaraciones','declaraciones.cap1.desc':'Registro y administración estructurada de las declaraciones y sus diferentes componentes.',
+    'declaraciones.cap2.title':'Control por línea de mercancía','declaraciones.cap2.desc':'Seguimiento individualizado de las mercancías declaradas, sus cantidades, valores y movimientos asociados.',
+    'declaraciones.cap3.title':'Saldos derivados de operaciones','declaraciones.cap3.desc':'Actualización de los saldos correspondientes conforme se registran las operaciones que afectan cada declaración.',
+    'declaraciones.cap4.title':'Relación documental','declaraciones.cap4.desc':'Vinculación entre declaraciones, documentos comerciales, expedientes y operaciones relacionadas.',
+    'declaraciones.terminalTitle':'declaracion.log',
+    'declaraciones.reportLabel':'REPORTE DE DECLARACIÓN','declaraciones.regime':'Régimen: Admisión Temporal','declaraciones.stampValid':'VALIDADO',
+    'declaraciones.initialBalance':'Saldo inicial','declaraciones.dai':'DAI calculado','declaraciones.finalBalance':'Saldo final','declaraciones.generatedBy':'Generado automáticamente',
+
+    'documentacion.label':'DOCUMENTACIÓN COMERCIAL Y DE EMBARQUE','documentacion.title':'La documentación forma parte del expediente operativo.',
+    'documentacion.p1':'ZakForeigner incorpora la gestión de los documentos que sustentan las operaciones de comercio exterior, evitando que la información documental permanezca aislada del contexto aduanero de la operación.',
+    'documentacion.p2':'La plataforma permite registrar y organizar documentos de embarque y documentación comercial, manteniendo su relación con las operaciones correspondientes.',
+    'documentacion.doc1.title':'Bill of Lading (BL)','documentacion.doc1.desc':'Gestión de información asociada al transporte marítimo.',
+    'documentacion.doc2.title':'Air Waybill (AWB)','documentacion.doc2.desc':'Registro y control de documentación correspondiente al transporte aéreo.',
+    'documentacion.doc3.title':'CMR','documentacion.doc3.desc':'Gestión documental para operaciones de transporte terrestre.',
+    'documentacion.doc4.title':'Commercial Invoice','documentacion.doc4.desc':'Creación y gestión estructurada de facturas comerciales y sus líneas de operación.',
+    'documentacion.doc5.title':'Expedientes','documentacion.doc5.desc':'Consolidación de documentos, declaraciones y registros relacionados con una misma operación.',
+
+    'invoice.label':'COMMERCIAL INVOICE','invoice.title':'De la factura comercial al control aduanero.',
+    'invoice.p1':'La Commercial Invoice no se trata como un documento aislado.',
+    'invoice.p2':'ZakForeigner estructura sus líneas comerciales para que la información registrada pueda relacionarse con productos, cantidades, operaciones de exportación, estructuras de transformación y procesos de descargo.',
+    'invoice.p3':'Esta integración permite utilizar la información de la factura como parte del flujo operativo que conecta la exportación con las mercancías ingresadas bajo régimen.',
+    'invoice.capLabel':'CAPACIDADES',
+    'invoice.cap1':'Gestión de múltiples líneas de factura.','invoice.cap2':'Productos y cantidades.','invoice.cap3':'Valores comerciales.',
+    'invoice.cap4':'Información de comprador y vendedor.','invoice.cap5':'Relación con operaciones de exportación.','invoice.cap6':'Asociación con declaraciones de importación.',
+    'invoice.cap7':'Integración con el motor de descargos.','invoice.cap8':'Generación documental.','invoice.cap9':'Trazabilidad de la información utilizada posteriormente en los procesos de control.',
+
+    'bom.label':'MOTOR DE DESCARGOS · BOM','bom.title1':'El descargo no es una operación aislada.','bom.title2':'Es el resultado de una relación de datos.',
+    'bom.p1':'El motor de descargos de ZakForeigner relaciona la información de las mercancías ingresadas bajo régimen con su utilización en los productos destinados a exportación.',
+    'bom.p2':'La determinación del descargo depende de la información registrada en las operaciones de exportación y de la estructura de materiales definida para cada producto.',
+    'bom.p3':'El BOM establece la composición y relación entre el producto y las materias primas utilizadas. A partir de esta información, el sistema procesa las cantidades correspondientes, determina los valores asociados y aplica el resultado sobre las declaraciones seleccionadas con saldo disponible.',
+    'bom.userControl':'El usuario conserva el control sobre la operación y las declaraciones que serán utilizadas. El sistema procesa y calcula la información derivada de esa decisión.',
+    'bom.item1.title':'Estructuras de materiales (BOM)','bom.item1.desc':'Definición de la composición de los productos y de las materias primas asociadas.',
+    'bom.item2.title':'Relación producto–materia prima','bom.item2.desc':'Correspondencia entre las unidades exportadas y los insumos necesarios para determinar su aplicación.',
+    'bom.item3.title':'Selección de declaraciones','bom.item3.desc':'Identificación de las declaraciones con saldo disponible que serán utilizadas en el proceso.',
+    'bom.item4.title':'Determinación de consumos','bom.item4.desc':'Procesamiento de las cantidades correspondientes conforme a la información registrada y a la estructura de transformación.',
+    'bom.item5.title':'Cálculo de valores','bom.item5.desc':'Determinación de valores FOB, CIF y tributos asociados según la información disponible en la operación.',
+    'bom.item6.title':'Actualización de saldos','bom.item6.desc':'Los movimientos resultantes se incorporan al estado de cuenta correspondiente y quedan relacionados con la operación que los originó.',
+    'bom.terminalTitle':'motor-descargo.log','bom.card.title':'DESCARGO DE MERCADERÍA — EN VIVO',
     'bom.card.material':'PRODUCTO','bom.card.dua':'DUA / DUCA','bom.card.units':'unidades consumidas',
     'bom.card.fob':'Descargo FOB','bom.card.cif':'Descargo CIF','bom.card.tax':'DAI + IVA','bom.card.saldo':'SALDO DE LA DUA',
-    'bom.status.searching':'DUA SELECCIONADA…','bom.status.located':'DUA CONFIRMADA ✓','bom.status.discharging':'APLICANDO DESCARGO…','bom.status.synced':'SINCRONIZADO ✓ TIEMPO REAL',
-    'features.label':'MÓDULOS DEL SISTEMA','features.title':'Funcionalidades','features.subtitle':'construidas para aduanas',
-    'features.description':'Cada módulo resuelve un punto de fricción real en la operación diaria bajo regímenes de admisión temporal y perfeccionamiento activo.',
-    'features.intake.eyebrow':'SEGURIDAD DOCUMENTAL','features.intake.title':'Documentos de embarque con firma digital',
-    'features.intake.desc':'Registra BL, AWB y CRM para gestionar de forma ordenada tus operaciones de importación y exportación. Cada documento queda firmado digitalmente y bloqueado contra modificaciones no autorizadas, dando validez y trazabilidad al registro para reportes y controles internos.',
-    'features.intake.item1':'→ BL · AWB · CRM','features.intake.item2':'→ firma digital + bloqueo de registro','features.intake.item3':'→ impresión de informe con un clic',
-    'features.dua.eyebrow':'CÁLCULO AUTOMATIZADO','features.dua.title':'Declaraciones aduaneras (DUA)',
-    'features.dua.desc':'Ingreso y gestión de declaraciones de importación y exportación, con cálculo automático de saldos, DAI e IVA.',
-    'features.alerts.title':'Alertas de vencimiento','features.alerts.desc':'Avisos automáticos de DUA por vencer, saldos bajos y validación de regímenes afectos a perfeccionamiento activo.',
-    'features.performance.title':'Rendimiento nativo','features.performance.desc':'Aplicación de escritorio para macOS que aprovecha al máximo el hardware de Apple.',
-    'features.validation.title':'Validación inteligente','features.validation.desc':'ISO 6346, Incoterms y plazos legales verificados antes de cualquier envío o procesamiento.',
-    'features.cloud.title':'Cumplimiento normativo integral','features.cloud.desc':'Control centralizado de las obligaciones ante la autoridad aduanera y demás entidades reguladoras, con historial listo para auditoría.',
-    'features.containers.title':'Gestión de contenedores','features.containers.desc':'Editor completo para números ISO 6346 con historial y trazabilidad en tiempo real.',
-    'features.traceability.title':'Trazabilidad completa','features.traceability.desc':'Seguimiento de materia prima bajo admisión temporal, con auditoría de cada operación desde su origen hasta el descargo final.',
-    'features.traceability.tag':'MOD.06 / AUDITORÍA EN TIEMPO REAL',
-    'alerts.panel.title':'CENTRO DE ALERTAS',
-    'alerts.item1.title':'DUA #25540000234 vence en 5 días','alerts.item1.desc':'Régimen: Admisión Temporal — saldo pendiente por descargar',
-    'alerts.item2.title':'Saldo de DUA #25540000198 bajo el 10%','alerts.item2.desc':'Recomendado: gestionar nueva declaración de importación',
-    'alerts.item3.title':'Coeficiente de transformación validado','alerts.item3.desc':'Régimen de perfeccionamiento activo conforme',
-    'alerts.tag.urgent':'URGENTE','alerts.tag.warning':'ATENCIÓN','alerts.tag.ok':'CONFORME',
-    'alerts.label':'CUMPLIMIENTO PROACTIVO','alerts.title1':'Vencimientos que se anticipan,','alerts.title2':'no que se descubren.',
-    'alerts.description':'Diseñado específicamente para empresas bajo admisión temporal, el sistema vigila automáticamente cada declaración: notifica el vencimiento de DUA, controla saldos disponibles y valida que los regímenes afectos a perfeccionamiento activo se mantengan conformes con la normativa vigente.',
-    'alerts.feat1.title':'Vencimiento de DUA','alerts.feat1.desc':'Notificaciones anticipadas antes de que se cumpla el plazo legal de cada declaración.',
-    'alerts.feat2.title':'Saldos disponibles','alerts.feat2.desc':'Aviso automático cuando el saldo de una DUA se agota o queda por debajo del umbral definido.',
-    'alerts.feat3.title':'Validación de régimen','alerts.feat3.desc':'Verificación continua de los regímenes afectos a perfeccionamiento activo conforme a la normativa aduanera.',
-    'aws.label':'CUMPLIMIENTO EN TIEMPO REAL','aws.title1':'Reportes de estado de cuenta,','aws.title2':'listos ante la autoridad aduanera',
-    'aws.description':'Cada declaración, saldo y tributo se calcula y actualiza al instante, para que tu empresa esté siempre en condiciones de responder ante cualquier requerimiento gubernamental o auditoría.',
-    'aws.item1.title':'Generación de DUA en segundos','aws.item1.desc':'El sistema procesa y genera Documentos Únicos de Admisión en tiempo récord, listos para presentar.',
-    'aws.item2.title':'Cálculo automático de saldos','aws.item2.desc':'Saldos, DAI e IVA calculados con precisión matemática garantizada, conforme a la normativa vigente.',
-    'aws.item3.title':'Trazabilidad completa','aws.item3.desc':'Historial detallado de materia prima bajo admisión temporal, auditable en cualquier momento.',
-    'aws.reportLabel':'REPORTE DUA','aws.regime':'Régimen: Admisión Temporal','aws.stampValid':'VALIDADO',
-    'aws.initialBalance':'Saldo inicial','aws.dai':'DAI calculado','aws.finalBalance':'Saldo final','aws.generatedBy':'Generado automáticamente',
-    'aws.terminalTitle':'cumplimiento.log',
+    'bom.status.searching':'DUA SELECCIONADA…','bom.status.located':'COEFICIENTE APLICADO ✓','bom.status.discharging':'APLICANDO DESCARGO…','bom.status.synced':'SINCRONIZADO ✓ TIEMPO REAL',
+
+    'trazabilidad.label':'TRAZABILIDAD TRANSACCIONAL','trazabilidad.title':'Cada saldo debe poder explicarse.',
+    'trazabilidad.p1':'ZakForeigner está diseñado para que la información no termine en una cifra aislada.',
+    'trazabilidad.p2':'Un saldo debe poder relacionarse con sus movimientos; un movimiento debe poder relacionarse con una operación; y una operación debe poder remontarse hasta la documentación y declaración que le dieron origen.',
+    'trazabilidad.p3':'Esta estructura permite consultar el recorrido de las mercancías desde su ingreso bajo régimen hasta su utilización, descargo y saldo remanente.',
+    'trazabilidad.node1':'Origen','trazabilidad.node2':'Declaración','trazabilidad.node3':'Mercancía','trazabilidad.node4':'Operación',
+    'trazabilidad.node5':'Consumo','trazabilidad.node6':'Descargo','trazabilidad.node7':'Saldo',
+    'trazabilidad.closing':'Una cadena de información continua y consultable.',
+
+    'estados.label':'CONTROL DE MERCANCÍAS','estados.title':'Estados de cuenta construidos a partir de la operación.',
+    'estados.p1':'ZakForeigner proporciona estados de cuenta asociados a las declaraciones y mercancías registradas, permitiendo consultar movimientos, cantidades, valores y saldos derivados de las operaciones procesadas por el sistema.',
+    'estados.p2':'Los estados de cuenta constituyen una herramienta de control interno para analizar la situación de las mercancías bajo régimen y sirven como una de las fuentes para la elaboración de reportes y procesos de conciliación.',
+    'estados.includesLabel':'INCLUYE',
+    'estados.inc1':'Estado de cuenta por declaración','estados.inc2':'Movimientos de mercancías','estados.inc3':'Saldos disponibles','estados.inc4':'Saldos utilizados',
+    'estados.inc5':'Descargos asociados','estados.inc6':'Valores FOB y CIF','estados.inc7':'DAI e IVA cuando corresponda','estados.inc8':'Movimientos históricos',
+    'estados.inc9':'Exportación de información para análisis interno',
+    'estados.ledgerTitle':'MOVIMIENTOS — DUA #25540000234',
+    'estados.col.date':'Fecha','estados.col.movement':'Movimiento','estados.col.doc':'Documento','estados.col.value':'Valor','estados.col.balance':'Saldo',
+    'estados.row1.type':'Ingreso','estados.row2.type':'Descargo FOB',
+
+    'inventario.label':'CONTROL PERMANENTE','inventario.title':'Inventario perpetuo para una operación que no puede depender de fotografías estáticas.',
+    'inventario.p1':'El control de mercancías bajo régimen requiere conocer no solamente cuánto ingresó, sino también cuánto se ha utilizado, descargado y permanece disponible.',
+    'inventario.p2':'ZakForeigner mantiene los movimientos registrados dentro de una estructura de información que permite consultar la evolución de las existencias y relacionarlas con las operaciones que las modificaron.',
+    'inventario.p3':'El inventario perpetuo se convierte así en una herramienta de seguimiento operacional y conciliación, complementaria al control aduanero de declaraciones y saldos.',
+    'inventario.cardTitle':'EXISTENCIAS POR MATERIAL',
+    'inventario.entered':'Ingresado: 5,000','inventario.available':'Disponible: 1,800',
+    'inventario.entered2':'Ingresado: 12,000','inventario.available2':'Disponible: 3,360',
+    'inventario.entered3':'Ingresado: 2,600','inventario.available3':'Disponible: 2,314',
+
+    'alertas.panel.title':'CENTRO DE ALERTAS',
+    'alertas.item1.title':'DUA #25540000234 vence en 5 días','alertas.item1.desc':'Régimen: Admisión Temporal — saldo pendiente por descargar',
+    'alertas.item2.title':'Saldo de DUA #25540000198 bajo el 10%','alertas.item2.desc':'Recomendado: gestionar nueva declaración de importación',
+    'alertas.item4.title':'Expediente EXP-2026-0089 pendiente de documentación','alertas.item4.desc':'Requiere seguimiento del responsable de la operación',
+    'alertas.item3.title':'Coeficiente de transformación validado','alertas.item3.desc':'Régimen de perfeccionamiento activo conforme',
+    'alertas.tag.urgent':'URGENTE','alertas.tag.warning':'ATENCIÓN','alertas.tag.pending':'PENDIENTE','alertas.tag.ok':'CONFORME',
+    'alertas.label':'CONTROL PROACTIVO','alertas.title':'Los vencimientos deben identificarse antes de convertirse en una contingencia.',
+    'alertas.p1':'ZakForeigner supervisa información crítica relacionada con las declaraciones y sus plazos, permitiendo identificar operaciones próximas a vencimiento y situaciones que requieren atención del usuario.',
+    'alertas.p2':'Las alertas no sustituyen la responsabilidad del operador ni determinan por sí mismas la regularización de una operación. Su función es proporcionar información oportuna para que el responsable pueda tomar decisiones.',
+    'alertas.feat1.title':'Vencimientos','alertas.feat1.desc':'Identificación de declaraciones próximas a cumplir sus plazos.',
+    'alertas.feat2.title':'Saldos bajos','alertas.feat2.desc':'Detección de declaraciones cuyo saldo disponible se aproxima a niveles definidos de atención.',
+    'alertas.feat3.title':'Situaciones pendientes','alertas.feat3.desc':'Identificación de operaciones que requieren seguimiento.',
+    'alertas.feat4.title':'Control de régimen','alertas.feat4.desc':'Información consolidada para facilitar la supervisión de operaciones sujetas al régimen correspondiente.',
+
+    'reportes.label':'SALIDA DE INFORMACIÓN','reportes.title':'De la operación registrada al reporte.',
+    'reportes.p1':'Los reportes de ZakForeigner se alimentan de la información transaccional almacenada en la plataforma.',
+    'reportes.p2':'En lugar de reconstruir manualmente cada informe a partir de diferentes fuentes, el sistema utiliza las declaraciones, mercancías, movimientos, descargos y demás registros disponibles para estructurar la información necesaria para cada reporte.',
+    'reportes.item1.title':'Coeficiente de Transformación','reportes.item1.desc':'Información estructurada para el análisis y elaboración del reporte correspondiente al proceso de transformación.',
+    'reportes.item2.title':'Declaración Jurada','reportes.item2.desc':'Consolidación de la información registrada en el sistema para facilitar la preparación de la declaración correspondiente.',
+    'reportes.item3.title':'Boleta de Actualización','reportes.item3.desc':'Organización de información necesaria para el proceso de actualización correspondiente.',
+    'reportes.item4.title':'Estados de cuenta','reportes.item4.desc':'Consulta detallada de movimientos y saldos por declaración y mercancía.',
+    'reportes.item5.title':'Inventario Perpetuo','reportes.item5.desc':'Información consolidada para el seguimiento permanente de las existencias y movimientos.',
+    'reportes.item6.title':'Saldos de DUCA / declaraciones','reportes.item6.desc':'Consulta de saldos y movimientos asociados.',
+    'reportes.item7.title':'Saldos vencidos','reportes.item7.desc':'Identificación y seguimiento de operaciones cuyo plazo requiere atención.',
+
+    'analisis.label':'ANÁLISIS OPERACIONAL','analisis.title':'Los datos de comercio exterior también son información empresarial.',
+    'analisis.p1':'ZakForeigner no se limita a producir documentación.',
+    'analisis.p2':'La acumulación estructurada de declaraciones, facturas, mercancías, valores, cantidades y movimientos permite generar información útil para analizar el comportamiento histórico y operacional de la empresa.',
+    'analisis.p3':'La plataforma contempla reportes orientados a la identificación y análisis de registros de alto perfil, incluyendo información asociada a facturas y declaraciones que requieren un nivel superior de revisión.',
+    'analisis.p4':'Esto permite transformar grandes volúmenes de registros operativos en información consultable para análisis, control y toma de decisiones.',
+
+    'controlhumano.label':'AUTOMATIZACIÓN CONTROLADA','controlhumano.title':'La tecnología procesa. El responsable decide.',
+    'controlhumano.p1':'ZakForeigner no utiliza inteligencia artificial para decidir qué información debe presentar una empresa ante la autoridad aduanera.',
+    'controlhumano.p2':'En un entorno donde una declaración, un descargo o un saldo puede tener consecuencias fiscales y regulatorias, la responsabilidad sobre la información de origen debe permanecer claramente identificada.',
+    'controlhumano.p3':'El sistema automatiza cálculos, validaciones, relaciones, actualización de información y generación de resultados derivados. El usuario responsable mantiene el control sobre la incorporación, revisión y aprobación de los datos que sustentan las operaciones.',
+    'controlhumano.principleLabel':'PRINCIPIO DE DISEÑO',
+    'controlhumano.node1':'Datos ingresados','controlhumano.node2':'Validación','controlhumano.node3':'Procesamiento','controlhumano.node4':'Resultado',
+    'controlhumano.node5':'Revisión humana','controlhumano.node6':'Aprobación','controlhumano.node7':'Registro',
+    'controlhumano.closing1':'La automatización reduce trabajo operativo.','controlhumano.closing2':'La responsabilidad permanece en manos de la persona autorizada.',
+
+    'auditoria.label':'AUDITABILIDAD','auditoria.title':'Una operación crítica no debería desaparecer dentro de un historial.',
+    'auditoria.p1':'ZakForeigner mantiene información relacionada con las operaciones registradas y sus relaciones internas, permitiendo reconstruir el contexto en el que se produjo un movimiento o resultado.',
+    'auditoria.p2':'La trazabilidad facilita la revisión de declaraciones, documentos, mercancías, descargos y movimientos relacionados.',
+    'auditoria.p3a':'El objetivo no es únicamente conservar datos históricos, sino proporcionar una estructura que permita comprender',
+    'auditoria.p3b':'qué ocurrió, sobre qué información se realizó una operación y qué elementos fueron afectados',
+
     'tech.label':'PLATAFORMA','tech.title1':'Diseñado exclusivamente','tech.title2':'para macOS',
-    'tech.swift.title':'Aplicación nativa de macOS','tech.swift.subtitle':'Sin versiones web ni emuladores','tech.swift.desc':'Software de escritorio desarrollado exclusivamente para macOS, con una interfaz moderna, fluida y coherente con el ecosistema Apple en cada detalle.',
-    'tech.swift.item1':'→ rendimiento nativo sin capas intermedias','tech.swift.item2':'→ integración perfecta con macOS','tech.swift.item3':'→ actualizaciones vía App Store',
-    'tech.aws.title':'Seguridad y respaldo empresarial','tech.aws.subtitle':'Infraestructura de nivel corporativo','tech.aws.desc':'Datos cifrados, respaldados y disponibles en todo momento, con controles de acceso y continuidad operativa pensados para auditorías y requerimientos regulatorios.',
-    'tech.aws.item1':'→ cifrado de extremo a extremo','tech.aws.item2':'→ seguridad de nivel empresarial','tech.aws.item3':'→ 99.99% de disponibilidad',
-    'benefits.label':'ANTES / DESPUÉS','benefits.title':'Resultados','benefits.subtitle':'medibles, no promesas',
-    'benefits.time.title':'Tiempo de procesamiento','benefits.time.desc':'Reducción del 90% en el procesamiento de pedimentos.',
-    'benefits.errors.title':'Incidencias mensuales','benefits.errors.desc':'Validación automática antes de cualquier envío.',
-    'benefits.scale.title':'Capacidad de operación','benefits.scale.desc':'Sin cambios de infraestructura al crecer.',
-    'benefits.before':'ANTES','benefits.after':'AHORA','benefits.min':'MÍNIMO','benefits.max':'SIN LÍMITE',
-    'reports.label':'SALIDA DE DATOS','reports.title':'Reportes','reports.subtitle':'gubernamentales e internos',
-    'reports.intro':'Genera con un clic los reportes que exige la autoridad aduanera junto con los que necesitas para el control diario de tu operación.',
-    'reports.coef.title':'Coeficiente de transformación','reports.coef.desc':'Cálculo conforme a los requerimientos legales del régimen de perfeccionamiento activo.',
-    'reports.djm.title':'Declaración jurada mensual','reports.djm.desc':'Generación automática lista para presentar ante la autoridad competente.',
-    'reports.boleta.title':'Boleta de actualización anual','reports.boleta.desc':'Datos organizados y listos para su ingreso en el sitio web oficial correspondiente.',
-    'reports.account.title':'Estado de cuenta por DUA','reports.account.desc':'Saldos, DAI e IVA por declaración de importación. Exporta a PDF, Excel o CSV.',
-    'reports.invoices.title':'Facturas emitidas','reports.invoices.desc':'Historial completo de facturas de exportación y sus descargos asociados.',
-    'reports.traceability.title':'DUA por vencer y registros','reports.traceability.desc':'DUA, DUCA y registros almacenados, con auditoría completa de materia prima bajo admisión temporal.',
-    'reports.traceability.tag1':'TIEMPO REAL','reports.traceability.tag2':'AUDITABLE',
-    'contact.label':'SIGUIENTE PASO','contact.title1':'¿Listo para','contact.title2':'transformar','contact.title3':'tu operación?',
-    'contact.description':'Agenda una demostración gratuita y descubre cómo ZakForeigner optimiza tu gestión de comercio exterior bajo admisión temporal y perfeccionamiento activo.',
+    'tech.macos.title':'Una aplicación empresarial diseñada específicamente para macOS','tech.macos.eyebrow':'PLATAFORMA',
+    'tech.macos.p1':'ZakForeigner es una aplicación de escritorio desarrollada exclusivamente para macOS.',
+    'tech.macos.p2':'La plataforma utiliza tecnologías nativas del ecosistema Apple para proporcionar una experiencia de operación coherente con el sistema operativo, aprovechando sus capacidades de interfaz, almacenamiento seguro, gestión de credenciales y procesamiento local.',
+    'tech.macos.p3':'No es una interfaz web encapsulada ni una aplicación multiplataforma adaptada posteriormente a macOS.',
+    'tech.macos.p4':'Es software diseñado desde su arquitectura para el entorno Apple.',
+    'tech.macos.item1t':'Arquitectura nativa —','tech.macos.item1d':'interfaz y componentes desarrollados específicamente para macOS.',
+    'tech.macos.item2t':'Experiencia de escritorio —','tech.macos.item2d':'operación orientada a usuarios que trabajan con grandes volúmenes de información documental y transaccional.',
+    'tech.macos.item3t':'Integración con el ecosistema Apple —','tech.macos.item3d':'uso de capacidades propias del sistema operativo cuando forman parte de los procesos de la plataforma.',
+    'tech.cloud.title':'Procesamiento empresarial respaldado por infraestructura cloud','tech.cloud.eyebrow':'INFRAESTRUCTURA Y DATOS',
+    'tech.cloud.p1':'ZakForeigner utiliza infraestructura cloud para proporcionar servicios de almacenamiento, procesamiento, persistencia y seguridad de información empresarial.',
+    'tech.cloud.p2':'La arquitectura distribuida permite separar responsabilidades entre la aplicación de escritorio y los servicios de backend, manteniendo una infraestructura preparada para procesar operaciones y datos que requieren disponibilidad, control de acceso y mecanismos de protección.',
+    'tech.cloud.p3':'La información se almacena mediante servicios especializados y mecanismos de seguridad apropiados para el entorno de operación.',
+    'tech.seguridad.title':'La información aduanera requiere controles, no únicamente almacenamiento','tech.seguridad.eyebrow':'SEGURIDAD DE LA INFORMACIÓN',
+    'tech.seguridad.p1':'La arquitectura de ZakForeigner contempla mecanismos de protección para la información almacenada y procesada por la plataforma, incluyendo controles de acceso, protección de credenciales, almacenamiento cloud y mecanismos de seguridad destinados a preservar la confidencialidad e integridad de los datos.',
+    'tech.seguridad.p2':'La seguridad se aborda como una propiedad transversal de la plataforma y no como una función independiente.',
+    'tech.destacado.tag1':'Aplicación nativa','tech.destacado.tag2':'Servicios cloud','tech.destacado.tag3':'Almacenamiento estructurado','tech.destacado.tag4':'Controles de seguridad',
+    'tech.destacado.closing':'Una arquitectura diseñada para una operación empresarial y no para un simple archivo local.',
+
+    'integracion.label':'INTEGRACIÓN OPERACIONAL','integracion.title':'Comercio exterior y control de mercancías dentro del mismo flujo de información.',
+    'integracion.p1':'Una de las características fundamentales de ZakForeigner es la relación entre información comercial y aduanera.',
+    'integracion.p2':'Una factura de exportación puede estar relacionada con productos; los productos pueden estar asociados a una estructura de materiales; la estructura determina las materias primas involucradas; esas materias primas pueden provenir de determinadas declaraciones; y las operaciones resultantes afectan los saldos correspondientes.',
+    'integracion.p3':'La plataforma está diseñada para mantener estas relaciones dentro de una misma estructura de información.',
+    'integracion.bold':'No se trata solamente de almacenar documentos. Se trata de relacionarlos.',
+    'integracion.node1':'Factura','integracion.node2':'Producto','integracion.node3':'BOM','integracion.node4':'Materia prima','integracion.node5':'Declaración','integracion.node6':'Saldo',
+
+    'resultado.label':'CONTROL Y VISIBILIDAD','resultado.title':'Menos reconstrucción manual. Más control sobre la operación.',
+    'resultado.p1':'ZakForeigner concentra en una única plataforma información que normalmente requiere múltiples archivos, registros y procesos manuales.',
+    'resultado.p2':'El resultado es una operación donde el usuario puede consultar declaraciones, mercancías, documentos, exportaciones, descargos, movimientos y saldos desde un mismo entorno.',
+    'resultado.p3':'La plataforma no elimina la necesidad de criterio profesional ni sustituye las obligaciones del responsable de comercio exterior.',
+    'resultado.bold':'Reduce la fragmentación de información y proporciona herramientas para que el responsable pueda trabajar con mayor control, consistencia y trazabilidad.',
+
+    'contact.label':'CONOZCA LA PLATAFORMA','contact.title1':'Su operación tiene demasiadas variables para administrarse como una hoja de cálculo.',
+    'contact.description':'Conozca cómo ZakForeigner estructura la información de su operación de comercio exterior, relaciona declaraciones, mercancías, documentos y exportaciones, procesa descargos y proporciona herramientas para el control de saldos, inventario y reportes.',
+    'contact.description2':'La demostración se adapta a las características de su operación y permite analizar qué componentes de la plataforma corresponden a sus procesos actuales.',
     'contact.stamp':'RESPUESTA EN 24H','contact.channelsDesc':'Responde a tu correo, teléfono, WhatsApp o iMessage — como prefieras.',
     'contact.name':'NOMBRE','contact.namePlaceholder':'Tu nombre',
     'contact.company':'EMPRESA','contact.companyPlaceholder':'Nombre de tu empresa','contact.email':'EMAIL','contact.emailPlaceholder':'tu@email.com',
@@ -1432,18 +1793,24 @@ const translations = {
     'contact.channel':'CANAL DE CONTACTO PREFERIDO','contact.channel.email':'Correo','contact.channel.phone':'Llamada','contact.channel.whatsapp':'WhatsApp','contact.channel.imessage':'Mensajes (iMessage)',
     'contact.employees':'TAMAÑO DE LA OPERACIÓN','contact.employeesPlaceholder':'Selecciona un rango de DUA activas / mes',
     'contact.employees1':'1 – 10 DUA activas','contact.employees2':'11 – 50 DUA activas','contact.employees3':'51 – 200 DUA activas','contact.employees4':'Más de 200 DUA activas',
-    'contact.message':'MENSAJE','contact.messagePlaceholder':'Cuéntanos sobre tu operación...','contact.submit':'Enviar solicitud de demo',
-    'footer.description':'ERP nativo de comercio exterior para empresas bajo admisión temporal y perfeccionamiento activo. Desarrollado en Brasil.','footer.product':'Producto','footer.features':'Funcionalidades',
-    'footer.technology':'Tecnología','footer.reports':'Reportes','footer.company':'Empresa','footer.contact':'Contacto','footer.support':'Soporte','footer.docs':'Documentación',
+    'contact.message':'MENSAJE','contact.messagePlaceholder':'Cuéntanos sobre tu operación...','contact.submit':'Solicitar una demostración',
+
+    'footer.description':'ERP especializado en comercio exterior para empresas que operan bajo Admisión Temporal y Perfeccionamiento Activo. Gestión de declaraciones, documentación comercial, mercancías, descargos, saldos, trazabilidad y reportes operativos y gubernamentales. Desarrollado en Brasil.',
+    'footer.product':'Producto','footer.features':'Plataforma','footer.technology':'Tecnología','footer.reports':'Reportes',
+    'footer.company':'Empresa','footer.contact':'Contacto','footer.support':'Soporte','footer.docs':'Documentación',
     'footer.legal':'Legal','footer.privacy':'Privacidad','footer.terms':'Términos','footer.cookies':'Cookies',
-    'footer.copyright':'© 2026 ZakForeigner. Todos los derechos reservados.','footer.tagline':'DISEÑADO EXCLUSIVAMENTE PARA macOS'
+    'footer.copyright':'© 2026 ZakForeigner. Todos los derechos reservados.','footer.tagline':'ZAK/FOREIGNER — SOFTWARE EMPRESARIAL NATIVO PARA macOS'
   },
   ko: {
-    'nav.features':'기능','nav.bom':'BOM','nav.alerts':'알림','nav.aws':'컴플라이언스','nav.reports':'보고서','nav.technology':'기술','nav.benefits':'성과','nav.demo':'데모 예약',
-    'hero.badge':'macOS 전용 · 세관 컴플라이언스','hero.title1':'일시 수입 관리,','hero.title2':'완벽하게 통제됩니다.',
-    'hero.subtitle1':'일시 수입 및','hero.subtitle2':'능동 완화','hero.subtitle3':'체제 하에 운영되는 기업을 위한','hero.subtitle4':'무역 관리 ERP',
-    'hero.powered':'전자 서명이 적용된 선적 문서, BOM을 통한 DUA 자동 차감, 위반이 되기 전에 미리 알려주는 만기 알림. macOS 전용으로 설계되어 세관 규정 준수를 뒷받침합니다.',
-    'hero.demoBtn':'무료 데모 예약','hero.featuresBtn':'기능 보기',
+    'nav.platform':'플랫폼','nav.declarations':'신고서','nav.bom':'BOM 엔진','nav.alerts':'알림','nav.reports':'보고서','nav.results':'성과','nav.demo':'데모 요청',
+
+    'hero.badge':'전문 ERP · 무역 관리 · MACOS 전용',
+    'hero.title1':'능동 완화 체제,','hero.title2':'하나의 플랫폼에서 완벽하게 통제됩니다.',
+    'hero.subtitle':'ZakForeigner는 일시 수입 및 능동 완화 체제 하에 운영되는 기업을 위한 무역 관리 및 통제 전문 ERP입니다.',
+    'hero.desc1':'이 플랫폼은 세관 신고서 관리, 상업 문서, 상품, 변환 구조, 차감, 잔액, 추적성, 운영 및 정부 보고서 생성을 하나의 환경에서 통합합니다.',
+    'hero.desc2':'플랫폼의 아키텍처는 문서 정보, 상품 이동, 수출 운영 간의 정합성을 유지하도록 설계되어, 체제에서 파생되는 의무 사항을 추적할 수 있는 일관된 데이터베이스를 제공합니다.',
+    'hero.descHighlight':'시스템은 계산, 검증, 관계 설정, 정보 처리를 자동화합니다. 개입이나 승인이 필요한 작업은 책임 사용자의 통제 하에 남습니다.',
+    'hero.demoBtn':'데모 요청하기','hero.featuresBtn':'플랫폼 살펴보기',
     'hero.windowTitle':'문서 수신 — 실시간','hero.codeLabel':'수신 문서',
     'hero.calculating':'형식 검증 중…','hero.valid':'문서 보호 완료 ✓',
     'hero.encrypting':'암호화 중…','hero.encryptingStatus':'AES-256로 암호화 중…',
@@ -1451,76 +1818,180 @@ const translations = {
     'hero.locking':'잠그는 중…','hero.lockingStatus':'레코드 잠금 중…','hero.locked':'잠김 🔒',
     'hero.owner':'문서 유형','hero.category':'암호화','hero.serial':'전자 서명','hero.checksum':'레코드 잠금',
     'stats.time':'시간 절감','stats.response':'DUA 생성','stats.uptime':'가용성','stats.iso':'AES 암호화 비트',
+
+    'posicionamiento.label':'전문화된 플랫폼',
+    'posicionamiento.title':'무역 관리에 맞춰 조정된 범용 ERP가 아닙니다.',
+    'posicionamiento.p1':'ZakForeigner는 능동 완화 체제 하에 반입된 상품의 정밀한 통제에 운영이 달려 있는 조직을 위해 특별히 설계되었습니다.',
+    'posicionamiento.p2':'이 플랫폼은 전통적으로 스프레드시트, 상업 문서, 세관 신고서, 내부 기록, 서로 다른 운영 시스템에 분산되어 있던 정보를 중앙에 집중시킵니다.',
+    'posicionamiento.p3':'그 목적은 모든 이동 내역을 출처부터 적용, 이후의 차감에 이르기까지 조회, 대조, 추적할 수 있도록 이러한 요소들 사이에 일관된 관계를 수립하는 것입니다.',
+    'posicionamiento.chain1':'신고서','posicionamiento.chain2':'상품','posicionamiento.chain3':'문서','posicionamiento.chain4':'수출',
+    'posicionamiento.chain5':'소비','posicionamiento.chain6':'차감','posicionamiento.chain7':'잔액','posicionamiento.chain8':'보고서',
+    'posicionamiento.closing':'하나의 동일한 정보 구조입니다.',
+
     'origin.title1':'브라질에서 만들었습니다.','origin.title2':'세계에서 가장 까다로운 조세 시스템으로 검증되었습니다.',
     'origin.desc':'SPED, NF-e, 그리고 연방·주·시 단위로 겹겹이 쌓인 세금 체계 — 브라질의 조세 복잡성은 웬만한 시장이 요구하지 않는 수준의 정밀함을 요구합니다. 바로 그 엔지니어링 원칙이 지금 당신의 무역 운영을 지탱합니다.',
     'origin.ecosystem':'ZAK 생태계 — 기업용 스위트','origin.tagline':'다섯 개의 제품. 하나의 브라질 품질 기준.',
-    'origin.product.foreigner':'무역 관리 ERP — DUA, BL/AWB/CRM, BOM 및 정부 보고서',
+    'origin.product.foreigner':'무역 관리 ERP — DUA, BL/AWB/CMR, BOM 및 정부 보고서',
     'origin.product.people':'급여 관리',
     'origin.product.genesis':'데이터 암호화 및 문서 보안, 클라우드 포함',
     'origin.product.primigenia':'Zak Foreigner의 정보 및 기록 감사',
     'origin.product.mitzva':'5개 애플리케이션 간 통합 및 동기화',
-    'bom.label':'수출 송장 · BOM 모듈','bom.title1':'수량만 입력하세요.','bom.title2':'차감은 자동으로 계산됩니다.',
-    'bom.description':'수출 송장을 발행할 때 관련된 수입 신고서를 하나 또는 여러 개 선택하면, BOM이 소비된 수량을 해당 신고서에서 차감합니다. 시스템이 FOB, CIF 가치와 해당 세금을 자동으로 계산하여 상품의 계정 상태를 정확하고 최신 상태로 유지합니다.',
-    'bom.item1.title':'소비 수량만 입력하면 됩니다','bom.item1.desc':'금액을 수동으로 입력할 필요 없이 BOM이 수량을 FOB, CIF, 세금 가치로 즉시 변환합니다.',
-    'bom.item2.title':'차감할 DUA를 선택하세요','bom.item2.desc':'잔액이 있는 수입 신고서 하나 또는 여러 개를 선택하고 송장에서 바로 차감을 적용합니다.',
-    'bom.item3.title':'계정 상태 항상 최신 유지','bom.item3.desc':'각 차감은 DUA별 계정 상태, 내부 통제, 해당 정부 보고서에 즉시 반영됩니다.',
-    'bom.terminalTitle':'bom-descargo.log','bom.card.title':'상품 차감 — 실시간',
+
+    'declaraciones.label':'세관 관리','declaraciones.title':'구조적으로 통제되는 신고서.',
+    'declaraciones.p1':'ZakForeigner는 기업의 수출입 운영과 관련된 세관 신고서를 등록, 관리, 조회할 수 있게 합니다.',
+    'declaraciones.p2':'정보는 신고서 및 상품 항목 단위로 구성되어, 수량·가치·세금·문서·이후 이동 내역 간의 연결을 유지할 수 있습니다.',
+    'declaraciones.p3':'시스템은 이 정보를 잔액 관리, 차감, 추적성, 보고서 생성의 기반으로 사용합니다.',
+    'declaraciones.cap1.title':'신고서 관리','declaraciones.cap1.desc':'신고서와 그 구성 요소에 대한 체계적인 등록 및 관리.',
+    'declaraciones.cap2.title':'상품 항목별 통제','declaraciones.cap2.desc':'신고된 상품, 수량, 가치 및 관련 이동 내역에 대한 개별 추적.',
+    'declaraciones.cap3.title':'운영에서 파생되는 잔액','declaraciones.cap3.desc':'각 신고서에 영향을 미치는 운영이 등록됨에 따라 해당 잔액이 갱신됩니다.',
+    'declaraciones.cap4.title':'문서 연계','declaraciones.cap4.desc':'신고서, 상업 문서, 관련 기록철, 관련 운영 간의 연결.',
+    'declaraciones.terminalTitle':'declaracion.log',
+    'declaraciones.reportLabel':'신고서 보고서','declaraciones.regime':'체제: 일시 수입','declaraciones.stampValid':'검증됨',
+    'declaraciones.initialBalance':'초기 잔액','declaraciones.dai':'계산된 DAI','declaraciones.finalBalance':'최종 잔액','declaraciones.generatedBy':'자동 생성됨',
+
+    'documentacion.label':'상업 및 선적 문서','documentacion.title':'문서는 운영 기록철의 일부를 이룹니다.',
+    'documentacion.p1':'ZakForeigner는 무역 운영을 뒷받침하는 문서 관리를 포함하여, 문서 정보가 운영의 세관 맥락에서 분리되지 않도록 합니다.',
+    'documentacion.p2':'이 플랫폼은 선적 문서와 상업 문서를 등록·정리하면서 해당 운영과의 관계를 유지할 수 있게 합니다.',
+    'documentacion.doc1.title':'선하증권 (BL)','documentacion.doc1.desc':'해상 운송과 관련된 정보 관리.',
+    'documentacion.doc2.title':'항공화물운송장 (AWB)','documentacion.doc2.desc':'항공 운송에 해당하는 문서의 등록 및 관리.',
+    'documentacion.doc3.title':'CMR','documentacion.doc3.desc':'육상 운송 업무를 위한 문서 관리.',
+    'documentacion.doc4.title':'상업송장 (Commercial Invoice)','documentacion.doc4.desc':'상업송장 및 그 운영 항목의 체계적인 생성 및 관리.',
+    'documentacion.doc5.title':'관련 기록철','documentacion.doc5.desc':'동일한 운영과 관련된 문서, 신고서, 기록의 통합.',
+
+    'invoice.label':'COMMERCIAL INVOICE','invoice.title':'상업송장에서 세관 통제까지.',
+    'invoice.p1':'상업송장은 독립된 문서로 취급되지 않습니다.',
+    'invoice.p2':'ZakForeigner는 등록된 정보가 제품, 수량, 수출 운영, 변환 구조, 차감 프로세스와 연결될 수 있도록 상업 항목을 구조화합니다.',
+    'invoice.p3':'이러한 통합을 통해 송장 정보를 수출과 체제 하에 반입된 상품을 연결하는 운영 흐름의 일부로 활용할 수 있습니다.',
+    'invoice.capLabel':'주요 기능',
+    'invoice.cap1':'복수의 송장 항목 관리.','invoice.cap2':'제품 및 수량.','invoice.cap3':'상업적 가치.',
+    'invoice.cap4':'구매자 및 판매자 정보.','invoice.cap5':'수출 운영과의 연계.','invoice.cap6':'수입 신고서와의 연계.',
+    'invoice.cap7':'차감 엔진과의 통합.','invoice.cap8':'문서 생성.','invoice.cap9':'이후 통제 절차에서 활용되는 정보의 추적성.',
+
+    'bom.label':'차감 엔진 · BOM','bom.title1':'차감은 독립된 작업이 아닙니다.','bom.title2':'데이터 관계의 결과입니다.',
+    'bom.p1':'ZakForeigner의 차감 엔진은 체제 하에 반입된 상품 정보를 수출용 제품에서의 활용과 연결합니다.',
+    'bom.p2':'차감의 산정은 수출 운영에 등록된 정보와 각 제품에 정의된 자재 구조에 따라 달라집니다.',
+    'bom.p3':'BOM은 제품과 사용된 원자재 간의 구성 및 관계를 정의합니다. 이 정보를 바탕으로 시스템은 해당 수량을 처리하고, 관련 가치를 산정하며, 잔액이 있는 신고서에 그 결과를 적용합니다.',
+    'bom.userControl':'사용자는 운영과 사용될 신고서에 대한 통제권을 유지합니다. 시스템은 그 결정에서 파생되는 정보를 처리하고 계산합니다.',
+    'bom.item1.title':'자재 명세 구조 (BOM)','bom.item1.desc':'제품의 구성과 관련 원자재의 정의.',
+    'bom.item2.title':'제품–원자재 관계','bom.item2.desc':'수출된 단위와 그 적용을 산정하는 데 필요한 투입물 간의 대응 관계.',
+    'bom.item3.title':'신고서 선택','bom.item3.desc':'프로세스에 사용될, 잔액이 있는 신고서의 식별.',
+    'bom.item4.title':'소비량 산정','bom.item4.desc':'등록된 정보와 변환 구조에 따른 해당 수량의 처리.',
+    'bom.item5.title':'가치 계산','bom.item5.desc':'운영에서 확보 가능한 정보에 따른 FOB, CIF 가치 및 관련 세금의 산정.',
+    'bom.item6.title':'잔액 갱신','bom.item6.desc':'결과로 발생한 이동 내역은 해당 계정 상태에 반영되며 그 원인이 된 운영과 연결됩니다.',
+    'bom.terminalTitle':'차감엔진.log','bom.card.title':'상품 차감 — 실시간',
     'bom.card.material':'제품','bom.card.dua':'DUA / DUCA','bom.card.units':'소비 수량',
     'bom.card.fob':'FOB 차감','bom.card.cif':'CIF 차감','bom.card.tax':'DAI + 부가세','bom.card.saldo':'DUA 잔액',
-    'bom.status.searching':'DUA 선택됨…','bom.status.located':'DUA 확인됨 ✓','bom.status.discharging':'차감 적용 중…','bom.status.synced':'동기화 완료 ✓ 실시간',
-    'features.label':'시스템 모듈','features.title':'세관을 위한','features.subtitle':'전문 기능',
-    'features.description':'각 모듈은 일시 수입 및 능동 완화 체제의 일상 운영에서 실제로 겪는 문제를 해결합니다.',
-    'features.intake.eyebrow':'문서 보안','features.intake.title':'전자 서명이 적용된 선적 문서',
-    'features.intake.desc':'BL, AWB, CRM 문서를 등록하여 수출입 업무를 체계적으로 관리하세요. 모든 문서는 전자 서명되고 무단 수정으로부터 잠기며, 보고서와 내부 통제를 위한 유효성과 추적성을 부여합니다.',
-    'features.intake.item1':'→ BL · AWB · CRM','features.intake.item2':'→ 전자 서명 + 레코드 잠금','features.intake.item3':'→ 클릭 한 번으로 보고서 인쇄',
-    'features.dua.eyebrow':'자동 계산 엔진','features.dua.title':'통관 신고서(DUA)',
-    'features.dua.desc':'잔액, DAI, 부가세를 자동 계산하는 수출입 신고서 등록 및 관리.',
-    'features.alerts.title':'만기 알림','features.alerts.desc':'DUA 만기, 낮은 잔액, 능동 완화 체제 준수 여부에 대한 자동 알림.',
-    'features.performance.title':'네이티브 성능','features.performance.desc':'Apple 하드웨어를 최대한 활용하는 macOS 전용 데스크톱 애플리케이션입니다.',
-    'features.validation.title':'지능형 검증','features.validation.desc':'전송 또는 처리 전에 ISO 6346, 인코텀즈, 법적 기한을 검증합니다.',
-    'features.cloud.title':'종합적인 규정 준수 관리','features.cloud.desc':'세관 당국 및 기타 규제 기관에 대한 의무를 중앙에서 관리하며, 감사에 즉시 대응할 수 있는 이력을 제공합니다.',
-    'features.containers.title':'컨테이너 관리','features.containers.desc':'실시간 기록과 추적성을 갖춘 ISO 6346 번호 편집기.',
-    'features.traceability.title':'완전한 추적성','features.traceability.desc':'일시 수입 원자재를 원점부터 최종 차감까지 감사하여 추적합니다.',
-    'features.traceability.tag':'MOD.06 / 실시간 감사',
-    'alerts.panel.title':'알림 센터',
-    'alerts.item1.title':'DUA #25540000234, 5일 후 만료','alerts.item1.desc':'체제: 일시 수입 — 차감 대기 중인 잔액 있음',
-    'alerts.item2.title':'DUA #25540000198 잔액 10% 미만','alerts.item2.desc':'권장 사항: 신규 수입 신고서 처리',
-    'alerts.item3.title':'변환 계수 검증 완료','alerts.item3.desc':'능동 완화 체제 준수 확인됨',
-    'alerts.tag.urgent':'긴급','alerts.tag.warning':'주의','alerts.tag.ok':'준수',
-    'alerts.label':'선제적 컴플라이언스','alerts.title1':'뒤늦게 발견하지 않고,','alerts.title2':'미리 알려주는 만기 관리.',
-    'alerts.description':'일시 수입 기업을 위해 특별히 설계된 시스템이 모든 신고서를 자동으로 감시합니다: DUA 만기를 알리고, 잔액을 관리하며, 능동 완화 체제가 현행 규정을 준수하는지 검증합니다.',
-    'alerts.feat1.title':'DUA 만기','alerts.feat1.desc':'각 신고서의 법정 기한이 도래하기 전에 미리 알림을 보냅니다.',
-    'alerts.feat2.title':'잔액 관리','alerts.feat2.desc':'DUA 잔액이 소진되거나 설정된 임계값 이하로 떨어지면 자동으로 알립니다.',
-    'alerts.feat3.title':'체제 검증','alerts.feat3.desc':'세관 규정에 따라 능동 완화 체제를 지속적으로 검증합니다.',
-    'aws.label':'실시간 규정 준수','aws.title1':'실시간으로 생성되는','aws.title2':'세관 당국 대응 보고서',
-    'aws.description':'모든 신고서, 잔액, 세금이 즉시 계산되고 갱신되어 정부 요구사항이나 감사에 언제든 대응할 수 있습니다.',
-    'aws.item1.title':'초 단위 DUA 생성','aws.item1.desc':'시스템이 기록적인 시간 내에 입국 단일 문서를 처리·생성하여 제출 준비를 마칩니다.',
-    'aws.item2.title':'자동 잔액 계산','aws.item2.desc':'현행 규정에 따라 수학적으로 정확한 잔액, DAI, 부가세를 계산합니다.',
-    'aws.item3.title':'완전한 추적성','aws.item3.desc':'일시 수입 원자재의 상세 기록으로 언제든 감사가 가능합니다.',
-    'aws.reportLabel':'DUA 보고서','aws.regime':'체제: 일시 수입','aws.stampValid':'검증됨',
-    'aws.initialBalance':'초기 잔액','aws.dai':'계산된 DAI','aws.finalBalance':'최종 잔액','aws.generatedBy':'자동 생성됨',
-    'aws.terminalTitle':'compliance.log',
+    'bom.status.searching':'DUA 선택됨…','bom.status.located':'계수 적용됨 ✓','bom.status.discharging':'차감 적용 중…','bom.status.synced':'동기화 완료 ✓ 실시간',
+
+    'trazabilidad.label':'거래 추적성','trazabilidad.title':'모든 잔액은 설명될 수 있어야 합니다.',
+    'trazabilidad.p1':'ZakForeigner는 정보가 독립된 수치로 끝나지 않도록 설계되었습니다.',
+    'trazabilidad.p2':'잔액은 그 이동 내역과 연결될 수 있어야 하고, 이동 내역은 하나의 운영과 연결될 수 있어야 하며, 운영은 그 출처가 된 문서와 신고서까지 거슬러 올라갈 수 있어야 합니다.',
+    'trazabilidad.p3':'이러한 구조를 통해 상품이 체제 하에 반입된 시점부터 활용, 차감, 잔여 잔액에 이르는 경로를 조회할 수 있습니다.',
+    'trazabilidad.node1':'출처','trazabilidad.node2':'신고서','trazabilidad.node3':'상품','trazabilidad.node4':'운영',
+    'trazabilidad.node5':'소비','trazabilidad.node6':'차감','trazabilidad.node7':'잔액',
+    'trazabilidad.closing':'연속적이고 조회 가능한 정보 사슬입니다.',
+
+    'estados.label':'상품 통제','estados.title':'운영을 바탕으로 구축되는 계정 명세서.',
+    'estados.p1':'ZakForeigner는 등록된 신고서 및 상품과 연계된 계정 명세서를 제공하여, 시스템이 처리한 운영에서 파생되는 이동 내역, 수량, 가치, 잔액을 조회할 수 있게 합니다.',
+    'estados.p2':'계정 명세서는 체제 하 상품의 상황을 분석하기 위한 내부 통제 도구이며, 보고서 작성 및 대조 절차를 위한 자료원 중 하나로 활용됩니다.',
+    'estados.includesLabel':'포함 항목',
+    'estados.inc1':'신고서별 계정 명세서','estados.inc2':'상품 이동 내역','estados.inc3':'가용 잔액','estados.inc4':'사용된 잔액',
+    'estados.inc5':'관련 차감 내역','estados.inc6':'FOB 및 CIF 가치','estados.inc7':'해당 시 DAI 및 부가세','estados.inc8':'과거 이동 내역',
+    'estados.inc9':'내부 분석을 위한 정보 내보내기',
+    'estados.ledgerTitle':'이동 내역 — DUA #25540000234',
+    'estados.col.date':'날짜','estados.col.movement':'이동','estados.col.doc':'문서','estados.col.value':'금액','estados.col.balance':'잔액',
+    'estados.row1.type':'입고','estados.row2.type':'FOB 차감',
+
+    'inventario.label':'상시 통제','inventario.title':'정적인 스냅샷에 의존할 수 없는 운영을 위한 영구 재고.',
+    'inventario.p1':'체제 하 상품의 통제를 위해서는 얼마나 반입되었는지뿐 아니라, 얼마나 사용·차감되었고 얼마나 남아 있는지도 파악해야 합니다.',
+    'inventario.p2':'ZakForeigner는 등록된 이동 내역을 정보 구조 안에서 유지하여 재고의 변화를 조회하고 이를 변경을 일으킨 운영과 연결할 수 있게 합니다.',
+    'inventario.p3':'이렇게 영구 재고는 신고서 및 잔액에 대한 세관 통제를 보완하는 운영 추적 및 대조 도구가 됩니다.',
+    'inventario.cardTitle':'자재별 재고',
+    'inventario.entered':'반입: 5,000','inventario.available':'가용: 1,800',
+    'inventario.entered2':'반입: 12,000','inventario.available2':'가용: 3,360',
+    'inventario.entered3':'반입: 2,600','inventario.available3':'가용: 2,314',
+
+    'alertas.panel.title':'알림 센터',
+    'alertas.item1.title':'DUA #25540000234, 5일 후 만료','alertas.item1.desc':'체제: 일시 수입 — 차감 대기 중인 잔액 있음',
+    'alertas.item2.title':'DUA #25540000198 잔액 10% 미만','alertas.item2.desc':'권장 사항: 신규 수입 신고서 처리',
+    'alertas.item4.title':'EXP-2026-0089 건, 문서 보완 대기 중','alertas.item4.desc':'운영 담당자의 후속 조치가 필요합니다',
+    'alertas.item3.title':'변환 계수 검증 완료','alertas.item3.desc':'능동 완화 체제 준수 확인됨',
+    'alertas.tag.urgent':'긴급','alertas.tag.warning':'주의','alertas.tag.pending':'대기 중','alertas.tag.ok':'준수',
+    'alertas.label':'선제적 통제','alertas.title':'만료는 문제가 되기 전에 식별되어야 합니다.',
+    'alertas.p1':'ZakForeigner는 신고서 및 그 기한과 관련된 중요 정보를 감시하여, 만료가 임박한 운영과 사용자의 주의가 필요한 상황을 식별할 수 있게 합니다.',
+    'alertas.p2':'알림은 담당자의 책임을 대신하지 않으며, 그 자체로 운영의 정상화를 결정하지도 않습니다. 알림의 기능은 담당자가 결정을 내릴 수 있도록 적시에 정보를 제공하는 것입니다.',
+    'alertas.feat1.title':'만료 관리','alertas.feat1.desc':'기한 도래가 임박한 신고서의 식별.',
+    'alertas.feat2.title':'낮은 잔액','alertas.feat2.desc':'가용 잔액이 지정된 주의 수준에 근접한 신고서의 감지.',
+    'alertas.feat3.title':'대기 중인 사안','alertas.feat3.desc':'후속 조치가 필요한 운영의 식별.',
+    'alertas.feat4.title':'체제 통제','alertas.feat4.desc':'해당 체제의 적용을 받는 운영에 대한 감독을 돕는 통합 정보.',
+
+    'reportes.label':'정보 출력','reportes.title':'등록된 운영에서 보고서로.',
+    'reportes.p1':'ZakForeigner의 보고서는 플랫폼에 저장된 거래 정보를 기반으로 생성됩니다.',
+    'reportes.p2':'여러 자료원을 바탕으로 각 보고서를 수작업으로 재구성하는 대신, 시스템은 신고서, 상품, 이동 내역, 차감 및 기타 이용 가능한 기록을 활용하여 각 보고서에 필요한 정보를 구성합니다.',
+    'reportes.item1.title':'변환 계수','reportes.item1.desc':'변환 프로세스에 해당하는 보고서의 분석 및 작성을 위해 구조화된 정보.',
+    'reportes.item2.title':'서약 신고서','reportes.item2.desc':'해당 신고서 준비를 돕기 위해 시스템에 등록된 정보의 통합.',
+    'reportes.item3.title':'갱신 신고서','reportes.item3.desc':'해당 갱신 절차에 필요한 정보의 정리.',
+    'reportes.item4.title':'계정 명세서','reportes.item4.desc':'신고서 및 상품별 이동 내역과 잔액의 상세 조회.',
+    'reportes.item5.title':'영구 재고','reportes.item5.desc':'재고 및 이동 내역의 상시 추적을 위한 통합 정보.',
+    'reportes.item6.title':'DUCA / 신고서 잔액','reportes.item6.desc':'관련 잔액 및 이동 내역 조회.',
+    'reportes.item7.title':'만료된 잔액','reportes.item7.desc':'기한 관리가 필요한 운영의 식별 및 후속 조치.',
+
+    'analisis.label':'운영 분석','analisis.title':'무역 데이터는 곧 기업 정보이기도 합니다.',
+    'analisis.p1':'ZakForeigner는 단순히 문서를 생성하는 데 그치지 않습니다.',
+    'analisis.p2':'신고서, 송장, 상품, 가치, 수량, 이동 내역이 체계적으로 축적됨에 따라 기업의 과거 및 운영상 동향을 분석하는 데 유용한 정보를 생성할 수 있습니다.',
+    'analisis.p3':'플랫폼은 상급 검토가 필요한 송장 및 신고서 관련 정보를 포함하여, 고위험 기록의 식별과 분석을 위한 보고서를 제공합니다.',
+    'analisis.p4':'이를 통해 방대한 양의 운영 기록을 분석, 통제, 의사 결정에 활용할 수 있는 조회 가능한 정보로 전환할 수 있습니다.',
+
+    'controlhumano.label':'통제된 자동화','controlhumano.title':'기술은 처리하고, 담당자는 결정합니다.',
+    'controlhumano.p1':'ZakForeigner는 기업이 세관 당국에 제출해야 할 정보를 결정하는 데 인공지능을 사용하지 않습니다.',
+    'controlhumano.p2':'신고서, 차감 또는 잔액이 세무 및 규제상의 결과를 초래할 수 있는 환경에서는, 원천 정보에 대한 책임 소재가 명확히 식별되어야 합니다.',
+    'controlhumano.p3':'시스템은 계산, 검증, 관계 설정, 정보 갱신 및 파생 결과 생성을 자동화합니다. 담당 사용자는 운영을 뒷받침하는 데이터의 입력, 검토, 승인에 대한 통제권을 유지합니다.',
+    'controlhumano.principleLabel':'설계 원칙',
+    'controlhumano.node1':'입력된 데이터','controlhumano.node2':'검증','controlhumano.node3':'처리','controlhumano.node4':'결과',
+    'controlhumano.node5':'인적 검토','controlhumano.node6':'승인','controlhumano.node7':'등록',
+    'controlhumano.closing1':'자동화는 운영 업무를 줄입니다.','controlhumano.closing2':'책임은 권한을 가진 담당자에게 남습니다.',
+
+    'auditoria.label':'감사 가능성','auditoria.title':'중요한 운영은 이력 속에 묻혀서는 안 됩니다.',
+    'auditoria.p1':'ZakForeigner는 등록된 운영과 그 내부 관계에 관한 정보를 유지하여, 이동 내역이나 결과가 발생한 맥락을 재구성할 수 있게 합니다.',
+    'auditoria.p2':'이러한 추적성은 신고서, 문서, 상품, 차감 및 관련 이동 내역의 검토를 용이하게 합니다.',
+    'auditoria.p3a':'목적은 단순히 과거 데이터를 보존하는 것이 아니라, 다음을 이해할 수 있는 구조를 제공하는 것입니다:',
+    'auditoria.p3b':'무엇이 발생했는지, 어떤 정보를 바탕으로 운영이 이루어졌는지, 어떤 요소가 영향을 받았는지',
+
     'tech.label':'플랫폼','tech.title1':'macOS 전용으로','tech.title2':'설계되었습니다',
-    'tech.swift.title':'macOS 네이티브 애플리케이션','tech.swift.subtitle':'웹 버전이나 에뮬레이터 없이','tech.swift.desc':'macOS 전용으로 개발된 데스크톱 소프트웨어로, 세부까지 Apple 생태계와 일관된 현대적이고 유동적인 인터페이스를 제공합니다.',
-    'tech.swift.item1':'→ 중간 계층 없는 네이티브 성능','tech.swift.item2':'→ macOS와의 완벽한 통합','tech.swift.item3':'→ App Store를 통한 업데이트',
-    'tech.aws.title':'기업급 보안 및 백업','tech.aws.subtitle':'기업 수준의 인프라','tech.aws.desc':'데이터는 암호화되고 백업되어 항상 이용 가능하며, 감사 및 규제 요구사항을 위한 접근 제어와 운영 연속성을 갖추고 있습니다.',
-    'tech.aws.item1':'→ 종단 간 암호화','tech.aws.item2':'→ 엔터프라이즈급 보안','tech.aws.item3':'→ 99.99% 가용성',
-    'benefits.label':'이전 / 이후','benefits.title':'측정 가능한','benefits.subtitle':'성과',
-    'benefits.time.title':'처리 시간','benefits.time.desc':'통관 신고서 처리 시간 90% 단축.',
-    'benefits.errors.title':'월간 오류 건수','benefits.errors.desc':'전송 전 자동 검증.',
-    'benefits.scale.title':'운영 처리 능력','benefits.scale.desc':'인프라 변경 없이 확장.',
-    'benefits.before':'이전','benefits.after':'현재','benefits.min':'최소','benefits.max':'무제한',
-    'reports.label':'데이터 출력','reports.title':'정부 및','reports.subtitle':'내부 보고서',
-    'reports.intro':'세관 당국이 요구하는 보고서와 일상 운영 관리에 필요한 보고서를 클릭 한 번으로 생성하세요.',
-    'reports.coef.title':'변환 계수','reports.coef.desc':'능동 완화 체제의 법적 요건에 따른 계산.',
-    'reports.djm.title':'월간 서약 신고서','reports.djm.desc':'관할 당국에 제출할 준비가 된 자동 생성 보고서.',
-    'reports.boleta.title':'연간 갱신 신고서','reports.boleta.desc':'공식 웹사이트 입력을 위해 정리된 데이터.',
-    'reports.account.title':'DUA별 계정 상태','reports.account.desc':'수입 신고서별 잔액, DAI, 부가세. PDF, Excel, CSV로 내보내기.',
-    'reports.invoices.title':'발행된 송장','reports.invoices.desc':'수출 송장과 관련 차감 내역의 전체 기록.',
-    'reports.traceability.title':'만기 예정 DUA 및 기록','reports.traceability.desc':'일시 수입 원자재의 완전한 감사와 함께 저장된 DUA, DUCA 및 기록.',
-    'reports.traceability.tag1':'실시간','reports.traceability.tag2':'감사 가능',
-    'contact.label':'다음 단계','contact.title1':'운영을','contact.title2':'변화시킬','contact.title3':'준비가 되셨나요?',
-    'contact.description':'무료 데모를 예약하고 ZakForeigner가 일시 수입 및 능동 완화 체제의 무역 관리를 어떻게 최적화하는지 확인하세요.',
+    'tech.macos.title':'macOS 전용으로 설계된 기업용 애플리케이션','tech.macos.eyebrow':'플랫폼',
+    'tech.macos.p1':'ZakForeigner는 macOS 전용으로 개발된 데스크톱 애플리케이션입니다.',
+    'tech.macos.p2':'이 플랫폼은 Apple 생태계의 네이티브 기술을 활용하여 운영체제와 일관된 사용 경험을 제공하며, 인터페이스, 보안 저장소, 자격 증명 관리, 로컬 처리 기능을 활용합니다.',
+    'tech.macos.p3':'웹 인터페이스를 감싼 형태도, 이후 macOS에 맞춰 조정된 크로스 플랫폼 애플리케이션도 아닙니다.',
+    'tech.macos.p4':'Apple 환경을 위해 아키텍처 단계부터 설계된 소프트웨어입니다.',
+    'tech.macos.item1t':'네이티브 아키텍처 —','tech.macos.item1d':'macOS 전용으로 개발된 인터페이스와 구성 요소.',
+    'tech.macos.item2t':'데스크톱 사용 경험 —','tech.macos.item2d':'대용량의 문서·거래 정보를 다루는 사용자를 위한 운영 방식.',
+    'tech.macos.item3t':'Apple 생태계와의 통합 —','tech.macos.item3d':'플랫폼 프로세스의 일부일 때 운영체제 고유 기능을 활용.',
+    'tech.cloud.title':'클라우드 인프라가 뒷받침하는 기업용 처리','tech.cloud.eyebrow':'인프라 및 데이터',
+    'tech.cloud.p1':'ZakForeigner는 클라우드 인프라를 활용하여 기업 정보의 저장, 처리, 지속성, 보안 서비스를 제공합니다.',
+    'tech.cloud.p2':'분산 아키텍처는 데스크톱 애플리케이션과 백엔드 서비스 간의 책임을 분리하여, 가용성·접근 통제·보호 메커니즘이 요구되는 운영과 데이터를 처리할 수 있는 인프라를 유지합니다.',
+    'tech.cloud.p3':'정보는 운영 환경에 적합한 전문 서비스와 보안 메커니즘을 통해 저장됩니다.',
+    'tech.seguridad.title':'세관 정보는 저장소뿐 아니라 통제가 필요합니다','tech.seguridad.eyebrow':'정보 보안',
+    'tech.seguridad.p1':'ZakForeigner의 아키텍처는 플랫폼이 저장·처리하는 정보를 위한 보호 메커니즘을 포함합니다. 여기에는 접근 통제, 자격 증명 보호, 클라우드 저장소, 데이터의 기밀성과 무결성을 보존하기 위한 보안 메커니즘이 포함됩니다.',
+    'tech.seguridad.p2':'보안은 독립된 기능이 아니라 플랫폼 전반에 걸친 속성으로 다루어집니다.',
+    'tech.destacado.tag1':'네이티브 애플리케이션','tech.destacado.tag2':'클라우드 서비스','tech.destacado.tag3':'구조화된 저장소','tech.destacado.tag4':'보안 통제',
+    'tech.destacado.closing':'단순한 로컬 파일이 아닌, 기업용 운영을 위해 설계된 아키텍처입니다.',
+
+    'integracion.label':'운영 통합','integracion.title':'무역 관리와 상품 통제가 하나의 정보 흐름 안에 있습니다.',
+    'integracion.p1':'ZakForeigner의 핵심 특징 중 하나는 상업 정보와 세관 정보 간의 관계입니다.',
+    'integracion.p2':'수출 송장은 제품과 연결될 수 있고, 제품은 자재 명세 구조와 연관될 수 있으며, 그 구조가 관련된 원자재를 결정하고, 그 원자재는 특정 신고서에서 비롯될 수 있으며, 그 결과로 발생하는 운영은 해당 잔액에 영향을 미칩니다.',
+    'integracion.p3':'이 플랫폼은 이러한 관계를 하나의 동일한 정보 구조 안에서 유지하도록 설계되었습니다.',
+    'integracion.bold':'단순히 문서를 저장하는 것이 아니라, 그것들을 서로 연결하는 것입니다.',
+    'integracion.node1':'송장','integracion.node2':'제품','integracion.node3':'BOM','integracion.node4':'원자재','integracion.node5':'신고서','integracion.node6':'잔액',
+
+    'resultado.label':'통제와 가시성','resultado.title':'수작업 재구성은 줄이고, 운영에 대한 통제는 높입니다.',
+    'resultado.p1':'ZakForeigner는 일반적으로 여러 파일, 기록, 수작업 절차를 필요로 하는 정보를 하나의 플랫폼에 집중시킵니다.',
+    'resultado.p2':'그 결과 사용자는 신고서, 상품, 문서, 수출, 차감, 이동 내역, 잔액을 하나의 환경에서 조회할 수 있는 운영 방식을 갖추게 됩니다.',
+    'resultado.p3':'이 플랫폼은 전문가적 판단의 필요성을 없애지 않으며, 무역 담당자의 의무를 대체하지도 않습니다.',
+    'resultado.bold':'정보의 파편화를 줄이고, 담당자가 더 나은 통제력, 일관성, 추적성을 가지고 업무를 수행할 수 있는 도구를 제공합니다.',
+
+    'contact.label':'플랫폼 알아보기','contact.title1':'스프레드시트로 관리하기에는 변수가 너무 많은 운영입니다.',
+    'contact.description':'ZakForeigner가 어떻게 귀사의 무역 운영 정보를 구조화하고, 신고서·상품·문서·수출을 서로 연결하며, 차감을 처리하고, 잔액·재고·보고서 통제를 위한 도구를 제공하는지 확인해 보세요.',
+    'contact.description2':'데모는 귀사 운영의 특성에 맞춰 진행되며, 플랫폼의 어떤 구성 요소가 현재 프로세스에 해당하는지 분석할 수 있습니다.',
     'contact.stamp':'24시간 내 응답','contact.channelsDesc':'이메일, 전화, WhatsApp, iMessage 중 원하는 방식으로 답변드립니다.',
     'contact.name':'이름','contact.namePlaceholder':'귀하의 이름',
     'contact.company':'회사','contact.companyPlaceholder':'회사명','contact.email':'이메일','contact.emailPlaceholder':'your@email.com',
@@ -1528,11 +1999,13 @@ const translations = {
     'contact.channel':'선호하는 연락 방법','contact.channel.email':'이메일','contact.channel.phone':'전화','contact.channel.whatsapp':'WhatsApp','contact.channel.imessage':'메시지 (iMessage)',
     'contact.employees':'운영 규모','contact.employeesPlaceholder':'월간 활성 DUA 범위를 선택하세요',
     'contact.employees1':'활성 DUA 1 – 10건','contact.employees2':'활성 DUA 11 – 50건','contact.employees3':'활성 DUA 51 – 200건','contact.employees4':'활성 DUA 200건 이상',
-    'contact.message':'메시지','contact.messagePlaceholder':'운영에 대해 알려주세요...','contact.submit':'데모 요청 보내기',
-    'footer.description':'일시 수입 및 능동 완화 기업을 위한 네이티브 무역 관리 ERP. 브라질에서 개발되었습니다.','footer.product':'제품','footer.features':'기능',
-    'footer.technology':'기술','footer.reports':'보고서','footer.company':'회사','footer.contact':'연락처','footer.support':'지원','footer.docs':'문서',
+    'contact.message':'메시지','contact.messagePlaceholder':'운영에 대해 알려주세요...','contact.submit':'데모 요청하기',
+
+    'footer.description':'일시 수입 및 능동 완화 체제 하에 운영되는 기업을 위한 무역 관리 전문 ERP. 신고서, 상업 문서, 상품, 차감, 잔액, 추적성, 운영 및 정부 보고서 관리. 브라질에서 개발되었습니다.',
+    'footer.product':'제품','footer.features':'플랫폼','footer.technology':'기술','footer.reports':'보고서',
+    'footer.company':'회사','footer.contact':'연락처','footer.support':'지원','footer.docs':'문서',
     'footer.legal':'법적','footer.privacy':'개인정보 보호','footer.terms':'약관','footer.cookies':'쿠키',
-    'footer.copyright':'© 2026 ZakForeigner. 모든 권리 보유.','footer.tagline':'macOS 전용으로 설계됨'
+    'footer.copyright':'© 2026 ZakForeigner. 모든 권리 보유.','footer.tagline':'ZAK/FOREIGNER — macOS 전용 기업용 네이티브 소프트웨어'
   }
 };
 
@@ -1587,9 +2060,9 @@ const observer = new IntersectionObserver((entries)=>{
     if(entry.isIntersecting){ entry.target.style.opacity='1'; entry.target.style.transform='translateY(0)'; }
   });
 }, {threshold:.1, rootMargin:'0px 0px -60px 0px'});
-document.querySelectorAll('.feature-card, .panel, .panel-strong').forEach((el, i)=>{
+document.querySelectorAll('.feature-card, .panel, .panel-strong, .cap-card').forEach((el, i)=>{
   el.style.opacity='0'; el.style.transform='translateY(24px)';
-  const delay = el.classList.contains('feature-card') ? (i % 6) * 90 : 0;
+  const delay = (el.classList.contains('feature-card') || el.classList.contains('cap-card')) ? (i % 6) * 90 : 0;
   el.style.transition=`opacity .6s ease-out ${delay}ms, transform .6s ease-out ${delay}ms`;
   observer.observe(el);
 });
@@ -1643,8 +2116,12 @@ contactForm?.addEventListener('submit', async e=>{
 
 updateLanguage('es');
 runValidatorLoop();
-runMiniValidatorLoop();
 runBomLoop();
 </script>
+
+
+
+
+
 </body>
 </html>
