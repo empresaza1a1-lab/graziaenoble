@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Documentación | ZakForeigner</title>
+<meta name="description" content="Documentación organizada por módulo: declaraciones, documentación comercial, motor de descargos BOM, trazabilidad, estados de cuenta, alertas y reportes de ZakForeigner.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://zakforeigner.com/documentacion.html">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+:root{
+  --ink:#0A0E14; --ink-2:#0E141D; --steel:#141B26; --steel-2:#1A2230;
+  --line:rgba(244,241,232,0.09); --line-strong:rgba(244,241,232,0.16);
+  --paper:#F4F1E8; --paper-2:#E9E3D2; --rust:#C1502E; --rust-2:#DE6A44;
+  --amber:#E3A23D; --ledger:#5C93A8; --text:#CDD3DB; --text-dim:#818A98; --text-faint:#565F6D;
+}
+*{box-sizing:border-box; scroll-behavior:smooth;}
+body{font-family:'Inter',-apple-system,sans-serif; background:var(--ink); color:var(--text); overflow-x:hidden;}
+body.korean, .korean{font-family:'Noto Sans KR','Inter',sans-serif;}
+.font-display{font-family:'Space Grotesk',-apple-system,sans-serif;}
+.font-mono{font-family:'JetBrains Mono',monospace;}
+.grain::before{content:'';position:fixed; inset:0; pointer-events:none; z-index:1; opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+.hairline{border-color:var(--line);}
+.panel{background:var(--steel); border:1px solid var(--line);}
+.btn-rust{background:linear-gradient(180deg,var(--rust-2),var(--rust)); box-shadow:0 1px 0 rgba(255,255,255,0.15) inset, 0 10px 24px -8px rgba(193,80,46,0.55); transition:transform .25s ease, box-shadow .25s ease, filter .25s ease;}
+.btn-rust:hover{transform:translateY(-2px); filter:brightness(1.06);}
+.eyebrow{font-family:'JetBrains Mono',monospace; letter-spacing:.14em; font-size:.72rem; text-transform:uppercase;}
+.nav-link{position:relative; transition:color .2s;}
+.nav-link::after{content:'';position:absolute;bottom:-6px;left:0;width:0;height:1px;background:var(--amber);transition:width .25s;}
+.nav-link:hover{color:var(--paper);}
+.nav-link:hover::after{width:100%;}
+.nav-link.active{color:var(--paper);}
+.nav-link.active::after{width:100%;}
+.lang-option-mobile.active{color:var(--amber);}
+.section-label{font-family:'JetBrains Mono',monospace; font-size:.7rem; letter-spacing:.15em; text-transform:uppercase; color:var(--text-faint);}
+.lang-selector{position:relative;}
+.lang-button{display:flex; align-items:center; gap:6px; padding:6px 12px; background:rgba(227,162,61,0.08); border:1px solid rgba(227,162,61,0.3); border-radius:6px; color:var(--amber); font-size:.8rem; cursor:pointer; transition:all .2s; font-family:'JetBrains Mono',monospace;}
+.lang-button:hover{background:rgba(227,162,61,0.15);}
+.lang-dropdown{position:absolute; top:110%; right:0; margin-top:6px; background:var(--steel-2); border:1px solid var(--line-strong); border-radius:8px; padding:4px; min-width:130px; display:none; z-index:1000;}
+.lang-dropdown.active{display:block;}
+.lang-option{padding:8px 10px; border-radius:6px; cursor:pointer; display:flex; align-items:center; gap:8px; font-size:.85rem; transition:background .2s;}
+.lang-option:hover{background:rgba(227,162,61,0.12);}
+.lang-option.active{color:var(--amber);}
+.doc-card{position:relative; overflow:hidden; background:var(--steel); border:1px solid var(--line); border-radius:14px; padding:1.6rem; transition:transform .3s cubic-bezier(.16,1,.3,1), border-color .3s;}
+.doc-card:hover{transform:translateY(-3px); border-color:var(--line-strong);}
+.badge-soon{font-family:'JetBrains Mono',monospace; font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; padding:.2rem .55rem; border-radius:99px; border:1px solid var(--line-strong); color:var(--text-faint);}
+.cat-pill{font-family:'JetBrains Mono',monospace; font-size:.72rem; padding:.4rem .9rem; border-radius:99px; border:1px solid var(--line-strong); color:var(--text-dim); white-space:nowrap; transition:all .2s;}
+.cat-pill:hover, .cat-pill.active{border-color:var(--amber); color:var(--amber); background:rgba(227,162,61,0.08);}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important;}}
+</style>
+</head>
+<body class="grain antialiased">
+
+<!-- Header -->
+<header class="fixed w-full z-50 backdrop-blur-xl border-b hairline transition-all" style="background:rgba(10,14,20,0.75);" id="header">
+  <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="index.html" class="font-mono text-lg tracking-tight text-[var(--paper)] flex items-center gap-2">
+      <span class="text-[var(--rust)]">▮</span>ZAK<span class="text-[var(--text-dim)]">/</span>FOREIGNER
+    </a>
+    <div class="hidden md:flex space-x-7 text-sm font-medium items-center text-[var(--text-dim)]">
+      <a href="index.html#posicionamiento" class="nav-link" data-i18n="nav.platform">Plataforma</a>
+      <a href="index.html#bom" class="nav-link" data-i18n="nav.bom">Motor BOM</a>
+      <a href="index.html#alertas" class="nav-link" data-i18n="nav.alerts">Alertas</a>
+      <a href="documentacion.html" class="nav-link active" data-i18n="nav.docs">Documentación</a>
+      <a href="soporte.html" class="nav-link" data-i18n="nav.support">Soporte</a>
+      <a href="quienes-somos.html" class="nav-link" data-i18n="nav.about">Nosotros</a>
+      <div class="lang-selector">
+        <button class="lang-button" id="langButton"><i data-lucide="globe" class="w-3.5 h-3.5"></i><span id="currentLang">ES</span><i data-lucide="chevron-down" class="w-3.5 h-3.5"></i></button>
+        <div class="lang-dropdown" id="langDropdown">
+          <div class="lang-option active" data-lang="es"><span>🇪🇸</span><span>Español</span></div>
+          <div class="lang-option" data-lang="ko"><span>🇰🇷</span><span>한국어</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="contacto.html" class="btn-rust px-5 py-2 rounded-md text-sm font-semibold text-white" data-i18n="nav.demo">Solicitar demo</a>
+      <button class="md:hidden text-[var(--paper)]" id="mobileMenuBtn" aria-label="Menú"><i data-lucide="menu" class="w-6 h-6" id="mobileMenuIcon"></i></button>
+    </div>
+  </nav>
+  <div class="md:hidden hidden border-t hairline" id="mobileMenu" style="background:rgba(10,14,20,0.97);">
+    <div class="container mx-auto px-6 py-3 flex flex-col text-sm font-medium text-[var(--text-dim)]">
+      <a href="index.html#posicionamiento" class="py-3 border-b hairline" data-i18n="nav.platform">Plataforma</a>
+      <a href="index.html#bom" class="py-3 border-b hairline" data-i18n="nav.bom">Motor BOM</a>
+      <a href="index.html#alertas" class="py-3 border-b hairline" data-i18n="nav.alerts">Alertas</a>
+      <a href="documentacion.html" class="py-3 border-b hairline" style="color:var(--paper);" data-i18n="nav.docs">Documentación</a>
+      <a href="soporte.html" class="py-3 border-b hairline" data-i18n="nav.support">Soporte</a>
+      <a href="quienes-somos.html" class="py-3" data-i18n="nav.about">Nosotros</a>
+      <div class="flex items-center gap-4 pt-4 mt-1 border-t hairline font-mono text-xs">
+        <span class="text-[var(--text-faint)]" data-i18n="nav.langLabel">IDIOMA</span>
+        <span class="lang-option-mobile cursor-pointer text-[var(--amber)]" data-lang="es">ES</span>
+        <span class="lang-option-mobile cursor-pointer" data-lang="ko">한국어</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="relative pt-40 pb-14 overflow-hidden">
+  <div class="absolute inset-0" style="background-image:repeating-linear-gradient(90deg, rgba(244,241,232,0.06) 0px, rgba(244,241,232,0.06) 2px, transparent 2px, transparent 28px); opacity:.4;"></div>
+  <div class="absolute top-0 left-1/3 w-[500px] h-[300px] bg-[var(--amber)]/8 rounded-full blur-[130px]"></div>
+  <div class="container mx-auto px-6 relative z-10 max-w-2xl">
+    <div class="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-md border border-[var(--amber)]/40 bg-[var(--amber)]/10">
+      <span class="w-1.5 h-1.5 rounded-full bg-[var(--amber)]"></span>
+      <span class="eyebrow text-[var(--amber)]" data-i18n="doc.label">DOCUMENTACIÓN</span>
+    </div>
+    <h1 class="font-display text-4xl md:text-5xl font-semibold text-[var(--paper)] leading-[1.1] mb-6 tracking-tight" data-i18n="doc.title">
+      Organizada por módulo, igual que la plataforma.
+    </h1>
+    <p class="text-[var(--text-dim)] leading-relaxed" data-i18n="doc.desc">
+      Cada entrada resume qué hace el módulo correspondiente y enlaza a su explicación completa en la plataforma. Las guías paso a paso con capturas de pantalla se están preparando y se irán publicando módulo por módulo.
+    </p>
+  </div>
+</section>
+
+<!-- Module grid -->
+<section class="pb-28">
+  <div class="container mx-auto px-6">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
+
+      <a href="index.html#declaraciones" class="doc-card block">
+        <div class="flex items-start justify-between mb-4"><i data-lucide="file-text" class="w-6 h-6 text-[var(--ledger)]"></i><span class="badge-soon" data-i18n="doc.soon">GUÍA DETALLADA PRÓXIMAMENTE</span></div>
+        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-2" data-i18n="doc.m1.title">Gestión de Declaraciones Aduaneras</h3>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="doc.m1.desc">Registro y administración de declaraciones a nivel de línea de mercancía, con control de saldos y vínculo documental.</p>
+      </a>
+
+      <a href="index.html#documentacion" class="doc-card block">
+        <div class="flex items-start justify-between mb-4"><i data-lucide="files" class="w-6 h-6 text-[var(--rust-2)]"></i><span class="badge-soon" data-i18n="doc.soon">GUÍA DETALLADA PRÓXIMAMENTE</span></div>
+        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-2" data-i18n="doc.m2.title">Documentación Comercial y de Embarque</h3>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="doc.m2.desc">Gestión de BL, AWB, CMR y expedientes, manteniendo su relación con las operaciones correspondientes.</p>
+      </a>
+
+      <a href="index.html#invoice" class="doc-card block">
+        <div class="flex items-start justify-between mb-4"><i data-lucide="receipt" class="w-6 h-6 text-[var(--amber)]"></i><span class="badge-soon" data-i18n="doc.soon">GUÍA DETALLADA PRÓXIMAMENTE</span></div>
+        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-2" data-i18n="doc.m3.title">Commercial Invoice</h3>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="doc.m3.desc">Líneas comerciales estructuradas y su relación con productos, exportaciones y el motor de descargos.</p>
+      </a>
+
+      <a href="index.html#bom" class="doc-card block">
+        <div class="flex items-start justify-between mb-4"><i data-lucide="layers" class="w-6 h-6 text-[var(--ledger)]"></i><span class="badge-soon" data-i18n="doc.soon">GUÍA DETALLADA PRÓXIMAMENTE</span></div>
+        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-2" data-i18n="doc.m4.title">Motor de Descargos · BOM</h3>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="doc.m4.desc">Cómo el BOM relaciona unidades exportadas, materias primas y el descargo sobre declaraciones seleccionadas.</p>
+      </a>
+
+      <a href="index.html#trazabilidad" class="doc-card block">
+        <div class="flex items-start justify-between mb-4"><i data-lucide="git-branch" class="w-6 h-6 text-[var(--amber)]"></i><span class="badge-soon" data-i18n="doc.soon">GUÍA DETALLADA PRÓXIMAMENTE</span></div>
+        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-2" data-i18n="doc.m5.title">Trazabilidad Transaccional</h3>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="doc.m5.desc">La cadena origen → declaración → mercancía → operación → consumo → descargo → saldo.</p>
+      </a>
+
+      <a href="index.html#estados-cuenta" class="doc-card block">
+        <div class="flex items-start justify-between mb-4"><i data-lucide="file-bar-chart" class="w-6 h-6 text-[var(--rust-2)]"></i><span class="badge-soon" data-i18n="doc.soon">GUÍA DETALLADA PRÓXIMAMENTE</span></div>
+        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-2" data-i18n="doc.m6.title">Estados de Cuenta</h3>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="doc.m6.desc">Movimientos, saldos disponibles y utilizados por declaración y mercancía.</p>
+      </a>
+
+      <a href="index.html#inventario" class="doc-card block">
+        <div class="flex items-start justify-between mb-4"><i data-lucide="boxes" class="w-6 h-6 text-[var(--amber)]"></i><span class="badge-soon" data-i18n="doc.soon">GUÍA DETALLADA PRÓXIMAMENTE</span></div>
+        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-2" data-i18n="doc.m7.title">Inventario Perpetuo</h3>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="doc.m7.desc">Evolución de existencias relacionada con las operaciones que las modificaron.</p>
+      </a>
+
+      <a href="index.html#alertas" class="doc-card block">
+        <div class="flex items-start justify-between mb-4"><i data-lucide="bell-ring" class="w-6 h-6 text-[var(--ledger)]"></i><span class="badge-soon" data-i18n="doc.soon">GUÍA DETALLADA PRÓXIMAMENTE</span></div>
+        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-2" data-i18n="doc.m8.title">Alertas y Control de Vencimientos</h3>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="doc.m8.desc">Vencimientos, saldos bajos, situaciones pendientes y control de régimen.</p>
+      </a>
+
+      <a href="index.html#reportes" class="doc-card block">
+        <div class="flex items-start justify-between mb-4"><i data-lucide="file-signature" class="w-6 h-6 text-[var(--rust-2)]"></i><span class="badge-soon" data-i18n="doc.soon">GUÍA DETALLADA PRÓXIMAMENTE</span></div>
+        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-2" data-i18n="doc.m9.title">Reportes Gubernamentales</h3>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="doc.m9.desc">Coeficiente de transformación, declaración jurada, boleta de actualización y más.</p>
+      </a>
+
+      <a href="index.html#control-humano" class="doc-card block">
+        <div class="flex items-start justify-between mb-4"><i data-lucide="user-check" class="w-6 h-6 text-[var(--amber)]"></i><span class="badge-soon" data-i18n="doc.soon">GUÍA DETALLADA PRÓXIMAMENTE</span></div>
+        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-2" data-i18n="doc.m10.title">Control Humano y Responsabilidad</h3>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="doc.m10.desc">Qué automatiza el sistema y qué permanece bajo revisión y aprobación del responsable.</p>
+      </a>
+
+      <a href="index.html#auditoria" class="doc-card block">
+        <div class="flex items-start justify-between mb-4"><i data-lucide="history" class="w-6 h-6 text-[var(--ledger)]"></i><span class="badge-soon" data-i18n="doc.soon">GUÍA DETALLADA PRÓXIMAMENTE</span></div>
+        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-2" data-i18n="doc.m11.title">Auditoría y Control de Cambios</h3>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="doc.m11.desc">Cómo reconstruir el contexto de una operación: qué ocurrió y qué elementos fueron afectados.</p>
+      </a>
+
+      <a href="index.html#tecnologia" class="doc-card block">
+        <div class="flex items-start justify-between mb-4"><i data-lucide="shield-check" class="w-6 h-6 text-[var(--rust-2)]"></i><span class="badge-soon" data-i18n="doc.soon">GUÍA DETALLADA PRÓXIMAMENTE</span></div>
+        <h3 class="font-display text-lg font-semibold text-[var(--paper)] mb-2" data-i18n="doc.m12.title">Plataforma, Infraestructura y Seguridad</h3>
+        <p class="text-[var(--text-dim)] text-sm leading-relaxed" data-i18n="doc.m12.desc">Aplicación nativa de macOS, infraestructura cloud y controles de seguridad.</p>
+      </a>
+
+    </div>
+
+    <div class="panel rounded-2xl p-8 max-w-3xl mx-auto mt-14 text-center">
+      <i data-lucide="message-circle-question" class="w-6 h-6 text-[var(--amber)] mx-auto mb-4"></i>
+      <p class="text-[var(--paper)] font-medium mb-2" data-i18n="doc.notFoundTitle">¿No encuentra lo que busca?</p>
+      <p class="text-[var(--text-dim)] text-sm mb-6" data-i18n="doc.notFoundDesc">El equipo de soporte responde dudas puntuales sobre cualquier módulo en un plazo máximo de 24 horas.</p>
+      <a href="soporte.html" class="btn-rust inline-flex items-center gap-2 px-6 py-2.5 rounded-md text-sm font-semibold text-white">
+        <i data-lucide="life-buoy" class="w-4 h-4"></i><span data-i18n="doc.notFoundCta">Ir a Soporte</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-14 border-t hairline">
+  <div class="container mx-auto px-6">
+    <div class="grid md:grid-cols-4 gap-12 mb-10">
+      <div>
+        <div class="font-mono text-lg text-[var(--paper)] mb-4"><span class="text-[var(--rust)]">▮</span> ZAK/FOREIGNER</div>
+        <p class="text-[var(--text-faint)] text-sm leading-relaxed" data-i18n="footer.description">ERP especializado en comercio exterior para empresas que operan bajo Admisión Temporal y Perfeccionamiento Activo. Gestión de declaraciones, documentación comercial, mercancías, descargos, saldos, trazabilidad y reportes operativos y gubernamentales. Desarrollado en Brasil.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold text-[var(--paper)] mb-4 text-sm" data-i18n="footer.product">Producto</h4>
+        <ul class="space-y-2 text-sm text-[var(--text-faint)]">
+          <li><a href="index.html#posicionamiento" class="hover:text-[var(--amber)] transition" data-i18n="footer.features">Plataforma</a></li>
+          <li><a href="index.html#tecnologia" class="hover:text-[var(--amber)] transition" data-i18n="footer.technology">Tecnología</a></li>
+          <li><a href="index.html#reportes" class="hover:text-[var(--amber)] transition" data-i18n="footer.reports">Reportes</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-[var(--paper)] mb-4 text-sm" data-i18n="footer.company">Empresa</h4>
+        <ul class="space-y-2 text-sm text-[var(--text-faint)]">
+          <li><a href="quienes-somos.html" class="hover:text-[var(--amber)] transition" data-i18n="footer.about">Nosotros</a></li>
+          <li><a href="contacto.html" class="hover:text-[var(--amber)] transition" data-i18n="footer.contact">Contacto</a></li>
+          <li><a href="soporte.html" class="hover:text-[var(--amber)] transition" data-i18n="footer.support">Soporte</a></li>
+          <li><a href="documentacion.html" class="hover:text-[var(--amber)] transition" data-i18n="footer.docs">Documentación</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-[var(--paper)] mb-4 text-sm" data-i18n="footer.legal">Legal</h4>
+        <ul class="space-y-2 text-sm text-[var(--text-faint)]">
+          <li><a href="#" class="hover:text-[var(--amber)] transition" data-i18n="footer.privacy">Privacidad</a></li>
+          <li><a href="#" class="hover:text-[var(--amber)] transition" data-i18n="footer.terms">Términos</a></li>
+          <li><a href="#" class="hover:text-[var(--amber)] transition" data-i18n="footer.cookies">Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t hairline pt-6 flex flex-col md:flex-row justify-between text-xs text-[var(--text-faint)] font-mono gap-2">
+      <span data-i18n="footer.copyright">© 2026 ZakForeigner. Todos los derechos reservados.</span>
+      <span data-i18n="footer.tagline">ZAK/FOREIGNER — SOFTWARE EMPRESARIAL NATIVO PARA macOS</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+lucide.createIcons();
+
+const translations = {
+  es: {
+    'nav.platform':'Plataforma','nav.bom':'Motor BOM','nav.alerts':'Alertas','nav.docs':'Documentación','nav.support':'Soporte','nav.about':'Nosotros','nav.demo':'Solicitar demo','nav.langLabel':'IDIOMA',
+    'doc.label':'DOCUMENTACIÓN','doc.title':'Organizada por módulo, igual que la plataforma.',
+    'doc.desc':'Cada entrada resume qué hace el módulo correspondiente y enlaza a su explicación completa en la plataforma. Las guías paso a paso con capturas de pantalla se están preparando y se irán publicando módulo por módulo.',
+    'doc.soon':'GUÍA DETALLADA PRÓXIMAMENTE',
+    'doc.m1.title':'Gestión de Declaraciones Aduaneras','doc.m1.desc':'Registro y administración de declaraciones a nivel de línea de mercancía, con control de saldos y vínculo documental.',
+    'doc.m2.title':'Documentación Comercial y de Embarque','doc.m2.desc':'Gestión de BL, AWB, CMR y expedientes, manteniendo su relación con las operaciones correspondientes.',
+    'doc.m3.title':'Commercial Invoice','doc.m3.desc':'Líneas comerciales estructuradas y su relación con productos, exportaciones y el motor de descargos.',
+    'doc.m4.title':'Motor de Descargos · BOM','doc.m4.desc':'Cómo el BOM relaciona unidades exportadas, materias primas y el descargo sobre declaraciones seleccionadas.',
+    'doc.m5.title':'Trazabilidad Transaccional','doc.m5.desc':'La cadena origen → declaración → mercancía → operación → consumo → descargo → saldo.',
+    'doc.m6.title':'Estados de Cuenta','doc.m6.desc':'Movimientos, saldos disponibles y utilizados por declaración y mercancía.',
+    'doc.m7.title':'Inventario Perpetuo','doc.m7.desc':'Evolución de existencias relacionada con las operaciones que las modificaron.',
+    'doc.m8.title':'Alertas y Control de Vencimientos','doc.m8.desc':'Vencimientos, saldos bajos, situaciones pendientes y control de régimen.',
+    'doc.m9.title':'Reportes Gubernamentales','doc.m9.desc':'Coeficiente de transformación, declaración jurada, boleta de actualización y más.',
+    'doc.m10.title':'Control Humano y Responsabilidad','doc.m10.desc':'Qué automatiza el sistema y qué permanece bajo revisión y aprobación del responsable.',
+    'doc.m11.title':'Auditoría y Control de Cambios','doc.m11.desc':'Cómo reconstruir el contexto de una operación: qué ocurrió y qué elementos fueron afectados.',
+    'doc.m12.title':'Plataforma, Infraestructura y Seguridad','doc.m12.desc':'Aplicación nativa de macOS, infraestructura cloud y controles de seguridad.',
+    'doc.notFoundTitle':'¿No encuentra lo que busca?','doc.notFoundDesc':'El equipo de soporte responde dudas puntuales sobre cualquier módulo en un plazo máximo de 24 horas.','doc.notFoundCta':'Ir a Soporte',
+    'footer.description':'ERP especializado en comercio exterior para empresas que operan bajo Admisión Temporal y Perfeccionamiento Activo. Gestión de declaraciones, documentación comercial, mercancías, descargos, saldos, trazabilidad y reportes operativos y gubernamentales. Desarrollado en Brasil.',
+    'footer.product':'Producto','footer.features':'Plataforma','footer.technology':'Tecnología','footer.reports':'Reportes',
+    'footer.company':'Empresa','footer.about':'Nosotros','footer.contact':'Contacto','footer.support':'Soporte','footer.docs':'Documentación',
+    'footer.legal':'Legal','footer.privacy':'Privacidad','footer.terms':'Términos','footer.cookies':'Cookies',
+    'footer.copyright':'© 2026 ZakForeigner. Todos los derechos reservados.','footer.tagline':'ZAK/FOREIGNER — SOFTWARE EMPRESARIAL NATIVO PARA macOS'
+  },
+  ko: {
+    'nav.platform':'플랫폼','nav.bom':'BOM 엔진','nav.alerts':'알림','nav.docs':'문서','nav.support':'지원','nav.about':'회사 소개','nav.demo':'데모 요청','nav.langLabel':'언어',
+    'doc.label':'문서','doc.title':'플랫폼과 동일하게 모듈별로 정리했습니다.',
+    'doc.desc':'각 항목은 해당 모듈의 기능을 요약하고 플랫폼 내 전체 설명으로 연결됩니다. 스크린샷이 포함된 단계별 가이드는 준비 중이며 모듈별로 순차 공개될 예정입니다.',
+    'doc.soon':'상세 가이드 준비 중',
+    'doc.m1.title':'세관 신고서 관리','doc.m1.desc':'상품 항목 단위의 신고서 등록 및 관리, 잔액 통제와 문서 연계.',
+    'doc.m2.title':'상업 및 선적 문서','doc.m2.desc':'BL, AWB, CMR, 관련 기록철 관리와 해당 운영과의 연계 유지.',
+    'doc.m3.title':'Commercial Invoice','doc.m3.desc':'구조화된 상업 항목과 제품, 수출, 차감 엔진과의 연계.',
+    'doc.m4.title':'차감 엔진 · BOM','doc.m4.desc':'BOM이 수출 단위와 원자재를 연결하고 선택된 신고서에 차감을 적용하는 방식.',
+    'doc.m5.title':'거래 추적성','doc.m5.desc':'출처 → 신고서 → 상품 → 운영 → 소비 → 차감 → 잔액으로 이어지는 사슬.',
+    'doc.m6.title':'계정 명세서','doc.m6.desc':'신고서 및 상품별 이동 내역, 가용 및 사용된 잔액.',
+    'doc.m7.title':'영구 재고','doc.m7.desc':'재고 변화와 이를 변경한 운영 간의 연계.',
+    'doc.m8.title':'알림 및 만료 관리','doc.m8.desc':'만료, 낮은 잔액, 대기 중인 사안, 체제 통제.',
+    'doc.m9.title':'정부 보고서','doc.m9.desc':'변환 계수, 서약 신고서, 갱신 신고서 등.',
+    'doc.m10.title':'통제된 자동화와 책임','doc.m10.desc':'시스템이 자동화하는 것과 담당자의 검토·승인 하에 남는 것.',
+    'doc.m11.title':'감사 및 변경 통제','doc.m11.desc':'운영의 맥락을 재구성하는 방법: 무엇이 발생했고 어떤 요소가 영향을 받았는지.',
+    'doc.m12.title':'플랫폼, 인프라 및 보안','doc.m12.desc':'macOS 네이티브 애플리케이션, 클라우드 인프라, 보안 통제.',
+    'doc.notFoundTitle':'찾으시는 내용이 없나요?','doc.notFoundDesc':'지원팀이 최대 24시간 이내에 모든 모듈에 대한 구체적인 문의에 답변드립니다.','doc.notFoundCta':'지원 페이지로 이동',
+    'footer.description':'일시 수입 및 능동 완화 체제 하에 운영되는 기업을 위한 무역 관리 전문 ERP. 신고서, 상업 문서, 상품, 차감, 잔액, 추적성, 운영 및 정부 보고서 관리. 브라질에서 개발되었습니다.',
+    'footer.product':'제품','footer.features':'플랫폼','footer.technology':'기술','footer.reports':'보고서',
+    'footer.company':'회사','footer.about':'회사 소개','footer.contact':'연락처','footer.support':'지원','footer.docs':'문서',
+    'footer.legal':'법적','footer.privacy':'개인정보 보호','footer.terms':'약관','footer.cookies':'쿠키',
+    'footer.copyright':'© 2026 ZakForeigner. 모든 권리 보유.','footer.tagline':'ZAK/FOREIGNER — macOS 전용 기업용 네이티브 소프트웨어'
+  }
+};
+
+let currentLang = 'es';
+function translate(key){ return translations[currentLang][key] || key; }
+function updateLanguage(lang){
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.body.classList.toggle('korean', lang === 'ko');
+  document.querySelectorAll('[data-i18n]').forEach(el=>{ el.textContent = translate(el.getAttribute('data-i18n')); });
+  document.getElementById('currentLang').textContent = lang.toUpperCase();
+  document.querySelectorAll('.lang-option').forEach(opt=>{ opt.classList.toggle('active', opt.getAttribute('data-lang') === lang); });
+}
+
+const langButton = document.getElementById('langButton');
+const langDropdown = document.getElementById('langDropdown');
+langButton.addEventListener('click', e=>{ e.stopPropagation(); langDropdown.classList.toggle('active'); });
+document.querySelectorAll('.lang-option').forEach(option=>{ option.addEventListener('click', ()=>{ updateLanguage(option.getAttribute('data-lang')); langDropdown.classList.remove('active'); }); });
+document.addEventListener('click', e=>{ if(!langButton.contains(e.target) && !langDropdown.contains(e.target)) langDropdown.classList.remove('active'); });
+
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+function setMobileMenuIcon(name){ const icon = document.getElementById('mobileMenuIcon'); if(!icon) return; icon.setAttribute('data-lucide', name); lucide.createIcons(); }
+if(mobileMenuBtn && mobileMenu){
+  mobileMenuBtn.addEventListener('click', ()=>{ const willOpen = mobileMenu.classList.contains('hidden'); mobileMenu.classList.toggle('hidden'); setMobileMenuIcon(willOpen ? 'x' : 'menu'); });
+  mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>{ mobileMenu.classList.add('hidden'); setMobileMenuIcon('menu'); }));
+  document.querySelectorAll('.lang-option-mobile').forEach(opt=>{ opt.addEventListener('click', ()=>{ updateLanguage(opt.getAttribute('data-lang')); document.querySelectorAll('.lang-option-mobile').forEach(o=>o.classList.toggle('active', o===opt)); }); });
+}
+
+window.addEventListener('scroll', ()=>{ document.getElementById('header').style.background = window.pageYOffset > 80 ? 'rgba(10,14,20,0.92)' : 'rgba(10,14,20,0.75)'; });
+
+const observer = new IntersectionObserver((entries)=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.style.opacity='1'; entry.target.style.transform='translateY(0)'; } }); }, {threshold:.1, rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.doc-card, .panel').forEach((el, i)=>{ el.style.opacity='0'; el.style.transform='translateY(20px)'; el.style.transition=`opacity .5s ease-out ${(i%12)*60}ms, transform .5s ease-out ${(i%12)*60}ms`; observer.observe(el); });
+
+updateLanguage('es');
+</script>
+</body>
+</html>

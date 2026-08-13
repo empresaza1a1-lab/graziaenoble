@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soporte | ZakForeigner</title>
+<meta name="description" content="Canales de soporte y preguntas frecuentes sobre ZakForeigner, el ERP especializado en comercio exterior para Admisión Temporal y Perfeccionamiento Activo.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://zakforeigner.com/soporte.html">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+:root{
+  --ink:#0A0E14; --ink-2:#0E141D; --steel:#141B26; --steel-2:#1A2230;
+  --line:rgba(244,241,232,0.09); --line-strong:rgba(244,241,232,0.16);
+  --paper:#F4F1E8; --paper-2:#E9E3D2; --rust:#C1502E; --rust-2:#DE6A44;
+  --amber:#E3A23D; --ledger:#5C93A8; --text:#CDD3DB; --text-dim:#818A98; --text-faint:#565F6D;
+}
+*{box-sizing:border-box; scroll-behavior:smooth;}
+body{font-family:'Inter',-apple-system,sans-serif; background:var(--ink); color:var(--text); overflow-x:hidden;}
+body.korean, .korean{font-family:'Noto Sans KR','Inter',sans-serif;}
+.font-display{font-family:'Space Grotesk',-apple-system,sans-serif;}
+.font-mono{font-family:'JetBrains Mono',monospace;}
+.grain::before{content:'';position:fixed; inset:0; pointer-events:none; z-index:1; opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+.hairline{border-color:var(--line);}
+.panel{background:var(--steel); border:1px solid var(--line);}
+.container-stripe{background-repeat:repeat-x; background-size:28px 100%;
+  background-image:repeating-linear-gradient(90deg, rgba(244,241,232,0.06) 0px, rgba(244,241,232,0.06) 2px, transparent 2px, transparent 28px);}
+.btn-rust{background:linear-gradient(180deg,var(--rust-2),var(--rust)); box-shadow:0 1px 0 rgba(255,255,255,0.15) inset, 0 10px 24px -8px rgba(193,80,46,0.55); transition:transform .25s ease, box-shadow .25s ease, filter .25s ease;}
+.btn-rust:hover{transform:translateY(-2px); filter:brightness(1.06); box-shadow:0 1px 0 rgba(255,255,255,0.2) inset, 0 16px 32px -8px rgba(193,80,46,0.6);}
+.eyebrow{font-family:'JetBrains Mono',monospace; letter-spacing:.14em; font-size:.72rem; text-transform:uppercase;}
+.nav-link{position:relative; transition:color .2s;}
+.nav-link::after{content:'';position:absolute;bottom:-6px;left:0;width:0;height:1px;background:var(--amber);transition:width .25s;}
+.nav-link:hover{color:var(--paper);}
+.nav-link:hover::after{width:100%;}
+.nav-link.active{color:var(--paper);}
+.nav-link.active::after{width:100%;}
+.lang-option-mobile.active{color:var(--amber);}
+.section-label{font-family:'JetBrains Mono',monospace; font-size:.7rem; letter-spacing:.15em; text-transform:uppercase; color:var(--text-faint);}
+.lang-selector{position:relative;}
+.lang-button{display:flex; align-items:center; gap:6px; padding:6px 12px; background:rgba(227,162,61,0.08); border:1px solid rgba(227,162,61,0.3); border-radius:6px; color:var(--amber); font-size:.8rem; cursor:pointer; transition:all .2s; font-family:'JetBrains Mono',monospace;}
+.lang-button:hover{background:rgba(227,162,61,0.15);}
+.lang-dropdown{position:absolute; top:110%; right:0; margin-top:6px; background:var(--steel-2); border:1px solid var(--line-strong); border-radius:8px; padding:4px; min-width:130px; display:none; z-index:1000;}
+.lang-dropdown.active{display:block;}
+.lang-option{padding:8px 10px; border-radius:6px; cursor:pointer; display:flex; align-items:center; gap:8px; font-size:.85rem; transition:background .2s;}
+.lang-option:hover{background:rgba(227,162,61,0.12);}
+.lang-option.active{color:var(--amber);}
+.channel-card{background:var(--steel); border:1px solid var(--line); border-radius:12px; padding:1.5rem; transition:border-color .3s, transform .3s;}
+.channel-card:hover{border-color:var(--line-strong); transform:translateY(-2px);}
+
+/* FAQ accordion (native <details>) */
+.faq-item{background:var(--steel); border:1px solid var(--line); border-radius:12px; overflow:hidden;}
+.faq-item + .faq-item{margin-top:.75rem;}
+.faq-item summary{list-style:none; cursor:pointer; padding:1.15rem 1.4rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; color:var(--paper); font-weight:500; font-size:.95rem;}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary .chev{transition:transform .25s; color:var(--text-faint); flex-shrink:0;}
+.faq-item[open] summary .chev{transform:rotate(180deg); color:var(--amber);}
+.faq-item[open] summary{border-bottom:1px solid var(--line);}
+.faq-answer{padding:0 1.4rem 1.15rem; color:var(--text-dim); font-size:.9rem; line-height:1.65;}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important;}}
+</style>
+</head>
+<body class="grain antialiased">
+
+<!-- Header -->
+<header class="fixed w-full z-50 backdrop-blur-xl border-b hairline transition-all" style="background:rgba(10,14,20,0.75);" id="header">
+  <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="index.html" class="font-mono text-lg tracking-tight text-[var(--paper)] flex items-center gap-2">
+      <span class="text-[var(--rust)]">▮</span>ZAK<span class="text-[var(--text-dim)]">/</span>FOREIGNER
+    </a>
+    <div class="hidden md:flex space-x-7 text-sm font-medium items-center text-[var(--text-dim)]">
+      <a href="index.html#posicionamiento" class="nav-link" data-i18n="nav.platform">Plataforma</a>
+      <a href="index.html#bom" class="nav-link" data-i18n="nav.bom">Motor BOM</a>
+      <a href="index.html#alertas" class="nav-link" data-i18n="nav.alerts">Alertas</a>
+      <a href="documentacion.html" class="nav-link" data-i18n="nav.docs">Documentación</a>
+      <a href="soporte.html" class="nav-link active" data-i18n="nav.support">Soporte</a>
+      <a href="quienes-somos.html" class="nav-link" data-i18n="nav.about">Nosotros</a>
+      <div class="lang-selector">
+        <button class="lang-button" id="langButton">
+          <i data-lucide="globe" class="w-3.5 h-3.5"></i><span id="currentLang">ES</span><i data-lucide="chevron-down" class="w-3.5 h-3.5"></i>
+        </button>
+        <div class="lang-dropdown" id="langDropdown">
+          <div class="lang-option active" data-lang="es"><span>🇪🇸</span><span>Español</span></div>
+          <div class="lang-option" data-lang="ko"><span>🇰🇷</span><span>한국어</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="contacto.html" class="btn-rust px-5 py-2 rounded-md text-sm font-semibold text-white" data-i18n="nav.demo">Solicitar demo</a>
+      <button class="md:hidden text-[var(--paper)]" id="mobileMenuBtn" aria-label="Menú"><i data-lucide="menu" class="w-6 h-6" id="mobileMenuIcon"></i></button>
+    </div>
+  </nav>
+  <div class="md:hidden hidden border-t hairline" id="mobileMenu" style="background:rgba(10,14,20,0.97);">
+    <div class="container mx-auto px-6 py-3 flex flex-col text-sm font-medium text-[var(--text-dim)]">
+      <a href="index.html#posicionamiento" class="py-3 border-b hairline" data-i18n="nav.platform">Plataforma</a>
+      <a href="index.html#bom" class="py-3 border-b hairline" data-i18n="nav.bom">Motor BOM</a>
+      <a href="index.html#alertas" class="py-3 border-b hairline" data-i18n="nav.alerts">Alertas</a>
+      <a href="documentacion.html" class="py-3 border-b hairline" data-i18n="nav.docs">Documentación</a>
+      <a href="soporte.html" class="py-3 border-b hairline" style="color:var(--paper);" data-i18n="nav.support">Soporte</a>
+      <a href="quienes-somos.html" class="py-3" data-i18n="nav.about">Nosotros</a>
+      <div class="flex items-center gap-4 pt-4 mt-1 border-t hairline font-mono text-xs">
+        <span class="text-[var(--text-faint)]" data-i18n="nav.langLabel">IDIOMA</span>
+        <span class="lang-option-mobile cursor-pointer text-[var(--amber)]" data-lang="es">ES</span>
+        <span class="lang-option-mobile cursor-pointer" data-lang="ko">한국어</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="relative pt-40 pb-16 overflow-hidden">
+  <div class="absolute inset-0 container-stripe opacity-40"></div>
+  <div class="absolute top-1/3 -right-40 w-[500px] h-[500px] bg-[var(--ledger)]/10 rounded-full blur-[120px]"></div>
+  <div class="container mx-auto px-6 relative z-10 max-w-2xl">
+    <div class="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-md border border-[var(--ledger)]/40 bg-[var(--ledger)]/10">
+      <span class="w-1.5 h-1.5 rounded-full bg-[var(--ledger)]"></span>
+      <span class="eyebrow text-[var(--ledger)]" data-i18n="sp.label">SOPORTE</span>
+    </div>
+    <h1 class="font-display text-4xl md:text-5xl font-semibold text-[var(--paper)] leading-[1.1] mb-6 tracking-tight" data-i18n="sp.title">
+      Ayuda directa de quienes construyen la plataforma.
+    </h1>
+    <p class="text-[var(--text-dim)] leading-relaxed" data-i18n="sp.desc">
+      Escriba por el canal que prefiera y reciba respuesta en un plazo máximo de 24 horas. Para dudas sobre el funcionamiento de un módulo específico, la sección de preguntas frecuentes reúne las consultas más comunes.
+    </p>
+  </div>
+</section>
+
+<!-- Channels -->
+<section class="pb-20">
+  <div class="container mx-auto px-6">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto">
+      <div class="channel-card text-center">
+        <i data-lucide="mail" class="w-6 h-6 text-[var(--rust-2)] mx-auto mb-3"></i>
+        <p class="text-[var(--paper)] font-medium text-sm" data-i18n="sp.ch1">Correo</p>
+      </div>
+      <div class="channel-card text-center">
+        <i data-lucide="phone" class="w-6 h-6 text-[var(--amber)] mx-auto mb-3"></i>
+        <p class="text-[var(--paper)] font-medium text-sm" data-i18n="sp.ch2">Llamada</p>
+      </div>
+      <div class="channel-card text-center">
+        <i data-lucide="message-circle" class="w-6 h-6 text-[var(--ledger)] mx-auto mb-3"></i>
+        <p class="text-[var(--paper)] font-medium text-sm" data-i18n="sp.ch3">WhatsApp</p>
+      </div>
+      <div class="channel-card text-center">
+        <i data-lucide="message-square" class="w-6 h-6 text-[var(--rust-2)] mx-auto mb-3"></i>
+        <p class="text-[var(--paper)] font-medium text-sm" data-i18n="sp.ch4">Mensajes (iMessage)</p>
+      </div>
+    </div>
+    <div class="text-center mt-8">
+      <a href="contacto.html" class="btn-rust inline-flex items-center gap-2 px-7 py-3 rounded-md text-sm font-semibold text-white">
+        <i data-lucide="send" class="w-4 h-4"></i><span data-i18n="sp.cta">Escribir al equipo</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="pb-28 border-t hairline pt-20">
+  <div class="container mx-auto px-6">
+    <div class="max-w-3xl mx-auto">
+      <div class="section-label mb-3" data-i18n="sp.faqLabel">PREGUNTAS FRECUENTES</div>
+      <h2 class="font-display text-3xl font-semibold text-[var(--paper)] tracking-tight mb-10" data-i18n="sp.faqTitle">Lo que más nos preguntan</h2>
+
+      <details class="faq-item" open>
+        <summary><span data-i18n="sp.q1">¿ZakForeigner funciona en Windows u otros sistemas operativos?</span><i data-lucide="chevron-down" class="chev w-4 h-4"></i></summary>
+        <div class="faq-answer" data-i18n="sp.a1">No. ZakForeigner es una aplicación de escritorio desarrollada exclusivamente para macOS, con tecnologías nativas del ecosistema Apple. No es una interfaz web encapsulada ni una aplicación multiplataforma adaptada posteriormente.</div>
+      </details>
+      <details class="faq-item">
+        <summary><span data-i18n="sp.q2">¿El sistema decide qué información declarar ante la autoridad aduanera?</span><i data-lucide="chevron-down" class="chev w-4 h-4"></i></summary>
+        <div class="faq-answer" data-i18n="sp.a2">No. ZakForeigner no utiliza inteligencia artificial para tomar esa decisión. El sistema automatiza cálculos, validaciones y relaciones, pero la incorporación, revisión y aprobación de los datos permanece bajo el control del usuario responsable.</div>
+      </details>
+      <details class="faq-item">
+        <summary><span data-i18n="sp.q3">¿Cómo se determina el descargo al emitir una factura de exportación?</span><i data-lucide="chevron-down" class="chev w-4 h-4"></i></summary>
+        <div class="faq-answer" data-i18n="sp.a3">El BOM define la composición del producto y las materias primas asociadas. Al registrar la factura de exportación, el sistema aplica esa estructura sobre las unidades exportadas, determina el consumo correspondiente y aplica el descargo sobre la o las declaraciones seleccionadas con saldo disponible.</div>
+      </details>
+      <details class="faq-item">
+        <summary><span data-i18n="sp.q4">¿Qué ocurre si el saldo de una declaración se agota?</span><i data-lucide="chevron-down" class="chev w-4 h-4"></i></summary>
+        <div class="faq-answer" data-i18n="sp.a4">El sistema detecta cuando el saldo disponible de una declaración se aproxima a los niveles definidos de atención y genera una alerta, para que el responsable pueda gestionar una nueva declaración con anticipación.</div>
+      </details>
+      <details class="faq-item">
+        <summary><span data-i18n="sp.q5">¿Cómo protege ZakForeigner la información de mi empresa?</span><i data-lucide="chevron-down" class="chev w-4 h-4"></i></summary>
+        <div class="faq-answer" data-i18n="sp.a5">La arquitectura contempla controles de acceso, protección de credenciales, almacenamiento cloud y mecanismos de seguridad orientados a preservar la confidencialidad e integridad de los datos. La seguridad se aborda como una propiedad transversal de la plataforma.</div>
+      </details>
+      <details class="faq-item">
+        <summary><span data-i18n="sp.q6">¿Puedo exportar la información de mis declaraciones y reportes?</span><i data-lucide="chevron-down" class="chev w-4 h-4"></i></summary>
+        <div class="faq-answer" data-i18n="sp.a6">Sí. Los estados de cuenta y reportes contemplan la exportación de información para su análisis interno.</div>
+      </details>
+      <details class="faq-item">
+        <summary><span data-i18n="sp.q7">¿Dónde encuentro más detalle sobre cada módulo?</span><i data-lucide="chevron-down" class="chev w-4 h-4"></i></summary>
+        <div class="faq-answer">
+          <span data-i18n="sp.a7">La sección de documentación organiza cada módulo de la plataforma con su descripción funcional.</span>
+          <a href="documentacion.html" class="text-[var(--amber)] hover:underline" data-i18n="sp.a7link"> Ver documentación →</a>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-14 border-t hairline">
+  <div class="container mx-auto px-6">
+    <div class="grid md:grid-cols-4 gap-12 mb-10">
+      <div>
+        <div class="font-mono text-lg text-[var(--paper)] mb-4"><span class="text-[var(--rust)]">▮</span> ZAK/FOREIGNER</div>
+        <p class="text-[var(--text-faint)] text-sm leading-relaxed" data-i18n="footer.description">ERP especializado en comercio exterior para empresas que operan bajo Admisión Temporal y Perfeccionamiento Activo. Gestión de declaraciones, documentación comercial, mercancías, descargos, saldos, trazabilidad y reportes operativos y gubernamentales. Desarrollado en Brasil.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold text-[var(--paper)] mb-4 text-sm" data-i18n="footer.product">Producto</h4>
+        <ul class="space-y-2 text-sm text-[var(--text-faint)]">
+          <li><a href="index.html#posicionamiento" class="hover:text-[var(--amber)] transition" data-i18n="footer.features">Plataforma</a></li>
+          <li><a href="index.html#tecnologia" class="hover:text-[var(--amber)] transition" data-i18n="footer.technology">Tecnología</a></li>
+          <li><a href="index.html#reportes" class="hover:text-[var(--amber)] transition" data-i18n="footer.reports">Reportes</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-[var(--paper)] mb-4 text-sm" data-i18n="footer.company">Empresa</h4>
+        <ul class="space-y-2 text-sm text-[var(--text-faint)]">
+          <li><a href="quienes-somos.html" class="hover:text-[var(--amber)] transition" data-i18n="footer.about">Nosotros</a></li>
+          <li><a href="contacto.html" class="hover:text-[var(--amber)] transition" data-i18n="footer.contact">Contacto</a></li>
+          <li><a href="soporte.html" class="hover:text-[var(--amber)] transition" data-i18n="footer.support">Soporte</a></li>
+          <li><a href="documentacion.html" class="hover:text-[var(--amber)] transition" data-i18n="footer.docs">Documentación</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-[var(--paper)] mb-4 text-sm" data-i18n="footer.legal">Legal</h4>
+        <ul class="space-y-2 text-sm text-[var(--text-faint)]">
+          <li><a href="#" class="hover:text-[var(--amber)] transition" data-i18n="footer.privacy">Privacidad</a></li>
+          <li><a href="#" class="hover:text-[var(--amber)] transition" data-i18n="footer.terms">Términos</a></li>
+          <li><a href="#" class="hover:text-[var(--amber)] transition" data-i18n="footer.cookies">Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t hairline pt-6 flex flex-col md:flex-row justify-between text-xs text-[var(--text-faint)] font-mono gap-2">
+      <span data-i18n="footer.copyright">© 2026 ZakForeigner. Todos los derechos reservados.</span>
+      <span data-i18n="footer.tagline">ZAK/FOREIGNER — SOFTWARE EMPRESARIAL NATIVO PARA macOS</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+lucide.createIcons();
+
+const translations = {
+  es: {
+    'nav.platform':'Plataforma','nav.bom':'Motor BOM','nav.alerts':'Alertas','nav.docs':'Documentación','nav.support':'Soporte','nav.about':'Nosotros','nav.demo':'Solicitar demo','nav.langLabel':'IDIOMA',
+    'sp.label':'SOPORTE','sp.title':'Ayuda directa de quienes construyen la plataforma.',
+    'sp.desc':'Escriba por el canal que prefiera y reciba respuesta en un plazo máximo de 24 horas. Para dudas sobre el funcionamiento de un módulo específico, la sección de preguntas frecuentes reúne las consultas más comunes.',
+    'sp.ch1':'Correo','sp.ch2':'Llamada','sp.ch3':'WhatsApp','sp.ch4':'Mensajes (iMessage)','sp.cta':'Escribir al equipo',
+    'sp.faqLabel':'PREGUNTAS FRECUENTES','sp.faqTitle':'Lo que más nos preguntan',
+    'sp.q1':'¿ZakForeigner funciona en Windows u otros sistemas operativos?',
+    'sp.a1':'No. ZakForeigner es una aplicación de escritorio desarrollada exclusivamente para macOS, con tecnologías nativas del ecosistema Apple. No es una interfaz web encapsulada ni una aplicación multiplataforma adaptada posteriormente.',
+    'sp.q2':'¿El sistema decide qué información declarar ante la autoridad aduanera?',
+    'sp.a2':'No. ZakForeigner no utiliza inteligencia artificial para tomar esa decisión. El sistema automatiza cálculos, validaciones y relaciones, pero la incorporación, revisión y aprobación de los datos permanece bajo el control del usuario responsable.',
+    'sp.q3':'¿Cómo se determina el descargo al emitir una factura de exportación?',
+    'sp.a3':'El BOM define la composición del producto y las materias primas asociadas. Al registrar la factura de exportación, el sistema aplica esa estructura sobre las unidades exportadas, determina el consumo correspondiente y aplica el descargo sobre la o las declaraciones seleccionadas con saldo disponible.',
+    'sp.q4':'¿Qué ocurre si el saldo de una declaración se agota?',
+    'sp.a4':'El sistema detecta cuando el saldo disponible de una declaración se aproxima a los niveles definidos de atención y genera una alerta, para que el responsable pueda gestionar una nueva declaración con anticipación.',
+    'sp.q5':'¿Cómo protege ZakForeigner la información de mi empresa?',
+    'sp.a5':'La arquitectura contempla controles de acceso, protección de credenciales, almacenamiento cloud y mecanismos de seguridad orientados a preservar la confidencialidad e integridad de los datos. La seguridad se aborda como una propiedad transversal de la plataforma.',
+    'sp.q6':'¿Puedo exportar la información de mis declaraciones y reportes?',
+    'sp.a6':'Sí. Los estados de cuenta y reportes contemplan la exportación de información para su análisis interno.',
+    'sp.q7':'¿Dónde encuentro más detalle sobre cada módulo?',
+    'sp.a7':'La sección de documentación organiza cada módulo de la plataforma con su descripción funcional.','sp.a7link':' Ver documentación →',
+    'footer.description':'ERP especializado en comercio exterior para empresas que operan bajo Admisión Temporal y Perfeccionamiento Activo. Gestión de declaraciones, documentación comercial, mercancías, descargos, saldos, trazabilidad y reportes operativos y gubernamentales. Desarrollado en Brasil.',
+    'footer.product':'Producto','footer.features':'Plataforma','footer.technology':'Tecnología','footer.reports':'Reportes',
+    'footer.company':'Empresa','footer.about':'Nosotros','footer.contact':'Contacto','footer.support':'Soporte','footer.docs':'Documentación',
+    'footer.legal':'Legal','footer.privacy':'Privacidad','footer.terms':'Términos','footer.cookies':'Cookies',
+    'footer.copyright':'© 2026 ZakForeigner. Todos los derechos reservados.','footer.tagline':'ZAK/FOREIGNER — SOFTWARE EMPRESARIAL NATIVO PARA macOS'
+  },
+  ko: {
+    'nav.platform':'플랫폼','nav.bom':'BOM 엔진','nav.alerts':'알림','nav.docs':'문서','nav.support':'지원','nav.about':'회사 소개','nav.demo':'데모 요청','nav.langLabel':'언어',
+    'sp.label':'지원','sp.title':'플랫폼을 만드는 사람들의 직접적인 도움.',
+    'sp.desc':'원하시는 채널로 문의해 주시면 최대 24시간 이내에 답변드립니다. 특정 모듈의 작동 방식이 궁금하시다면, 자주 묻는 질문 섹션에서 가장 많이 받는 문의를 확인하실 수 있습니다.',
+    'sp.ch1':'이메일','sp.ch2':'전화','sp.ch3':'WhatsApp','sp.ch4':'메시지 (iMessage)','sp.cta':'팀에 문의하기',
+    'sp.faqLabel':'자주 묻는 질문','sp.faqTitle':'가장 많이 받는 질문들',
+    'sp.q1':'ZakForeigner는 Windows 등 다른 운영체제에서도 작동하나요?',
+    'sp.a1':'아니요. ZakForeigner는 Apple 생태계의 네이티브 기술을 활용하여 macOS 전용으로 개발된 데스크톱 애플리케이션입니다. 웹 인터페이스를 감싼 형태도, 이후 조정된 크로스 플랫폼 애플리케이션도 아닙니다.',
+    'sp.q2':'시스템이 세관 당국에 신고할 정보를 스스로 결정하나요?',
+    'sp.a2':'아니요. ZakForeigner는 그러한 결정에 인공지능을 사용하지 않습니다. 시스템은 계산, 검증, 관계 설정을 자동화하지만, 데이터의 입력·검토·승인은 담당 사용자의 통제 하에 남습니다.',
+    'sp.q3':'수출 송장을 발행할 때 차감은 어떻게 결정되나요?',
+    'sp.a3':'BOM은 제품의 구성과 관련 원자재를 정의합니다. 수출 송장을 등록하면 시스템은 그 구조를 수출된 수량에 적용해 해당 소비량을 산정하고, 잔액이 있는 선택된 신고서에 차감을 적용합니다.',
+    'sp.q4':'신고서의 잔액이 소진되면 어떻게 되나요?',
+    'sp.a4':'시스템은 신고서의 가용 잔액이 지정된 주의 수준에 근접하면 이를 감지하여 알림을 생성합니다. 담당자는 이를 통해 미리 신규 신고서를 준비할 수 있습니다.',
+    'sp.q5':'ZakForeigner는 우리 회사의 정보를 어떻게 보호하나요?',
+    'sp.a5':'아키텍처는 접근 통제, 자격 증명 보호, 클라우드 저장소, 데이터의 기밀성과 무결성을 보존하기 위한 보안 메커니즘을 포함합니다. 보안은 플랫폼 전반에 걸친 속성으로 다루어집니다.',
+    'sp.q6':'신고서와 보고서 정보를 내보낼 수 있나요?',
+    'sp.a6':'예. 계정 명세서와 보고서는 내부 분석을 위한 정보 내보내기를 지원합니다.',
+    'sp.q7':'각 모듈에 대한 더 자세한 내용은 어디서 확인하나요?',
+    'sp.a7':'문서 섹션에서 플랫폼의 각 모듈을 기능 설명과 함께 정리해 두었습니다.','sp.a7link':' 문서 보기 →',
+    'footer.description':'일시 수입 및 능동 완화 체제 하에 운영되는 기업을 위한 무역 관리 전문 ERP. 신고서, 상업 문서, 상품, 차감, 잔액, 추적성, 운영 및 정부 보고서 관리. 브라질에서 개발되었습니다.',
+    'footer.product':'제품','footer.features':'플랫폼','footer.technology':'기술','footer.reports':'보고서',
+    'footer.company':'회사','footer.about':'회사 소개','footer.contact':'연락처','footer.support':'지원','footer.docs':'문서',
+    'footer.legal':'법적','footer.privacy':'개인정보 보호','footer.terms':'약관','footer.cookies':'쿠키',
+    'footer.copyright':'© 2026 ZakForeigner. 모든 권리 보유.','footer.tagline':'ZAK/FOREIGNER — macOS 전용 기업용 네이티브 소프트웨어'
+  }
+};
+
+let currentLang = 'es';
+function translate(key){ return translations[currentLang][key] || key; }
+function updateLanguage(lang){
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.body.classList.toggle('korean', lang === 'ko');
+  document.querySelectorAll('[data-i18n]').forEach(el=>{ el.textContent = translate(el.getAttribute('data-i18n')); });
+  document.getElementById('currentLang').textContent = lang.toUpperCase();
+  document.querySelectorAll('.lang-option').forEach(opt=>{ opt.classList.toggle('active', opt.getAttribute('data-lang') === lang); });
+}
+
+const langButton = document.getElementById('langButton');
+const langDropdown = document.getElementById('langDropdown');
+langButton.addEventListener('click', e=>{ e.stopPropagation(); langDropdown.classList.toggle('active'); });
+document.querySelectorAll('.lang-option').forEach(option=>{ option.addEventListener('click', ()=>{ updateLanguage(option.getAttribute('data-lang')); langDropdown.classList.remove('active'); }); });
+document.addEventListener('click', e=>{ if(!langButton.contains(e.target) && !langDropdown.contains(e.target)) langDropdown.classList.remove('active'); });
+
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+function setMobileMenuIcon(name){ const icon = document.getElementById('mobileMenuIcon'); if(!icon) return; icon.setAttribute('data-lucide', name); lucide.createIcons(); }
+if(mobileMenuBtn && mobileMenu){
+  mobileMenuBtn.addEventListener('click', ()=>{ const willOpen = mobileMenu.classList.contains('hidden'); mobileMenu.classList.toggle('hidden'); setMobileMenuIcon(willOpen ? 'x' : 'menu'); });
+  mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>{ mobileMenu.classList.add('hidden'); setMobileMenuIcon('menu'); }));
+  document.querySelectorAll('.lang-option-mobile').forEach(opt=>{ opt.addEventListener('click', ()=>{ updateLanguage(opt.getAttribute('data-lang')); document.querySelectorAll('.lang-option-mobile').forEach(o=>o.classList.toggle('active', o===opt)); }); });
+}
+
+window.addEventListener('scroll', ()=>{ document.getElementById('header').style.background = window.pageYOffset > 80 ? 'rgba(10,14,20,0.92)' : 'rgba(10,14,20,0.75)'; });
+
+const observer = new IntersectionObserver((entries)=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.style.opacity='1'; entry.target.style.transform='translateY(0)'; } }); }, {threshold:.1, rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.channel-card, .faq-item').forEach((el, i)=>{ el.style.opacity='0'; el.style.transform='translateY(20px)'; el.style.transition=`opacity .5s ease-out ${(i%8)*60}ms, transform .5s ease-out ${(i%8)*60}ms`; observer.observe(el); });
+
+updateLanguage('es');
+</script>
+</body>
+</html>

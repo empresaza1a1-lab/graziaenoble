@@ -91,6 +91,9 @@ body.korean, .korean{font-family:'Noto Sans KR','Inter',sans-serif;}
 .nav-link::after{content:'';position:absolute;bottom:-6px;left:0;width:0;height:1px;background:var(--amber);transition:width .25s;}
 .nav-link:hover{color:var(--paper);}
 .nav-link:hover::after{width:100%;}
+.nav-link.active{color:var(--paper);}
+.nav-link.active::after{width:100%;}
+.lang-option-mobile.active{color:var(--amber);}
 
 /* Manifest hero card */
 .manifest-card{
@@ -279,16 +282,16 @@ select.paper-input option{background:var(--steel-2); color:var(--paper);}
 <!-- Header -->
 <header class="fixed w-full z-50 backdrop-blur-xl border-b hairline transition-all" style="background:rgba(10,14,20,0.75);" id="header">
   <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-    <div class="font-mono text-lg tracking-tight text-[var(--paper)] flex items-center gap-2">
+    <a href="index.html" class="font-mono text-lg tracking-tight text-[var(--paper)] flex items-center gap-2">
       <span class="text-[var(--rust)]">▮</span>ZAK<span class="text-[var(--text-dim)]">/</span>FOREIGNER
-    </div>
+    </a>
     <div class="hidden md:flex space-x-7 text-sm font-medium items-center text-[var(--text-dim)]">
       <a href="#posicionamiento" class="nav-link" data-i18n="nav.platform">Plataforma</a>
-      <a href="#declaraciones" class="nav-link" data-i18n="nav.declarations">Declaraciones</a>
       <a href="#bom" class="nav-link" data-i18n="nav.bom">Motor BOM</a>
       <a href="#alertas" class="nav-link" data-i18n="nav.alerts">Alertas</a>
-      <a href="#reportes" class="nav-link" data-i18n="nav.reports">Reportes</a>
-      <a href="#resultado" class="nav-link" data-i18n="nav.results">Resultados</a>
+      <a href="documentacion.html" class="nav-link" data-i18n="nav.docs">Documentación</a>
+      <a href="soporte.html" class="nav-link" data-i18n="nav.support">Soporte</a>
+      <a href="quienes-somos.html" class="nav-link" data-i18n="nav.about">Nosotros</a>
       <div class="lang-selector">
         <button class="lang-button" id="langButton">
           <i data-lucide="globe" class="w-3.5 h-3.5"></i>
@@ -301,8 +304,28 @@ select.paper-input option{background:var(--steel-2); color:var(--paper);}
         </div>
       </div>
     </div>
-    <a href="#contacto" class="btn-rust px-5 py-2 rounded-md text-sm font-semibold text-white" data-i18n="nav.demo">Solicitar demo</a>
+    <div class="flex items-center gap-3">
+      <a href="#contacto" class="btn-rust px-5 py-2 rounded-md text-sm font-semibold text-white" data-i18n="nav.demo">Solicitar demo</a>
+      <button class="md:hidden text-[var(--paper)]" id="mobileMenuBtn" aria-label="Menú">
+        <i data-lucide="menu" class="w-6 h-6" id="mobileMenuIcon"></i>
+      </button>
+    </div>
   </nav>
+  <div class="md:hidden hidden border-t hairline" id="mobileMenu" style="background:rgba(10,14,20,0.97);">
+    <div class="container mx-auto px-6 py-3 flex flex-col text-sm font-medium text-[var(--text-dim)]">
+      <a href="#posicionamiento" class="py-3 border-b hairline" data-i18n="nav.platform">Plataforma</a>
+      <a href="#bom" class="py-3 border-b hairline" data-i18n="nav.bom">Motor BOM</a>
+      <a href="#alertas" class="py-3 border-b hairline" data-i18n="nav.alerts">Alertas</a>
+      <a href="documentacion.html" class="py-3 border-b hairline" data-i18n="nav.docs">Documentación</a>
+      <a href="soporte.html" class="py-3 border-b hairline" data-i18n="nav.support">Soporte</a>
+      <a href="quienes-somos.html" class="py-3" data-i18n="nav.about">Nosotros</a>
+      <div class="flex items-center gap-4 pt-4 mt-1 border-t hairline font-mono text-xs">
+        <span class="text-[var(--text-faint)]" data-i18n="nav.langLabel">IDIOMA</span>
+        <span class="lang-option-mobile cursor-pointer text-[var(--amber)]" data-lang="es">ES</span>
+        <span class="lang-option-mobile cursor-pointer" data-lang="ko">한국어</span>
+      </div>
+    </div>
+  </div>
 </header>
 
 <!-- Hero -->
@@ -1368,9 +1391,10 @@ select.paper-input option{background:var(--steel-2); color:var(--paper);}
       <div>
         <h4 class="font-semibold text-[var(--paper)] mb-4 text-sm" data-i18n="footer.company">Empresa</h4>
         <ul class="space-y-2 text-sm text-[var(--text-faint)]">
+          <li><a href="quienes-somos.html" class="hover:text-[var(--amber)] transition" data-i18n="footer.about">Nosotros</a></li>
           <li><a href="#contacto" class="hover:text-[var(--amber)] transition" data-i18n="footer.contact">Contacto</a></li>
-          <li><a href="#" class="hover:text-[var(--amber)] transition" data-i18n="footer.support">Soporte</a></li>
-          <li><a href="#" class="hover:text-[var(--amber)] transition" data-i18n="footer.docs">Documentación</a></li>
+          <li><a href="soporte.html" class="hover:text-[var(--amber)] transition" data-i18n="footer.support">Soporte</a></li>
+          <li><a href="documentacion.html" class="hover:text-[var(--amber)] transition" data-i18n="footer.docs">Documentación</a></li>
         </ul>
       </div>
       <div>
@@ -1597,6 +1621,7 @@ setInterval(updateTimestamp, 30000);
 const translations = {
   es: {
     'nav.platform':'Plataforma','nav.declarations':'Declaraciones','nav.bom':'Motor BOM','nav.alerts':'Alertas','nav.reports':'Reportes','nav.results':'Resultados','nav.demo':'Solicitar demo',
+    'nav.docs':'Documentación','nav.support':'Soporte','nav.about':'Nosotros','nav.langLabel':'IDIOMA','nav.home':'Inicio',
 
     'hero.badge':'ERP ESPECIALIZADO · COMERCIO EXTERIOR · MACOS',
     'hero.title1':'Perfeccionamiento Activo,','hero.title2':'controlado desde una única plataforma.',
@@ -1797,12 +1822,13 @@ const translations = {
 
     'footer.description':'ERP especializado en comercio exterior para empresas que operan bajo Admisión Temporal y Perfeccionamiento Activo. Gestión de declaraciones, documentación comercial, mercancías, descargos, saldos, trazabilidad y reportes operativos y gubernamentales. Desarrollado en Brasil.',
     'footer.product':'Producto','footer.features':'Plataforma','footer.technology':'Tecnología','footer.reports':'Reportes',
-    'footer.company':'Empresa','footer.contact':'Contacto','footer.support':'Soporte','footer.docs':'Documentación',
+    'footer.company':'Empresa','footer.contact':'Contacto','footer.support':'Soporte','footer.docs':'Documentación','footer.about':'Nosotros',
     'footer.legal':'Legal','footer.privacy':'Privacidad','footer.terms':'Términos','footer.cookies':'Cookies',
     'footer.copyright':'© 2026 ZakForeigner. Todos los derechos reservados.','footer.tagline':'ZAK/FOREIGNER — SOFTWARE EMPRESARIAL NATIVO PARA macOS'
   },
   ko: {
     'nav.platform':'플랫폼','nav.declarations':'신고서','nav.bom':'BOM 엔진','nav.alerts':'알림','nav.reports':'보고서','nav.results':'성과','nav.demo':'데모 요청',
+    'nav.docs':'문서','nav.support':'지원','nav.about':'회사 소개','nav.langLabel':'언어','nav.home':'홈',
 
     'hero.badge':'전문 ERP · 무역 관리 · MACOS 전용',
     'hero.title1':'능동 완화 체제,','hero.title2':'하나의 플랫폼에서 완벽하게 통제됩니다.',
@@ -2003,7 +2029,7 @@ const translations = {
 
     'footer.description':'일시 수입 및 능동 완화 체제 하에 운영되는 기업을 위한 무역 관리 전문 ERP. 신고서, 상업 문서, 상품, 차감, 잔액, 추적성, 운영 및 정부 보고서 관리. 브라질에서 개발되었습니다.',
     'footer.product':'제품','footer.features':'플랫폼','footer.technology':'기술','footer.reports':'보고서',
-    'footer.company':'회사','footer.contact':'연락처','footer.support':'지원','footer.docs':'문서',
+    'footer.company':'회사','footer.contact':'연락처','footer.support':'지원','footer.docs':'문서','footer.about':'회사 소개',
     'footer.legal':'법적','footer.privacy':'개인정보 보호','footer.terms':'약관','footer.cookies':'쿠키',
     'footer.copyright':'© 2026 ZakForeigner. 모든 권리 보유.','footer.tagline':'ZAK/FOREIGNER — macOS 전용 기업용 네이티브 소프트웨어'
   }
@@ -2038,6 +2064,33 @@ document.querySelectorAll('.lang-option').forEach(option=>{
 document.addEventListener('click', e=>{
   if(!langButton.contains(e.target) && !langDropdown.contains(e.target)) langDropdown.classList.remove('active');
 });
+
+/* mobile menu */
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+function setMobileMenuIcon(name){
+  const icon = document.getElementById('mobileMenuIcon');
+  if(!icon) return;
+  icon.setAttribute('data-lucide', name);
+  lucide.createIcons();
+}
+if(mobileMenuBtn && mobileMenu){
+  mobileMenuBtn.addEventListener('click', ()=>{
+    const willOpen = mobileMenu.classList.contains('hidden');
+    mobileMenu.classList.toggle('hidden');
+    setMobileMenuIcon(willOpen ? 'x' : 'menu');
+  });
+  mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>{
+    mobileMenu.classList.add('hidden');
+    setMobileMenuIcon('menu');
+  }));
+  document.querySelectorAll('.lang-option-mobile').forEach(opt=>{
+    opt.addEventListener('click', ()=>{
+      updateLanguage(opt.getAttribute('data-lang'));
+      document.querySelectorAll('.lang-option-mobile').forEach(o=>o.classList.toggle('active', o===opt));
+    });
+  });
+}
 
 /* smooth scroll */
 document.querySelectorAll('a[href^="#"]').forEach(a=>{

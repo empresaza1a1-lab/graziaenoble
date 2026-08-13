@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiénes Somos | ZakForeigner</title>
+<meta name="description" content="ZakForeigner: filosofía de control humano sobre la automatización, parte del ecosistema Zak, desarrollado en Brasil.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://zakforeigner.com/quienes-somos.html">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+:root{
+  --ink:#0A0E14; --ink-2:#0E141D; --steel:#141B26; --steel-2:#1A2230;
+  --line:rgba(244,241,232,0.09); --line-strong:rgba(244,241,232,0.16);
+  --paper:#F4F1E8; --paper-2:#E9E3D2; --rust:#C1502E; --rust-2:#DE6A44;
+  --amber:#E3A23D; --ledger:#5C93A8; --text:#CDD3DB; --text-dim:#818A98; --text-faint:#565F6D;
+}
+*{box-sizing:border-box; scroll-behavior:smooth;}
+body{font-family:'Inter',-apple-system,sans-serif; background:var(--ink); color:var(--text); overflow-x:hidden;}
+body.korean, .korean{font-family:'Noto Sans KR','Inter',sans-serif;}
+.font-display{font-family:'Space Grotesk',-apple-system,sans-serif;}
+.font-mono{font-family:'JetBrains Mono',monospace;}
+.grain::before{content:'';position:fixed; inset:0; pointer-events:none; z-index:1; opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+.hairline{border-color:var(--line);}
+.panel{background:var(--steel); border:1px solid var(--line);}
+.btn-rust{background:linear-gradient(180deg,var(--rust-2),var(--rust)); box-shadow:0 1px 0 rgba(255,255,255,0.15) inset, 0 10px 24px -8px rgba(193,80,46,0.55); transition:transform .25s ease, box-shadow .25s ease, filter .25s ease;}
+.btn-rust:hover{transform:translateY(-2px); filter:brightness(1.06);}
+.eyebrow{font-family:'JetBrains Mono',monospace; letter-spacing:.14em; font-size:.72rem; text-transform:uppercase;}
+.nav-link{position:relative; transition:color .2s;}
+.nav-link::after{content:'';position:absolute;bottom:-6px;left:0;width:0;height:1px;background:var(--amber);transition:width .25s;}
+.nav-link:hover{color:var(--paper);}
+.nav-link:hover::after{width:100%;}
+.nav-link.active{color:var(--paper);}
+.nav-link.active::after{width:100%;}
+.lang-option-mobile.active{color:var(--amber);}
+.section-label{font-family:'JetBrains Mono',monospace; font-size:.7rem; letter-spacing:.15em; text-transform:uppercase; color:var(--text-faint);}
+.stamp{border:2.5px solid var(--rust); color:var(--rust); border-radius:6px; transform:rotate(-8deg); font-family:'JetBrains Mono',monospace; letter-spacing:.08em; opacity:.85;}
+.lang-selector{position:relative;}
+.lang-button{display:flex; align-items:center; gap:6px; padding:6px 12px; background:rgba(227,162,61,0.08); border:1px solid rgba(227,162,61,0.3); border-radius:6px; color:var(--amber); font-size:.8rem; cursor:pointer; transition:all .2s; font-family:'JetBrains Mono',monospace;}
+.lang-button:hover{background:rgba(227,162,61,0.15);}
+.lang-dropdown{position:absolute; top:110%; right:0; margin-top:6px; background:var(--steel-2); border:1px solid var(--line-strong); border-radius:8px; padding:4px; min-width:130px; display:none; z-index:1000;}
+.lang-dropdown.active{display:block;}
+.lang-option{padding:8px 10px; border-radius:6px; cursor:pointer; display:flex; align-items:center; gap:8px; font-size:.85rem; transition:background .2s;}
+.lang-option:hover{background:rgba(227,162,61,0.12);}
+.lang-option.active{color:var(--amber);}
+.flow-chain{display:flex; flex-wrap:wrap; align-items:center; gap:.55rem;}
+.flow-node{font-family:'JetBrains Mono',monospace; font-size:.76rem; padding:.55rem 1rem; border:1px solid var(--line-strong); border-radius:8px; background:var(--steel-2); color:var(--paper); white-space:nowrap;}
+.flow-arrow{color:var(--amber); font-size:1.05rem; flex-shrink:0; line-height:1;}
+.callout{border-left:2px solid var(--amber); padding:.15rem 0 .15rem 1.15rem; color:var(--paper); font-weight:500; line-height:1.65;}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important;}}
+</style>
+</head>
+<body class="grain antialiased">
+
+<!-- Header -->
+<header class="fixed w-full z-50 backdrop-blur-xl border-b hairline transition-all" style="background:rgba(10,14,20,0.75);" id="header">
+  <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="index.html" class="font-mono text-lg tracking-tight text-[var(--paper)] flex items-center gap-2">
+      <span class="text-[var(--rust)]">▮</span>ZAK<span class="text-[var(--text-dim)]">/</span>FOREIGNER
+    </a>
+    <div class="hidden md:flex space-x-7 text-sm font-medium items-center text-[var(--text-dim)]">
+      <a href="index.html#posicionamiento" class="nav-link" data-i18n="nav.platform">Plataforma</a>
+      <a href="index.html#bom" class="nav-link" data-i18n="nav.bom">Motor BOM</a>
+      <a href="index.html#alertas" class="nav-link" data-i18n="nav.alerts">Alertas</a>
+      <a href="documentacion.html" class="nav-link" data-i18n="nav.docs">Documentación</a>
+      <a href="soporte.html" class="nav-link" data-i18n="nav.support">Soporte</a>
+      <a href="quienes-somos.html" class="nav-link active" data-i18n="nav.about">Nosotros</a>
+      <div class="lang-selector">
+        <button class="lang-button" id="langButton"><i data-lucide="globe" class="w-3.5 h-3.5"></i><span id="currentLang">ES</span><i data-lucide="chevron-down" class="w-3.5 h-3.5"></i></button>
+        <div class="lang-dropdown" id="langDropdown">
+          <div class="lang-option active" data-lang="es"><span>🇪🇸</span><span>Español</span></div>
+          <div class="lang-option" data-lang="ko"><span>🇰🇷</span><span>한국어</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="contacto.html" class="btn-rust px-5 py-2 rounded-md text-sm font-semibold text-white" data-i18n="nav.demo">Solicitar demo</a>
+      <button class="md:hidden text-[var(--paper)]" id="mobileMenuBtn" aria-label="Menú"><i data-lucide="menu" class="w-6 h-6" id="mobileMenuIcon"></i></button>
+    </div>
+  </nav>
+  <div class="md:hidden hidden border-t hairline" id="mobileMenu" style="background:rgba(10,14,20,0.97);">
+    <div class="container mx-auto px-6 py-3 flex flex-col text-sm font-medium text-[var(--text-dim)]">
+      <a href="index.html#posicionamiento" class="py-3 border-b hairline" data-i18n="nav.platform">Plataforma</a>
+      <a href="index.html#bom" class="py-3 border-b hairline" data-i18n="nav.bom">Motor BOM</a>
+      <a href="index.html#alertas" class="py-3 border-b hairline" data-i18n="nav.alerts">Alertas</a>
+      <a href="documentacion.html" class="py-3 border-b hairline" data-i18n="nav.docs">Documentación</a>
+      <a href="soporte.html" class="py-3 border-b hairline" data-i18n="nav.support">Soporte</a>
+      <a href="quienes-somos.html" class="py-3" style="color:var(--paper);" data-i18n="nav.about">Nosotros</a>
+      <div class="flex items-center gap-4 pt-4 mt-1 border-t hairline font-mono text-xs">
+        <span class="text-[var(--text-faint)]" data-i18n="nav.langLabel">IDIOMA</span>
+        <span class="lang-option-mobile cursor-pointer text-[var(--amber)]" data-lang="es">ES</span>
+        <span class="lang-option-mobile cursor-pointer" data-lang="ko">한국어</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="relative pt-40 pb-16 overflow-hidden">
+  <div class="absolute inset-0" style="background-image:repeating-linear-gradient(90deg, rgba(244,241,232,0.06) 0px, rgba(244,241,232,0.06) 2px, transparent 2px, transparent 28px); opacity:.4;"></div>
+  <div class="absolute top-1/4 left-1/4 w-[500px] h-[300px] bg-[var(--rust)]/8 rounded-full blur-[130px]"></div>
+  <div class="container mx-auto px-6 relative z-10 max-w-2xl">
+    <div class="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-md border border-[var(--rust)]/40 bg-[var(--rust)]/10">
+      <span class="w-1.5 h-1.5 rounded-full bg-[var(--amber)]"></span>
+      <span class="eyebrow text-[var(--amber)]" data-i18n="qs.label">QUIÉNES SOMOS</span>
+    </div>
+    <h1 class="font-display text-4xl md:text-5xl font-semibold text-[var(--paper)] leading-[1.1] mb-6 tracking-tight">
+      <span data-i18n="qs.title1">Construimos control,</span> <span class="text-[var(--rust-2)]" data-i18n="qs.title2">no reemplazo de criterio.</span>
+    </h1>
+    <p class="text-[var(--text-dim)] leading-relaxed" data-i18n="qs.subtitle">
+      ZakForeigner es un producto del ecosistema Zak, desarrollado en Brasil bajo el mismo estándar de ingeniería que exige uno de los sistemas fiscales más complejos del mundo.
+    </p>
+  </div>
+</section>
+
+<!-- Filosofía -->
+<section class="pb-24">
+  <div class="container mx-auto px-6">
+    <div class="max-w-3xl mx-auto">
+      <div class="section-label mb-3" data-i18n="qs.phi.label">NUESTRA FILOSOFÍA</div>
+      <h2 class="font-display text-3xl font-semibold text-[var(--paper)] tracking-tight mb-6 leading-tight" data-i18n="qs.phi.title">La tecnología procesa. El responsable decide.</h2>
+      <p class="text-[var(--text-dim)] mb-3 leading-relaxed" data-i18n="qs.phi.p1">No utilizamos inteligencia artificial para decidir qué información debe presentar una empresa ante la autoridad aduanera.</p>
+      <p class="text-[var(--text-dim)] mb-8 leading-relaxed" data-i18n="qs.phi.p2">En un entorno donde una declaración, un descargo o un saldo puede tener consecuencias fiscales y regulatorias, la responsabilidad sobre la información de origen debe permanecer claramente identificada. Automatizamos cálculos, validaciones y relaciones — la incorporación, revisión y aprobación de los datos permanece en manos de la persona autorizada.</p>
+
+      <div class="panel rounded-2xl p-8">
+        <div class="flow-chain mb-6">
+          <span class="flow-node" data-i18n="qs.node1">Datos ingresados</span><span class="flow-arrow">→</span>
+          <span class="flow-node" data-i18n="qs.node2">Validación</span><span class="flow-arrow">→</span>
+          <span class="flow-node" data-i18n="qs.node3">Procesamiento</span><span class="flow-arrow">→</span>
+          <span class="flow-node" data-i18n="qs.node4">Resultado</span><span class="flow-arrow">→</span>
+          <span class="flow-node" style="border-color:var(--amber); color:var(--amber);" data-i18n="qs.node5">Revisión humana</span><span class="flow-arrow">→</span>
+          <span class="flow-node" style="border-color:var(--amber); color:var(--amber);" data-i18n="qs.node6">Aprobación</span><span class="flow-arrow">→</span>
+          <span class="flow-node" data-i18n="qs.node7">Registro</span>
+        </div>
+        <div class="callout" data-i18n="qs.phi.closing">La automatización reduce trabajo operativo. La responsabilidad permanece en manos de la persona autorizada.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Ecosistema Zak -->
+<section class="pb-24 border-t hairline pt-20">
+  <div class="container mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <div class="section-label mb-3" data-i18n="qs.eco.label">ECOSISTEMA ZAK</div>
+        <h2 class="font-display text-3xl font-semibold text-[var(--paper)] tracking-tight mb-6 leading-tight" data-i18n="qs.eco.title">Cinco productos. Un mismo estándar de calidad.</h2>
+        <p class="text-[var(--text-dim)] leading-relaxed" data-i18n="qs.eco.desc">ZakForeigner forma parte de una suite empresarial más amplia. Los cinco productos comparten arquitectura, disciplina de ingeniería y el mismo estándar de calidad brasileño.</p>
+      </div>
+      <div class="panel rounded-2xl p-7">
+        <div class="py-3">
+          <div class="flex items-center gap-2 mb-1"><span class="w-1.5 h-1.5 rounded-full bg-[var(--rust-2)] shrink-0"></span><span class="font-mono text-sm font-semibold text-[var(--paper)]">Zak Foreigner</span></div>
+          <p class="text-xs text-[var(--text-dim)] pl-3.5 leading-relaxed" data-i18n="qs.eco.foreigner">ERP de comercio exterior — DUA, BL/AWB/CMR, BOM y reportes gubernamentales</p>
+        </div>
+        <div class="py-3 border-t hairline">
+          <div class="flex items-center gap-2 mb-1"><span class="w-1.5 h-1.5 rounded-full bg-[var(--text-faint)] shrink-0"></span><span class="font-mono text-sm text-[var(--text)]">Zak People</span></div>
+          <p class="text-xs text-[var(--text-dim)] pl-3.5 leading-relaxed" data-i18n="qs.eco.people">Gestión de nóminas</p>
+        </div>
+        <div class="py-3 border-t hairline">
+          <div class="flex items-center gap-2 mb-1"><span class="w-1.5 h-1.5 rounded-full bg-[var(--text-faint)] shrink-0"></span><span class="font-mono text-sm text-[var(--text)]">Zak Genesis</span></div>
+          <p class="text-xs text-[var(--text-dim)] pl-3.5 leading-relaxed" data-i18n="qs.eco.genesis">Cifrado de datos y seguridad documental, incluida la nube</p>
+        </div>
+        <div class="py-3 border-t hairline">
+          <div class="flex items-center gap-2 mb-1"><span class="w-1.5 h-1.5 rounded-full bg-[var(--text-faint)] shrink-0"></span><span class="font-mono text-sm text-[var(--text)]">Zak Primigenia</span></div>
+          <p class="text-xs text-[var(--text-dim)] pl-3.5 leading-relaxed" data-i18n="qs.eco.primigenia">Auditoría de información y registros de Zak Foreigner</p>
+        </div>
+        <div class="py-3 border-t hairline">
+          <div class="flex items-center gap-2 mb-1"><span class="w-1.5 h-1.5 rounded-full bg-[var(--text-faint)] shrink-0"></span><span class="font-mono text-sm text-[var(--text)]">Zak Mitzva</span></div>
+          <p class="text-xs text-[var(--text-dim)] pl-3.5 leading-relaxed" data-i18n="qs.eco.mitzva">Integra y sincroniza las 5 aplicaciones entre sí</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Por qué Brasil -->
+<section class="pb-24 border-t hairline pt-20">
+  <div class="container mx-auto px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="stamp inline-block text-xs px-4 py-2 mb-6">CERTIFICADO DE ORIGEM · BRASIL</div>
+      <h2 class="font-display text-3xl font-semibold text-[var(--paper)] tracking-tight mb-6 leading-tight">
+        <span data-i18n="qs.br.title1">Hecho en Brasil.</span> <span class="text-[var(--rust-2)]" data-i18n="qs.br.title2">Probado contra uno de los sistemas fiscales más exigentes del mundo.</span>
+      </h2>
+      <p class="text-[var(--text-dim)] leading-relaxed" data-i18n="qs.br.desc">SPED, NF-e y capas fiscales federales, estatales y municipales: la complejidad tributaria brasileña exige una precisión que pocos mercados demandan. Esa misma disciplina de ingeniería sostiene hoy la operación de comercio exterior de tu empresa.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Equipo — invitación, sin inventar historia -->
+<section class="pb-28 border-t hairline pt-20">
+  <div class="container mx-auto px-6">
+    <div class="panel rounded-2xl p-10 max-w-2xl mx-auto text-center">
+      <i data-lucide="users" class="w-7 h-7 text-[var(--ledger)] mx-auto mb-5"></i>
+      <div class="section-label mb-3" data-i18n="qs.team.label">NUESTRO EQUIPO</div>
+      <h2 class="font-display text-2xl font-semibold text-[var(--paper)] tracking-tight mb-4" data-i18n="qs.team.title">Preferimos contar esta parte en una conversación.</h2>
+      <p class="text-[var(--text-dim)] leading-relaxed mb-7" data-i18n="qs.team.desc">Escríbanos y con gusto le contamos quiénes construimos ZakForeigner, desde dónde operamos y qué experiencia respalda cada módulo de la plataforma.</p>
+      <a href="contacto.html" class="btn-rust inline-flex items-center gap-2 px-7 py-3 rounded-md text-sm font-semibold text-white">
+        <i data-lucide="message-circle" class="w-4 h-4"></i><span data-i18n="qs.team.cta">Conversemos</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-14 border-t hairline">
+  <div class="container mx-auto px-6">
+    <div class="grid md:grid-cols-4 gap-12 mb-10">
+      <div>
+        <div class="font-mono text-lg text-[var(--paper)] mb-4"><span class="text-[var(--rust)]">▮</span> ZAK/FOREIGNER</div>
+        <p class="text-[var(--text-faint)] text-sm leading-relaxed" data-i18n="footer.description">ERP especializado en comercio exterior para empresas que operan bajo Admisión Temporal y Perfeccionamiento Activo. Gestión de declaraciones, documentación comercial, mercancías, descargos, saldos, trazabilidad y reportes operativos y gubernamentales. Desarrollado en Brasil.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold text-[var(--paper)] mb-4 text-sm" data-i18n="footer.product">Producto</h4>
+        <ul class="space-y-2 text-sm text-[var(--text-faint)]">
+          <li><a href="index.html#posicionamiento" class="hover:text-[var(--amber)] transition" data-i18n="footer.features">Plataforma</a></li>
+          <li><a href="index.html#tecnologia" class="hover:text-[var(--amber)] transition" data-i18n="footer.technology">Tecnología</a></li>
+          <li><a href="index.html#reportes" class="hover:text-[var(--amber)] transition" data-i18n="footer.reports">Reportes</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-[var(--paper)] mb-4 text-sm" data-i18n="footer.company">Empresa</h4>
+        <ul class="space-y-2 text-sm text-[var(--text-faint)]">
+          <li><a href="quienes-somos.html" class="hover:text-[var(--amber)] transition" data-i18n="footer.about">Nosotros</a></li>
+          <li><a href="contacto.html" class="hover:text-[var(--amber)] transition" data-i18n="footer.contact">Contacto</a></li>
+          <li><a href="soporte.html" class="hover:text-[var(--amber)] transition" data-i18n="footer.support">Soporte</a></li>
+          <li><a href="documentacion.html" class="hover:text-[var(--amber)] transition" data-i18n="footer.docs">Documentación</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-[var(--paper)] mb-4 text-sm" data-i18n="footer.legal">Legal</h4>
+        <ul class="space-y-2 text-sm text-[var(--text-faint)]">
+          <li><a href="#" class="hover:text-[var(--amber)] transition" data-i18n="footer.privacy">Privacidad</a></li>
+          <li><a href="#" class="hover:text-[var(--amber)] transition" data-i18n="footer.terms">Términos</a></li>
+          <li><a href="#" class="hover:text-[var(--amber)] transition" data-i18n="footer.cookies">Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t hairline pt-6 flex flex-col md:flex-row justify-between text-xs text-[var(--text-faint)] font-mono gap-2">
+      <span data-i18n="footer.copyright">© 2026 ZakForeigner. Todos los derechos reservados.</span>
+      <span data-i18n="footer.tagline">ZAK/FOREIGNER — SOFTWARE EMPRESARIAL NATIVO PARA macOS</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+lucide.createIcons();
+
+const translations = {
+  es: {
+    'nav.platform':'Plataforma','nav.bom':'Motor BOM','nav.alerts':'Alertas','nav.docs':'Documentación','nav.support':'Soporte','nav.about':'Nosotros','nav.demo':'Solicitar demo','nav.langLabel':'IDIOMA',
+    'qs.label':'QUIÉNES SOMOS','qs.title1':'Construimos control,','qs.title2':'no reemplazo de criterio.',
+    'qs.subtitle':'ZakForeigner es un producto del ecosistema Zak, desarrollado en Brasil bajo el mismo estándar de ingeniería que exige uno de los sistemas fiscales más complejos del mundo.',
+    'qs.phi.label':'NUESTRA FILOSOFÍA','qs.phi.title':'La tecnología procesa. El responsable decide.',
+    'qs.phi.p1':'No utilizamos inteligencia artificial para decidir qué información debe presentar una empresa ante la autoridad aduanera.',
+    'qs.phi.p2':'En un entorno donde una declaración, un descargo o un saldo puede tener consecuencias fiscales y regulatorias, la responsabilidad sobre la información de origen debe permanecer claramente identificada. Automatizamos cálculos, validaciones y relaciones — la incorporación, revisión y aprobación de los datos permanece en manos de la persona autorizada.',
+    'qs.node1':'Datos ingresados','qs.node2':'Validación','qs.node3':'Procesamiento','qs.node4':'Resultado','qs.node5':'Revisión humana','qs.node6':'Aprobación','qs.node7':'Registro',
+    'qs.phi.closing':'La automatización reduce trabajo operativo. La responsabilidad permanece en manos de la persona autorizada.',
+    'qs.eco.label':'ECOSISTEMA ZAK','qs.eco.title':'Cinco productos. Un mismo estándar de calidad.',
+    'qs.eco.desc':'ZakForeigner forma parte de una suite empresarial más amplia. Los cinco productos comparten arquitectura, disciplina de ingeniería y el mismo estándar de calidad brasileño.',
+    'qs.eco.foreigner':'ERP de comercio exterior — DUA, BL/AWB/CMR, BOM y reportes gubernamentales',
+    'qs.eco.people':'Gestión de nóminas','qs.eco.genesis':'Cifrado de datos y seguridad documental, incluida la nube',
+    'qs.eco.primigenia':'Auditoría de información y registros de Zak Foreigner','qs.eco.mitzva':'Integra y sincroniza las 5 aplicaciones entre sí',
+    'qs.br.title1':'Hecho en Brasil.','qs.br.title2':'Probado contra uno de los sistemas fiscales más exigentes del mundo.',
+    'qs.br.desc':'SPED, NF-e y capas fiscales federales, estatales y municipales: la complejidad tributaria brasileña exige una precisión que pocos mercados demandan. Esa misma disciplina de ingeniería sostiene hoy la operación de comercio exterior de tu empresa.',
+    'qs.team.label':'NUESTRO EQUIPO','qs.team.title':'Preferimos contar esta parte en una conversación.',
+    'qs.team.desc':'Escríbanos y con gusto le contamos quiénes construimos ZakForeigner, desde dónde operamos y qué experiencia respalda cada módulo de la plataforma.','qs.team.cta':'Conversemos',
+    'footer.description':'ERP especializado en comercio exterior para empresas que operan bajo Admisión Temporal y Perfeccionamiento Activo. Gestión de declaraciones, documentación comercial, mercancías, descargos, saldos, trazabilidad y reportes operativos y gubernamentales. Desarrollado en Brasil.',
+    'footer.product':'Producto','footer.features':'Plataforma','footer.technology':'Tecnología','footer.reports':'Reportes',
+    'footer.company':'Empresa','footer.about':'Nosotros','footer.contact':'Contacto','footer.support':'Soporte','footer.docs':'Documentación',
+    'footer.legal':'Legal','footer.privacy':'Privacidad','footer.terms':'Términos','footer.cookies':'Cookies',
+    'footer.copyright':'© 2026 ZakForeigner. Todos los derechos reservados.','footer.tagline':'ZAK/FOREIGNER — SOFTWARE EMPRESARIAL NATIVO PARA macOS'
+  },
+  ko: {
+    'nav.platform':'플랫폼','nav.bom':'BOM 엔진','nav.alerts':'알림','nav.docs':'문서','nav.support':'지원','nav.about':'회사 소개','nav.demo':'데모 요청','nav.langLabel':'언어',
+    'qs.label':'회사 소개','qs.title1':'우리는 통제를 만듭니다,','qs.title2':'판단을 대체하지 않습니다.',
+    'qs.subtitle':'ZakForeigner는 Zak 생태계의 제품으로, 세계에서 가장 복잡한 조세 시스템 중 하나가 요구하는 것과 동일한 엔지니어링 기준 아래 브라질에서 개발되었습니다.',
+    'qs.phi.label':'우리의 철학','qs.phi.title':'기술은 처리하고, 담당자는 결정합니다.',
+    'qs.phi.p1':'우리는 기업이 세관 당국에 제출해야 할 정보를 결정하는 데 인공지능을 사용하지 않습니다.',
+    'qs.phi.p2':'신고서, 차감 또는 잔액이 세무 및 규제상의 결과를 초래할 수 있는 환경에서는, 원천 정보에 대한 책임 소재가 명확히 식별되어야 합니다. 우리는 계산, 검증, 관계 설정을 자동화합니다 — 데이터의 입력, 검토, 승인은 권한을 가진 담당자에게 남습니다.',
+    'qs.node1':'입력된 데이터','qs.node2':'검증','qs.node3':'처리','qs.node4':'결과','qs.node5':'인적 검토','qs.node6':'승인','qs.node7':'등록',
+    'qs.phi.closing':'자동화는 운영 업무를 줄입니다. 책임은 권한을 가진 담당자에게 남습니다.',
+    'qs.eco.label':'ZAK 생태계','qs.eco.title':'다섯 개의 제품. 하나의 품질 기준.',
+    'qs.eco.desc':'ZakForeigner는 더 넓은 기업용 스위트의 일부입니다. 다섯 개의 제품은 아키텍처, 엔지니어링 원칙, 그리고 동일한 브라질 품질 기준을 공유합니다.',
+    'qs.eco.foreigner':'무역 관리 ERP — DUA, BL/AWB/CMR, BOM 및 정부 보고서',
+    'qs.eco.people':'급여 관리','qs.eco.genesis':'데이터 암호화 및 문서 보안, 클라우드 포함',
+    'qs.eco.primigenia':'Zak Foreigner의 정보 및 기록 감사','qs.eco.mitzva':'5개 애플리케이션 간 통합 및 동기화',
+    'qs.br.title1':'브라질에서 만들었습니다.','qs.br.title2':'세계에서 가장 까다로운 조세 시스템으로 검증되었습니다.',
+    'qs.br.desc':'SPED, NF-e, 그리고 연방·주·시 단위로 겹겹이 쌓인 세금 체계 — 브라질의 조세 복잡성은 웬만한 시장이 요구하지 않는 수준의 정밀함을 요구합니다. 바로 그 엔지니어링 원칙이 지금 귀사의 무역 운영을 지탱합니다.',
+    'qs.team.label':'우리 팀','qs.team.title':'이 이야기는 직접 대화로 나누고 싶습니다.',
+    'qs.team.desc':'문의해 주시면 ZakForeigner를 만든 사람들이 누구인지, 어디서 운영하는지, 각 모듈을 뒷받침하는 경험이 무엇인지 기꺼이 말씀드리겠습니다.','qs.team.cta':'대화 나누기',
+    'footer.description':'일시 수입 및 능동 완화 체제 하에 운영되는 기업을 위한 무역 관리 전문 ERP. 신고서, 상업 문서, 상품, 차감, 잔액, 추적성, 운영 및 정부 보고서 관리. 브라질에서 개발되었습니다.',
+    'footer.product':'제품','footer.features':'플랫폼','footer.technology':'기술','footer.reports':'보고서',
+    'footer.company':'회사','footer.about':'회사 소개','footer.contact':'연락처','footer.support':'지원','footer.docs':'문서',
+    'footer.legal':'법적','footer.privacy':'개인정보 보호','footer.terms':'약관','footer.cookies':'쿠키',
+    'footer.copyright':'© 2026 ZakForeigner. 모든 권리 보유.','footer.tagline':'ZAK/FOREIGNER — macOS 전용 기업용 네이티브 소프트웨어'
+  }
+};
+
+let currentLang = 'es';
+function translate(key){ return translations[currentLang][key] || key; }
+function updateLanguage(lang){
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.body.classList.toggle('korean', lang === 'ko');
+  document.querySelectorAll('[data-i18n]').forEach(el=>{ el.textContent = translate(el.getAttribute('data-i18n')); });
+  document.getElementById('currentLang').textContent = lang.toUpperCase();
+  document.querySelectorAll('.lang-option').forEach(opt=>{ opt.classList.toggle('active', opt.getAttribute('data-lang') === lang); });
+}
+
+const langButton = document.getElementById('langButton');
+const langDropdown = document.getElementById('langDropdown');
+langButton.addEventListener('click', e=>{ e.stopPropagation(); langDropdown.classList.toggle('active'); });
+document.querySelectorAll('.lang-option').forEach(option=>{ option.addEventListener('click', ()=>{ updateLanguage(option.getAttribute('data-lang')); langDropdown.classList.remove('active'); }); });
+document.addEventListener('click', e=>{ if(!langButton.contains(e.target) && !langDropdown.contains(e.target)) langDropdown.classList.remove('active'); });
+
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+function setMobileMenuIcon(name){ const icon = document.getElementById('mobileMenuIcon'); if(!icon) return; icon.setAttribute('data-lucide', name); lucide.createIcons(); }
+if(mobileMenuBtn && mobileMenu){
+  mobileMenuBtn.addEventListener('click', ()=>{ const willOpen = mobileMenu.classList.contains('hidden'); mobileMenu.classList.toggle('hidden'); setMobileMenuIcon(willOpen ? 'x' : 'menu'); });
+  mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>{ mobileMenu.classList.add('hidden'); setMobileMenuIcon('menu'); }));
+  document.querySelectorAll('.lang-option-mobile').forEach(opt=>{ opt.addEventListener('click', ()=>{ updateLanguage(opt.getAttribute('data-lang')); document.querySelectorAll('.lang-option-mobile').forEach(o=>o.classList.toggle('active', o===opt)); }); });
+}
+
+window.addEventListener('scroll', ()=>{ document.getElementById('header').style.background = window.pageYOffset > 80 ? 'rgba(10,14,20,0.92)' : 'rgba(10,14,20,0.75)'; });
+
+const observer = new IntersectionObserver((entries)=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.style.opacity='1'; entry.target.style.transform='translateY(0)'; } }); }, {threshold:.1, rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.panel').forEach((el)=>{ el.style.opacity='0'; el.style.transform='translateY(20px)'; el.style.transition='opacity .6s ease-out, transform .6s ease-out'; observer.observe(el); });
+
+updateLanguage('es');
+</script>
+</body>
+</html>
