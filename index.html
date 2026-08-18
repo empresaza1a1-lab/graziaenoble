@@ -281,6 +281,36 @@ select.paper-input option{background:var(--steel-2); color:var(--paper);}
 .cap-card{background:var(--steel); border:1px solid var(--line); border-radius:12px; padding:1.5rem; transition:border-color .3s, transform .3s;}
 .cap-card:hover{border-color:var(--line-strong); transform:translateY(-2px);}
 
+/* ---- new: Apple-style scroll-driven storytelling section (Certificados de Origen de Tela) ---- */
+.scrolly{display:grid; gap:2rem;}
+@media(min-width:1024px){.scrolly{grid-template-columns:.9fr 1.1fr; gap:4rem; align-items:start;}}
+.scrolly-sticky{position:sticky; top:110px; height:min(580px,72vh); order:2;}
+@media(min-width:1024px){.scrolly-sticky{order:1;}}
+.scrolly-steps{display:flex; flex-direction:column; order:1;}
+@media(min-width:1024px){.scrolly-steps{order:2;}}
+.scrolly-step{min-height:62vh; display:flex; flex-direction:column; justify-content:center; padding:2.25rem 0; opacity:.32; filter:blur(.3px); transition:opacity .45s ease;}
+.scrolly-step.is-active{opacity:1;}
+.scrolly-step:first-child{min-height:40vh;}
+.scrolly-step:last-child{min-height:42vh;}
+.scrolly-num{
+  font-family:'JetBrains Mono',monospace; font-size:.72rem; color:var(--amber);
+  display:inline-flex; align-items:center; gap:.5rem; margin-bottom:.9rem; letter-spacing:.1em;
+}
+.scrolly-num::before{content:''; width:16px; height:1px; background:var(--amber);}
+.scrolly-visual{position:relative; width:100%; height:100%;}
+.scrolly-panel{
+  position:absolute; inset:0; opacity:0; transform:translateY(18px) scale(.985);
+  transition:opacity .55s cubic-bezier(.16,1,.3,1), transform .55s cubic-bezier(.16,1,.3,1);
+  pointer-events:none;
+}
+.scrolly-panel.is-active{opacity:1; transform:translateY(0) scale(1); pointer-events:auto;}
+@media(max-width:1023px){
+  .scrolly-sticky{position:static; height:auto; margin-bottom:1.5rem;}
+  .scrolly-panel{position:relative; inset:auto; opacity:1; transform:none; display:none;}
+  .scrolly-panel.is-active{display:block;}
+  .scrolly-step{min-height:0; opacity:1; padding:1.25rem 0;}
+}
+
 @media (prefers-reduced-motion: reduce){
   *{animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important;}
 }
@@ -297,6 +327,7 @@ select.paper-input option{background:var(--steel-2); color:var(--paper);}
     <div class="hidden md:flex space-x-7 text-sm font-medium items-center text-[var(--text-dim)]">
       <a href="#posicionamiento" class="nav-link" data-i18n="nav.platform">Plataforma</a>
       <a href="#bom" class="nav-link" data-i18n="nav.bom">Motor BOM</a>
+      <a href="#certificados-tela" class="nav-link" data-i18n="nav.cot">Cert. de Origen</a>
       <a href="#alertas" class="nav-link" data-i18n="nav.alerts">Alertas</a>
       <a href="documentacion.html" class="nav-link" data-i18n="nav.docs">Documentación</a>
       <a href="soporte.html" class="nav-link" data-i18n="nav.support">Soporte</a>
@@ -324,6 +355,7 @@ select.paper-input option{background:var(--steel-2); color:var(--paper);}
     <div class="container mx-auto px-6 py-3 flex flex-col text-sm font-medium text-[var(--text-dim)]">
       <a href="#posicionamiento" class="py-3 border-b hairline" data-i18n="nav.platform">Plataforma</a>
       <a href="#bom" class="py-3 border-b hairline" data-i18n="nav.bom">Motor BOM</a>
+      <a href="#certificados-tela" class="py-3 border-b hairline" data-i18n="nav.cot">Cert. de Origen</a>
       <a href="#alertas" class="py-3 border-b hairline" data-i18n="nav.alerts">Alertas</a>
       <a href="documentacion.html" class="py-3 border-b hairline" data-i18n="nav.docs">Documentación</a>
       <a href="soporte.html" class="py-3 border-b hairline" data-i18n="nav.support">Soporte</a>
@@ -962,6 +994,153 @@ select.paper-input option{background:var(--steel-2); color:var(--paper);}
               <span data-i18n="inventario.available3">Disponible: 2,314</span>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Certificados de Origen de la Tela — scroll-driven storytelling section -->
+<section id="certificados-tela" class="py-28 border-t hairline relative overflow-hidden">
+  <div class="absolute top-0 right-0 w-[420px] h-[420px] bg-[var(--rust)]/8 rounded-full blur-[130px]"></div>
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="max-w-3xl mx-auto text-center mb-16">
+      <div class="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded-md border border-[var(--rust)]/40 bg-[var(--rust)]/10">
+        <span class="w-1.5 h-1.5 rounded-full bg-[var(--rust-2)]"></span>
+        <span class="eyebrow text-[var(--rust-2)]" data-i18n="cot.label">NUEVO MÓDULO · TRAZABILIDAD TEXTIL</span>
+      </div>
+      <h2 class="font-display text-3xl md:text-5xl font-semibold text-[var(--paper)] tracking-tight mb-6 leading-tight" data-i18n="cot.title">
+        Gestión de Certificados de Origen de la Tela.
+      </h2>
+      <p class="text-[var(--text-dim)] leading-relaxed" data-i18n="cot.intro">Un libro de saldo y transacciones para cada certificado de origen de tela o materia prima textil que la operación necesite descargar, desde su ingreso hasta su aplicación final.</p>
+    </div>
+
+    <div class="scrolly">
+      <!-- Sticky visual -->
+      <div class="scrolly-sticky">
+        <div class="scrolly-visual">
+
+          <!-- Panel 1: Registro del certificado -->
+          <div class="scrolly-panel is-active" data-visual="1">
+            <div class="manifest-card p-0 h-full flex flex-col">
+              <div class="manifest-head flex items-center justify-between px-5 py-4">
+                <div class="flex items-center gap-2 text-[var(--text-faint)] font-mono text-xs">
+                  <i data-lucide="scroll-text" class="w-3.5 h-3.5"></i>
+                  <span data-i18n="cot.v1.tag">NUEVO CERTIFICADO</span>
+                </div>
+                <span class="w-2 h-2 rounded-full bg-[var(--amber)] blink"></span>
+              </div>
+              <div class="p-7 flex-1">
+                <div class="stamp inline-block text-xs px-3 py-1.5 mb-5">COT-2026-00147</div>
+                <div class="space-y-4 font-mono text-xs">
+                  <div class="flex justify-between border-b hairline pb-3"><span class="text-[var(--text-faint)]" data-i18n="cot.v1.f1">Tela / materia prima</span><span class="text-[var(--paper)]">Denim 12oz</span></div>
+                  <div class="flex justify-between border-b hairline pb-3"><span class="text-[var(--text-faint)]" data-i18n="cot.v1.f2">País de origen</span><span class="text-[var(--paper)]">India</span></div>
+                  <div class="flex justify-between border-b hairline pb-3"><span class="text-[var(--text-faint)]" data-i18n="cot.v1.f3">Proveedor</span><span class="text-[var(--paper)]">Arvind Textiles Ltd.</span></div>
+                  <div class="flex justify-between border-b hairline pb-3"><span class="text-[var(--text-faint)]" data-i18n="cot.v1.f4">Lote</span><span class="text-[var(--paper)]">LT-88231</span></div>
+                  <div class="flex justify-between"><span class="text-[var(--text-faint)]" data-i18n="cot.v1.f5">Cantidad certificada</span><span class="text-[var(--amber)] font-semibold">8,500.00 yd</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel 2: Libro de transacciones -->
+          <div class="scrolly-panel" data-visual="2">
+            <div class="panel rounded-2xl overflow-hidden h-full flex flex-col">
+              <div class="flex items-center justify-between px-6 py-4 border-b hairline">
+                <span class="section-label" data-i18n="cot.v2.tag">LIBRO — COT-2026-00147</span>
+                <i data-lucide="book-open-check" class="w-4 h-4 text-[var(--text-faint)]"></i>
+              </div>
+              <div class="px-2 py-2 overflow-x-auto flex-1">
+                <table class="ledger-table">
+                  <thead><tr>
+                    <th data-i18n="cot.v2.col1">Fecha</th><th data-i18n="cot.v2.col2">Transacción</th><th data-i18n="cot.v2.col3">Documento</th><th data-i18n="cot.v2.col4">Cantidad</th><th data-i18n="cot.v2.col5">Saldo</th>
+                  </tr></thead>
+                  <tbody>
+                    <tr><td>03/03</td><td class="text-[var(--ledger)]" data-i18n="cot.v2.r1">Ingreso</td><td>DUCA #10456</td><td class="text-[var(--ledger)]">+8,500.00</td><td>8,500.00</td></tr>
+                    <tr><td>14/03</td><td class="text-[var(--rust-2)]" data-i18n="cot.v2.r2">Corte / consumo</td><td>OP-2201</td><td class="text-[var(--rust-2)]">-1,240.00</td><td>7,260.00</td></tr>
+                    <tr><td>22/03</td><td class="text-[var(--rust-2)]" data-i18n="cot.v2.r2">Corte / consumo</td><td>OP-2214</td><td class="text-[var(--rust-2)]">-980.50</td><td>6,279.50</td></tr>
+                    <tr><td>02/04</td><td class="text-[var(--amber)]" data-i18n="cot.v2.r3">Transferencia entre bodegas</td><td>TR-0032</td><td class="text-[var(--amber)]">-500.00</td><td>5,779.50</td></tr>
+                    <tr><td>09/04</td><td class="text-[var(--rust-2)]" data-i18n="cot.v2.r2">Corte / consumo</td><td>OP-2239</td><td class="text-[var(--rust-2)]">-1,115.00</td><td class="text-[var(--paper)] font-semibold">4,664.50</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel 3: Saldo en tiempo real -->
+          <div class="scrolly-panel" data-visual="3">
+            <div class="manifest-card p-7 h-full flex flex-col justify-center">
+              <div class="text-xs text-[var(--text-faint)] font-mono mb-2" data-i18n="cot.v3.tag">SALDO DISPONIBLE — COT-2026-00147</div>
+              <div class="container-code text-5xl text-[var(--paper)] mb-4">4,664.50 <span class="text-lg text-[var(--text-faint)] font-mono">yd</span></div>
+              <div class="bar-track mb-2"><div class="bar-fill" style="width:55%; background:var(--rust-2);"></div></div>
+              <div class="flex justify-between font-mono text-[11px] text-[var(--text-faint)]">
+                <span data-i18n="cot.v3.entered">Certificado: 8,500.00 yd</span>
+                <span data-i18n="cot.v3.used">Consumido: 3,835.50 yd</span>
+              </div>
+              <div class="callout mt-6" data-i18n="cot.v3.note">El saldo se recalcula con cada transacción; ninguna salida puede exceder el remanente certificado.</div>
+            </div>
+          </div>
+
+          <!-- Panel 4: Trazabilidad hasta la exportación -->
+          <div class="scrolly-panel" data-visual="4">
+            <div class="panel-strong rounded-2xl p-8 h-full flex flex-col justify-center">
+              <div class="section-label mb-5" data-i18n="cot.v4.tag">DE LA TELA A LA PRENDA EXPORTADA</div>
+              <div class="flow-chain justify-center mb-6">
+                <span class="flow-node" data-i18n="cot.v4.n1">Certificado</span><span class="flow-arrow">→</span>
+                <span class="flow-node" data-i18n="cot.v4.n2">BOM</span><span class="flow-arrow">→</span>
+                <span class="flow-node" data-i18n="cot.v4.n3">Producto</span><span class="flow-arrow">→</span>
+                <span class="flow-node" data-i18n="cot.v4.n4">Exportación</span>
+              </div>
+              <p class="text-[var(--text-dim)] text-sm text-center leading-relaxed" data-i18n="cot.v4.desc">Cada descargo queda vinculado al certificado que lo respalda, permitiendo demostrar el origen de la tela contenida en cada prenda exportada.</p>
+            </div>
+          </div>
+
+          <!-- Panel 5: Alertas -->
+          <div class="scrolly-panel" data-visual="5">
+            <div class="panel rounded-2xl p-7 h-full flex flex-col justify-center">
+              <div class="section-label mb-5" data-i18n="cot.v5.tag">ALERTAS DEL CERTIFICADO</div>
+              <div class="space-y-4">
+                <div class="flex items-start gap-3">
+                  <i data-lucide="alert-triangle" class="w-4 h-4 text-[var(--amber)] mt-0.5 shrink-0"></i>
+                  <div><div class="text-sm text-[var(--paper)] font-medium" data-i18n="cot.v5.a1t">Saldo de COT-2026-00147 bajo el 20%</div><div class="text-xs text-[var(--text-dim)]" data-i18n="cot.v5.a1d">Quedan 4,664.50 yd disponibles para descargo.</div></div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <i data-lucide="calendar-clock" class="w-4 h-4 text-[var(--rust-2)] mt-0.5 shrink-0"></i>
+                  <div><div class="text-sm text-[var(--paper)] font-medium" data-i18n="cot.v5.a2t">Vigencia próxima a vencer</div><div class="text-xs text-[var(--text-dim)]" data-i18n="cot.v5.a2d">COT-2026-00098 vence en 12 días con saldo remanente.</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Steps -->
+      <div class="scrolly-steps">
+        <div class="scrolly-step is-active" data-step="1">
+          <span class="scrolly-num">01 / 05</span>
+          <h3 class="font-display text-2xl md:text-3xl font-semibold text-[var(--paper)] mb-3" data-i18n="cot.s1.title">Ingreso del certificado de origen.</h3>
+          <p class="text-[var(--text-dim)] leading-relaxed max-w-md" data-i18n="cot.s1.desc">Cada rollo o lote de tela ingresa al sistema con su certificado de origen: proveedor, país, lote y cantidad certificada, quedando disponible como una unidad controlable de forma independiente.</p>
+        </div>
+        <div class="scrolly-step" data-step="2">
+          <span class="scrolly-num">02 / 05</span>
+          <h3 class="font-display text-2xl md:text-3xl font-semibold text-[var(--paper)] mb-3" data-i18n="cot.s2.title">Un libro de transacciones por certificado.</h3>
+          <p class="text-[var(--text-dim)] leading-relaxed max-w-md" data-i18n="cot.s2.desc">Cortes, consumos, transferencias y devoluciones se registran como transacciones individuales asociadas al certificado, de forma equivalente a un estado de cuenta.</p>
+        </div>
+        <div class="scrolly-step" data-step="3">
+          <span class="scrolly-num">03 / 05</span>
+          <h3 class="font-display text-2xl md:text-3xl font-semibold text-[var(--paper)] mb-3" data-i18n="cot.s3.title">El saldo se actualiza con cada movimiento.</h3>
+          <p class="text-[var(--text-dim)] leading-relaxed max-w-md" data-i18n="cot.s3.desc">El sistema mantiene el saldo disponible de cada certificado en tiempo real, evitando que se descargue tela por encima de lo respaldado documentalmente.</p>
+        </div>
+        <div class="scrolly-step" data-step="4">
+          <span class="scrolly-num">04 / 05</span>
+          <h3 class="font-display text-2xl md:text-3xl font-semibold text-[var(--paper)] mb-3" data-i18n="cot.s4.title">Trazable hasta la prenda exportada.</h3>
+          <p class="text-[var(--text-dim)] leading-relaxed max-w-md" data-i18n="cot.s4.desc">El certificado se relaciona con el BOM y con el producto final, permitiendo sustentar el origen de la tela utilizada en cada exportación ante la autoridad correspondiente.</p>
+        </div>
+        <div class="scrolly-step" data-step="5">
+          <span class="scrolly-num">05 / 05</span>
+          <h3 class="font-display text-2xl md:text-3xl font-semibold text-[var(--paper)] mb-3" data-i18n="cot.s5.title">Alertas antes de que falte respaldo.</h3>
+          <p class="text-[var(--text-dim)] leading-relaxed max-w-md" data-i18n="cot.s5.desc">Saldos bajos y certificados próximos a vencer se notifican de forma anticipada, para que nunca se utilice tela sin un origen vigente que la respalde.</p>
         </div>
       </div>
     </div>
@@ -1629,7 +1808,25 @@ setInterval(updateTimestamp, 30000);
 /* ---------- i18n ---------- */
 const translations = {
   es: {
-    'nav.platform':'Plataforma','nav.declarations':'Declaraciones','nav.bom':'Motor BOM','nav.alerts':'Alertas','nav.reports':'Reportes','nav.results':'Resultados','nav.demo':'Solicitar demo',
+    'nav.platform':'Plataforma','nav.declarations':'Declaraciones','nav.bom':'Motor BOM','nav.cot':'Cert. de Origen','nav.alerts':'Alertas','nav.reports':'Reportes','nav.results':'Resultados','nav.demo':'Solicitar demo',
+
+    'cot.label':'NUEVO MÓDULO · TRAZABILIDAD TEXTIL','cot.title':'Gestión de Certificados de Origen de la Tela.',
+    'cot.intro':'Un libro de saldo y transacciones para cada certificado de origen de tela o materia prima textil que la operación necesite descargar, desde su ingreso hasta su aplicación final.',
+    'cot.v1.tag':'NUEVO CERTIFICADO','cot.v1.f1':'Tela / materia prima','cot.v1.f2':'País de origen','cot.v1.f3':'Proveedor','cot.v1.f4':'Lote','cot.v1.f5':'Cantidad certificada',
+    'cot.v2.tag':'LIBRO — COT-2026-00147','cot.v2.col1':'Fecha','cot.v2.col2':'Transacción','cot.v2.col3':'Documento','cot.v2.col4':'Cantidad','cot.v2.col5':'Saldo',
+    'cot.v2.r1':'Ingreso','cot.v2.r2':'Corte / consumo','cot.v2.r3':'Transferencia entre bodegas',
+    'cot.v3.tag':'SALDO DISPONIBLE — COT-2026-00147','cot.v3.entered':'Certificado: 8,500.00 yd','cot.v3.used':'Consumido: 3,835.50 yd',
+    'cot.v3.note':'El saldo se recalcula con cada transacción; ninguna salida puede exceder el remanente certificado.',
+    'cot.v4.tag':'DE LA TELA A LA PRENDA EXPORTADA','cot.v4.n1':'Certificado','cot.v4.n2':'BOM','cot.v4.n3':'Producto','cot.v4.n4':'Exportación',
+    'cot.v4.desc':'Cada descargo queda vinculado al certificado que lo respalda, permitiendo demostrar el origen de la tela contenida en cada prenda exportada.',
+    'cot.v5.tag':'ALERTAS DEL CERTIFICADO',
+    'cot.v5.a1t':'Saldo de COT-2026-00147 bajo el 20%','cot.v5.a1d':'Quedan 4,664.50 yd disponibles para descargo.',
+    'cot.v5.a2t':'Vigencia próxima a vencer','cot.v5.a2d':'COT-2026-00098 vence en 12 días con saldo remanente.',
+    'cot.s1.title':'Ingreso del certificado de origen.','cot.s1.desc':'Cada rollo o lote de tela ingresa al sistema con su certificado de origen: proveedor, país, lote y cantidad certificada, quedando disponible como una unidad controlable de forma independiente.',
+    'cot.s2.title':'Un libro de transacciones por certificado.','cot.s2.desc':'Cortes, consumos, transferencias y devoluciones se registran como transacciones individuales asociadas al certificado, de forma equivalente a un estado de cuenta.',
+    'cot.s3.title':'El saldo se actualiza con cada movimiento.','cot.s3.desc':'El sistema mantiene el saldo disponible de cada certificado en tiempo real, evitando que se descargue tela por encima de lo respaldado documentalmente.',
+    'cot.s4.title':'Trazable hasta la prenda exportada.','cot.s4.desc':'El certificado se relaciona con el BOM y con el producto final, permitiendo sustentar el origen de la tela utilizada en cada exportación ante la autoridad correspondiente.',
+    'cot.s5.title':'Alertas antes de que falte respaldo.','cot.s5.desc':'Saldos bajos y certificados próximos a vencer se notifican de forma anticipada, para que nunca se utilice tela sin un origen vigente que la respalde.',
     'nav.docs':'Documentación','nav.support':'Soporte','nav.about':'Nosotros','nav.langLabel':'IDIOMA','nav.home':'Inicio',
 
     'hero.badge':'ERP ESPECIALIZADO · COMERCIO EXTERIOR · MACOS',
@@ -1836,7 +2033,25 @@ const translations = {
     'footer.copyright':'© 2026 ZakForeigner. Todos los derechos reservados.','footer.tagline':'ZAK/FOREIGNER — SOFTWARE EMPRESARIAL NATIVO PARA macOS'
   },
   ko: {
-    'nav.platform':'플랫폼','nav.declarations':'신고서','nav.bom':'BOM 엔진','nav.alerts':'알림','nav.reports':'보고서','nav.results':'성과','nav.demo':'데모 요청',
+    'nav.platform':'플랫폼','nav.declarations':'신고서','nav.bom':'BOM 엔진','nav.cot':'원산지 증명서','nav.alerts':'알림','nav.reports':'보고서','nav.results':'성과','nav.demo':'데모 요청',
+
+    'cot.label':'신규 모듈 · 섬유 추적성','cot.title':'원단 원산지 증명서 관리.',
+    'cot.intro':'입고부터 최종 사용(차감)까지, 원단 또는 섬유 원자재의 원산지 증명서별 잔액과 거래 내역을 관리하는 장부입니다.',
+    'cot.v1.tag':'신규 증명서','cot.v1.f1':'원단 / 원자재','cot.v1.f2':'원산지 국가','cot.v1.f3':'공급업체','cot.v1.f4':'로트','cot.v1.f5':'증명된 수량',
+    'cot.v2.tag':'장부 — COT-2026-00147','cot.v2.col1':'날짜','cot.v2.col2':'거래','cot.v2.col3':'문서','cot.v2.col4':'수량','cot.v2.col5':'잔액',
+    'cot.v2.r1':'입고','cot.v2.r2':'재단 / 소비','cot.v2.r3':'창고 간 이동',
+    'cot.v3.tag':'가용 잔액 — COT-2026-00147','cot.v3.entered':'증명서: 8,500.00 yd','cot.v3.used':'소비: 3,835.50 yd',
+    'cot.v3.note':'거래마다 잔액이 재계산되며, 어떠한 출고도 증명된 잔량을 초과할 수 없습니다.',
+    'cot.v4.tag':'원단에서 수출 의류까지','cot.v4.n1':'증명서','cot.v4.n2':'BOM','cot.v4.n3':'제품','cot.v4.n4':'수출',
+    'cot.v4.desc':'각 차감은 이를 뒷받침하는 증명서와 연결되어, 수출되는 각 의류에 포함된 원단의 원산지를 입증할 수 있습니다.',
+    'cot.v5.tag':'증명서 알림',
+    'cot.v5.a1t':'COT-2026-00147 잔액 20% 미만','cot.v5.a1d':'차감 가능한 잔량 4,664.50 yd.',
+    'cot.v5.a2t':'유효기간 임박','cot.v5.a2d':'COT-2026-00098이 12일 후 만료되며 잔량이 남아 있습니다.',
+    'cot.s1.title':'원산지 증명서 등록.','cot.s1.desc':'각 원단 롤 또는 로트는 공급업체, 국가, 로트, 증명된 수량과 함께 원산지 증명서로 시스템에 등록되어 독립적으로 통제 가능한 단위가 됩니다.',
+    'cot.s2.title':'증명서별 거래 장부.','cot.s2.desc':'재단, 소비, 이동, 반품은 해당 증명서와 연결된 개별 거래로 기록되며, 이는 계정 명세서와 동일한 방식입니다.',
+    'cot.s3.title':'모든 거래마다 잔액이 갱신됩니다.','cot.s3.desc':'시스템은 각 증명서의 가용 잔액을 실시간으로 유지하여, 문서로 뒷받침되지 않는 원단이 차감되는 것을 방지합니다.',
+    'cot.s4.title':'수출 의류까지 추적 가능.','cot.s4.desc':'증명서는 BOM 및 최종 제품과 연결되어, 각 수출 건에 사용된 원단의 원산지를 관련 당국에 입증할 수 있습니다.',
+    'cot.s5.title':'근거가 부족해지기 전에 알림.','cot.s5.desc':'잔액이 낮거나 만료가 임박한 증명서는 사전에 통지되어, 유효한 원산지 근거 없이 원단이 사용되는 일이 없도록 합니다.',
     'nav.docs':'문서','nav.support':'지원','nav.about':'회사 소개','nav.langLabel':'언어','nav.home':'홈',
 
     'hero.badge':'전문 ERP · 무역 관리 · MACOS 전용',
@@ -2128,6 +2343,22 @@ document.querySelectorAll('.feature-card, .panel, .panel-strong, .cap-card').for
   el.style.transition=`opacity .6s ease-out ${delay}ms, transform .6s ease-out ${delay}ms`;
   observer.observe(el);
 });
+
+/* scroll-driven storytelling (Apple-style) — Certificados de Origen de la Tela */
+const scrollySteps = document.querySelectorAll('#certificados-tela .scrolly-step');
+const scrollyPanels = document.querySelectorAll('#certificados-tela .scrolly-panel');
+if(scrollySteps.length){
+  const scrollyObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const step = entry.target.getAttribute('data-step');
+        scrollySteps.forEach(s=>s.classList.toggle('is-active', s === entry.target));
+        scrollyPanels.forEach(p=>p.classList.toggle('is-active', p.getAttribute('data-visual') === step));
+      }
+    });
+  }, {threshold:0.5, rootMargin:'-15% 0px -15% 0px'});
+  scrollySteps.forEach(s=>scrollyObserver.observe(s));
+}
 
 /* form submit — sends to API Gateway -> Lambda -> SES */
 // Reemplaza esta URL por la que imprime deploy.sh al terminar (paso "Endpoint:").
